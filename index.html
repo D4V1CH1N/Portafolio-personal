@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Personal - David Zalles (Chato)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-terminal-fill texto-verde me-2"></i>
+                <span class="texto-verde">DAVID ZALLES</span> 
+                <span class="text-white">|</span> 
+                <span class="texto-morado">CHATO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-light" href="#inicio">Carrusel</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#actividades">Pasatiempos e Intereses</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#horario">Horario</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="#favoritos">Música y Juegos</a></li>
+                    <li class="nav-item"><a class="nav-link text-light me-lg-3" href="#frase">Frase</a></li>
+                    <li class="nav-item d-flex gap-2 mt-2 mt-lg-0">
+                        <a href="https://github.com/D4V1CH1N" target="_blank" class="btn btn-sm btn-outline-light">
+                            <i class="bi bi-github texto-morado"></i>
+                        </a>
+                        <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link" target="_blank" class="btn btn-sm btn-outline-success">
+                            <i class="bi bi-spotify texto-verde"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank" class="btn btn-sm btn-outline-light">
+                            <i class="bi bi-instagram texto-morado"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Sistemas">
+                    <div class="carousel-caption d-block texto-carrusel">
+                        <h3>Ingeniería en Sistemas & Desarrollo</h3>
+                        <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de sistemas.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Perros">
+                    <div class="carousel-caption d-block texto-carrusel">
+                        <h3>Paseo y Adiestramiento Canino - Edu-can</h3>
+                        <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en La Paz.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Música">
+                    <div class="carousel-caption d-block texto-carrusel">
+                        <h3>Música, Poesía & Arte Urbano</h3>
+                        <p>Canto, composición musical, dibujo, bocetos wildstyle y álbumes en orden cronológico.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <section id="actividades" class="mb-5">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h4 class="titulo-verde"><i class="bi bi-controller texto-verde me-2"></i>Pasatiempos (No Productivo)</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card mi-card h-100 p-3">
+                                <h5 class="texto-verde"><i class="bi bi-mic-fill me-2"></i>Cantar & Música</h5>
+                                <p class="small text-light mb-0">Cantar mis temas favoritos, escuchar discografías completas en orden cronológico y reseñar en Musicboard.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mi-card h-100 p-3">
+                                <h5 class="texto-morado"><i class="bi bi-brush-fill me-2"></i>Dibujar, Graffiti & Skate</h5>
+                                <p class="small text-light mb-0">Dibujar, hacer bocetos de letras wildstyle en cuaderno o tablet y salir a patinar en skate de noche.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card mi-card p-3">
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div>
+                                        <h5 class="texto-verde"><i class="bi bi-tv-fill me-2"></i>Anime, Gaming & Pokémon</h5>
+                                        <p class="small text-light mb-0">Seguidor de Naruto, Hajime no Ippo, Vinland Saga, Monster, Tokyo Revengers, Gachiakuta, Kuroko no Basket. Jugar en mi PS4 escuchando música y armar playlists con sprites de Pokémon GBA (mi favorito es <strong class="texto-morado">Scizor</strong>).</p>
+                                    </div>
+                                    <div class="text-center p-2 caja-scizor">
+                                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png" alt="Scizor" class="sprite-gba">
+                                        <span class="d-block badge barra-morada text-white mt-1">Scizor #212</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 class="titulo-morado"><i class="bi bi-cpu-fill texto-morado me-2"></i>Intereses (Productivo)</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card mi-card-verde h-100 p-3">
+                                <h5 class="texto-morado"><i class="bi bi-code-slash me-2"></i>Programación & Datos</h5>
+                                <p class="small text-light mb-0">Perfeccionar C#, aprender Python y administrar bases de datos en SQL Server y PostgreSQL.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mi-card-verde h-100 p-3">
+                                <h5 class="texto-verde"><i class="bi bi-feather me-2"></i>Poesía, Composición & Freestyle</h5>
+                                <p class="small text-light mb-0">Escribir poesía, composición musical propia y expresar ideas a través de la escritura y el ritmo.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mi-card-verde h-100 p-3">
+                                <h5 class="texto-verde"><i class="bi bi-translate me-2"></i>Idiomas Virtuales</h5>
+                                <p class="small text-light mb-0">Aprender francés e inglés de forma virtual para expandir horizontes personales y profesionales.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mi-card-verde h-100 p-3">
+                                <h5 class="texto-morado"><i class="bi bi-heart-pulse-fill me-2"></i>Adiestramiento Canino</h5>
+                                <p class="small text-light mb-0">Adiestrador en Edu-can, talleres de rehabilitación conductual y trabajo diario con perritos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="horario" class="mb-5">
+            <h4 class="titulo-verde"><i class="bi bi-file-earmark-spreadsheet-fill texto-verde me-2"></i>Horario: Infaltables Diarios (Sheets)</h4>
+            <div class="table-responsive">
+                <table class="table table-dark table-bordered tabla-sheets mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>A (Hora)</th>
+                            <th>B (Actividad Infaltable)</th>
+                            <th>C (Categoría)</th>
+                            <th>D (Prioridad)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="numero-fila">1</td>
+                            <td>08:30 - 11:45</td>
+                            <td>Clases de Ingeniería en Sistemas en la UPDS</td>
+                            <td>Académico</td>
+                            <td><span class="badge barra-verde text-dark">Fijo Diario</span></td>
+                        </tr>
+                        <tr>
+                            <td class="numero-fila">2</td>
+                            <td>13:30 - 22:00</td>
+                            <td>Paseos caninos y trabajo de adiestramiento en Edu-can</td>
+                            <td>Trabajo</td>
+                            <td><span class="badge barra-morada text-white">Jornada Principal</span></td>
+                        </tr>
+                        <tr>
+                            <td class="numero-fila">3</td>
+                            <td>23:00 - 03:00</td>
+                            <td>Hacer tareas de la U y programar mientras escucho música</td>
+                            <td>Productivo</td>
+                            <td><span class="badge barra-verde text-dark">Nocturno</span></td>
+                        </tr>
+                        <tr>
+                            <td class="numero-fila">4</td>
+                            <td>Extra / Libre</td>
+                            <td>Si queda energía o termino temprano mis responsabilidades: jugar videojuegos en la PS4 escuchando música</td>
+                            <td>Ocio / Relax</td>
+                            <td><span class="badge barra-morada text-white">Recompensa</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="favoritos" class="mb-5">
+            <h4 class="titulo-morado"><i class="bi bi-star-fill texto-morado me-2"></i>Favoritos: Música y Videojuegos</h4>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card mi-card p-3 h-100">
+                        <h5 class="mb-3 texto-verde"><i class="bi bi-music-note-list me-2"></i>Top Música (Selección)</h5>
+                        <div class="table-responsive tabla-scroll">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="texto-morado">Artista / Grupo</th>
+                                        <th class="texto-morado">Género / Estilo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Gorillaz</strong></td><td>Alternative / Virtual Band</td></tr>
+                                    <tr><td><strong>Twenty One Pilots</strong></td><td>Alt-Rock / Electropop</td></tr>
+                                    <tr><td><strong>Oliver Tree</strong></td><td>Indie / Alternative</td></tr>
+                                    <tr><td><strong>Zoé</strong></td><td>Rock Alternativo</td></tr>
+                                    <tr><td><strong>Melanie Martinez</strong></td><td>Alt-Pop</td></tr>
+                                    <tr><td><strong>$uicideboy$</strong></td><td>Dark Trap / Underground Hip-Hop</td></tr>
+                                    <tr><td><strong>Afaz Natural</strong></td><td>Rap / Reggae Consciente</td></tr>
+                                    <tr><td><strong>Swaggerboyz</strong></td><td>Trap / Urbano Alternativo</td></tr>
+                                    <tr><td><strong>Alcolirykoz</strong></td><td>Rap Colombiano / Boom Bap</td></tr>
+                                    <tr><td><strong>Milo J</strong></td><td>Urbano / Alternativo</td></tr>
+                                    <tr><td><strong>Kendrick Lamar</strong></td><td>Hip-Hop / West Coast Rap</td></tr>
+                                    <tr><td><strong>Das EFX</strong></td><td>90s East Coast Hip-Hop</td></tr>
+                                    <tr><td><strong>Limp Bizkit</strong></td><td>Nu Metal / Rap Rock</td></tr>
+                                    <tr><td><strong>Nujabes</strong></td><td>Lo-Fi Hip-Hop / Jazz Hop</td></tr>
+                                    <tr><td><strong>Héctor Lavoe</strong></td><td>Salsa Clásica / Fania</td></tr>
+                                    <tr><td><strong>Julio Jaramillo</strong></td><td>Bolero / Pasillo</td></tr>
+                                    <tr><td><strong>Silvio Rodríguez</strong></td><td>Nueva Trova / Cantautor</td></tr>
+                                    <tr><td><strong>Mora</strong></td><td>Urbano</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card mi-card p-3 h-100">
+                        <h5 class="mb-3 texto-morado"><i class="bi bi-joystick me-2"></i>Top Videojuegos</h5>
+                        <div class="table-responsive tabla-scroll">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="texto-verde">Título</th>
+                                        <th class="texto-verde">Plataforma</th>
+                                        <th class="texto-verde">Modo / Detalle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Saga Assassin's Creed</strong></td>
+                                        <td>PS4</td>
+                                        <td>Historia / Sigilo</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Saga Kingdom Hearts</strong></td>
+                                        <td>PS4</td>
+                                        <td>Action RPG / Historia</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Saga Pokémon</strong></td>
+                                        <td>Multiplataforma (Gameboy/NDS/3DS/Switch)</td>
+                                        <td>Fav: <strong class="texto-verde">Scizor #212</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Marvel's Spider-Man (Trilogia)</strong></td>
+                                        <td>PS4 & PS5 </td>
+                                        <td>Acción / Mundo Abierto</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dragon Ball Xenoverse 2</strong></td>
+                                        <td>PS4</td>
+                                        <td>Peleas / RPG</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Elden Ring</strong></td>
+                                        <td>PS4</td>
+                                        <td>Action RPG / Soulslike</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Saga Resident Evil</strong></td>
+                                        <td>PS4</td>
+                                        <td>Survival Horror</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>EA Sports FC 27</strong></td>
+                                        <td>PS4</td>
+                                        <td>Deportes / Multijugador</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Minecraft</strong></td>
+                                        <td>PS4</td>
+                                        <td>Supervivencia / Sandbox</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="frase" class="mb-4">
+            <h4 class="titulo-verde"><i class="bi bi-chat-square-quote-fill texto-verde me-2"></i>Frase Característica & Gráfico</h4>
+            <div class="caja-frase p-4">
+                <div class="row align-items-center g-4">
+                    
+                    <div class="col-md-7">
+                        <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                            
+                            <img src="assassins.jpg" 
+                                 alt="Assassin's Creed" 
+                                 class="imagen-frase">
+                            
+                            <div>
+                                <span class="badge barra-verde text-dark fw-bold mb-1">LO QUE SIEMPRE DIGO</span>
+                                <h3 class="fw-bold texto-morado mb-2">"¡Bomba!"</h3>
+                                <p class="small text-light mb-3">
+                                    Mi palabra para responder a cualquier cosa en el día a día.
+                                </p>
+
+                                <span class="badge barra-morada text-white mb-1">LEMA & FILOSOFÍA</span>
+                                <blockquote class="blockquote mb-1">
+                                    <p class="fs-5 fw-bold texto-verde mb-1">"Nada es verdad, todo está permitido."</p>
+                                    <p class="small text-secondary fst-italic mb-0">
+                                        Ser arquitectos de nuestro propio camino con amor propio, superación e independencia. (Assassin's Creed - Ezio Auditore da Firenze)
+                                    </p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <h6 class="texto-morado mb-3"><i class="bi bi-bar-chart-fill me-2"></i>Gráfico de mi día a día:</h6>
+                        
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span>Trabajo en Edu-can (13:30 - 22:00)</span>
+                                <span class="texto-morado">95%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar barra-morada" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span>UPDS, C#, Python & Idiomas (23:00 - 03:00)</span>
+                                <span class="texto-verde">90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar barra-verde" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span>Música, Canto, Poesía, Dibujo & PS4</span>
+                                <span class="texto-verde">100%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar barra-verde" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="redes" class="py-4 mt-5 text-center">
+        <div class="container">
+            <p class="texto-morado small mb-3 fw-bold">MIS 3 REDES SOCIALES</p>
+            <div class="row g-3 justify-content-center mb-3">
+                <div class="col-4 col-md-3">
+                    <a href="https://github.com/D4V1CH1N" target="_blank" class="btn btn-outline-light w-100">
+                        <i class="bi bi-github texto-morado me-2"></i>GitHub
+                    </a>
+                </div>
+                <div class="col-4 col-md-3">
+                    <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link" target="_blank" class="btn btn-outline-success w-100">
+                        <i class="bi bi-spotify texto-verde me-2"></i>Spotify
+                    </a>
+                </div>
+                <div class="col-4 col-md-3">
+                    <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank" class="btn btn-outline-light w-100">
+                        <i class="bi bi-instagram texto-morado me-2"></i>Instagram
+                    </a>
+                </div>
+            </div>
+            <small class="text-secondary">David Alexander Zalles Soria (Chato) — Ingeniería en Sistemas</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

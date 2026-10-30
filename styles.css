@@ -1,0 +1,138 @@
+body {
+    background-color: #0d0b14;
+    color: #e0e6ed;
+}
+
+.navbar {
+    background-color: #130f1e;
+    border-bottom: 3px solid #a855f7;
+}
+
+.texto-verde {
+    color: #00ff9d !important;
+}
+
+.texto-morado {
+    color: #c084fc !important;
+}
+
+.carousel-item img {
+    height: 420px;
+    object-fit: cover;
+    filter: brightness(0.55);
+}
+
+.texto-carrusel {
+    background-color: rgba(19, 15, 30, 0.90);
+    border: 2px solid #a855f7;
+    border-left: 6px solid #00ff9d;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.texto-carrusel h3 {
+    color: #00ff9d !important;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000000;
+    margin-bottom: 8px;
+}
+
+.texto-carrusel p {
+    color: #ffffff !important;
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 3px #000000;
+    margin-bottom: 0;
+}
+
+.titulo-verde {
+    border-left: 5px solid #00ff9d;
+    padding-left: 12px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.titulo-morado {
+    border-left: 5px solid #a855f7;
+    padding-left: 12px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.mi-card {
+    background-color: #161224;
+    border: 1px solid #3b2854;
+}
+
+.mi-card-verde {
+    background-color: #121c1d;
+    border: 1px solid #1f4e3d;
+}
+
+.tabla-sheets th {
+    background-color: #581c87;
+    color: #00ff9d;
+    text-align: center;
+    border-color: #3b2854;
+}
+
+.numero-fila {
+    background-color: #161224 !important;
+    color: #c084fc !important;
+    text-align: center;
+    font-weight: bold;
+    width: 45px;
+}
+
+.tabla-scroll {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.tabla-scroll thead th {
+    position: sticky;
+    top: 0;
+    background-color: #161224;
+    z-index: 1;
+}
+
+.caja-frase {
+    background-color: #161224;
+    border: 2px solid #00ff9d;
+    border-left: 8px solid #a855f7;
+    border-radius: 10px;
+}
+
+.imagen-frase {
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border: 2px solid #00ff9d;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.caja-scizor {
+    background-color: #0d0b14;
+    border: 2px solid #00ff9d;
+    border-radius: 10px;
+    min-width: 100px;
+}
+
+.sprite-gba {
+    width: 75px;
+    height: 75px;
+    image-rendering: pixelated;
+}
+
+.barra-verde {
+    background-color: #00ff9d !important;
+}
+
+.barra-morada {
+    background-color: #a855f7 !important;
+}
+
+footer {
+    background-color: #09070e;
+    border-top: 2px solid #00ff9d;
+}
