@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,160 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
-<body>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
+<body class="dark-mode">
+
+    <nav class="navbar sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
+            <a class="navbar-brand fw-bold" href="#inicio">
                 <i class="bi bi-terminal-fill texto-verde me-2"></i>
-                <span class="texto-verde">DAVID ZALLES</span> 
-                <span class="text-white">|</span> 
+                <span class="texto-verde">DAVID ZALLES</span>
+                <span class="separador-nav">|</span>
                 <span class="texto-morado">CHATO</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link text-light" href="#inicio">Carrusel</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="#actividades">Pasatiempos e Intereses</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="#horario">Horario</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="#favoritos">Música y Juegos</a></li>
-                    <li class="nav-item"><a class="nav-link text-light me-lg-3" href="#frase">Frase</a></li>
-                    <li class="nav-item d-flex gap-2 mt-2 mt-lg-0">
-                        <a href="https://github.com/D4V1CH1N" target="_blank" class="btn btn-sm btn-outline-light">
-                            <i class="bi bi-github texto-morado"></i>
+
+            <div class="d-flex align-items-center gap-2">
+                <button id="themeBtn" class="btn btn-sm btn-toggle" type="button">
+                    <i class="bi bi-circle-half me-1"></i><span id="themeBtnText">Cambiar Modo</span>
+                </button>
+
+                <button id="burguerBtn" class="btn-burguer" type="button" aria-label="Abrir menú de navegación"
+                    aria-expanded="false">
+                    <span class="burguer-box">
+                        <span class="burguer-line linea-1"></span>
+                        <span class="burguer-line linea-2"></span>
+                        <span class="burguer-line linea-3"></span>
+                    </span>
+                    <span class="burguer-label">Menú</span>
+                </button>
+            </div>
+
+            <div class="nav-menu w-100" id="navMenu">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6 col-lg-3 menu-cascade-item">
+                        <h6 class="menu-subtitulo texto-verde"><i class="bi bi-compass me-1"></i>Consola & Identidad</h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#actividades"
+                                    onclick="navegarTabIdentidad('dev')"><i class="bi bi-code-slash me-2 texto-morado"></i>Stack Ingeniería (C#, SQL, Python)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#actividades"
+                                    onclick="navegarTabIdentidad('educan')"><i class="bi bi-heart-pulse me-2 texto-verde"></i>Bitácora Canina Edu-can</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#actividades"
+                                    onclick="navegarTabIdentidad('arte')"><i class="bi bi-brush me-2 texto-morado"></i>Blackbook: Poesía, Graffiti & Skate</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#actividades"
+                                    onclick="navegarTabIdentidad('idiomas')"><i class="bi bi-translate me-2 texto-verde"></i>Laboratorio Francés & Inglés</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#horario"
+                                    onclick="cerrarMenu()"><i class="bi bi-table me-2 texto-morado"></i>Horario Multi-Hoja (Sheets)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#contacto"
+                                    onclick="cerrarMenu()"><i class="bi bi-briefcase me-2 texto-verde"></i>Formulario Contratación</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3 menu-cascade-item">
+                        <h6 class="menu-subtitulo texto-morado"><i class="bi bi-spotify me-1"></i>Bóveda (+160
+                            Playlists)</h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('todos')"><i
+                                        class="bi bi-collection-play me-2 texto-verde"></i>Todas las Playlists
+                                    (+160)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('gaming-ps4')"><i
+                                        class="bi bi-controller me-2 texto-morado"></i>Vibra: Gaming PS4</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('rap-trap')"><i
+                                        class="bi bi-boombox me-2 texto-verde"></i>Vibra: Rap / Trap</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('rock-alt')"><i
+                                        class="bi bi-vinyl me-2 texto-morado"></i>Vibra: Rock / Alt</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('chill-lofi')"><i
+                                        class="bi bi-moon-stars me-2 texto-verde"></i>Vibra: Chill / Lo-Fi</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroPlaylist('varios-raros')"><i
+                                        class="bi bi-question-diamond me-2 texto-morado"></i>Vibra: Varios / Raros</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3 menu-cascade-item">
+                        <h6 class="menu-subtitulo texto-verde"><i class="bi bi-disc me-1"></i>Discografías & Musicboard
+                        </h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroCancion('gorillaz')"><i
+                                        class="bi bi-music-note-beamed me-2 texto-morado"></i>Gorillaz & Twenty One
+                                    Pilots</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroCancion('oliver-tree')"><i
+                                        class="bi bi-music-note-beamed me-2 texto-verde"></i>Oliver Tree, Melanie &
+                                    Zoé</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroCancion('trap-argentino')"><i
+                                        class="bi bi-fire me-2 texto-morado"></i>Prime Trap Argentino (2015+)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroCancion('lytos')"><i
+                                        class="bi bi-mic me-2 texto-verde"></i>Lytos & Crazy Point</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarFiltroCancion('flatout2')"><i
+                                        class="bi bi-speaker me-2 texto-morado"></i>OSTs: FlatOut 2, GH3, NFS, FIFA</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarMusicboard('diez-de-diez')"><i
+                                        class="bi bi-star-fill me-2 texto-verde"></i>Reseñas Musicboard (10/10)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3 menu-cascade-item">
+                        <h6 class="menu-subtitulo texto-morado"><i class="bi bi-film me-1"></i>Cultura & Entretenimiento
+                        </h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('superheroes')"><i
+                                        class="bi bi-shield-shaded me-2 texto-verde"></i>Superhéroes y Antihéroes</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('peliculas')"><i
+                                        class="bi bi-camera-reels me-2 texto-morado"></i>Películas (Sagas Completas)</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('series')"><i
+                                        class="bi bi-tv me-2 texto-verde"></i>Series & Animación</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('animes')"><i
+                                        class="bi bi-translate me-2 texto-morado"></i>Animes & Mangas (Dual)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('libros')"><i
+                                        class="bi bi-book me-2 texto-verde"></i>Libros & Novelas</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('videojuegos')"><i
+                                        class="bi bi-joystick me-2 texto-morado"></i>Catálogo Videojuegos</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#cultura"
+                                    onclick="navegarTabCultura('pokemon')"><i
+                                        class="bi bi-bug-fill me-2 texto-verde"></i>Pokédex GBA & Scizor #212</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3 pt-2 border-top border-secondary menu-cascade-item">
+                    <span class="small texto-subtitulo">Accesos directos a redes oficiales:</span>
+                    <div class="d-flex gap-2">
+                        <a href="https://github.com/D4V1CH1N" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-sm btn-red">
+                            <i class="bi bi-github texto-morado me-1"></i>GitHub
                         </a>
-                        <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link" target="_blank" class="btn btn-sm btn-outline-success">
-                            <i class="bi bi-spotify texto-verde"></i>
+                        <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-red">
+                            <i class="bi bi-spotify texto-verde me-1"></i>Spotify
                         </a>
-                        <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank" class="btn btn-sm btn-outline-light">
-                            <i class="bi bi-instagram texto-morado"></i>
+                        <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank"
+                            rel="noopener noreferrer" class="btn btn-sm btn-red">
+                            <i class="bi bi-instagram texto-morado me-1"></i>Instagram
                         </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -53,21 +175,26 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Sistemas">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
+                        class="d-block w-100" alt="Sistemas">
                     <div class="carousel-caption d-block texto-carrusel">
                         <h3>Ingeniería en Sistemas & Desarrollo</h3>
-                        <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de sistemas.</p>
+                        <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de sistemas.
+                        </p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Perros">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80"
+                        class="d-block w-100" alt="Perros">
                     <div class="carousel-caption d-block texto-carrusel">
                         <h3>Paseo y Adiestramiento Canino - Edu-can</h3>
-                        <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en La Paz.</p>
+                        <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en La
+                            Paz.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80" class="d-block w-100" alt="Música">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80"
+                        class="d-block w-100" alt="Música">
                     <div class="carousel-caption d-block texto-carrusel">
                         <h3>Música, Poesía & Arte Urbano</h3>
                         <p>Canto, composición musical, dibujo, bocetos wildstyle y álbumes en orden cronológico.</p>
@@ -83,250 +210,499 @@
         </div>
     </header>
 
-    <main class="container my-5">
+    <main class="container my-4">
 
-        <section id="actividades" class="mb-5">
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <h4 class="titulo-verde"><i class="bi bi-controller texto-verde me-2"></i>Pasatiempos (No Productivo)</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card mi-card h-100 p-3">
-                                <h5 class="texto-verde"><i class="bi bi-mic-fill me-2"></i>Cantar & Música</h5>
-                                <p class="small text-light mb-0">Cantar mis temas favoritos, escuchar discografías completas en orden cronológico y reseñar en Musicboard.</p>
-                            </div>
+        <section id="actividades" class="mb-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                <h4 class="titulo-verde mb-0"><i class="bi bi-cpu-fill texto-verde me-2"></i>Esencia Personal: Pasatiempos, Ingeniería & Oficios</h4>
+                <div class="d-flex align-items-center gap-2">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png"
+                        alt="Scizor" class="portada-playlist es-sprite-respaldo">
+                    <span class="badge barra-morada text-white">Fav: Scizor #212</span>
+                </div>
+            </div>
+
+            <div class="card mi-card p-2 p-md-3">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pb-2 mb-2 border-bottom border-secondary" id="tabsIdentidad">
+                    <div class="d-flex flex-wrap gap-1">
+                        <button type="button" class="btn btn-sm btn-tab-cultura activo" data-tab-id="dev" onclick="cambiarTabIdentidad('dev')">
+                            <i class="bi bi-code-slash me-1"></i>Ingeniería & Stack
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab-id="educan" onclick="cambiarTabIdentidad('educan')">
+                            <i class="bi bi-heart-pulse-fill me-1"></i>Adiestramiento Edu-can
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab-id="arte" onclick="cambiarTabIdentidad('arte')">
+                            <i class="bi bi-brush-fill me-1"></i>Poesía, Freestyle, Graffiti & Skate
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab-id="idiomas" onclick="cambiarTabIdentidad('idiomas')">
+                            <i class="bi bi-translate me-1"></i>Francés & Inglés
+                        </button>
+                    </div>
+                    <input type="search" id="buscadorIdentidad" class="input-buscador-dom" placeholder="Buscar habilidad, raza, truco, frase..." oninput="buscarEnIdentidad(this.value)">
+                </div>
+
+                <div id="panel-id-dev" class="panel-identidad" style="display: block;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosDev">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="csharp-net" onclick="filtrarDev('csharp-net')">C# & .NET</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="sql-db" onclick="filtrarDev('sql-db')">SQL Server & PostgreSQL</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="python-data" onclick="filtrarDev('python-data')">Python & Automatización</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="web-dom" onclick="filtrarDev('web-dom')">Diseño Web II & DOM</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="upds-materias" onclick="filtrarDev('upds-materias')">Sistemas UPDS</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos" onclick="filtrarDev('todos')">Ver Todo el Stack</button>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mi-card h-100 p-3">
-                                <h5 class="texto-morado"><i class="bi bi-brush-fill me-2"></i>Dibujar, Graffiti & Skate</h5>
-                                <p class="small text-light mb-0">Dibujar, hacer bocetos de letras wildstyle en cuaderno o tablet y salir a patinar en skate de noche.</p>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card mi-card p-3">
-                                <div class="d-flex align-items-center justify-content-between gap-3">
-                                    <div>
-                                        <h5 class="texto-verde"><i class="bi bi-tv-fill me-2"></i>Anime, Gaming & Pokémon</h5>
-                                        <p class="small text-light mb-0">Seguidor de Naruto, Hajime no Ippo, Vinland Saga, Monster, Tokyo Revengers, Gachiakuta, Kuroko no Basket. Jugar en mi PS4 escuchando música y armar playlists con sprites de Pokémon GBA (mi favorito es <strong class="texto-morado">Scizor</strong>).</p>
-                                    </div>
-                                    <div class="text-center p-2 caja-scizor">
-                                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png" alt="Scizor" class="sprite-gba">
-                                        <span class="d-block badge barra-morada text-white mt-1">Scizor #212</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <span id="contadorDev" class="badge barra-verde text-dark">0 Módulos</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorDev" class="grid-masivo"></div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <h4 class="titulo-morado"><i class="bi bi-cpu-fill texto-morado me-2"></i>Intereses (Productivo)</h4>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card mi-card-verde h-100 p-3">
-                                <h5 class="texto-morado"><i class="bi bi-code-slash me-2"></i>Programación & Datos</h5>
-                                <p class="small text-light mb-0">Perfeccionar C#, aprender Python y administrar bases de datos en SQL Server y PostgreSQL.</p>
-                            </div>
+                <div id="panel-id-educan" class="panel-identidad" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosEducan">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="rehabilitacion" onclick="filtrarEducan('rehabilitacion')">Rehabilitación Sin Dolor</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="refuerzo-positivo" onclick="filtrarEducan('refuerzo-positivo')">Refuerzo Positivo & Obediencia</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="razas" onclick="filtrarEducan('razas')">Razas Entrenadas</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="rutas-lapaz" onclick="filtrarEducan('rutas-lapaz')">Rutas de Paseo (La Paz)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos" onclick="filtrarEducan('todos')">Ver Bitácora Completa</button>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mi-card-verde h-100 p-3">
-                                <h5 class="texto-verde"><i class="bi bi-feather me-2"></i>Poesía, Composición & Freestyle</h5>
-                                <p class="small text-light mb-0">Escribir poesía, composición musical propia y expresar ideas a través de la escritura y el ritmo.</p>
-                            </div>
+                        <span id="contadorEducan" class="badge barra-morada text-white">0 Registros</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorEducan" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-id-arte" class="panel-identidad" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosArte">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="poesia-barras" onclick="filtrarArte('poesia-barras')">Poesía & Composición</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="freestyle-metricas" onclick="filtrarArte('freestyle-metricas')">Freestyle & Métricas</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="graffiti-wildstyle" onclick="filtrarArte('graffiti-wildstyle')">Dibujo & Graffiti Wildstyle</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="skate-nocturno" onclick="filtrarArte('skate-nocturno')">Skate Nocturno (Trucos)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos" onclick="filtrarArte('todos')">Ver Blackbook Completo</button>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mi-card-verde h-100 p-3">
-                                <h5 class="texto-verde"><i class="bi bi-translate me-2"></i>Idiomas Virtuales</h5>
-                                <p class="small text-light mb-0">Aprender francés e inglés de forma virtual para expandir horizontes personales y profesionales.</p>
-                            </div>
+                        <span id="contadorArte" class="badge barra-verde text-dark">0 Piezas</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorArte" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-id-idiomas" class="panel-identidad" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosIdiomas">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="frances" onclick="filtrarIdiomas('frances')">Francés Virtual (FR)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="ingles" onclick="filtrarIdiomas('ingles')">Inglés Técnico & Fluido (EN)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="tecnico-dev" onclick="filtrarIdiomas('tecnico-dev')">Glosario Ingeniería & Código</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="musica-cultura" onclick="filtrarIdiomas('musica-cultura')">Expresiones Urbanas & Arte</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos" onclick="filtrarIdiomas('todos')">Ver Laboratorio Completo</button>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mi-card-verde h-100 p-3">
-                                <h5 class="texto-morado"><i class="bi bi-heart-pulse-fill me-2"></i>Adiestramiento Canino</h5>
-                                <p class="small text-light mb-0">Adiestrador en Edu-can, talleres de rehabilitación conductual y trabajo diario con perritos.</p>
-                            </div>
-                        </div>
+                        <span id="contadorIdiomas" class="badge barra-morada text-white">0 Tarjetas</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorIdiomas" class="grid-masivo"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="horario" class="mb-5">
-            <h4 class="titulo-verde"><i class="bi bi-file-earmark-spreadsheet-fill texto-verde me-2"></i>Horario: Infaltables Diarios (Sheets)</h4>
+        <section id="horario" class="mb-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                <h4 class="titulo-verde mb-0"><i class="bi bi-file-earmark-spreadsheet-fill texto-verde me-2"></i>Horario: Infaltables Diarios (Multi-Hoja Sheets)</h4>
+                <span id="contadorHorario" class="badge barra-verde text-dark">Hoja Activa</span>
+            </div>
             <div class="table-responsive">
-                <table class="table table-dark table-bordered tabla-sheets mb-0">
+                <table class="table table-bordered tabla-sheets tabla-sheets-compacta mb-0">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>A (Hora)</th>
-                            <th>B (Actividad Infaltable)</th>
+                            <th>A (Horario / Bloque)</th>
+                            <th>B (Actividad / Protocolo Real)</th>
                             <th>C (Categoría)</th>
                             <th>D (Prioridad)</th>
+                            <th>E (Enlace)</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="numero-fila">1</td>
-                            <td>08:30 - 11:45</td>
-                            <td>Clases de Ingeniería en Sistemas en la UPDS</td>
-                            <td>Académico</td>
-                            <td><span class="badge barra-verde text-dark">Fijo Diario</span></td>
-                        </tr>
-                        <tr>
-                            <td class="numero-fila">2</td>
-                            <td>13:30 - 22:00</td>
-                            <td>Paseos caninos y trabajo de adiestramiento en Edu-can</td>
-                            <td>Trabajo</td>
-                            <td><span class="badge barra-morada text-white">Jornada Principal</span></td>
-                        </tr>
-                        <tr>
-                            <td class="numero-fila">3</td>
-                            <td>23:00 - 03:00</td>
-                            <td>Hacer tareas de la U y programar mientras escucho música</td>
-                            <td>Productivo</td>
-                            <td><span class="badge barra-verde text-dark">Nocturno</span></td>
-                        </tr>
-                        <tr>
-                            <td class="numero-fila">4</td>
-                            <td>Extra / Libre</td>
-                            <td>Si queda energía o termino temprano mis responsabilidades: jugar videojuegos en la PS4 escuchando música</td>
-                            <td>Ocio / Relax</td>
-                            <td><span class="badge barra-morada text-white">Recompensa</span></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="contenedorHorario"></tbody>
                 </table>
             </div>
+            <div class="d-flex flex-wrap gap-1 pt-1" id="filtrosHorario">
+                <button type="button" class="btn-sheet-tab activo" data-filtro="rutina-diaria" onclick="filtrarHorario('rutina-diaria')">
+                    <i class="bi bi-table me-1"></i>Hoja 1: Lunes a Viernes
+                </button>
+                <button type="button" class="btn-sheet-tab" data-filtro="fin-semana" onclick="filtrarHorario('fin-semana')">
+                    <i class="bi bi-moon-stars me-1"></i>Hoja 2: Fines de Semana & Skate
+                </button>
+                <button type="button" class="btn-sheet-tab" data-filtro="jornada-educan" onclick="filtrarHorario('jornada-educan')">
+                    <i class="bi bi-heart-pulse me-1"></i>Hoja 3: Turnos Edu-can
+                </button>
+                <button type="button" class="btn-sheet-tab" data-filtro="semestre-upds" onclick="filtrarHorario('semestre-upds')">
+                    <i class="bi bi-mortarboard me-1"></i>Hoja 4: Semestre UPDS
+                </button>
+                <button type="button" class="btn-sheet-tab" data-filtro="setup-herramientas" onclick="filtrarHorario('setup-herramientas')">
+                    <i class="bi bi-pc-display me-1"></i>Hoja 5: Setup & Herramientas
+                </button>
+                <button type="button" class="btn-sheet-tab" data-filtro="todos" onclick="filtrarHorario('todos')">
+                    <i class="bi bi-layers-fill me-1"></i>Ver Todas las Hojas (30)
+                </button>
+            </div>
         </section>
 
-        <section id="favoritos" class="mb-5">
-            <h4 class="titulo-morado"><i class="bi bi-star-fill texto-morado me-2"></i>Favoritos: Música y Videojuegos</h4>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card mi-card p-3 h-100">
-                        <h5 class="mb-3 texto-verde"><i class="bi bi-music-note-list me-2"></i>Top Música (Selección)</h5>
-                        <div class="table-responsive tabla-scroll">
-                            <table class="table table-dark table-hover mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="texto-morado">Artista / Grupo</th>
-                                        <th class="texto-morado">Género / Estilo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td><strong>Gorillaz</strong></td><td>Alternative / Virtual Band</td></tr>
-                                    <tr><td><strong>Twenty One Pilots</strong></td><td>Alt-Rock / Electropop</td></tr>
-                                    <tr><td><strong>Oliver Tree</strong></td><td>Indie / Alternative</td></tr>
-                                    <tr><td><strong>Zoé</strong></td><td>Rock Alternativo</td></tr>
-                                    <tr><td><strong>Melanie Martinez</strong></td><td>Alt-Pop</td></tr>
-                                    <tr><td><strong>$uicideboy$</strong></td><td>Dark Trap / Underground Hip-Hop</td></tr>
-                                    <tr><td><strong>Afaz Natural</strong></td><td>Rap / Reggae Consciente</td></tr>
-                                    <tr><td><strong>Swaggerboyz</strong></td><td>Trap / Urbano Alternativo</td></tr>
-                                    <tr><td><strong>Alcolirykoz</strong></td><td>Rap Colombiano / Boom Bap</td></tr>
-                                    <tr><td><strong>Milo J</strong></td><td>Urbano / Alternativo</td></tr>
-                                    <tr><td><strong>Kendrick Lamar</strong></td><td>Hip-Hop / West Coast Rap</td></tr>
-                                    <tr><td><strong>Das EFX</strong></td><td>90s East Coast Hip-Hop</td></tr>
-                                    <tr><td><strong>Limp Bizkit</strong></td><td>Nu Metal / Rap Rock</td></tr>
-                                    <tr><td><strong>Nujabes</strong></td><td>Lo-Fi Hip-Hop / Jazz Hop</td></tr>
-                                    <tr><td><strong>Héctor Lavoe</strong></td><td>Salsa Clásica / Fania</td></tr>
-                                    <tr><td><strong>Julio Jaramillo</strong></td><td>Bolero / Pasillo</td></tr>
-                                    <tr><td><strong>Silvio Rodríguez</strong></td><td>Nueva Trova / Cantautor</td></tr>
-                                    <tr><td><strong>Mora</strong></td><td>Urbano</td></tr>
-                                </tbody>
-                            </table>
+        <section id="favoritos" class="mb-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                <h4 class="titulo-morado mb-0"><i class="bi bi-spotify texto-verde me-2"></i>Bóveda Musical Masiva</h4>
+                <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-toggle">
+                    <i class="bi bi-box-arrow-up-right me-1"></i>Perfil Oficial Spotify (d4vssj.zip)
+                </a>
+            </div>
+
+            <div class="card mi-card p-2 p-md-3">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pb-2 mb-2 border-bottom border-secondary" id="tabsMusica">
+                    <div class="d-flex flex-wrap gap-1">
+                        <button type="button" class="btn btn-sm btn-tab-cultura activo" data-tab-musica="playlists" onclick="cambiarTabMusica('playlists')">
+                            <i class="bi bi-collection-play-fill me-1"></i>Mis Playlists Spotify (155)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab-musica="canciones" onclick="cambiarTabMusica('canciones')">
+                            <i class="bi bi-disc-fill me-1"></i>Discografías, Trap & OSTs (387)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab-musica="musicboard" onclick="cambiarTabMusica('musicboard')">
+                            <i class="bi bi-star-half me-1"></i>Reseñas Musicboard (48)
+                        </button>
+                    </div>
+                    <input type="search" id="buscadorMusica" class="input-buscador-dom" placeholder="Buscar playlist, tema, artista..." oninput="buscarEnMusica(this.value)">
+                </div>
+
+                <div id="bloque-playlists" class="panel-musica" style="display: block;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosPlaylists">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="gaming-ps4"
+                                onclick="filtrarPlaylists('gaming-ps4')">Gaming PS4</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="rap-trap"
+                                onclick="filtrarPlaylists('rap-trap')">Rap / Trap</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="rock-alt"
+                                onclick="filtrarPlaylists('rock-alt')">Rock / Alt</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="chill-lofi"
+                                onclick="filtrarPlaylists('chill-lofi')">Chill / Lo-Fi</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="varios-raros"
+                                onclick="filtrarPlaylists('varios-raros')">Varios / Raros</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarPlaylists('todos')">Ver Todas (155)</button>
                         </div>
+                        <span id="contadorPlaylists" class="badge barra-morada text-white">155 Playlists</span>
+                    </div>
+
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorPlaylists" class="grid-masivo"></div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="card mi-card p-3 h-100">
-                        <h5 class="mb-3 texto-morado"><i class="bi bi-joystick me-2"></i>Top Videojuegos</h5>
-                        <div class="table-responsive tabla-scroll">
-                            <table class="table table-dark table-hover mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="texto-verde">Título</th>
-                                        <th class="texto-verde">Plataforma</th>
-                                        <th class="texto-verde">Modo / Detalle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Saga Assassin's Creed</strong></td>
-                                        <td>PS4</td>
-                                        <td>Historia / Sigilo</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Saga Kingdom Hearts</strong></td>
-                                        <td>PS4</td>
-                                        <td>Action RPG / Historia</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Saga Pokémon</strong></td>
-                                        <td>Multiplataforma (Gameboy/NDS/3DS/Switch)</td>
-                                        <td>Fav: <strong class="texto-verde">Scizor #212</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Marvel's Spider-Man (Trilogia)</strong></td>
-                                        <td>PS4 & PS5 </td>
-                                        <td>Acción / Mundo Abierto</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Dragon Ball Xenoverse 2</strong></td>
-                                        <td>PS4</td>
-                                        <td>Peleas / RPG</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Elden Ring</strong></td>
-                                        <td>PS4</td>
-                                        <td>Action RPG / Soulslike</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Saga Resident Evil</strong></td>
-                                        <td>PS4</td>
-                                        <td>Survival Horror</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>EA Sports FC 27</strong></td>
-                                        <td>PS4</td>
-                                        <td>Deportes / Multijugador</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Minecraft</strong></td>
-                                        <td>PS4</td>
-                                        <td>Supervivencia / Sandbox</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div id="bloque-canciones" class="panel-musica" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="ramasCanciones">
+                            <button type="button" class="btn btn-sm btn-tab-cultura activo" data-rama="bandas" onclick="seleccionarRamaCanciones('bandas')">
+                                <i class="bi bi-vinyl-fill me-1"></i>Bandas & Solistas (5)
+                            </button>
+                            <button type="button" class="btn btn-sm btn-tab-cultura" data-rama="urbano" onclick="seleccionarRamaCanciones('urbano')">
+                                <i class="bi bi-fire me-1"></i>Trap Argentino & Rap (4)
+                            </button>
+                            <button type="button" class="btn btn-sm btn-tab-cultura" data-rama="osts" onclick="seleccionarRamaCanciones('osts')">
+                                <i class="bi bi-controller me-1"></i>OSTs Videojuegos (5)
+                            </button>
+                            <button type="button" class="btn btn-sm btn-tab-cultura" data-rama="todos" onclick="seleccionarRamaCanciones('todos')">
+                                <i class="bi bi-grid-3x3-gap-fill me-1"></i>Archivo Total (387)
+                            </button>
                         </div>
+                        <span id="contadorCanciones" class="badge barra-verde text-dark">0 Temas / Álbumes</span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-1 mb-2" id="filtrosCanciones">
+                        <button type="button" class="btn btn-sm btn-filtro activo" data-rama-item="bandas" data-filtro="gorillaz"
+                            onclick="filtrarCanciones('gorillaz')">Gorillaz</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="bandas" data-filtro="twenty-one-pilots"
+                            onclick="filtrarCanciones('twenty-one-pilots')">Twenty One Pilots</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="bandas" data-filtro="oliver-tree"
+                            onclick="filtrarCanciones('oliver-tree')">Oliver Tree</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="bandas" data-filtro="melanie-martinez"
+                            onclick="filtrarCanciones('melanie-martinez')">Melanie Martinez</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="bandas" data-filtro="zoe"
+                            onclick="filtrarCanciones('zoe')">Zoé</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="urbano" data-filtro="trap-argentino"
+                            onclick="filtrarCanciones('trap-argentino')" style="display: none;">Prime Trap Argentino (~50)</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="urbano" data-filtro="lytos"
+                            onclick="filtrarCanciones('lytos')" style="display: none;">Lytos</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="urbano" data-filtro="crazy-point"
+                            onclick="filtrarCanciones('crazy-point')" style="display: none;">Crazy Point</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="urbano" data-filtro="seleccion-top"
+                            onclick="filtrarCanciones('seleccion-top')" style="display: none;">Top Artistas Clave</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="osts" data-filtro="flatout2"
+                            onclick="filtrarCanciones('flatout2')" style="display: none;">OST FlatOut 2</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="osts" data-filtro="gh3"
+                            onclick="filtrarCanciones('gh3')" style="display: none;">OST Guitar Hero 3</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="osts" data-filtro="nfs-carbon"
+                            onclick="filtrarCanciones('nfs-carbon')" style="display: none;">OST NFS Carbon</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="osts" data-filtro="thps3"
+                            onclick="filtrarCanciones('thps3')" style="display: none;">OST Tony Hawk's 3</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="osts" data-filtro="fifa-fc"
+                            onclick="filtrarCanciones('fifa-fc')" style="display: none;">OST FIFA 23 - EA FC 27</button>
+                        <button type="button" class="btn btn-sm btn-filtro" data-rama-item="todos" data-filtro="todos"
+                            onclick="filtrarCanciones('todos')" style="display: none;">Ver Todo el Archivo (387)</button>
+                    </div>
+
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorCanciones" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="bloque-musicboard" class="panel-musica" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosMusicboard">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="diez-de-diez"
+                                onclick="filtrarMusicboard('diez-de-diez')">Obras Maestras (10/10)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="alt-rock"
+                                onclick="filtrarMusicboard('alt-rock')">Gorillaz, TOP & Zoé</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="pop-alt"
+                                onclick="filtrarMusicboard('pop-alt')">Oliver Tree, Melanie, Lana & Sabrina</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="trap-rap"
+                                onclick="filtrarMusicboard('trap-rap')">Trap Argentino, Lytos & Urbano</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarMusicboard('todos')">Ver Todas (48 Reseñas)</button>
+                        </div>
+                        <span id="contadorMusicboard" class="badge barra-morada text-white">48 Reseñas</span>
+                    </div>
+
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorMusicboard" class="grid-masivo"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="frase" class="mb-4">
-            <h4 class="titulo-verde"><i class="bi bi-chat-square-quote-fill texto-verde me-2"></i>Frase Característica & Gráfico</h4>
+        <section id="cultura" class="mb-4">
+            <h4 class="titulo-verde mb-2"><i class="bi bi-stars texto-verde me-2"></i>Centro de Entretenimiento y Cultura</h4>
+
+            <div class="card mi-card p-2 p-md-3">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pb-2 mb-2 border-bottom border-secondary" id="tabsCultura">
+                    <div class="d-flex flex-wrap gap-1">
+                        <button type="button" class="btn btn-sm btn-tab-cultura activo" data-tab="superheroes"
+                            onclick="cambiarTabCultura('superheroes')">
+                            <i class="bi bi-shield-shaded me-1"></i>Superhéroes
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="peliculas"
+                            onclick="cambiarTabCultura('peliculas')">
+                            <i class="bi bi-camera-reels-fill me-1"></i>Películas
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="series"
+                            onclick="cambiarTabCultura('series')">
+                            <i class="bi bi-tv-fill me-1"></i>Series
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="animes"
+                            onclick="cambiarTabCultura('animes')">
+                            <i class="bi bi-translate me-1"></i>Animes & Mangas
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="libros"
+                            onclick="cambiarTabCultura('libros')">
+                            <i class="bi bi-book-half me-1"></i>Libros
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="videojuegos"
+                            onclick="cambiarTabCultura('videojuegos')">
+                            <i class="bi bi-joystick me-1"></i>Videojuegos
+                        </button>
+                        <button type="button" class="btn btn-sm btn-tab-cultura" data-tab="pokemon"
+                            onclick="cambiarTabCultura('pokemon')">
+                            <i class="bi bi-bug-fill me-1"></i>Pokédex GBA & Scizor
+                        </button>
+                    </div>
+                    <input type="search" id="buscadorCultura" class="input-buscador-dom" placeholder="Buscar en cultura, juegos, anime..." oninput="buscarEnCultura(this.value)">
+                </div>
+
+                <div id="panel-superheroes" class="panel-cultura" style="display: block;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosHeroes">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="antiheroes"
+                                onclick="filtrarHeroes('antiheroes')">Antihéroes</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="callejeros"
+                                onclick="filtrarHeroes('callejeros')">Callejeros / Vigilantes</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="marvel"
+                                onclick="filtrarHeroes('marvel')">Marvel</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="dc"
+                                onclick="filtrarHeroes('dc')">DC Comics</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarHeroes('todos')">Ver Todos (10)</button>
+                        </div>
+                        <span id="contadorHeroes" class="badge barra-morada text-white">10 Héroes</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorHeroes" class="grid-heroes"></div>
+                    </div>
+                </div>
+
+                <div id="panel-peliculas" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosPeliculas">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="sagas"
+                                onclick="filtrarPeliculas('sagas')">Sagas Épicas</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="heroes"
+                                onclick="filtrarPeliculas('heroes')">Spider-Man & Cómic</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="scifi"
+                                onclick="filtrarPeliculas('scifi')">Sci-Fi</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="fantasia"
+                                onclick="filtrarPeliculas('fantasia')">Fantasía</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="crimen"
+                                onclick="filtrarPeliculas('crimen')">Crimen & Culto</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="terror"
+                                onclick="filtrarPeliculas('terror')">Terror & Thriller</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="accion"
+                                onclick="filtrarPeliculas('accion')">Acción</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="animadas"
+                                onclick="filtrarPeliculas('animadas')">Animadas</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarPeliculas('todos')">Ver Todas</button>
+                        </div>
+                        <span id="contadorPeliculas" class="badge barra-morada text-white">0 Películas</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorPeliculas" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-series" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosSeries">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="drama"
+                                onclick="filtrarSeries('drama')">Drama & Crimen</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="animadas"
+                                onclick="filtrarSeries('animadas')">Animación & Adult Swim</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="comedia"
+                                onclick="filtrarSeries('comedia')">Comedia & Sitcom</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="scifi"
+                                onclick="filtrarSeries('scifi')">Ciencia Ficción</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="juvenil"
+                                onclick="filtrarSeries('juvenil')">Misterio Juvenil</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarSeries('todos')">Ver Todas</button>
+                        </div>
+                        <span id="contadorSeries" class="badge barra-verde text-dark">0 Series</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorSeries" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-animes" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosAnimes">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="shonen"
+                                onclick="filtrarAnimes('shonen')">Shōnen & Acción</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="seinen"
+                                onclick="filtrarAnimes('seinen')">Seinen & Psicológico</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="deportes"
+                                onclick="filtrarAnimes('deportes')">Spokon (Deportes & Autos)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="drama"
+                                onclick="filtrarAnimes('drama')">Drama & Música</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="retro"
+                                onclick="filtrarAnimes('retro')">Clásicos de Culto</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarAnimes('todos')">Ver Todos</button>
+                        </div>
+                        <span id="contadorAnimes" class="badge barra-morada text-white">0 Animes</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorAnimes" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-libros" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosLibros">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="terror"
+                                onclick="filtrarLibros('terror')">Terror & Sobrenatural</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="thriller"
+                                onclick="filtrarLibros('thriller')">Thriller Psicológico</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="fantasia"
+                                onclick="filtrarLibros('fantasia')">Fantasía Oscura</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="king"
+                                onclick="filtrarLibros('king')">Universo Stephen King</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarLibros('todos')">Ver Todos</button>
+                        </div>
+                        <span id="contadorLibros" class="badge barra-verde text-dark">0 Libros</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorLibros" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-videojuegos" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosJuegos">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="accion"
+                                onclick="filtrar('accion')">Acción & Sigilo</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="rpg"
+                                onclick="filtrar('rpg')">RPG & Fantasía</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="terror"
+                                onclick="filtrar('terror')">Survival Horror</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="carreras-deportes"
+                                onclick="filtrar('carreras-deportes')">Deportes, Skate & Racing</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="otros"
+                                onclick="filtrar('otros')">Otros / Sandbox</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrar('todos')">Ver Todos</button>
+                        </div>
+                        <span id="contadorJuegos" class="badge barra-morada text-white">0 Videojuegos</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorJuegos" class="grid-masivo"></div>
+                    </div>
+                </div>
+
+                <div id="panel-pokemon" class="panel-cultura" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+                        <div class="d-flex flex-wrap gap-1" id="filtrosPokemon">
+                            <button type="button" class="btn btn-sm btn-filtro activo" data-filtro="dream-team"
+                                onclick="filtrarPokemon('dream-team')">Dream Team 6v6 (Scizor Líder)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="hoenn-gen3"
+                                onclick="filtrarPokemon('hoenn-gen3')">Hoenn Esmeralda (Gen 3)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="johto-kanto"
+                                onclick="filtrarPokemon('johto-kanto')">Johto & Kanto (Gen 1-2)</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="competitivo"
+                                onclick="filtrarPokemon('competitivo')">Tanques & Sweepers</button>
+                            <button type="button" class="btn btn-sm btn-filtro" data-filtro="todos"
+                                onclick="filtrarPokemon('todos')">Ver Pokédex Completa (30)</button>
+                        </div>
+                        <span id="contadorPokemon" class="badge barra-verde text-dark">30 Pokémon</span>
+                    </div>
+                    <div class="boveda-scroll p-2">
+                        <div id="contenedorPokemon" class="grid-masivo"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="frase" class="mb-5">
+            <h4 class="titulo-verde"><i class="bi bi-chat-square-quote-fill texto-verde me-2"></i>Frase Característica &
+                Gráfico</h4>
             <div class="caja-frase p-4">
                 <div class="row align-items-center g-4">
-                    
                     <div class="col-md-7">
                         <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-                            
-                            <img src="assassins.jpg" 
-                                 alt="Assassin's Creed" 
-                                 class="imagen-frase">
-                            
+                            <img src="assassins.jpg" alt="Assassin's Creed" class="imagen-frase">
                             <div>
                                 <span class="badge barra-verde text-dark fw-bold mb-1">LO QUE SIEMPRE DIGO</span>
                                 <h3 class="fw-bold texto-morado mb-2">"¡Bomba!"</h3>
-                                <p class="small text-light mb-3">
+                                <p class="small mb-3">
                                     Mi palabra para responder a cualquier cosa en el día a día.
                                 </p>
 
                                 <span class="badge barra-morada text-white mb-1">LEMA & FILOSOFÍA</span>
                                 <blockquote class="blockquote mb-1">
                                     <p class="fs-5 fw-bold texto-verde mb-1">"Nada es verdad, todo está permitido."</p>
-                                    <p class="small text-secondary fst-italic mb-0">
-                                        Ser arquitectos de nuestro propio camino con amor propio, superación e independencia. (Assassin's Creed - Ezio Auditore da Firenze)
+                                    <p class="small texto-subtitulo fst-italic mb-0">
+                                        Ser arquitectos de nuestro propio camino con amor propio, superación e
+                                        independencia. Cada acción tiene su reacción. (Assassin's Creed - Ezio Auditore
+                                        da Firenze)
                                     </p>
                                 </blockquote>
                             </div>
@@ -334,14 +710,14 @@
                     </div>
 
                     <div class="col-md-5">
-                        <h6 class="texto-morado mb-3"><i class="bi bi-bar-chart-fill me-2"></i>Gráfico de mi día a día:</h6>
-                        
+                        <h6 class="texto-morado mb-3"><i class="bi bi-bar-chart-fill me-2"></i>Gráfico de mi día a día:
+                        </h6>
                         <div class="mb-2">
                             <div class="d-flex justify-content-between small mb-1">
                                 <span>Trabajo en Edu-can (13:30 - 22:00)</span>
                                 <span class="texto-morado">95%</span>
                             </div>
-                            <div class="progress">
+                            <div class="progress barra-fondo">
                                 <div class="progress-bar barra-morada" style="width: 95%"></div>
                             </div>
                         </div>
@@ -351,7 +727,7 @@
                                 <span>UPDS, C#, Python & Idiomas (23:00 - 03:00)</span>
                                 <span class="texto-verde">90%</span>
                             </div>
-                            <div class="progress">
+                            <div class="progress barra-fondo">
                                 <div class="progress-bar barra-verde" style="width: 90%"></div>
                             </div>
                         </div>
@@ -361,13 +737,107 @@
                                 <span>Música, Canto, Poesía, Dibujo & PS4</span>
                                 <span class="texto-verde">100%</span>
                             </div>
-                            <div class="progress">
+                            <div class="progress barra-fondo">
                                 <div class="progress-bar barra-verde" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="mb-4">
+            <h4 class="titulo-morado"><i class="bi bi-briefcase-fill texto-morado me-2"></i>¿Quieres contratarme?
+                (Formulario Profesional)</h4>
+            <div class="card mi-card p-4">
+                <form id="contactForm" class="row g-3" novalidate>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <label for="nombreCliente" class="form-label small fw-bold texto-verde mb-1">Tu Nombre o
+                                Empresa</label>
+                            <span id="errorNombre" class="msg-error-inline"></span>
+                        </div>
+                        <input type="text" id="nombreCliente" class="form-control input-tematico"
+                            placeholder="Ej. Juan Pérez o Tech Bolivia S.R.L.">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <label for="correo" class="form-label small fw-bold texto-verde mb-1">Correo Electrónico
+                                (Solo @gmail.com)</label>
+                            <span id="errorCorreo" class="msg-error-inline"></span>
+                        </div>
+                        <input type="email" id="correo" class="form-control input-tematico"
+                            placeholder="ejemplo@gmail.com">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <label for="telefono" class="form-label small fw-bold texto-morado mb-1">Número de
+                                WhatsApp</label>
+                            <span id="errorTelefono" class="msg-error-inline"></span>
+                        </div>
+                        <div class="input-group">
+                            <select id="prefijoPais" class="form-select input-tematico" style="max-width: 145px;">
+                                <option value="+591" selected>🇧🇴 +591 (BO)</option>
+                                <option value="+54">🇦🇷 +54 (AR)</option>
+                                <option value="+51">🇵🇪 +51 (PE)</option>
+                                <option value="+56">🇨🇱 +56 (CL)</option>
+                                <option value="+55">🇧🇷 +55 (BR)</option>
+                                <option value="+57">🇨🇴 +57 (CO)</option>
+                                <option value="+52">🇲🇽 +52 (MX)</option>
+                                <option value="+1">🇺🇸 +1 (US)</option>
+                                <option value="+34">🇪🇸 +34 (ES)</option>
+                            </select>
+                            <input type="tel" id="telefono" class="form-control input-tematico"
+                                placeholder="Ej. 71234567">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <label for="fechaReunion" class="form-label small fw-bold texto-morado mb-1">Fecha de
+                                Reunión</label>
+                            <span id="errorFecha" class="msg-error-inline"></span>
+                        </div>
+                        <input type="date" id="fechaReunion" class="form-control input-tematico">
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <label for="servicio" class="form-label small fw-bold texto-verde mb-1">Servicio de
+                                Interés</label>
+                            <span id="errorServicio" class="msg-error-inline"></span>
+                        </div>
+                        <select id="servicio" class="form-select input-tematico">
+                            <option value="" selected disabled>-- Selecciona un servicio --</option>
+                            <option value="Desarrollo de Software y Base de Datos (SQL Server, C#, Python)">Desarrollo
+                                de Software / Base de Datos (SQL Server, C#, Python)</option>
+                            <option value="Paseo y Adiestramiento Canino (Edu-can)">Paseo o Adiestramiento Canino
+                                (Edu-can)</option>
+                            <option value="Composición Musical, Arte Urbano y Diseño">Composición Musical / Arte Urbano
+                                / Diseño</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+                            <label for="mensaje" class="form-label small fw-bold texto-verde mb-1">Detalles del Proyecto
+                                o Propuesta</label>
+                            <span id="errorMensaje" class="msg-error-inline"></span>
+                        </div>
+                        <textarea id="mensaje" rows="3" class="form-control input-tematico"
+                            placeholder="Describe con palabras reales qué proyecto, sistema, adiestramiento o diseño necesitas realizar..."></textarea>
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn barra-morada text-white fw-bold px-4">
+                            <i class="bi bi-send-fill me-1"></i>Enviar Propuesta de Contratación
+                        </button>
+                    </div>
+                </form>
+
+                <div id="alertaBox"></div>
             </div>
         </section>
 
@@ -378,25 +848,30 @@
             <p class="texto-morado small mb-3 fw-bold">MIS 3 REDES SOCIALES</p>
             <div class="row g-3 justify-content-center mb-3">
                 <div class="col-4 col-md-3">
-                    <a href="https://github.com/D4V1CH1N" target="_blank" class="btn btn-outline-light w-100">
+                    <a href="https://github.com/D4V1CH1N" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-red w-100">
                         <i class="bi bi-github texto-morado me-2"></i>GitHub
                     </a>
                 </div>
                 <div class="col-4 col-md-3">
-                    <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link" target="_blank" class="btn btn-outline-success w-100">
+                    <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw&utm_source=copy-link"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-red w-100">
                         <i class="bi bi-spotify texto-verde me-2"></i>Spotify
                     </a>
                 </div>
                 <div class="col-4 col-md-3">
-                    <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank" class="btn btn-outline-light w-100">
+                    <a href="https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-red w-100">
                         <i class="bi bi-instagram texto-morado me-2"></i>Instagram
                     </a>
                 </div>
             </div>
-            <small class="text-secondary">David Alexander Zalles Soria (Chato) — Ingeniería en Sistemas</small>
+            <small class="texto-subtitulo">David Alexander Zalles Soria (Chato) — Ingeniería en Sistemas (UPDS
+                2026)</small>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
