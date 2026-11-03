@@ -110,8 +110,8 @@ const PLAYLISTS_DATA = [
     ["rock-alt", "M4th-R", URL_SPOTIFY_PLAYLIST + "6dFb1O6tNo9icFTmsRQXhE"],
     ["rock-alt", "D4rKZ1nTh", URL_SPOTIFY_PLAYLIST + "2xpjdhkjM9bA0UUiOZ8j4T"],
     ["varios-raros", "Funk Brasuk", URL_SPOTIFY_PLAYLIST + "3fSlUEQiJpLF4Kc5u6rXOv"],
-    ["gaming-ps4", "R4v# mfk💀", URL_SPOTIFY_PLAYLIST + "2x1TN7eeu1Rf37NInsajjS"],
-    ["chill-lofi", "I-D💫", URL_SPOTIFY_PLAYLIST + "6ksadn2ABOq2zQIIpMThrm"],
+    ["gaming-ps4", "R4v# mfk", URL_SPOTIFY_PLAYLIST + "2x1TN7eeu1Rf37NInsajjS"],
+    ["chill-lofi", "I-D", URL_SPOTIFY_PLAYLIST + "6ksadn2ABOq2zQIIpMThrm"],
     ["varios-raros", "TaY-sFt.", URL_SPOTIFY_PLAYLIST + "7BGvPDKNjSokJgaP38CiAv"],
     ["rap-trap", "Trap Shileno", URL_SPOTIFY_PLAYLIST + "47qj4TfVabdGMFSpoBgghD"],
     ["rock-alt", "D0Om3R", URL_SPOTIFY_PLAYLIST + "133aOu2FXzrqLY2ixHdbFT"],
@@ -122,117 +122,117 @@ const PLAYLISTS_DATA = [
     ["varios-raros", "Tu top de canciones más escuchadas", URL_SPOTIFY_PLAYLIST + "37i9dQZF1CKMFBxUbxRIAg"],
     ["rock-alt", "Clique |-/", URL_SPOTIFY_PLAYLIST + "6icMn94oor2J8oEHiAPMpz"],
     ["chill-lofi", "viajesitos", URL_SPOTIFY_PLAYLIST + "7IWbk06VSdukeg8zvKrVI6"],
-    ["chill-lofi", "Blues...🎧❤️‍🔥", URL_SPOTIFY_PLAYLIST + "3zWvLKpqCnDhOhAe0VIWMY"],
+    ["chill-lofi", "Blues...", URL_SPOTIFY_PLAYLIST + "3zWvLKpqCnDhOhAe0VIWMY"],
     ["varios-raros", "HousitoZuculento", URL_SPOTIFY_PLAYLIST + "7lFoeFYuz28u2rjGgBbR05"],
     ["varios-raros", "FfD_*Yyt", URL_SPOTIFY_PLAYLIST + "1SWb38i1wfhPDtBufclmVW"],
     ["chill-lofi", "Troste :')", URL_SPOTIFY_PLAYLIST + "0NaHTsPeWsvI1GsUs3hyaz"],
-    ["varios-raros", "?🔥", URL_SPOTIFY_PLAYLIST + "5EQ8XKOyE0wU6TXvQ725EF"],
+    ["varios-raros", "?Mix", URL_SPOTIFY_PLAYLIST + "5EQ8XKOyE0wU6TXvQ725EF"],
     ["rock-alt", "PSICODELICK", URL_SPOTIFY_PLAYLIST + "4ebcpkDlcTRJWQ85yK5OtT"],
     ["chill-lofi", "K-R&B", URL_SPOTIFY_PLAYLIST + "6Vk4d2LGE2KDzOuSryRRPC"],
     ["rap-trap", "Los Changuitozzz", URL_SPOTIFY_PLAYLIST + "0rIPIhb7Ig5VxkHtW93C8E"],
     ["rap-trap", "SISAS", URL_SPOTIFY_PLAYLIST + "2b4rtI2NJ76d5x1GrrJuY1"],
-    ["rap-trap", "😵‍💫🦇", URL_SPOTIFY_PLAYLIST + "5003oDyy8ebvTc5qku4dQH"],
-    ["rap-trap", "Saaa nea🫨", URL_SPOTIFY_PLAYLIST + "1lreVNZ1Z8Hh4kf0qAiTIq"],
+    ["rap-trap", "Nocturno Bat", URL_SPOTIFY_PLAYLIST + "5003oDyy8ebvTc5qku4dQH"],
+    ["rap-trap", "Saaa nea", URL_SPOTIFY_PLAYLIST + "1lreVNZ1Z8Hh4kf0qAiTIq"],
     ["rap-trap", "Bases bn hijas de pvta", URL_SPOTIFY_PLAYLIST + "3wLaJwYcbT7JOZPNiD3TRi"],
-    ["rap-trap", "Trapsin😵‍💫👹", URL_SPOTIFY_PLAYLIST + "2MXXpOYROOvhJ9JBQRXP1m"],
+    ["rap-trap", "Trapsin", URL_SPOTIFY_PLAYLIST + "2MXXpOYROOvhJ9JBQRXP1m"],
     ["gaming-ps4", "*Le da epilepsia*", URL_SPOTIFY_PLAYLIST + "2c2kwsYQ7SXQUVlhSok1yH"],
     ["chill-lofi", "Programming..", URL_SPOTIFY_PLAYLIST + "1c6YukmmlJYKTcmYGAvbvl"],
-    ["gaming-ps4", "HYP3🔥👹", URL_SPOTIFY_PLAYLIST + "157CR5vgVYfaCo8eoWekl6"],
-    ["chill-lofi", "J-J Azz 🫩🔥", URL_SPOTIFY_PLAYLIST + "2bxoFkuFNzILkBLAcfcaFf"],
+    ["gaming-ps4", "HYP3", URL_SPOTIFY_PLAYLIST + "157CR5vgVYfaCo8eoWekl6"],
+    ["chill-lofi", "J-J Azz", URL_SPOTIFY_PLAYLIST + "2bxoFkuFNzILkBLAcfcaFf"],
     ["varios-raros", "XXxFXxJkM", URL_SPOTIFY_PLAYLIST + "2pErhEf8RLSBl5HlUv0oYE"],
     ["rock-alt", "Alternativo", URL_SPOTIFY_PLAYLIST + "1d0NdKOFNjc5siZEUzg31z"],
-    ["varios-raros", "Ni pega tu webada hrmano😵‍💫", URL_SPOTIFY_PLAYLIST + "4JDpbf3GANW4MSJzSLKWu0"],
-    ["varios-raros", "ろくでなしの音楽", URL_SPOTIFY_PLAYLIST + "1vdpPIwxtht3KJOc4kXshS"],
-    ["chill-lofi", "✨🥱", URL_SPOTIFY_PLAYLIST + "6WXL3TpPeMDK8xOVslWl0z"],
+    ["varios-raros", "Ni pega tu webada hrmano", URL_SPOTIFY_PLAYLIST + "4JDpbf3GANW4MSJzSLKWu0"],
+    ["varios-raros", "Rokudenashi no Ongaku", URL_SPOTIFY_PLAYLIST + "1vdpPIwxtht3KJOc4kXshS"],
+    ["chill-lofi", "Late Night Chill", URL_SPOTIFY_PLAYLIST + "6WXL3TpPeMDK8xOVslWl0z"],
     ["rock-alt", "Rocksillo de la puta", URL_SPOTIFY_PLAYLIST + "6IW6CmlgWU7iPl0gkcS4o5"],
     ["rap-trap", "Under-Rap Gaucho", URL_SPOTIFY_PLAYLIST + "0qqvsikeXVABGBGu8ficSC"],
-    ["rap-trap", "RomantiRap🙂‍↔️", URL_SPOTIFY_PLAYLIST + "6djK5hNHP1uSyNwUeXRAY6"],
+    ["rap-trap", "RomantiRap", URL_SPOTIFY_PLAYLIST + "6djK5hNHP1uSyNwUeXRAY6"],
     ["chill-lofi", "DiceBrisa xD", URL_SPOTIFY_PLAYLIST + "5hl6jNUiABldrX0nHWag5P"],
     ["rap-trap", "Milo..", URL_SPOTIFY_PLAYLIST + "6mdqV7LADLv8BzGVBrFg0L"],
-    ["rap-trap", "🔥🦁", URL_SPOTIFY_PLAYLIST + "5lL9dwWaEOAp1CmiOy4AJR"],
+    ["rap-trap", "Leon Mix", URL_SPOTIFY_PLAYLIST + "5lL9dwWaEOAp1CmiOy4AJR"],
     ["rap-trap", "Argentrap", URL_SPOTIFY_PLAYLIST + "5DsmS5Y6xRRLtzfvp4mVpF"],
-    ["rap-trap", "MDB🦇", URL_SPOTIFY_PLAYLIST + "3gTUm4SZNUp6snGdf1MUav"],
+    ["rap-trap", "MDB", URL_SPOTIFY_PLAYLIST + "3gTUm4SZNUp6snGdf1MUav"],
     ["rap-trap", "Crxkerx", URL_SPOTIFY_PLAYLIST + "5GKWfOOBZkV5ys2FWdYEKl"],
     ["rap-trap", "Ysysmo", URL_SPOTIFY_PLAYLIST + "5LJKIwplIZ0B7sw3ryzdPw"],
-    ["rap-trap", "Duko🫶🏼", URL_SPOTIFY_PLAYLIST + "66WK75TpPIytY9yk8EMzCr"],
-    ["rap-trap", "TR1💥", URL_SPOTIFY_PLAYLIST + "06CFgavfWgXLmAqXnMqVQE"],
-    ["rap-trap", "Wos.free🔥", URL_SPOTIFY_PLAYLIST + "6hvJr5pCrnTSxXzczxzfBE"],
+    ["rap-trap", "Duko", URL_SPOTIFY_PLAYLIST + "66WK75TpPIytY9yk8EMzCr"],
+    ["rap-trap", "TR1", URL_SPOTIFY_PLAYLIST + "06CFgavfWgXLmAqXnMqVQE"],
+    ["rap-trap", "Wos.free", URL_SPOTIFY_PLAYLIST + "6hvJr5pCrnTSxXzczxzfBE"],
     ["varios-raros", "10's :'))", URL_SPOTIFY_PLAYLIST + "74R52L6MAgd327DKfS0xKS"],
     ["rock-alt", "00's??", URL_SPOTIFY_PLAYLIST + "3Zky3AXhl29OnfXsn2UZtn"],
     ["varios-raros", "_-S'\"KZOOOzxX", URL_SPOTIFY_PLAYLIST + "1HX6OFiJWZcXspxTWflYg1"],
     ["chill-lofi", "Naight", URL_SPOTIFY_PLAYLIST + "3EU8rfOJGF7EIVrEH3e8fh"],
-    ["rap-trap", "Gashita🦇💥", URL_SPOTIFY_PLAYLIST + "6GyE1WegwqHXTkm1iCQ2ZS"],
+    ["rap-trap", "Gashita", URL_SPOTIFY_PLAYLIST + "6GyE1WegwqHXTkm1iCQ2ZS"],
     ["rock-alt", "J-R0ck", URL_SPOTIFY_PLAYLIST + "4v5EOHaDY1u6p5lBs557gw"],
-    ["rap-trap", "The mdfk jug 🦇", URL_SPOTIFY_PLAYLIST + "6kz68wSUFhUECiRD3fGvpA"],
+    ["rap-trap", "The mdfk jug", URL_SPOTIFY_PLAYLIST + "6kz68wSUFhUECiRD3fGvpA"],
     ["rap-trap", "Bizarre$hit", URL_SPOTIFY_PLAYLIST + "124Zfdaym01Ync6fjXi9ZJ"],
     ["chill-lofi", "Riv_D4l3", URL_SPOTIFY_PLAYLIST + "5kDxNtJv0weGLyKYrwF8Xu"],
     ["rock-alt", "SKAAAAAAAAAATO", URL_SPOTIFY_PLAYLIST + "4K0DGajcdFhH37tTO1ZkcQ"],
-    ["rap-trap", "$1M0n_▪︎", URL_SPOTIFY_PLAYLIST + "0OECMjqcbD0MDcP18uND9s"],
+    ["rap-trap", "$1M0n_", URL_SPOTIFY_PLAYLIST + "0OECMjqcbD0MDcP18uND9s"],
     ["rock-alt", "Xx_R.Wac", URL_SPOTIFY_PLAYLIST + "5eFJVnbnWVRrtHSY8LVzFt"],
     ["varios-raros", "tUd1", URL_SPOTIFY_PLAYLIST + "0L148vK1WrBbXLRPHkfmb7"],
-    ["varios-raros", "Infant🍼", URL_SPOTIFY_PLAYLIST + "3k9Ww13zeoWmB5pbe8m91h"],
+    ["varios-raros", "Infant", URL_SPOTIFY_PLAYLIST + "3k9Ww13zeoWmB5pbe8m91h"],
     ["varios-raros", "L4SPoTrAs", URL_SPOTIFY_PLAYLIST + "4pvU0ipspxrqjvnL7G8KGY"],
     ["chill-lofi", "LasElegidas", URL_SPOTIFY_PLAYLIST + "4BV4oLiHmwfgwc7GS8ueDW"],
     ["rap-trap", "ElNanpa", URL_SPOTIFY_PLAYLIST + "0AvAjT52qHQ1QEu1fKgjmp"],
-    ["rap-trap", "Malandrismo👾😮‍💨", URL_SPOTIFY_PLAYLIST + "65Ms1McozKrqkZOMROrxQw"],
-    ["chill-lofi", "R&B🙂‍↕️🔥", URL_SPOTIFY_PLAYLIST + "6EzLWMXUu6B5JLY8dJUgyG"],
-    ["varios-raros", "2026👀❤️", URL_SPOTIFY_PLAYLIST + "0VZfyvNGZ404dCwt6lRLZX"],
-    ["chill-lofi", "Humb3 🙂‍↕️", URL_SPOTIFY_PLAYLIST + "6477Wy0QncxUSqu6WJICgJ"],
+    ["rap-trap", "Malandrismo", URL_SPOTIFY_PLAYLIST + "65Ms1McozKrqkZOMROrxQw"],
+    ["chill-lofi", "R&B", URL_SPOTIFY_PLAYLIST + "6EzLWMXUu6B5JLY8dJUgyG"],
+    ["varios-raros", "2026", URL_SPOTIFY_PLAYLIST + "0VZfyvNGZ404dCwt6lRLZX"],
+    ["chill-lofi", "Humb3", URL_SPOTIFY_PLAYLIST + "6477Wy0QncxUSqu6WJICgJ"],
     ["rock-alt", "RockHispano", URL_SPOTIFY_PLAYLIST + "7GSz4FXU1oavlHBTY7NUeW"],
-    ["rock-alt", "NOSOYEMO😔😭", URL_SPOTIFY_PLAYLIST + "4sdoZXBytzGJvWRQCiPxnI"],
+    ["rock-alt", "NOSOYEMO", URL_SPOTIFY_PLAYLIST + "4sdoZXBytzGJvWRQCiPxnI"],
     ["chill-lofi", "TotalmenteChill", URL_SPOTIFY_PLAYLIST + "6w1hJHxudjDNrznUSBUlV9"],
-    ["rock-alt", "LatinMafia😮‍💨✨", URL_SPOTIFY_PLAYLIST + "5FK2gtpTqr22DFRhVZslai"],
-    ["chill-lofi", "😭😭", URL_SPOTIFY_PLAYLIST + "3iceDDhEXg85y5Cva19kem"],
-    ["rap-trap", "El calacas 💀", URL_SPOTIFY_PLAYLIST + "6qT8sHyhqbPc81DUlK5c4z"],
+    ["rock-alt", "LatinMafia", URL_SPOTIFY_PLAYLIST + "5FK2gtpTqr22DFRhVZslai"],
+    ["chill-lofi", "Sad Nights", URL_SPOTIFY_PLAYLIST + "3iceDDhEXg85y5Cva19kem"],
+    ["rap-trap", "El calacas", URL_SPOTIFY_PLAYLIST + "6qT8sHyhqbPc81DUlK5c4z"],
     ["gaming-ps4", "Pal OW2", URL_SPOTIFY_PLAYLIST + "6MfHlfVAEyfudi75ialnFJ"],
     ["gaming-ps4", "Lo que debio ser el soundtrack de flatout 4 xd", URL_SPOTIFY_PLAYLIST + "36eO9YgyALLtCWBdaLEpjw"],
     ["varios-raros", "Bue", URL_SPOTIFY_PLAYLIST + "4OVaIWutVrsSDjU8PTCSFE"],
     ["gaming-ps4", "P3R5ON4", URL_SPOTIFY_PLAYLIST + "5ci3cpBtxSxqzccW9TbLSw"],
     ["varios-raros", "31 minutazos", URL_SPOTIFY_PLAYLIST + "1XkWtRwxM0MAv7OW6Ou09c"],
-    ["chill-lofi", "RainDays❤️🌧️", URL_SPOTIFY_PLAYLIST + "5XEeJ9yauo4dMaNKTjY2Qg"],
+    ["chill-lofi", "RainDays", URL_SPOTIFY_PLAYLIST + "5XEeJ9yauo4dMaNKTjY2Qg"],
     ["gaming-ps4", "Cyb3RC1tY", URL_SPOTIFY_PLAYLIST + "1jF8BdqLt9PgWrhIUMgcKO"],
     ["rock-alt", "SSSSKA.", URL_SPOTIFY_PLAYLIST + "6BVdntrFXAMKyTX3EiNJVm"],
     ["rock-alt", "MonosArticos", URL_SPOTIFY_PLAYLIST + "1cp9rgYqgT8Hh8qWeMNzrx"],
     ["chill-lofi", "Hozier", URL_SPOTIFY_PLAYLIST + "45oZFZT6kosjZlkcI3uKhl"],
-    ["rock-alt", "BringMe🔥😭", URL_SPOTIFY_PLAYLIST + "17b57MDismVxeNC5CmcKPz"],
-    ["gaming-ps4", "Naruto❤️", URL_SPOTIFY_PLAYLIST + "7bFOh0IlCy0HEpDMiVDssf"],
+    ["rock-alt", "BringMe", URL_SPOTIFY_PLAYLIST + "17b57MDismVxeNC5CmcKPz"],
+    ["gaming-ps4", "Naruto", URL_SPOTIFY_PLAYLIST + "7bFOh0IlCy0HEpDMiVDssf"],
     ["varios-raros", "temitsler", URL_SPOTIFY_PLAYLIST + "5oXNQUfV3pOYa6CvX0jwHv"],
-    ["rap-trap", "CreisiPoin🔥😔", URL_SPOTIFY_PLAYLIST + "5Co1XGMw5JGNDE4YmWt2DS"],
-    ["gaming-ps4", "Spidy 🕷️🔥", URL_SPOTIFY_PLAYLIST + "2iLVFJPdcJunEH0Mbsy2oM"],
-    ["chill-lofi", "Jate..🕊️❤️‍🩹", URL_SPOTIFY_PLAYLIST + "5Y4OS8q5OpzcxZBCc9lq2a"],
+    ["rap-trap", "CreisiPoin", URL_SPOTIFY_PLAYLIST + "5Co1XGMw5JGNDE4YmWt2DS"],
+    ["gaming-ps4", "Spidy", URL_SPOTIFY_PLAYLIST + "2iLVFJPdcJunEH0Mbsy2oM"],
+    ["chill-lofi", "Jate..", URL_SPOTIFY_PLAYLIST + "5Y4OS8q5OpzcxZBCc9lq2a"],
     ["rap-trap", "7:11", URL_SPOTIFY_PLAYLIST + "5XC2bwiBYFKeQdYiyjHvng"],
-    ["rock-alt", "Zoe ✨", URL_SPOTIFY_PLAYLIST + "6nySeViB6PaReGhywtWVr3"],
+    ["rock-alt", "Zoe", URL_SPOTIFY_PLAYLIST + "6nySeViB6PaReGhywtWVr3"],
     ["chill-lofi", "chill de cojones", URL_SPOTIFY_PLAYLIST + "6gdpnWpuKbNQwB3ciZMeOg"],
     ["rap-trap", "EHHH WAXOOOO", URL_SPOTIFY_PLAYLIST + "0OOtep50yctz6pNUgHzwNG"],
-    ["gaming-ps4", "GG🧐🔥", URL_SPOTIFY_PLAYLIST + "20KTPSUJYHwW3UWsqw1644"],
+    ["gaming-ps4", "GG", URL_SPOTIFY_PLAYLIST + "20KTPSUJYHwW3UWsqw1644"],
     ["rap-trap", "LO'TUSSILOKO", URL_SPOTIFY_PLAYLIST + "7LHKeWxl6vaxmpuFQeRWFy"],
-    ["chill-lofi", "GoodVibes🗿", URL_SPOTIFY_PLAYLIST + "3TlNNpuOsks0S1yevoBwES"],
-    ["gaming-ps4", "pH0nKZsiT0🕷️🔥", URL_SPOTIFY_PLAYLIST + "2Xeei51LDWcDKFwcIPx5y3"],
-    ["rap-trap", "El conejo malvado 🔥", URL_SPOTIFY_PLAYLIST + "2UypmZ9scNOqgvOeQliFiS"],
-    ["rap-trap", "ES EL ES EL ES EL CHOOSEY🗣️🔥", URL_SPOTIFY_PLAYLIST + "0xgLX8KVL8e8HiOnmRVeAv"],
+    ["chill-lofi", "GoodVibes", URL_SPOTIFY_PLAYLIST + "3TlNNpuOsks0S1yevoBwES"],
+    ["gaming-ps4", "pH0nKZsiT0", URL_SPOTIFY_PLAYLIST + "2Xeei51LDWcDKFwcIPx5y3"],
+    ["rap-trap", "El conejo malvado", URL_SPOTIFY_PLAYLIST + "2UypmZ9scNOqgvOeQliFiS"],
+    ["rap-trap", "ES EL ES EL ES EL CHOOSEY", URL_SPOTIFY_PLAYLIST + "0xgLX8KVL8e8HiOnmRVeAv"],
     ["rap-trap", "PuroDuroYMacizo", URL_SPOTIFY_PLAYLIST + "3TGr23yu74cwv0D1w6XXuH"],
     ["rap-trap", "MORAdo tu calzón", URL_SPOTIFY_PLAYLIST + "7kd4mWCSTdFjURYFins6jG"],
-    ["varios-raros", "2025 🗣️🗣️🔥", URL_SPOTIFY_PLAYLIST + "4iTnpXKTDLy7LU07K7oKht"],
-    ["varios-raros", "🎤🎵", URL_SPOTIFY_PLAYLIST + "6csbwi3O0dLoGMcmCl7ERc"],
-    ["gaming-ps4", "Vocaloids☝🏼", URL_SPOTIFY_PLAYLIST + "0jO34Q3jFeCiC1CVvtQvtf"],
-    ["varios-raros", "🔥👀❤️‍🔥", URL_SPOTIFY_PLAYLIST + "4hoizeSdrA2L2GTBvZ2SMA"],
+    ["varios-raros", "2025", URL_SPOTIFY_PLAYLIST + "4iTnpXKTDLy7LU07K7oKht"],
+    ["varios-raros", "Vocal & Beats", URL_SPOTIFY_PLAYLIST + "6csbwi3O0dLoGMcmCl7ERc"],
+    ["gaming-ps4", "Vocaloids", URL_SPOTIFY_PLAYLIST + "0jO34Q3jFeCiC1CVvtQvtf"],
+    ["varios-raros", "Fuego Mix", URL_SPOTIFY_PLAYLIST + "4hoizeSdrA2L2GTBvZ2SMA"],
     ["varios-raros", "Mamá", URL_SPOTIFY_PLAYLIST + "61aEfRS4HiNPTWySk3pgqz"],
-    ["rap-trap", "Protesta🔥", URL_SPOTIFY_PLAYLIST + "0PPrVKuASg9K7vVl801VXJ"],
-    ["rap-trap", "Kinoto 🔥", URL_SPOTIFY_PLAYLIST + "1xWHG159aSJgaII1tzlhJ9"],
-    ["gaming-ps4", "Ryodan Gang 🕷️", URL_SPOTIFY_PLAYLIST + "3rceM0X2nOqFuQNQBo3gU7"],
+    ["rap-trap", "Protesta", URL_SPOTIFY_PLAYLIST + "0PPrVKuASg9K7vVl801VXJ"],
+    ["rap-trap", "Kinoto", URL_SPOTIFY_PLAYLIST + "1xWHG159aSJgaII1tzlhJ9"],
+    ["gaming-ps4", "Ryodan Gang", URL_SPOTIFY_PLAYLIST + "3rceM0X2nOqFuQNQBo3gU7"],
     ["varios-raros", "camote pa mierda 2", URL_SPOTIFY_PLAYLIST + "7duqMDyhF4qUjYjc8GglKJ"],
     ["gaming-ps4", "Mimision", URL_SPOTIFY_PLAYLIST + "3RVRHTq0ukN8d0S3YJvjBy"],
-    ["varios-raros", "2024 🗣️🔥", URL_SPOTIFY_PLAYLIST + "3s4W1xk0YX0WtXFEKghzf9"],
+    ["varios-raros", "2024", URL_SPOTIFY_PLAYLIST + "3s4W1xk0YX0WtXFEKghzf9"],
     ["chill-lofi", "Pour Mon Amour", URL_SPOTIFY_PLAYLIST + "6Tie8xtVLm4kQX1Nhx5oBl"],
     ["varios-raros", "Horror", URL_SPOTIFY_PLAYLIST + "5TJL5ZsNGDkIAPehlQ8oRr"],
     ["varios-raros", "Filtro de la puta", URL_SPOTIFY_PLAYLIST + "6pomHmjs49nPNLldHHrMrW"],
     ["gaming-ps4", "Re Blue Lock", URL_SPOTIFY_PLAYLIST + "4J5o5GZe2OhKTlq2YC4dCn"],
     ["chill-lofi", "Besheza", URL_SPOTIFY_PLAYLIST + "2DKj6Byg47zGFz1WIwM2QG"],
     ["varios-raros", "Pop-Pop-it", URL_SPOTIFY_PLAYLIST + "4XM9boERH0vZjsq1lXe1Sv"],
-    ["gaming-ps4", "Dark Fantasy 🔮", URL_SPOTIFY_PLAYLIST + "7dKihRHRPU6DpykOwcxc9j"],
+    ["gaming-ps4", "Dark Fantasy", URL_SPOTIFY_PLAYLIST + "7dKihRHRPU6DpykOwcxc9j"],
     ["rap-trap", "Playlist pal golpe de Estado", URL_SPOTIFY_PLAYLIST + "1W018zCCEpnPnhz5Z69NPj"],
     ["rap-trap", "Biza Biza", URL_SPOTIFY_PLAYLIST + "1KFD78l5CRk2L1d3i2Rwa0"],
-    ["varios-raros", "Yapame K-Sera 🫠", URL_SPOTIFY_PLAYLIST + "0vQXv6t67ziytzBEMm5hFX"],
+    ["varios-raros", "Yapame K-Sera", URL_SPOTIFY_PLAYLIST + "0vQXv6t67ziytzBEMm5hFX"],
     ["rock-alt", "Oliver Mf Tree", URL_SPOTIFY_PLAYLIST + "7uRZ808cWEuq06t9A3SlN5"],
     ["gaming-ps4", "Geek >:3", URL_SPOTIFY_PLAYLIST + "0M7G2ePuIZKlGrmF6PIWoB"],
     ["rap-trap", "PRIME..", URL_SPOTIFY_PLAYLIST + "6GH0qDtvHlO67Zmc8RSrlx"],
@@ -821,78 +821,202 @@ const SERIES_DATA = [
 ];
 
 const ANIMES_DATA = [
-    ["Naruto", "Naruto (ナルト)", 2002, "shonen"],
-    ["Naruto Shippuden", "Naruto Shippūden (ナルト 疾風伝)", 2007, "shonen"],
-    ["Gachiakuta", "Gachiakuta (ガチアクタ)", 2025, "shonen"],
-    ["Dragon Ball", "Doragon Bōru (ドラゴンボール)", 1986, "shonen retro"],
-    ["Dragon Ball Z", "Doragon Bōru Zetto (ドラゴンボールZ)", 1989, "shonen retro"],
-    ["Dragon Ball GT", "Doragon Bōru Jī Tī (ドラゴンボールGT)", 1996, "shonen retro"],
-    ["Dragon Ball Super", "Doragon Bōru Sūpā (ドラゴンボール超)", 2015, "shonen"],
-    ["Dragon Ball Daima", "Doragon Bōru Daima (ドラゴンボールDAIMA)", 2024, "shonen"],
-    ["Tokyo Revengers", "Tōkyō Ribenjāzu (東京卍リベンジャーズ)", 2021, "shonen"],
-    ["Neon Genesis Evangelion", "Shin Seiki Evangerion (新世紀エヴァンゲリオン)", 1995, "seinen retro"],
-    ["Monster", "Monsutā (モンスター — Naoki Urasawa)", 2004, "seinen"],
-    ["Serial Experiments Lain", "Shiriaru Ekusuperimentsu Rein (シリアルエクスペリメンツレイン)", 1998, "seinen retro"],
-    ["Ataque a los Titanes (Attack on Titan)", "Shingeki no Kyojin (進撃の巨人)", 2013, "shonen seinen"],
-    ["Kuroko no Basket", "Kuroko no Basuke (黒子のバスケ)", 2012, "deportes"],
-    ["Cowboy Bebop", "Kaubōi Bibappu (カウボーイビバップ)", 1998, "seinen retro"],
-    ["Steins;Gate", "Shutainzu Gēto (シュタインズ・ゲート)", 2011, "seinen"],
-    ["Espíritu de Lucha", "Hajime no Ippo (はじめの一歩)", 2000, "deportes retro"],
-    ["Demon Slayer: Guardianes de la Noche", "Kimetsu no Yaiba (鬼滅の刃)", 2019, "shonen"],
-    ["Haikyuu!! ¡Los Ases del Vóley!", "Haikyū!! (ハイキュー!!)", 2014, "deportes"],
-    ["My Hero Academia", "Boku no Hīrō Akademia (僕のヒーローアカデミア)", 2016, "shonen"],
-    ["Slam Dunk", "Suramu Danku (スラムダンク)", 1993, "deportes retro"],
-    ["Supercampeones (Capitán Tsubasa)", "Kyaputen Tsubasa (キャプテン翼)", 1983, "deportes retro"],
-    ["Pokémon (Viajes en Kanto, Johto y Hoenn)", "Poketto Monsutā (ポケットモンスター)", 1997, "shonen retro"],
-    ["Tu Mentira en Abril", "Shigatsu wa Kimi no Uso (四月は君の嘘)", 2014, "drama"],
-    ["Inuyasha", "InuYasha (犬夜叉)", 2000, "shonen retro"],
-    ["Los Caballeros del Zodiaco", "Saint Seiya / Seinto Seiya (聖闘士星矢)", 1986, "shonen retro"],
-    ["Samurai Champloo", "Samurai Chanpurū (サムライチャンプルー)", 2004, "seinen"],
-    ["Dororo", "Dororo (どろろ — Osamu Tezuka)", 2019, "seinen"],
-    ["Given", "Gibun (ギヴン)", 2019, "drama"],
-    ["Banana Fish", "Banana Fisshu (バナナフィッシュ)", 2018, "seinen drama"],
-    ["Initial D", "Inisharu Dī (頭文字D)", 1998, "deportes retro"],
-    ["Parasyte: El Maxim", "Kiseijū: Sei no Kakuritsu (寄生獣 セイの格率)", 2014, "seinen"],
-    ["Gurren Lagann", "Tengen Toppa Guren Ragan (天元突破グレンラガン)", 2007, "shonen"],
-    ["Trigun", "Torigan (トライガン)", 1998, "seinen retro"],
-    ["Yu-Gi-Oh! Duelo de Monstruos", "Yū-Gi-Ō! Dyueru Monsutāzu (遊☆戯☆王)", 2000, "shonen retro"],
-    ["Castlevania", "Akumajō Dorakyura (悪魔城ドラキュラ)", 2017, "seinen"],
-    ["Vinland Saga", "Vinrando Saga (ヴィンランド・サガ)", 2019, "seinen"]
+    ["Naruto", "Naruto Shippuden Universe", 2002, "shonen"],
+    ["Naruto Shippuden", "Secuela Masashi Kishimoto / Studio Pierrot", 2007, "shonen"],
+    ["Gachiakuta", "Kei Urana / Bones Inc", 2025, "shonen"],
+    ["Dragon Ball", "Akira Toriyama / Toei Animation", 1986, "shonen retro"],
+    ["Dragon Ball Z", "Sagas Saiyajin, Freezer, Cell y Buu", 1989, "shonen retro"],
+    ["Dragon Ball GT", "Saga de las Esferas del Dragon y Baby", 1996, "shonen retro"],
+    ["Dragon Ball Super", "Torneo de la Fuerza y Dioses de la Destruccion", 2015, "shonen"],
+    ["Dragon Ball Daima", "Ultima obra canonica de Akira Toriyama", 2024, "shonen"],
+    ["Tokyo Revengers", "Viajes temporales y pandillas de Tokyo", 2021, "shonen"],
+    ["Neon Genesis Evangelion", "Shin Seiki Evangerion - Hideaki Anno / Gainax", 1995, "seinen retro"],
+    ["Monster", "Naoki Urasawa / Dr. Tenma y Johan Liebert", 2004, "seinen"],
+    ["Serial Experiments Lain", "Cyberpunk filosofico, redes y conciencia", 1998, "seinen retro"],
+    ["Ataque a los Titanes (Attack on Titan)", "Shingeki no Kyojin - Hajime Isayama / MAPPA", 2013, "shonen seinen"],
+    ["Kuroko no Basket", "Generacion Milagrosa y Seirin High", 2012, "deportes"],
+    ["Cowboy Bebop", "Shinichiro Watanabe / Bebop Jazz Espacial", 1998, "seinen retro"],
+    ["Steins;Gate", "Lineas temporales, CERN y Kurisu Makise", 2011, "seinen"],
+    ["Espíritu de Lucha", "Hajime no Ippo - Boxeo y George Morikawa", 2000, "deportes retro"],
+    ["Demon Slayer: Guardianes de la Noche", "Kimetsu no Yaiba - Ufotable", 2019, "shonen"],
+    ["Haikyuu!! ¡Los Ases del Vóley!", "Karasuno High School Volleyball", 2014, "deportes"],
+    ["My Hero Academia", "Boku no Hero Academia - Kohei Horikoshi", 2016, "shonen"],
+    ["Slam Dunk", "Takehiko Inoue / Shohoku Basketball", 1993, "deportes retro"],
+    ["Supercampeones (Capitán Tsubasa)", "Oliver Atom / Yoichi Takahashi", 1983, "deportes retro"],
+    ["Pokémon (Viajes en Kanto, Johto y Hoenn)", "Ash Ketchum y Pikachu - Temporadas Clasicas", 1997, "shonen retro"],
+    ["Tu Mentira en Abril", "Shigatsu wa Kimi no Uso - Naoshi Arakawa", 2014, "drama"],
+    ["Inuyasha", "Rumiko Takahashi / Sengoku Jidai", 2000, "shonen retro"],
+    ["Los Caballeros del Zodiaco", "Saint Seiya - Masami Kurumada", 1986, "shonen retro"],
+    ["Samurai Champloo", "Mugen, Jin y Fuu - Hip-Hop y Katanas", 2004, "seinen"],
+    ["Dororo", "Hyakkimaru y Dororo - Osamu Tezuka / MAPPA", 2019, "seinen"],
+    ["Given", "Natsuki Kizu / Rock Alternativo y Drama", 2019, "drama"],
+    ["Banana Fish", "Ash Lynx y Eiji Okumura - Akimi Yoshida", 2018, "seinen drama"],
+    ["Initial D", "Takumi Fujiwara / Toyota AE86 Trueno Touge", 1998, "deportes retro"],
+    ["Parasyte: El Maxim", "Kiseiju - Shinichi Izumi y Migi / Madhouse", 2014, "seinen"],
+    ["Gurren Lagann", "Tengen Toppa Guren Lagann - Studio Trigger / Gainax", 2007, "shonen"],
+    ["Trigun", "Vash la Estampida - Yasuhiro Nightow", 1998, "seinen retro"],
+    ["Yu-Gi-Oh! Duelo de Monstruos", "Yugi Muto y el Faraon Atem - Kazuki Takahashi", 2000, "shonen retro"],
+    ["Castlevania", "Trevor Belmont, Sypha y Alucard - Powerhouse", 2017, "seinen"],
+    ["Vinland Saga", "Thorfinn Karlsefni - Makoto Yukimura / MAPPA", 2019, "seinen"]
 ];
 
 const LIBROS_DATA = [
-    ["El Psicoanalista (Parte 1)", "John Katzenbach", "The Analyst (2002) — Thriller Psicológico", "thriller"],
-    ["Jaque al Psicoanalista (El Psicoanalista 2)", "John Katzenbach", "The Analyst II (2018) — Secuela Directa", "thriller"],
-    ["El Visitante", "Stephen King", "The Outsider (2018) — Misterio Sobrenatural", "terror thriller king"],
-    ["Coraline", "Neil Gaiman", "Coraline (2002) — Fantasía Oscura y Terror", "fantasia terror"],
-    ["El Exorcista", "William Peter Blatty", "The Exorcist (1971) — Terror Clásico", "terror"],
-    ["El Resplandor", "Stephen King", "The Shining (1977) — Hotel Overlook", "terror king"],
-    ["Entrevista con el Vampiro", "Anne Rice", "Interview with the Vampire (1976) — Crónicas Vampíricas", "terror fantasia"],
-    ["Guerra Mundial Z", "Max Brooks", "World War Z (2006) — Historia Oral de la Guerra Zombi", "terror thriller"],
-    ["La Semilla del Diablo (El Bebé de Rosemary)", "Ira Levin", "Rosemary's Baby (1967) — Terror Ocultista", "terror thriller"],
-    ["La Torre Oscura I: El Pistolero", "Stephen King", "The Dark Tower: The Gunslinger (1982) — Roland Deschain", "fantasia king"],
-    ["The Keep (La Fortaleza)", "F. Paul Wilson", "The Keep (1981) — Ciclo del Adversario", "terror fantasia"]
+    ["El Psicoanalista (Parte 1)", "John Katzenbach", "The Analyst (2002) - Thriller Psicológico", "thriller"],
+    ["Jaque al Psicoanalista (El Psicoanalista 2)", "John Katzenbach", "The Analyst II (2018) - Secuela Directa", "thriller"],
+    ["El Visitante", "Stephen King", "The Outsider (2018) - Misterio Sobrenatural", "terror thriller king"],
+    ["Coraline", "Neil Gaiman", "Coraline (2002) - Fantasía Oscura y Terror", "fantasia terror"],
+    ["El Exorcista", "William Peter Blatty", "The Exorcist (1971) - Terror Clásico", "terror"],
+    ["El Resplandor", "Stephen King", "The Shining (1977) - Hotel Overlook", "terror king"],
+    ["Entrevista con el Vampiro", "Anne Rice", "Interview with the Vampire (1976) - Crónicas Vampíricas", "terror fantasia"],
+    ["Guerra Mundial Z", "Max Brooks", "World War Z (2006) - Historia Oral de la Guerra Zombi", "terror thriller"],
+    ["La Semilla del Diablo (El Bebé de Rosemary)", "Ira Levin", "Rosemary's Baby (1967) - Terror Ocultista", "terror thriller"],
+    ["La Torre Oscura I: El Pistolero", "Stephen King", "The Dark Tower: The Gunslinger (1982) - Roland Deschain", "fantasia king"],
+    ["The Keep (La Fortaleza)", "F. Paul Wilson", "The Keep (1981) - Ciclo del Adversario", "terror fantasia"]
 ];
 
 const JUEGOS_DATA = [
-    ["Saga Assassin's Creed (Colección Completa)", "PS4", "Historia / Sigilo (Ezio Auditore)", "accion"],
-    ["Assassin's Creed II / Brotherhood / Revelations (Ezio Trilogy)", "PS4", "Sigilo / Renacimiento Italiano", "accion"],
-    ["Assassin's Creed IV: Black Flag & Rogue", "PS4", "Acción Naval / Sigilo", "accion"],
-    ["Assassin's Creed Unity & Syndicate", "PS4", "Parkour Urbano / Sigilo", "accion"],
-    ["Assassin's Creed Origins, Odyssey & Valhalla", "PS4", "Action RPG / Mundo Abierto", "accion rpg"],
-    ["Saga Kingdom Hearts (1.5 + 2.5 ReMIX & KH III)", "PS4", "Action RPG / Historia", "rpg"],
-    ["Saga Pokémon (Esmeralda, Rojo Fuego, Platino, HG/SS, B/W)", "GBA / NDS / 3DS / Switch", "RPG por Turnos — Fav: Scizor #212", "rpg"],
-    ["Marvel's Spider-Man (Trilogía Insomniac)", "PS4 & PS5", "Acción / Mundo Abierto", "accion"],
-    ["Marvel's Spider-Man: Miles Morales", "PS4 & PS5", "Acción / Mundo Abierto", "accion"],
-    ["Dragon Ball Xenoverse 2", "PS4", "Peleas / Action RPG", "rpg accion"],
-    ["Elden Ring", "PS4", "Action RPG / Soulslike", "rpg"],
-    ["Saga Resident Evil (RE2, RE3, RE4 Remake, RE7, Village)", "PS4", "Survival Horror", "accion terror"],
-    ["EA Sports FC 27 (y FIFA 23 al FC 26)", "PS4", "Deportes / Multijugador", "carreras-deportes otros"],
-    ["Minecraft", "PS4", "Supervivencia / Sandbox", "otros"],
-    ["FlatOut 2", "PS2 / PC", "Carreras Arcade / Derby de Demolición", "carreras-deportes"],
-    ["Need for Speed: Carbon", "PS2 / PS3 / PC", "Carreras Nocturnas / Tuning & Canyon Drift", "carreras-deportes"],
-    ["Tony Hawk's Pro Skater 3", "PS2 / GameCube", "Skateboarding / Arcade", "carreras-deportes"],
-    ["Guitar Hero III: Legends of Rock", "PS2 / PS3", "Ritmo Musical / Rock & Metal", "otros"]
+    ["Mobile Legends: Bang Bang", "Móvil Competitivo (5v5 MOBA)", "MOBA competitivo 5v5 de ritmo explosivo: dominio de rotaciones en jungla, línea de oro/experiencia, control de Lord/Tortuga y sinergia de drafts en clasificatorias Míticas.", "moviles"],
+    ["Pokémon UNITE", "Móvil / Switch Competitivo (5v5 MOBA)", "MOBA estratégico por equipos en Aeos Island: control de objetivos (Rayquaza / Regieleki), builds de medallas/objetos equipados y coordinación de movimientos UNITE.", "moviles"],
+    ["Honor of Kings", "Móvil Competitivo (5v5 eSports)", "El coloso competitivo del MOBA móvil: micro-mecánicas de alta precisión, duelos de línea intensos, control de visión en río y teamfights tácticas de nivel profesional.", "moviles"],
+    ["Call of Duty: Mobile", "Móvil Competitivo (FPS / Battle Royale)", "Shooter táctico en primera persona: dominio de modos Igualada (Buscar y Destruir, Punto Caliente, Dominio), control de retroceso, movement avanzado y precisión de francotirador/SMG.", "moviles"],
+
+    ["Crash Bandicoot (1996 / N. Sane Trilogy)", "Saga Crash Bandicoot (#1 - PS1 / PS4)", "El origen plataformero de Naughty Dog en las Islas Wumpa: precisión milimétrica en saltos, cajas de tiempo y duelos contra Ripper Roo y el Dr. Neo Cortex.", "sagas-legendarias crash"],
+    ["Crash Bandicoot 2: Cortex Strikes Back", "Saga Crash Bandicoot (#2 - PS1 / PS4)", "Perfección de las mecánicas clásicas con el deslizamiento, niveles de jetpack, osos polares y recolección de cristales y gemas ocultas.", "sagas-legendarias crash"],
+    ["Crash Bandicoot 3: Warped", "Saga Crash Bandicoot (#3 - PS1 / PS4)", "Viajes en el tiempo por la máquina Tornatiempo de Uka Uka y Nefarious Tropy: niveles de moto, reliquias de platino y poderes desbloqueables.", "sagas-legendarias crash"],
+    ["Crash Team Racing (CTR & Nitro-Fueled)", "Saga Crash Bandicoot (Kart Racing - PS1 / PS4)", "El rey indiscutible del karting técnico: dominio del turbo derrape (Blue Fire / Sacred Fire), atajos imposibles y contrarrelojes contra Oxide.", "sagas-legendarias crash carreras-musica"],
+    ["Crash Bash", "Saga Crash Bandicoot (Party - PS1)", "Clásico multijugador de minijuegos competitivos entre Aku Aku y Uka Uka: Crate Crush, Polar Push y batallas de tanques.", "sagas-legendarias crash"],
+    ["Crash Bandicoot: The Wrath of Cortex", "Saga Crash Bandicoot (PS2)", "El salto de Crash a PlayStation 2 enfrentando a Crunch Bandicoot y el poder de las cuatro Máscaras Elementales.", "sagas-legendarias crash joyas-ps2-culto"],
+    ["Crash Twinsanity", "Saga Crash Bandicoot (PS2)", "Joya de culto en PS2 con humor irreverente, banda sonora a capela de Spiralmouth y alianza caótica entre Crash y el Dr. Neo Cortex.", "sagas-legendarias crash joyas-ps2-culto"],
+    ["Crash Tag Team Racing", "Saga Crash Bandicoot (PS2)", "Fusión de plataformas de mundo abierto en el parque de Von Clutch con carreras de karts fusionados (Clashing) y artillería pesada.", "sagas-legendarias crash carreras-musica"],
+    ["Crash of the Titans", "Saga Crash Bandicoot (PS2)", "Reinvención beat 'em up en PS2 con el sistema de doma de mutantes gigantes (Jacking), combos acrobáticos y cooperativo dinámico.", "sagas-legendarias crash joyas-ps2-culto"],
+    ["Crash: Mind over Mutant", "Saga Crash Bandicoot (PS2)", "Mundo interconectado en la Isla Wumpa con almacenamiento de titanes en el bolsillo, cinemáticas de distintos estilos de animación y combates intensos.", "sagas-legendarias crash joyas-ps2-culto"],
+    ["Crash Bandicoot 4: It's About Time", "Saga Crash Bandicoot (PS4)", "Secuela directa de la trilogía original con las cuatro Máscaras Cuánticas, niveles de dificultad extrema y reliquias N. Sanely Perfect.", "sagas-legendarias crash"],
+
+    ["Assassin's Creed (Altair Ibn-La'Ahad)", "Saga Assassin's Creed (#1)", "El nacimiento de la Hermandad en Tierra Santa (Masyaf, Jerusalén, Acre y Damasco): investigación, hoja oculta y el Credo original.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed II (Ezio Auditore)", "Saga Assassin's Creed (#2 - PS4)", "Obra maestra del Renacimiento Italiano en Florencia y Venecia. El despertar de Ezio Auditore da Firenze bajo el lema: Nada es verdad, todo está permitido.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed: Brotherhood (La Hermandad)", "Saga Assassin's Creed (#3 - PS4)", "Ezio como Mentor en Roma contra los Borgia: reclutamiento de asesinos, reconstrucción de la ciudad y sigilo letal.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed: Revelations", "Saga Assassin's Creed (#4 - PS4)", "El cierre emotivo de Ezio Auditore y Altair en Constantinopla: gancho-hoja (Hookblade), bombas tácticas y la biblioteca de Masyaf.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed III Remastered", "Saga Assassin's Creed (#5 - PS4)", "La historia de Ratonhnhaké:ton (Connor) y Haytham Kenway en la Revolución Americana: combate brutal con tomahawk y frontera salvaje.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed IV: Black Flag", "Saga Assassin's Creed (#6 - PS4)", "La edad de oro de la piratería con Edward Kenway y el Jackdaw: batallas navales épicas, abordajes y exploración del Caribe.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Rogue Remastered", "Saga Assassin's Creed (#7 - PS4)", "La perspectiva templaria de Shay Patrick Cormac en el Atlántico Norte con el Morrigan, cazando antiguos hermanos asesinos.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Unity", "Saga Assassin's Creed (#8 - PS4)", "El parkour más fluido y estético de toda la franquicia junto a Arno Dorian en plena Revolución Francesa en París.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Syndicate", "Saga Assassin's Creed (#9 - PS4)", "Los gemelos Jacob y Evie Frye liberando el Londres Victoriano con el gancho lanzacabos, peleas clandestinas y los Rooks.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Origins", "Saga Assassin's Creed (#10 - PS4)", "El origen de Los Ocultos en el Antiguo Egipto con Bayek de Siwa y Aya: transición al Action RPG y un mundo abierto imponente.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Odyssey", "Saga Assassin's Creed (#11 - PS4)", "Odisea épica en la Antigua Grecia durante la Guerra del Peloponeso: batallas navales, mitología griega y la Lanza de Leónidas.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Valhalla", "Saga Assassin's Creed (#12 - PS4)", "La saga vikinga de Eivor del Clan del Cuervo conquistando Inglaterra, incursiones fluviales y incursiones en Asgard.", "sagas-legendarias assassins-creed"],
+    ["Assassin's Creed Mirage", "Saga Assassin's Creed (#13 - PS4)", "Retorno a las raíces de sigilo social, parkour denso y asesinatos de caja negra con Basim Ibn Ishaq en la Bagdad del siglo IX.", "sagas-legendarias assassins-creed"],
+
+    ["Resident Evil (HD Remaster)", "Saga Resident Evil (#1 - PS4)", "El terror claustrofóbico de la Mansión Spencer con Chris Redfield y Jill Valentine: gestión de recursos, cámaras fijas y Crimson Heads.", "sagas-legendarias resident-evil"],
+    ["Resident Evil 2 (Clásico & Remake)", "Saga Resident Evil (#2 - PS4)", "La noche de pesadilla en la comisaría R.P.D. de Raccoon City con Leon S. Kennedy y Claire Redfield perseguidos por Mr. X y Birkin.", "sagas-legendarias resident-evil"],
+    ["Resident Evil 3: Nemesis (Clásico & Remake)", "Saga Resident Evil (#3 - PS4)", "Escape desesperado de Jill Valentine y Carlos Oliveira por las calles en ruinas de Raccoon City bajo el acecho implacable de Nemesis.", "sagas-legendarias resident-evil"],
+    ["Resident Evil CODE: Veronica X", "Saga Resident Evil (PS2 / PS4)", "Joya clásica de survival horror en la Isla Rockfort y la Antártida con Claire y Chris Redfield enfrentando a la familia Ashford y Wesker.", "sagas-legendarias resident-evil joyas-ps2-culto"],
+    ["Resident Evil Zero (RE0 HD)", "Saga Resident Evil (PS4)", "El incidente del tren Ecliptic Express con Rebecca Chambers y Billy Coen y el sistema de cambio dinámico de compañero (Partner Zapping).", "sagas-legendarias resident-evil"],
+    ["Resident Evil 4 (Clásico PS2 & Remake)", "Saga Resident Evil (#4 - PS2 / PS4)", "Revolución histórica de la acción y el survival horror: Leon S. Kennedy rescatando a Ashley contra Los Iluminados, Krauser y el Dr. Salvador.", "sagas-legendarias resident-evil joyas-ps2-culto"],
+    ["Resident Evil 5", "Saga Resident Evil (#5 - PS4)", "Acción cooperativa intensa en Kijuju con Chris Redfield y Sheva Alomar culminando en el enfrentamiento definitivo contra Albert Wesker.", "sagas-legendarias resident-evil"],
+    ["Resident Evil 6", "Saga Resident Evil (#6 - PS4)", "Cuatro campañas entrelazadas a escala global (Leon, Chris, Jake y Ada Wong) con un sistema de combate físico y esquivas ultra dinámico.", "sagas-legendarias resident-evil"],
+    ["Resident Evil 7: Biohazard", "Saga Resident Evil (#7 - PS4)", "Renacimiento del terror puro en primera persona: Ethan Winters atrapado en la plantación de la familia Baker en Luisiana.", "sagas-legendarias resident-evil"],
+    ["Resident Evil Village (RE8)", "Saga Resident Evil (#8 - PS4)", "Terror gótico y acción en la aldea europea contra Lady Dimitrescu, Heisenberg, Beneviento, Moreau y Madre Miranda.", "sagas-legendarias resident-evil"],
+
+    ["Kingdom Hearts Final Mix (KH I)", "Saga Kingdom Hearts (#1 - PS4)", "El inicio del viaje de Sora, Donald y Goofy con la Llave Espada buscando a Riku y Kairi a través de mundos inolvidables.", "sagas-legendarias kingdom-hearts"],
+    ["Kingdom Hearts Re:Chain of Memories", "Saga Kingdom Hearts (#2 - PS2 / PS4)", "El misterio del Castillo del Olvido y la Organización XIII con un sistema estratégico de combate basado en naipes y estocadas.", "sagas-legendarias kingdom-hearts"],
+    ["Kingdom Hearts II Final Mix (KH II)", "Saga Kingdom Hearts (#3 - PS2 / PS4)", "Pináculo del Action RPG: Formas de Fusión (Valor, Sabiduría, Maestra, Final), Roxas, la Organización XIII y la batalla contra Lingering Will.", "sagas-legendarias kingdom-hearts joyas-ps2-culto"],
+    ["Kingdom Hearts 358/2 Days", "Saga Kingdom Hearts (#4 - NDS / HD)", "La historia más emotiva de la saga: la amistad entre Roxas, Axel y Xion compartiendo helado de sal marina en la Torre del Reloj.", "sagas-legendarias kingdom-hearts"],
+    ["Kingdom Hearts Birth by Sleep Final Mix", "Saga Kingdom Hearts (#5 - PSP / PS4)", "El destino trágico de Terra, Ventus y Aqua diez años antes de Sora, con el sistema de Comandos de Estilo y el Maestro Xehanort.", "sagas-legendarias kingdom-hearts"],
+    ["Kingdom Hearts Dream Drop Distance HD (KH 3D)", "Saga Kingdom Hearts (#6 - PS4)", "El Examen del Título de Maestro de Sora y Riku en los Mundos Dormidos con el sistema Flowmotion y los Atrapasueños.", "sagas-legendarias kingdom-hearts"],
+    ["Kingdom Hearts III + Re Mind", "Saga Kingdom Hearts (#7 - PS4)", "El clímax de la Saga del Buscador de la Oscuridad en la Necrópolis de las Llaves Espada y los 14 jefes supremos de Datos en Re Mind.", "sagas-legendarias kingdom-hearts"],
+
+    ["Final Fantasy VII (Original & Remake)", "Saga Final Fantasy (PS1 / PS4)", "Cloud Strife, Tifa, Aerith y Sephiroth en Midgar: el sistema de Materias, el combate ATB/híbrido y una de las mejores historias de los videojuegos.", "sagas-legendarias final-fantasy"],
+    ["Crisis Core: Final Fantasy VII Reunion", "Saga Final Fantasy (PSP / PS4)", "El honor y legado de Zack Fair como SOLDADO de 1ra Clase y portador original de la Espada Mortal. Un final inolvidable.", "sagas-legendarias final-fantasy"],
+    ["Final Fantasy VIII Remastered", "Saga Final Fantasy (PS1 / PS4)", "Squall Leonhart, Rinoa y el sable pistola (Gunblade): sistema de Enlaces (Junction), Guardianes de la Fuerza y el juego de cartas Triple Triad.", "sagas-legendarias final-fantasy"],
+    ["Final Fantasy IX", "Saga Final Fantasy (PS1 / PS4)", "Carta de amor al JRPG clásico con Yitán, Vivi, Garnet y Steiner en Gaia: una reflexión profunda sobre la vida, la memoria y la identidad.", "sagas-legendarias final-fantasy"],
+    ["Final Fantasy X / X-2 HD Remaster", "Saga Final Fantasy (PS2 / PS4)", "El peregrinaje de Tidus, Yuna y Auron por Spira contra Sinh, el Tablero de Esferas, el Blitzball y el inmortal tema To Zanarkand.", "sagas-legendarias final-fantasy joyas-ps2-culto"],
+    ["Final Fantasy XII: The Zodiac Age", "Saga Final Fantasy (PS2 / PS4)", "Intriga política en Ivalice con Balthier, Fran, Ashe y Vaan, destacando el revolucionario sistema táctico de Gambits y Licencias Zodiacales.", "sagas-legendarias final-fantasy joyas-ps2-culto"],
+    ["Final Fantasy XV: Royal Edition", "Saga Final Fantasy (PS4)", "El viaje de hermandad de Noctis, Ignis, Gladio y Prompto por Eos a bordo del Regalia con combates de lux e invocaciones colosales.", "sagas-legendarias final-fantasy"],
+    ["Final Fantasy XVI", "Saga Final Fantasy (Action RPG)", "Fantasía oscura medieval en Valisthea con Clive Rosfield y el poder devastador de los Eikons (Ifrit, Phoenix, Bahamut y Odin).", "sagas-legendarias final-fantasy"],
+
+    ["God of War (2005 - PS2)", "Saga God of War (#1 - PS2)", "El inicio de la tragedia griega de Kratos, el Fantasma de Esparta: las Espadas del Caos, el Templo de Pandora y el duelo contra Ares.", "sagas-legendarias god-of-war joyas-ps2-culto"],
+    ["God of War II (2007 - PS2)", "Saga God of War (#2 - PS2)", "La cumbre técnica de PlayStation 2: la traición de Zeus, la Espada del Olimpo, los Titanes y el combate contra las Hermanas del Destino.", "sagas-legendarias god-of-war joyas-ps2-culto"],
+    ["God of War: Chains of Olympus", "Saga God of War (PSP / PS3)", "Precuela de los diez años de servidumbre de Kratos a los dioses del Olimpo, el descenso al Tártaro y el sacrificio junto a su hija Calíope.", "sagas-legendarias god-of-war"],
+    ["God of War III Remastered", "Saga God of War (#3 - PS3 / PS4)", "La venganza absoluta de Kratos escalando el Monte Olimpo en un espectáculo brutal contra Poseidón, Hades, Helios, Hércules y Zeus.", "sagas-legendarias god-of-war"],
+    ["God of War: Ghost of Sparta", "Saga God of War (PSP / PS3)", "El viaje más personal de Kratos hacia la Atlántida y Esparta para rescatar a su hermano Deimos de las garras de Tánatos.", "sagas-legendarias god-of-war"],
+    ["God of War: Ascension", "Saga God of War (PS3)", "El origen de la ruptura del juramento de sangre con Ares y la lucha de Kratos contra las tres Furias (Megera, Tisífone y Alecto).", "sagas-legendarias god-of-war"],
+    ["God of War (2018 - Mitología Nórdica)", "Saga God of War (PS4)", "Reinvención magistral en plano secuencia continuo: Kratos y Atreus en Midgard con el Hacha Leviatán, las Espadas del Caos y las Valquirias.", "sagas-legendarias god-of-war"],
+    ["God of War Ragnarök", "Saga God of War (PS4 / PS5)", "El desenlace épico por los Nueve Reinos enfrentando a Thor y Odín junto a Atreus, Mimir y Freya, sumando la Lanza Draupnir.", "sagas-legendarias god-of-war"],
+
+    ["Prince of Persia: Las Arenas del Tiempo", "Saga Prince of Persia (#1 - PS2)", "Obra maestra de plataformas acrobáticas en PS2: correr por las paredes, la Daga del Tiempo para rebobinar el destino y los acertijos del palacio.", "sagas-legendarias prince-of-persia joyas-ps2-culto"],
+    ["Prince of Persia: El Alma del Guerrero", "Saga Prince of Persia (#2 - PS2)", "Tono oscuro y metalero (Godsmack) en la Isla del Tiempo: el Príncipe huyendo del implacable Dahaka con el sistema de combate Free-Form Fighting.", "sagas-legendarias prince-of-persia joyas-ps2-culto"],
+    ["Prince of Persia: Las Dos Coronas", "Saga Prince of Persia (#3 - PS2)", "El cierre perfecto de la trilogía en Babilonia: asesinatos sigilosos (Speed Kills), carreras de cuadrigas y la dualidad con el Príncipe Oscuro.", "sagas-legendarias prince-of-persia joyas-ps2-culto"],
+    ["Prince of Persia: Las Arenas Olvidadas", "Saga Prince of Persia (PS3 / PSP)", "Aventura situada entre Las Arenas del Tiempo y El Alma del Guerrero con el poder de congelar cascadas de agua en pleno salto.", "sagas-legendarias prince-of-persia"],
+    ["Prince of Persia: The Lost Crown", "Saga Prince of Persia (PS4)", "Metroidvania frenético en el Monte Qaf con Sargon de Los Inmortales: parries milimétricos, poderes temporales y diseño de niveles brillante.", "sagas-legendarias prince-of-persia"],
+
+    ["Silent Hill (1999)", "Saga Silent Hill (#1 - PS1)", "Harry Mason buscando a su hija Cheryl entre la niebla espesa, la radio estática, las sirenas del Otro Mundo y la música industrial de Akira Yamaoka.", "sagas-legendarias silent-hill"],
+    ["Silent Hill 2 (PS2 & Remake)", "Saga Silent Hill (#2 - PS2)", "La cumbre del terror psicológico: James Sunderland tras la carta de Mary, enfrentando sus culpas personificadas en Pyramid Head.", "sagas-legendarias silent-hill joyas-ps2-culto"],
+    ["Silent Hill 3 (PS2)", "Saga Silent Hill (#3 - PS2)", "Heather Mason atrapada en la pesadilla visceral del culto de Silent Hill: dirección artística perturbadora y el himno You're Not Here.", "sagas-legendarias silent-hill joyas-ps2-culto"],
+    ["Silent Hill 4: The Room (PS2)", "Saga Silent Hill (#4 - PS2)", "Terror claustrofóbico en el apartamento 302 de Henry Townshend encadenado desde adentro, los fantasmas inmortales y el ritual de Walter Sullivan.", "sagas-legendarias silent-hill joyas-ps2-culto"],
+    ["Silent Hill: Origins (PS2 / PSP)", "Saga Silent Hill (PS2)", "La precuela protagonizada por el camionero Travis Grady, explorando el incendio de Alessa Gillespie y la transición a través de espejos.", "sagas-legendarias silent-hill joyas-ps2-culto"],
+    ["Silent Hill: Shattered Memories (PS2)", "Saga Silent Hill (PS2)", "Reimaginación psicológica que analiza las respuestas del jugador en consulta terapéutica para moldear el entorno helado y las pesadillas.", "sagas-legendarias silent-hill joyas-ps2-culto"],
+
+    ["Tekken 3", "Saga Tekken (#3 - PS1)", "Leyenda de la lucha 3D que introdujo a Jin Kazama, Eddy Gordo, Hwoarang y Bryan Fury con fluidez y banda sonora histórica.", "sagas-legendarias lucha-tekken-mk"],
+    ["Tekken Tag Tournament", "Saga Tekken (PS2)", "Clásico de lanzamiento en PS2 con combates por parejas (Tag), relevos estratégicos, Tekken Bowl y un plantel de 35 luchadores.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Tekken 4", "Saga Tekken (#4 - PS2)", "Atmósfera más oscura y realista con escenarios con muros, desniveles y el conflicto del Gen del Diablo entre Jin, Kazuya y Heihachi.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Tekken 5", "Saga Tekken (#5 - PS2)", "El mejor Tekken de la era PS2: velocidad competitiva perfecta, personalización de personajes, modo Devil Within y el despertar de Jinpachi Mishima.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Tekken 7 & Tekken 8", "Saga Tekken (PS4 / Next-Gen)", "La era competitiva moderna con Rage Arts, Rage Drives, el sistema agresivo Heat y el desenlace definitivo de la saga Mishima.", "sagas-legendarias lucha-tekken-mk"],
+    ["Mortal Kombat: Deadly Alliance", "Saga Mortal Kombat (PS2)", "Revolución en 3D en PS2 donde Shang Tsung y Quan Chi unen fuerzas; introduce tres estilos de artes marciales y arma por luchador.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Mortal Kombat: Deception", "Saga Mortal Kombat (PS2)", "Regreso del Rey Dragón Onaga con trampas mortales en escenario, el modo aventura Konquest de Shujinko, Puzzle Kombat y Chess Kombat.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Mortal Kombat: Shaolin Monks", "Saga Mortal Kombat (PS2 - Beat 'em up)", "Joya absoluta del cooperativo en PS2 con Liu Kang y Kung Lao recorriendo los eventos de MK II con combos aéreos y Fatalities en equipo.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Mortal Kombat: Armageddon", "Saga Mortal Kombat (PS2)", "El apocalipsis de todos los luchadores de la franquicia en la Pirámide de Argus, sumando creación de luchadores y el modo Motor Kombat.", "sagas-legendarias lucha-tekken-mk joyas-ps2-culto"],
+    ["Mortal Kombat XL & Mortal Kombat 11 Ultimate", "Saga Mortal Kombat (PS4)", "Combates viscerales en 2.5D con variantes de personaje, X-Rays, Krushing Blows, Fatal Blows y un modo historia cinematográfico.", "sagas-legendarias lucha-tekken-mk"],
+
+    ["Star Wars: The Force Unleashed (El Poder de la Fuerza)", "Cuadro de Honor Star Wars PS2", "La historia de Galen Marek (Starkiller), el aprendiz secreto de Darth Vader: uso desatado de la Fuerza, rayos, agarres y duelos de sables de luz en PS2.", "joyas-ps2-culto sagas-legendarias"],
+    ["Star Wars Episodio III: La Venganza de los Sith", "Cuadro de Honor Star Wars PS2", "Uno de los mejores juegos de sables de luz jamás creados en PS2: campaña de Anakin y Obi-Wan, duelos 1v1 competitivos y final alternativo oscuro.", "joyas-ps2-culto sagas-legendarias"],
+
+    ["Ghost of Tsushima: Director's Cut", "Joya de Acción & Sigilo (PS4)", "La leyenda de Jin Sakai, el Fantasma de Tsushima: duelos de katana bajo hojas de arce, posturas de combate, sigilo e Isla Iki.", "joyas-ps2-culto"],
+    ["The Last of Us Remastered (Parte 1)", "Joya de Acción & Narrativa (PS4)", "El viaje inolvidable de Joel y Ellie a través de unos Estados Unidos devastados por el Cordyceps: supervivencia cruda, sigilo y emoción pura.", "joyas-ps2-culto"],
+    ["The Last of Us Parte II", "Joya de Acción & Supervivencia (PS4)", "Narrativa desgarradora en Seattle sobre el ciclo de la venganza con el gameplay de sigilo, esquiva y combate más visceral de PS4.", "joyas-ps2-culto"],
+    ["Bully (Canis Canem Edit)", "Joya de Culto Rockstar (PS2 / PS4)", "Jimmy Hopkins conquistando la Academia Bullworth: clases interactivas, patineta, resortera, peleas entre facciones escolares y humor clásico de Rockstar.", "joyas-ps2-culto"],
+    ["Manhunt (Manhunt 1)", "Joya de Culto & Sigilo Oscuro (PS2 / PS4)", "James Earl Cash sobreviviendo a las películas snuff de Lionel Starkweather en Carcer City: sigilo psicológico extremo entre las sombras.", "joyas-ps2-culto"],
+    ["Manhunt 2", "Joya de Culto & Thriller Psicológico (PS2)", "Daniel Lamb y Leo Kasper escapando del Proyecto Pickman: thriller psicológico oscuro de Rockstar con ejecuciones ambientales.", "joyas-ps2-culto"],
+    ["Rule of Rose", "Joya de Culto Survival Horror (PS2)", "Obra de culto irrepetible en PS2: Jennifer atrapada en un dirigible regido por el cruel Club de los Aristócratas del Crayón Rojo junto a su fiel perro Brown.", "joyas-ps2-culto"],
+    ["Nightmare Creatures", "Clásico de Culto & Terror Gótico", "Acción y horror gótico en el Londres de 1834 con Ignatius Blackward y Nadia Franciscus enfrentando monstruos bajo un contador de adrenalina.", "joyas-ps2-culto"],
+    ["Marvel's Spider-Man & Miles Morales", "Acción / Mundo Abierto (PS4)", "El mejor balanceo con telarañas por Nueva York, combate acrobático con gadgets y poder bioeléctrico Venom.", "joyas-ps2-culto"],
+    ["Elden Ring", "Action RPG / Soulslike (PS4)", "Exploración monumental en las Tierras Intermedias creadas por Hidetaka Miyazaki y George R. R. Martin.", "joyas-ps2-culto"],
+
+    ["FlatOut 2", "Arcade & Carreras Clásicas (PS2 / PC)", "El rey de las carreras de destrucción en PS2 con física de escombros en tiempo real, minijuegos de acrobacias y un soundtrack de rock/punk legendario.", "carreras-musica joyas-ps2-culto"],
+    ["Guitar Hero III: Legends of Rock", "Arcade & Música Clásica (PS2 / PS3)", "Batallas de guitarra contra Slash, Tom Morello y Lou en el Infierno tocando clásicos desde Slow Ride y Knights of Cydonia hasta Through the Fire and Flames.", "carreras-musica joyas-ps2-culto"],
+    ["Need for Speed: Carbon", "Arcade & Carreras Nocturnas (PS2 / PC)", "Carreras ilegales nocturnas conquistando territorios en Palmont City, sistema Autosculpt de tuning y duelos al límite en el Cañón contra Darius.", "carreras-musica joyas-ps2-culto"],
+    ["DiRT (Colin McRae: DiRT)", "Saga DiRT (#1 - Rally)", "Evolución del rally clásico con etapas todoterreno de alta velocidad, daños mecánicos realistas y escalada a Pikes Peak.", "carreras-musica"],
+    ["DiRT 2 (Colin McRae: DiRT 2)", "Saga DiRT (#2 - Rally & Off-Road)", "Gira mundial de rally, Trailblazer y Rallycross con físicas de derrape en tierra/barro sublimes y una banda sonora alternativa brutal.", "carreras-musica"],
+    ["DiRT 3 Complete Edition", "Saga DiRT (#3 - Rally & Gymkhana)", "Equilibrio perfecto entre etapas de rally puras bajo nieve/lluvia en Finlandia, Kenia y Montecarlo y el espectáculo técnico de Gymkhana.", "carreras-musica"],
+    ["DiRT Rally 2.0 & DiRT 5", "Saga DiRT (#4 - PS4)", "La combinación definitiva entre la simulación exigente de tramos de rally con copiloto y el arcade frenético de nueva generación.", "carreras-musica"],
+    ["Ben 10: Protector of Earth", "Saga Ben 10 (#1 - PS2)", "El clásico beat 'em up de PS2 donde Ben recupera el ADN del Omnitrix combinando combos de Cuatro Brazos, Fuego, XLR8, Cannonbolt y Wildvine.", "carreras-musica joyas-ps2-culto"],
+    ["Ben 10: Alien Force (The Game)", "Saga Ben 10 (#2 - PS2)", "Aventura de acción en PS2 junto a Gwen y Kevin 11 utilizando a Fuego Pantanoso, Humungosaurio, Jetray, Frío y Piedra contra los Highbreed.", "carreras-musica joyas-ps2-culto"],
+    ["Ben 10: Alien Force - Vilgax Attacks", "Saga Ben 10 (#3 - PS2)", "Viaje interplanetario con acceso a las 10 formas alienígenas de Alien Force desde el inicio para detener la invasión de Vilgax.", "carreras-musica joyas-ps2-culto"],
+    ["Ben 10: Ultimate Alien - Cosmic Destruction", "Saga Ben 10 (#4 - PS2 / PS3)", "Uso del Superomnitrix y las Formas Supremas (Ultimate Humungousaur, Ultimate Swampfire, Ultimate Echo Echo) alrededor del mundo y contra Muy Grande.", "carreras-musica joyas-ps2-culto"],
+    ["Tony Hawk's Pro Skater 3 & EA Sports FC 27", "Skateboarding & Deportes (PS2 / PS4)", "Combos infinitos con Revert y Manual en THPS3 y partidos competitivos en la saga FIFA / EA Sports FC.", "carreras-musica"],
+
+    ["LEGO Star Wars: The Video Game (I)", "Bóveda LEGO (#1 - PS2)", "El juego que inició la fórmula clásica de Traveller's Tales en la Cantina de Dexter cubriendo los Episodios I, II y III con humor mudo y cooperativo.", "universo-lego joyas-ps2-culto"],
+    ["LEGO Star Wars II: The Original Trilogy", "Bóveda LEGO (#2 - PS2)", "La Trilogía Original (Episodios IV, V y VI) desde la Cantina de Mos Eisley, construcción de vehículos y creador de personajes personalizados.", "universo-lego joyas-ps2-culto"],
+    ["LEGO Star Wars: The Complete Saga", "Bóveda LEGO (#3 - Los 6 Episodios)", "La recopilación definitiva de las seis películas de George Lucas con 36 niveles de historia, ladrillos rojos, minikits y niveles de cazarrecompensas.", "universo-lego"],
+    ["LEGO Star Wars III: The Clone Wars", "Bóveda LEGO (#4 - Guerras Clon)", "Batallas terrestres a gran escala con construcción de bases, duelos de sables contra Grievous, Dooku y Ventress y combates espaciales multinivel.", "universo-lego"],
+    ["LEGO Star Wars: The Force Awakens", "Bóveda LEGO (#5 - PS4)", "Introduce las Multi-Construcciones (Multi-Builds), batallas de blásters tras coberturas y niveles de vuelo con el Halcón Milenario.", "universo-lego"],
+    ["LEGO Star Wars: The Skywalker Saga", "Bóveda LEGO (#6 - PS4)", "Los 9 episodios reinventados desde cero con cámara al hombro, combos de sables de luz, 23 planetas abiertos y más de 380 personajes.", "universo-lego"],
+    ["LEGO Indiana Jones: The Original Adventures (1)", "Bóveda LEGO (#7 - PS2)", "Recorre En Busca del Arca Perdida, El Templo Maldito y La Última Cruzada desde la Universidad Barnett usando el látigo de Indy y resolviendo templos.", "universo-lego joyas-ps2-culto"],
+    ["LEGO Indiana Jones 2: The Adventure Continues", "Bóveda LEGO (#8)", "Cajas de mundo abierto por película, El Reino de la Calavera de Cristal y un creador de niveles completo con bloques LEGO.", "universo-lego"],
+    ["LEGO Batman: The Videogame (1)", "Bóveda LEGO (#9 - PS2)", "Joya oscura en Gotham con 15 niveles como Batman y Robin desde la Batcueva y 15 niveles desde el Asilo Arkham jugando con los villanos (Joker, Riddler, Penguin).", "universo-lego joyas-ps2-culto"],
+    ["LEGO Batman 2: DC Super Heroes", "Bóveda LEGO (#10)", "Revolución histórica: el primer juego de LEGO con mundo abierto en Gotham City, voces de diálogo y la llegada de Superman y la Liga de la Justicia.", "universo-lego"],
+    ["LEGO Batman 3: Beyond Gotham", "Bóveda LEGO (#11 - PS4)", "Batman y la Liga de la Justicia viajan al espacio exterior y a los mundos de los Cuerpos de Linternas para frenar a Brainiac con trajes modulares.", "universo-lego"],
+    ["LEGO DC Super-Villains", "Bóveda LEGO (#12 - PS4)", "Crea tu propio supervillano personalizado junto al Joker, Harley Quinn, Lex Luthor y Deathstroke para salvar la Tierra del Sindicato del Crimen.", "universo-lego"],
+    ["LEGO Batman: Legacy of the Dark Knight (Último Batman)", "Bóveda LEGO (#13 - Cierre de la Saga)", "El homenaje definitivo al Caballero de la Noche en formato LEGO: evolución de todos los Batitrajes, Batmóviles históricos y galería completa de villanos de Gotham.", "universo-lego"],
+    ["LEGO Harry Potter: Años 1-4 (Years 1-4)", "Bóveda LEGO (#14 - PS4)", "Explora el Castillo de Hogwarts y el Callejón Diagon aprendiendo hechizos (Wingardium Leviosa, Expecto Patronum), pociones y duelos mágicos.", "universo-lego"],
+    ["LEGO Harry Potter: Años 5-7 (Years 5-7)", "Bóveda LEGO (#15 - PS4)", "El desenlace oscuro contra Lord Voldemort y los Mortífagos, la Orden del Fénix, los Horrocruxes y la Batalla de Hogwarts.", "universo-lego"],
+    ["LEGO Pirates of the Caribbean: The Video Game", "Bóveda LEGO (#16)", "Las aventuras del Capitán Jack Sparrow, Will Turner, Barbossa y Davy Jones desde Port Royal en el Perla Negra y el Holandés Errante.", "universo-lego"],
+    ["LEGO The Lord of the Rings (El Señor de los Anillos)", "Bóveda LEGO (#17)", "La Tierra Media completa desde La Comarca hasta el Monte del Destino en Mordor con las voces y la banda sonora original de Howard Shore.", "universo-lego"],
+    ["LEGO The Hobbit", "Bóveda LEGO (#18 - PS4)", "El viaje de Bilbo Bolsón, Thorin Escudo de Roble y Gandalf hacia Erebor contra Smaug, con sistema de recolección de piezas de construcción (Loot).", "universo-lego"],
+    ["LEGO Marvel Super Heroes", "Bóveda LEGO (#19 - PS4)", "Manhattan abierta desde el Helitransporte de S.H.I.E.L.D. reuniendo a los Vengadores, X-Men, Spider-Man y los 4 Fantásticos contra Loki y Galactus.", "universo-lego"],
+    ["LEGO Marvel's Avengers", "Bóveda LEGO (#20 - PS4)", "Recreación del Universo Cinematográfico de Marvel con ataques combinados en pareja, la armadura Hulkbuster y múltiples ubicaciones abiertas.", "universo-lego"],
+    ["LEGO Marvel Super Heroes 2", "Bóveda LEGO (#21 - PS4)", "Kang el Conquistador fusiona épocas y realidades en Chronopolis: Spider-Man 2099, Guardianes de la Galaxia, Inhumanos y Caballeros Medievales.", "universo-lego"],
+    ["LEGO Jurassic World", "Bóveda LEGO (#22 - PS4)", "Las cuatro películas de Parque Jurásico y Jurassic World en las Islas Nublar y Sorna, permitiendo controlar y personalizar dinosaurios de LEGO.", "universo-lego"],
+    ["LEGO City Undercover", "Bóveda LEGO (#23 - PS4)", "El policía encubierto Chase McCain en un gigantesco mundo abierto estilo sandbox policial con disfraces, parkour, vehículos y humor brillante.", "universo-lego"]
 ];
 
 function usarRespaldoPokemon(imgElement) {
@@ -990,8 +1114,8 @@ function cargarPortadasRealesSpotify() {
                 }
             });
         }, {
-            root: document.querySelector("#bloque-playlists .boveda-scroll"),
-            rootMargin: "180px"
+            root: null,
+            rootMargin: "240px"
         });
 
         imagenes.forEach((img) => {
@@ -1045,8 +1169,8 @@ function renderizarBovedaPlaylists() {
 
         html += `
             <div class="item-dom-card card-playlist" data-categoria="${categoria}">
-                <div class="d-flex align-items-center justify-content-between gap-2">
-                    <div class="d-flex align-items-center gap-2 overflow-hidden">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                    <div class="d-flex align-items-center gap-3 overflow-hidden">
                         <img
                             src="${srcInicial}"
                             alt="${nombre}"
@@ -1060,8 +1184,9 @@ function renderizarBovedaPlaylists() {
                             loading="lazy"
                         >
                         <div class="overflow-hidden">
-                            <span class="badge barra-morada text-white badge-compacto">#${index + 1} • ${etiquetaVibra}</span>
-                            <h6 class="mb-0 small fw-bold text-truncate titulo-playlist" title="${nombre}">${nombre}</h6>
+                            <span class="badge barra-morada text-white badge-compacto mb-1">#${index + 1} | ${etiquetaVibra}</span>
+                            <h6 class="mb-0 fw-bold text-truncate titulo-playlist" title="${nombre}">${nombre}</h6>
+                            <small class="texto-subtitulo d-block text-truncate subtitulo-portada">${subtituloInicial}</small>
                         </div>
                     </div>
                     <a href="${urlDestino}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
@@ -1095,18 +1220,14 @@ function renderizarBovedaCanciones() {
 
         html += `
             <div class="item-dom-card card-cancion card-musica" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="badge barra-verde text-dark badge-compacto">${detalle}</span>
-                            <span class="small fw-bold texto-morado text-truncate">${artista}</span>
-                        </div>
-                        <p class="mb-0 small text-truncate" title="${titulo}">${titulo}</p>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-verde text-dark badge-compacto">${detalle}</span>
                     <a href="${urlDestino}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-spotify"></i>Play
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold texto-morado">${artista}</h6>
+                <p class="mb-0 small">${titulo}</p>
             </div>
         `;
     });
@@ -1201,21 +1322,21 @@ const BLACKBOOK_ARTE_DATA = [
     ["graffiti-wildstyle", "Efectos 3D, Bloques & Degradados", "Punto de fuga, extrusión tridimensional, powerline neón (verde #00ff9d y morado #a855f7)", "Ilustración Digital", "https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu"],
     ["graffiti-wildstyle", "Diseño de Personajes & Estética Anime/Urbana", "Bocetos en cuaderno y tablet combinando anatomía manga (Gachiakuta / Naruto) con streetwear", "Character Design", "https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu"],
     ["skate-nocturno", "Ollie & Fakie Ollie (Base del Street Skate)", "Pop seco con el tail, arrastre de lija con el pie delantero y nivelación en el aire", "Truco Base", "https://es.wikipedia.org/wiki/Ollie_(skateboard)"],
-    ["skate-nocturno", "Kickflip & Heelflip", "Rotación limpia de 360° sobre el eje longitudinal de la tabla y recepción en los tornillos", "Flip Tricks", "https://es.wikipedia.org/wiki/Kickflip"],
-    ["skate-nocturno", "Pop Shuvit & Frontside / Backside 180", "Giro de tabla de 180° bajo los pies y rotación completa de hombros y cadera", "Rotación", "https://es.wikipedia.org/wiki/Skateboarding"],
+    ["skate-nocturno", "Kickflip & Heelflip", "Rotación limpia de 360 grados sobre el eje longitudinal de la tabla y recepción en los tornillos", "Flip Tricks", "https://es.wikipedia.org/wiki/Kickflip"],
+    ["skate-nocturno", "Pop Shuvit & Frontside / Backside 180", "Giro de tabla de 180 grados bajo los pies y rotación completa de hombros y cadera", "Rotación", "https://es.wikipedia.org/wiki/Skateboarding"],
     ["skate-nocturno", "50-50 Grind, 5-0 & Boardslide", "Deslizamiento de trucks y base de madera sobre bordes, cajones y barandas nocturnas", "Grinds & Slides", "https://es.wikipedia.org/wiki/Skateboarding"],
     ["skate-nocturno", "Manual & Nose Manual", "Equilibrio continuo sobre dos ruedas conectando líneas largas por el asfalto de noche", "Balance & Flow", "https://es.wikipedia.org/wiki/Skateboarding"],
     ["skate-nocturno", "Sesión Nocturna con Audífonos (PS4 THPS3 Vibe)", "Salir a patinar de noche escuchando Gorillaz, Punk-Rock, Nu-Metal y Boom-Bap", "Vibra Nocturna", "https://open.spotify.com/playlist/5NbleL73aT2iC9lTsoW6K1"]
 ];
 
 const IDIOMAS_DATA = [
-    ["frances", "FR: \"Rien n'est vrai, tout est permis.\" | ES: \"Nada es verdad, todo está permitido.\"", "Pronunciación: [ʁjɛ̃ nɛ vʁɛ, tut‿ɛ pɛʁmi] • Lema de Ezio Auditore en francés", "Francés Filosófico", "https://www.wordreference.com/fres/permis"],
-    ["frances", "FR: \"Je suis développeur de logiciels et dresseur canin.\"", "ES: \"Soy desarrollador de software y adiestrador canino.\" • Presentación profesional", "Francés Profesional", "https://www.wordreference.com/fres/d%C3%A9veloppeur"],
-    ["frances", "FR: \"La musique et la poésie sont le langage de l'âme.\"", "ES: \"La música y la poesía son el lenguaje del alma.\" • Expresión artística", "Francés Poético", "https://www.wordreference.com/fres/po%C3%A9sie"],
+    ["frances", "FR: \"Rien n'est vrai, tout est permis.\" | ES: \"Nada es verdad, todo está permitido.\"", "Lema de Ezio Auditore en francés: Nada es verdad, todo está permitido", "Francés Filosófico", "https://www.wordreference.com/fres/permis"],
+    ["frances", "FR: \"Je suis développeur de logiciels et dresseur canin.\"", "ES: \"Soy desarrollador de software y adiestrador canino.\" - Presentación profesional", "Francés Profesional", "https://www.wordreference.com/fres/d%C3%A9veloppeur"],
+    ["frances", "FR: \"La musique et la poésie sont le langage de l'âme.\"", "ES: \"La música y la poesía son el lenguaje del alma.\" - Expresión artística", "Francés Poético", "https://www.wordreference.com/fres/po%C3%A9sie"],
     ["frances", "FR: \"Travailler dur en silence, laisser le succès faire du bruit.\"", "ES: \"Trabajar duro en silencio, dejar que el éxito haga ruido.\"", "Mentalidad FR", "https://www.wordreference.com/fres/succ%C3%A8s"],
     ["frances", "FR: \"Base de données relationnelle et programmation orientée objet.\"", "ES: \"Base de datos relacional y programación orientada a objetos.\"", "Francés Técnico", "https://www.wordreference.com/fres/donn%C3%A9es"],
     ["frances", "FR: \"Éducation canine bienveillante et renforcement positif.\"", "ES: \"Educación canina respetuosa y refuerzo positivo.\"", "Etología en Francés", "https://www.wordreference.com/fres/bienveillant"],
-    ["ingles", "EN: \"Full-Stack Developer & Database Administrator (SQL / C# / Python).\"", "ES: \"Desarrollador Full-Stack y Administrador de Bases de Datos.\" • Perfil Internacional", "English Tech", "https://www.wordreference.com/es/translation.asp?tranword=developer"],
+    ["ingles", "EN: \"Full-Stack Developer & Database Administrator (SQL / C# / Python).\"", "ES: \"Desarrollador Full-Stack y Administrador de Bases de Datos.\" - Perfil Internacional", "English Tech", "https://www.wordreference.com/es/translation.asp?tranword=developer"],
     ["ingles", "EN: \"Force-free dog training and behavioral rehabilitation.\"", "ES: \"Adiestramiento canino libre de fuerza y rehabilitación conductual.\"", "Canine Behavior EN", "https://www.wordreference.com/es/translation.asp?tranword=rehabilitation"],
     ["ingles", "EN: \"Clean code, modular architecture, and native DOM manipulation.\"", "ES: \"Código limpio, arquitectura modular y manipulación nativa del DOM.\"", "Software Engineering", "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"],
     ["ingles", "EN: \"Listening to full album discographies in chronological order.\"", "ES: \"Escuchando discografías completas de álbumes en orden cronológico.\"", "Musicboard EN", "https://open.spotify.com/user/d4v1ch1n2"],
@@ -1226,7 +1347,90 @@ const IDIOMAS_DATA = [
     ["musica-cultura", "FR: \"C'est de la bombe !\" | EN: \"That's fire / dope!\" | ES: \"¡Bomba!\"", "Mi expresión característica adaptada a los tres idiomas en conversaciones reales", "Slang & Identidad", "https://www.wordreference.com/fres/bombe"],
     ["musica-cultura", "EN: \"Underground Hip-Hop, Glitch-Hop, Argentinian Trap & Alternative Rock.\"", "FR: \"Hip-hop underground, rock alternatif et musique électronique.\"", "Géneros Musicales", "https://open.spotify.com/user/d4v1ch1n2"],
     ["musica-cultura", "FR: \"Dessiner des graffitis wildstyle et faire du skate la nuit.\"", "EN: \"Sketching wildstyle graffiti and skateboarding at night.\"", "Cultura Urbana", "https://www.instagram.com/nullssj.zip?dlrf=Z2x4ZWM0OHBqZjlu"],
-    ["musica-cultura", "EN: \"Masterpiece album with zero skips from intro to outro.\"", "FR: \"Chef-d'œuvre musical sans aucune chanson à passer.\"", "Crítica Musical", "https://open.spotify.com/playlist/3EcShvyD30njVVhPVGM8Bt"]
+    ["musica-cultura", "EN: \"Masterpiece album with zero skips from intro to outro.\"", "FR: \"Chef-d'oeuvre musical sans aucune chanson à passer.\"", "Crítica Musical", "https://open.spotify.com/playlist/3EcShvyD30njVVhPVGM8Bt"]
+];
+
+const COLECCION_LEGO_HW_DATA = [
+    ["challenger-sueno hot-wheels hw-muscle", "Dodge Challenger SRT Demon '18 - Plum Crazy Purple (Mi Favorito & Auto de Mis Suenos)", "El auto definitivo de mis suenos en su color insigne Plum Crazy Purple (morado Mopar): motor HEMI V8 6.2L Supercharged con 840 HP, Widebody masivo, toma de aire funcional Air-Grabber en el capo, rines negros mate de 20 pulgadas y aceleracion brutal de 0 a 100 km/h en 2.3 segundos. Es mi mayor fascinacion automotriz tanto en miniatura Die-Cast 1:64 como en la vida real.", "AUTO DE MIS SUENOS", "https://es.wikipedia.org/wiki/Dodge_Challenger"],
+    ["challenger-sueno hot-wheels hw-muscle", "Hot Wheels '70 Dodge Challenger R/T 426 HEMI - Plum Crazy Purple Classic", "La leyenda clasica del muscle car americano de primera generacion: pintura purpura Mopar original, franjas longitudinales R/T negras, capo shaker y el mitico motor Elephant 426 HEMI V8.", "Muscle Legendario", "https://es.wikipedia.org/wiki/Dodge_Challenger"],
+    ["challenger-sueno hot-wheels hw-muscle", "Hot Wheels Super Treasure Hunt (STH): '15 Dodge Challenger SRT", "Edicion de caza suprema para coleccionistas: carroceria en pintura Spectraflame violeta profundo, neumaticos de goma Real Riders con rines deportivos dorados y emblema oculto TH.", "STH Spectraflame", "https://es.wikipedia.org/wiki/Hot_Wheels"],
+    ["challenger-sueno hot-wheels hw-muscle", "Hot Wheels RLC Exclusive: '71 Dodge Challenger SRT Hellcat Widebody", "Pieza de ultra coleccion del Red Line Club con apertura funcional de capo, detallado minucioso de motor supercargado, pintura Chameleon Purple y base cromada numerada.", "RLC Edicion Limitada", "https://es.wikipedia.org/wiki/Hot_Wheels"],
+    ["challenger-sueno custom-mocs", "Custom 1:64: Dodge Challenger SRT Hellcat 'Plum Crazy' Real Riders Custom", "Personalizacion propia con decapado manual, repintado en tricapa morado perlado, swap a ruedas de goma Real Riders con rines negros de 5 brazos y detallado manual de calaveras traseras.", "Custom Propio 1:64", "https://es.wikipedia.org/wiki/Hot_Wheels"],
+
+    ["lego-potter lego-sets", "LEGO Harry Potter: Castillo de Hogwarts (71043 - 6,020 Piezas)", "Recreacion a microescala colosal del Colegio Hogwarts de Magia y Hechiceria: Gran Comedor con vitrales, Sala Comun de Gryffindor, Camara Secreta, torre de Dumbledore y 4 fundadores.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Callejon Diagon (75978 - 5,544 Piezas)", "Calle comercial magica modular a escala de minifigura: Ollivanders, Flourish & Blotts, Articulos de Calidad para Quidditch y Sortilegios Weasley con escaparates detallados.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Banco Magico Gringotts - Edicion Coleccionista (76417)", "Estructura de dos niveles con el banco superior, camaras acorazadas subterraneas en espiral con vias de vagonetas y el dragon Ironbelly ucraniano posable en la cupula.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Expreso de Hogwarts - Edicion Coleccionista (76405)", "Locomotora a vapor 4-6-0 con tender de carbon, vagon de pasajeros con tres escenas luminosas iluminadas y el mitico Anden 9 y 3/4 de la estacion King's Cross.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Sombrero Seleccionador Parlante con Sonido Real (76429)", "Modelo interactivo con ladrillo de sonido integrado capaz de reproducir 31 combinaciones de frases en voz alta para asignar al usuario a una de las cuatro casas de Hogwarts.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Iconos de Hogwarts - Edicion de Coleccionistas (76391)", "Diorama de exhibicion con la lechuza Hedwig a escala real posada sobre libros de texto, carta de aceptacion, pociones magicas, varita de sauco y la Snitch Dorada.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: El Gran Comedor de Hogwarts (76435)", "Set masivo del Gran Comedor con mesas de banquete, chimeneas, velas flotantes, patio exterior y mazmorras secretas con el troll de la montana.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+    ["lego-potter lego-sets", "LEGO Harry Potter: Torneo de los Tres Magos - El Lago Negro (76420)", "Diorama acuatico de doble nivel con torre en ruinas, arco submarino, minifiguras de Harry, Ron, Hermione y sirena con botes de rescate.", "LEGO Harry Potter", "https://www.lego.com/es-es/themes/harry-potter"],
+
+    ["lego-marvel lego-sets", "LEGO Marvel: Daily Bugle (76178 - 3,772 Piezas & 25 Minifiguras)", "Rascacielos modular de cuatro pisos y 82 cm de altura: redaccion de J. Jonah Jameson, ventana destruida por el Duende Verde y minifiguras de Daredevil, Spider-Man, Punisher y Blade.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Torre de los Vengadores / Avengers Tower (76269 - 5,201 Piezas)", "El set mas alto de Marvel con 90 cm de altura, 31 minifiguras, laboratorio de Tony Stark, hangar del Quinjet y celda de Loki recreando la Batalla de Nueva York.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Sanctum Sanctorum de Doctor Strange (76218 - 3 Pisos Modulares)", "Residencia mistica de Doctor Strange en Greenwich Village con biblioteca oculta, camaras dimensionales rotatorias y portales interdimensionales de Gargantos.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Hulkbuster Edicion Ultron (76210 - Armadura Colosal)", "Meca de combate de mas de 4,000 piezas con articulaciones de alta resistencia, tres reactores Arc luminosos con ladrillos de luz y cabina abatible.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Guantelete del Infinito de Thanos (76191)", "Replicacion dorada metalica articulada con las seis Gemas del Infinito brillantes, dedos posables para recrear el chasquido y peana de exhibicion negra.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Escudo del Capitan America (76262 - 3,128 Piezas)", "Emblema circular a tamano real de 47 cm de diametro con estrella central de cinco puntas, anillos concentricos rojo, blanco y azul y soporte de vitrina.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: La Milano de los Guardianes de la Galaxia (76286)", "Nave estelar de Star-Lord con cabina para 4 minifiguras, bodega de carga, compartimento de armas y soporte de vuelo dinamico articulado.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+    ["lego-marvel lego-sets", "LEGO Marvel: Casco de Iron Man Mark 85 & Mascara de Spider-Man", "Esculturas de coleccionista con piezas curvadas y doradas recreando la armadura nanotecnologica de Tony Stark y la mascara del trepamuros.", "LEGO Marvel", "https://www.lego.com/es-es/themes/marvel"],
+
+    ["lego-dc lego-sets", "LEGO DC Batman: Batmobile 1989 de Tim Burton (76139 - 3,306 Piezas)", "El Batmovil mas iconico del cine: cabina deslizable, dos ametralladoras ocultas activadas por engranajes, turbina de jet trasera y minifigura de Michael Keaton.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+    ["lego-dc lego-sets", "LEGO DC Batman: Batwing 1989 (76161 - Escala Gigante de Pared)", "Aeronave gotica con forma del murcielago de 52 cm de envergadura, flap aerodinamico funcional, ametralladoras Gatling y soporte para montaje en pared.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+    ["lego-dc lego-sets", "LEGO DC Batman: Batcave Shadow Box (76252 - 3,981 Piezas)", "Baticueva en caja teatral iluminada con silueta troquelada de Batman: computadora central móvil, caja fuerte de armas, plataforma giratoria y Batmovil interior.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+    ["lego-dc lego-sets", "LEGO DC Batman: Batmobile Tumbler de The Dark Knight (76240)", "Blindaje militar angular negro mate de la trilogia de Christopher Nolan: suspension delantera independiente, neumaticos traseros dobles y cabina con paneles de control.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+    ["lego-dc lego-sets", "LEGO DC Batman: Batmovil de Batman La Serie Animada (BTAS 76274)", "Diseno aerodinamico Art Deco estilizado con silueta alargada, escape de llamas azuladas, cabina abatible y minifigura de Batman de Bruce Timm.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+    ["lego-dc lego-sets", "LEGO DC Batman: Asilo Arkham Breakout (10937)", "Fachada gotica de la prision psiquiatrica de Gotham City: celdas de contencion para Joker, Bane, Poison Ivy y Scarecrow con laboratorio y furgon de traslado.", "LEGO DC Batman", "https://www.lego.com/es-es/themes/batman"],
+
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Charizard Gigante Articulado", "Figura posable de gran tamano con envergadura alar de 40 cm, cola con efecto de fuego traslucido, cabeza y patas con rotulas de alta friccion para poses de combate.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Charizard"],
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Pikachu de Exhibicion a Gran Escala", "Escultura de bloques de Pikachu con mas de 800 piezas, cola articulada de rayo, mejillas rojas electricas y peana dinamica con piedras y chispas de luz.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Pikachu"],
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Gyarados & Magikarp en Cascada Mecanica", "Diorama cinetico con mecanismo de manivela oculta que reproduce el movimiento de natacion ondulante y ascendente de Gyarados saltando sobre la catarata.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Gyarados"],
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Centro Pokemon de Kanto Modular", "Edificio iconico con techo rojo abovedado, mostrador de sanacion interactivo con Chansey, mostrador de la Enfermera Joy y modulo de computacion de almacenamiento.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Centro_Pok%C3%A9mon"],
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Batalla Kanto - Venusaur vs Blastoise", "Diorama de duelo elemental de Kanto con la flor gigante de Venusaur, lianas de latigo cepa y los dos canones hidraulicos posables de Blastoise.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Blastoise"],
+    ["lego-pokemon lego-sets", "Set Pokemon Construccion: Eevee y Todas sus 8 Evoluciones (Eeveelutions)", "Set completo que reune a Eevee junto a Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon y Sylveon con poses personalizadas de ataque.", "Pokemon Construccion", "https://www.wikidex.net/wiki/Eevee"],
+
+    ["lego-disney lego-sets", "LEGO Disney: Castillo de Cenicienta (43222 / 71040 - 4,837 Piezas)", "El colosal castillo de Magic Kingdom con torres doradas, salon de baile giratorio, cocina de Blancanieves, habitacion de la Bella Durmiente y fuegos artificiales.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney Pixar: La Casa de 'Up' (43217)", "Vivienda clasica victoriana con chimenea, racimo de globos multicolores, muebles interiores de Carl y Ellie, y minifiguras de Carl Fredricksen, Russell y Dug.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney: Steamboat Willie (21317 - Clasico Mickey 1928)", "Homenaje monocromatico en blanco y negro al corto animado original de 1928: ruedas de paletas giratorias, chimeneas de vapor oscilantes y grua funcional.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney: Tren y Estacion Motorizada Disney (71044)", "Locomotora a vapor motorizada con control Bluetooth por aplicacion movil, tender de carbon, coche de pasajeros y estacion principal con interiores victorianos.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney: El Rey Leon - Simba Joven Articulado (43247)", "Modelo de exhibicion de coleccion con cabeza rotatoria, orejas y cola moviles para recrear al futuro rey de las Tierras del Reino sobre roca de la sabana.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney: La Cabana de Hocus Pocus - Brujas de Salem (21341)", "Vivienda medieval rustica con molino hidraulico funcional, caldero de humo con ladrillo de luz y las tres hermanas brujas Sanderson con su libro magico.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+    ["lego-disney lego-sets", "LEGO Disney: Blancanieves y la Cabana de los Siete Enanitos (43242)", "Cabana de cuento de hadas con techo de paja desmontable, mesa de banquete para siete, chimenea luminosa y el pozo de los deseos en el bosque.", "LEGO Disney", "https://www.lego.com/es-es/themes/disney"],
+
+    ["lego-sets", "LEGO Star Wars: Millennium Falcon UCS (75192 - 7,541 Piezas)", "La nave mas legendaria de la galaxia a escala Ultimate Collector Series: paneles superiores removibles, torretas laser cuadruples, cabina para 4 y rampa de acceso.", "LEGO Star Wars", "https://www.lego.com/es-es/themes/star-wars"],
+    ["lego-sets", "LEGO Star Wars: Caminante AT-AT Imperial UCS (75313 - 6,785 Piezas)", "Coloso blindado imperial de 62 cm de altura: patas totalmente articuladas, interiores de transporte para 40 soldados de nieve y cuatro motos speeder en su bodega.", "LEGO Star Wars", "https://www.lego.com/es-es/themes/star-wars"],
+    ["lego-sets", "LEGO Star Wars: Caza Estelar X-Wing UCS (75355)", "Caza estelar T-65 con mecanismo de apertura de alas en posicion de ataque en X, droide R2-D2 y canones laser en las puntas de las alas con peana informativa.", "LEGO Star Wars", "https://www.lego.com/es-es/themes/star-wars"],
+    ["lego-sets", "LEGO El Senor de los Anillos: Rivendell (10316 - 6,167 Piezas)", "Obra maestra arquitectonica con tecnicas SNOT: el Concilio de Elrond bajo el arbol elfico, la forja de Narsil, biblioteca elfica y 15 minifiguras de la Comunidad.", "LEGO Tierra Media", "https://www.lego.com/es-es/themes/lord-of-the-rings"],
+    ["lego-sets", "LEGO El Senor de los Anillos: Barad-dur (10333 - 5,471 Piezas)", "La torre fortaleza de Sauron de 83 cm de altura con el Ojo de Sauron iluminado mediante ladrillo de luz, sala del trono, armeria orca y puerta automatizada.", "LEGO Tierra Media", "https://www.lego.com/es-es/themes/lord-of-the-rings"],
+    ["lego-sets", "LEGO Icons: Titanic a Escala 1:200 (10294 - 9,090 Piezas)", "Modelo naval titanico de 135 cm de largo dividido en 3 secciones con sala de calderas, gran escalera de primera clase, camarotes, piscinas y 3 helices funcionales.", "LEGO Icons", "https://www.lego.com/es-es/themes/icons"],
+    ["lego-sets", "LEGO Icons: Coliseo Romano (10276 - 9,036 Piezas)", "Monumento historico de Roma con tres niveles de gradas, arcos clasicos doricos, jonicos y corintios y el hipogeo subterraneo recreado en microdetalle.", "LEGO Icons", "https://www.lego.com/es-es/themes/icons"],
+    ["lego-sets", "LEGO Technic: Superdeportivos 1:8 (Bugatti Chiron, Ferrari Daytona SP3, Sián)", "Mecanica de transmision secuencial de 8 velocidades con levas en el volante, traccion total, motores V12/W16 con pistones y puertas de tijera.", "LEGO Technic", "https://www.lego.com/es-es/themes/technic"],
+
+    ["hot-wheels hw-muscle", "Hot Wheels '69 Dodge Charger 500 & Charger Daytona", "El rey de los ovales con su gigantesco aleron trasero estabilizador, cono frontal aerodinamico alargado y bloque motor HEMI 426 V8 a escala 1:64.", "HW Muscle", "https://es.wikipedia.org/wiki/Dodge_Charger"],
+    ["hot-wheels hw-muscle", "Hot Wheels '68 Plymouth Barracuda Formula S (Violeta Velvet Mopar)", "Icono de la era dorada de Chrysler con acabado en violeta metalico, neumaticos con raya roja Redline y motor V8 340 Four-Barrel.", "HW Muscle", "https://es.wikipedia.org/wiki/Plymouth_Barracuda"],
+    ["hot-wheels hw-muscle", "Hot Wheels '67 Ford Mustang Fastback & Shelby GT500 Eleanor", "Potencia legendaria inmortalizada en el cine: carroceria ensanchada en gris grafito con franjas negras gemelas y escapes laterales.", "HW Muscle", "https://es.wikipedia.org/wiki/Shelby_Mustang"],
+    ["hot-wheels hw-muscle", "Hot Wheels '69 Chevrolet Camaro SS & '70 Chevelle SS 454", "La cuspide del poder de General Motors con el mitico Big Block V8 454 de 450 HP, tomas de aire Cowl Induction y rines American Racing.", "HW Muscle", "https://es.wikipedia.org/wiki/Chevrolet_Chevelle"],
+
+    ["hot-wheels hw-jdm", "Hot Wheels Nissan Skyline GT-R BNR34 (Bayside Blue / Calsonic Racing)", "El maximo icono del JDM a escala 1:64 con pintura azul Bayside, motor RB26DETT Twin-Turbo, traccion ATTESA E-TS y rines NISMO LMGT4.", "HW JDM 1:64", "https://es.wikipedia.org/wiki/Nissan_Skyline_GT-R"],
+    ["hot-wheels hw-jdm", "Hot Wheels Nissan Skyline GT-R BNR32 (Godzilla HKS Livery)", "La leyenda que domino el Campeonato Japones de Turismos con su librea de carreras HKS, rines de seis brazos e intercooler delantero.", "HW JDM 1:64", "https://es.wikipedia.org/wiki/Nissan_Skyline_GT-R"],
+    ["hot-wheels hw-jdm", "Hot Wheels Nissan Silvia S15 Spec-R (Mona Lisa de Tokyo Drift)", "Coupé de drift por excelencia con carroceria C-West ensanchada, rines Volk Racing TE37 de bronce y motor SR20DET turboalimentado.", "HW Street Tuners", "https://es.wikipedia.org/wiki/Nissan_Silvia"],
+    ["hot-wheels hw-jdm", "Hot Wheels Toyota Supra MK4 '94 (Castrol Racing 2JZ-GTE Turbo)", "El mito de los anos 90 con el legendario motor 2JZ-GTE de seis cilindros en linea, aleron de arco alto y faros delanteros transparentes de acrilico.", "HW Street Tuners", "https://es.wikipedia.org/wiki/Toyota_Supra"],
+    ["hot-wheels hw-jdm", "Hot Wheels Mazda RX-7 FD3S (Twin-Turbo Rotary RedSuns)", "Aerodinamica pura inspirada en Initial D con motor rotativo 13B-REW, faros pop-up escamoteables y aleron de fibra de carbono.", "HW Street Tuners", "https://es.wikipedia.org/wiki/Mazda_RX-7"],
+    ["hot-wheels hw-jdm", "Hot Wheels Honda Civic Type R EK9 & Integra Type R DC2 Spoon", "Chasis ultraligeros de traccion delantera con motores VTEC B16B/B18C aspirados que giran a mas de 8,500 RPM en librea Spoon amarilla y azul.", "HW Street Tuners", "https://es.wikipedia.org/wiki/Honda_Civic_Type_R"],
+
+    ["hot-wheels", "Hot Wheels Porsche 911 GT3 RS (Weissach Package)", "Bestia de circuito alemana a escala 1:64 con aleron de cuello de cisne aerodinamico, jaula antivuelco interior y rines dorados de magnesio.", "HW Euro Speed", "https://es.wikipedia.org/wiki/Porsche_911_GT3"],
+    ["hot-wheels", "Hot Wheels Porsche 930 Turbo Slantnose & RWB Stella Artois", "Carroceria ensanchada extrema creada por Akira Nakai con remaches a la vista, parachoques agresivo y aleron tipo cola de ballena.", "HW Euro Speed", "https://es.wikipedia.org/wiki/Porsche_930"],
+    ["hot-wheels", "Hot Wheels Lamborghini Murcielago LP670-4 SV & Huracan LB-Works", "Hypercars italianos con kit Widebody Liberty Walk, difusor trasero gigante y motor V10/V12 aspirado en acabado negro mate.", "HW Euro Speed", "https://es.wikipedia.org/wiki/Lamborghini_Murci%C3%A9lago"],
+
+    ["hot-wheels", "Hot Wheels Batmobile The Batman 2022 (Muscle Car Noir)", "La version mas cruda del Batmovil con chasis de muscle car modificado, turbina a reaccion expuesta en la parte trasera y defensas de ariete.", "HW Screen Time", "https://es.wikipedia.org/wiki/Batmovil"],
+    ["hot-wheels", "Hot Wheels Batmobile 1989 & Tumbler Nolan Premium Die-Cast", "Edicion especial con base de metal fundido y ruedas de goma Real Riders recreando los dos vehiculos tacticos mas aclamados del cine.", "HW Screen Time", "https://es.wikipedia.org/wiki/Batmovil"],
+    ["hot-wheels", "Hot Wheels DeLorean Time Machine (Hover Mode - Back to the Future)", "El clasico auto del tiempo con ruedas plegadas en modo vuelo flotante, reactor Mr. Fusion en el capo trasero y carroceria de acero cepillado.", "HW Screen Time", "https://es.wikipedia.org/wiki/DeLorean_DMC-12"],
+    ["hot-wheels", "Hot Wheels Aston Martin DB5 1963 (James Bond 007)", "El vehiculo de espionaje britanico por excelencia con ametralladoras ocultas en las luces delanteras y placa de matricula giratoria BMT 216A.", "HW Screen Time", "https://es.wikipedia.org/wiki/Aston_Martin_DB5"],
+
+    ["custom-mocs", "Tecnica SNOT (Studs Not On Top) & Chasis Lisos", "Diseno de MOCs propios ocultando los conectores cilindricos superiores para lograr acabados totalmente pulidos, curvos y realistas.", "Ingenieria LEGO", "https://es.wikipedia.org/wiki/Lego"],
+    ["custom-mocs", "Swap de Ejes y Ruedas Real Riders con Llantas de Goma", "Apertura quirurgica de remaches Zamac en modelos 1:64, instalacion de ejes tubulares de laton y rines de aleacion con grabado de neumatico.", "Custom Die-Cast", "https://es.wikipedia.org/wiki/Hot_Wheels"],
+    ["custom-mocs", "Detallado de Faros, Calaveras y Pintura Acrilica de Precision", "Micropintura de opticas delanteras, luces de stop traseras, intercoolers y jaulas antivuelco en miniatura con pinceles de triple cero.", "Pintura a Escala", "https://es.wikipedia.org/wiki/Modelismo"],
+    ["custom-mocs", "Diorama de Estacionamiento Nocturno con Iluminacion Neon", "Escenario urbano a escala 1:64 con asfalto texturizado, postes de alumbrado LED funcional, graffitis en miniatura y paredes de ladrillo LEGO.", "Diorama Nocturno", "https://es.wikipedia.org/wiki/Diorama"]
 ];
 
 const HORARIO_SHEETS_DATA = [
@@ -1255,63 +1459,172 @@ const HORARIO_SHEETS_DATA = [
 ];
 
 const MUSICBOARD_DATA = [
-    ["diez-de-diez alt-rock", "Gorillaz", "Demon Days (2005)", "10/10 ★", "Feel Good Inc. / El Mañana", "Obra maestra absoluta de Damon Albarn y Jamie Hewlett. Mezcla perfecta de hip-hop alternativo, electrónica oscura y crítica social sin un solo tema de relleno."],
-    ["diez-de-diez alt-rock", "Gorillaz", "Plastic Beach (2010)", "10/10 ★", "On Melancholy Hill / Empire Ants", "Un viaje conceptual synth-pop y orquestal irrepetible. La transición de Empire Ants y la melancolía de este álbum lo hacen eterno."],
-    ["diez-de-diez alt-rock", "Gorillaz", "Gorillaz (Álbum Debut - 2001)", "9.8/10 ★", "Clint Eastwood / Tomorrow Comes Today", "El inicio de la banda virtual más grande de la historia: dub, trip-hop, punk y rap lo-fi con una identidad visual y sonora única."],
-    ["alt-rock", "Gorillaz", "Song Machine, Season One: Strange Timez (2020)", "9.5/10 ★", "Momentary Bliss / Aries", "Colaboraciones brutales (Robert Smith, Elton John, slowthai, Peter Hook) donde cada episodio suena fresco y experimental."],
-    ["alt-rock", "Gorillaz", "Cracker Island (2023)", "9.3/10 ★", "Silent Running / New Gold", "Producción impecable con bajos funk de Thundercat, Bad Bunny en Tormenta y la voz hipnótica de 2-D."],
-    ["alt-rock", "Gorillaz", "The Now Now (2018)", "9.2/10 ★", "Humility / Souk Eye", "El disco más íntimo y melancólico de 2-D, ideal para viajar o programar de madrugada."],
-    ["diez-de-diez alt-rock", "Twenty One Pilots", "Trench (2018)", "10/10 ★", "Jumpsuit / Chlorine / Nico and the Niners", "Producción conceptual perfecta junto a Paul Meany. El lore de Dema, los bajos distorsionados de Jumpsuit y la batería de Josh Dun en su punto más alto."],
-    ["diez-de-diez alt-rock", "Twenty One Pilots", "Clancy (2024)", "10/10 ★", "Overcompensate / Navigating / Paladin Strait", "El cierre épico de la narrativa de Trench: energético, maduro, con estribillos gigantes y una honestidad lírica brutal."],
-    ["diez-de-diez alt-rock", "Twenty One Pilots", "Vessel (2013)", "9.9/10 ★", "Holding on to You /Ode to Sleep / Car Radio", "Poesía pura sobre salud mental e insomnio: convierte la ansiedad nocturna en himnos llenos de esperanza."],
-    ["alt-rock", "Twenty One Pilots", "Blurryface (2015)", "9.6/10 ★", "Heavydirtysoul / Ride / Goner", "El álbum que definió una generación enfrentando las inseguridades personificadas en Blurryface."],
-    ["alt-rock", "Twenty One Pilots", "Scaled And Icy (2021)", "9.0/10 ★", "Redecorate / Shy Away", "Contraste brillante entre melodías coloridas y letras profundas, cerrando con la joya oscura de Redecorate."],
-    ["diez-de-diez alt-rock", "Zoé", "MTV Unplugged: Música de Fondo (2011)", "10/10 ★", "Soñé / Labios Rotos / Luna", "Uno de los mejores Unplugged en español de todos los tiempos. Arreglos espaciales junto a Denise Gutiérrez, Bunbury y Chetes."],
-    ["diez-de-diez alt-rock", "Zoé", "Memo Rex Commander y el Corazón Atómico (2006)", "9.9/10 ★", "Vía Láctea / No Me Destruyas / Paula", "Rock espacial psicodélico y sintetizadores galácticos que te transportan a otra dimensión."],
-    ["alt-rock", "Zoé", "Prográmaton (2013)", "9.6/10 ★", "Arrullo de Estrellas / 10 A.M.", "Lírica poética y metafísica de León Larregui con una producción analógica impecable."],
-    ["alt-rock", "Zoé", "Rocanlover (2003) & Aztlán (2018)", "9.5/10 ★", "Love / Azul / Hielo", "Equilibrio perfecto entre el rock alternativo clásico de los 2000 y su madurez atmosférica."],
-    ["diez-de-diez pop-alt", "Oliver Tree", "Ugly Is Beautiful (2020)", "9.8/10 ★", "Hurt / Miracle Man / Alien Boy", "Mezcla explosiva de indie rock alternativo, distorsión, hip-hop y humor absurdo con melodías adictivas."],
-    ["pop-alt", "Oliver Tree", "Cowboy Tears (2022) & Alone In A Crowd (2023)", "9.2/10 ★", "Cowboys Don't Cry / Bounce / Miss You", "Reinvención constante desde el emo-country alternativo hasta el dance-pop nostálgico."],
-    ["diez-de-diez pop-alt", "Melanie Martinez", "Cry Baby (2015)", "9.8/10 ★", "Dollhouse / Pity Party / Mad Hatter", "Estética dark-pop conceptual impecable: transforma cuentos infantiles en metáforas psicológicas oscuras."],
-    ["pop-alt", "Melanie Martinez", "K-12 (2019) & PORTALS (2023)", "9.5/10 ★", "Show & Tell / VOID / EVIL", "Evolución artística total hacia el art-pop alternativo y el rock feérico con bajos pesados en VOID y EVIL."],
-    ["diez-de-diez pop-alt", "Lana Del Rey", "Born to Die (2012) & Norman Fucking Rockwell! (2019)", "10/10 ★", "Born to Die / Venice Bitch / Cinnamon Girl", "Cinematografía pura hecha música: cuerdas nostálgicas, poesía melancólica y atmósfera hipnótica."],
-    ["pop-alt", "Sabrina Carpenter", "Short n' Sweet (2024) & emails i can't send (2022)", "9.5/10 ★", "Espresso / Taste / Nonsense / Feather", "Pop inteligente, carismático, con armonías vocales impecables y producción brillante."],
-    ["diez-de-diez trap-rap", "Duki", "Súper Sangre Joven (2019)", "10/10 ★", "Goteo / Hitboy / Señorita", "El disco que consagró el sonido del trap argentino: energía pura, flows inalcanzables y clásicos de principio a fin."],
-    ["diez-de-diez trap-rap", "Duki", "Desde el Fin del Mundo (2021) & Ameri (2024)", "9.8/10 ★", "Malbec / Ticket / Barro / Nueva Era", "Versatilidad total: desde el trap más crudo y rockero hasta la introspección emocional de Barro."],
-    ["diez-de-diez trap-rap", "YSY A", "Antezana 247 (2018)", "10/10 ★", "Vuelta a la Luna / Tamo Loco / Linaje", "Álbum histórico grabado en la mansión de Antezana 247. La biblia del trap argentino y la cultura de El Quinto Escalón."],
-    ["trap-rap", "YSY A", "Hecho a Mano (2019) & Trap de Verdad (2021)", "9.7/10 ★", "Full Ice / Pasto / Trap de Verdad", "Cero autotune forzado, pura energía sísmica, métricas agresivas y amor real por el género."],
-    ["diez-de-diez trap-rap", "Wos", "Caravana (2019) & Oscuro Éxtasis (2021)", "10/10 ★", "Canguro / Melón Vino / Arrancármelo / Niño Gordo Flaco", "Fusión magistral de rap contestatario, rock alternativo argentino y sensibilidad poética."],
-    ["trap-rap", "C.R.O", "Cuervos (2019) & Mal de la Cabeza (2023)", "9.6/10 ★", "Reina / Ciudad Gris / h.i.j.o.s d.e l.a n.o.c.h.e", "El rey de la melancolía nocturna y la versatilidad entre el boombap oscuro, el trap y el rock."],
-    ["trap-rap", "KHEA & Neo Pistea", "Trapicheo (2020) & Punkdemia (2021)", "9.5/10 ★", "Loca / She Don't Give a FO / Tumbando el Club Remix", "Los himnos fundacionales de la época dorada (2017-2020) que cambiaron la música urbana en español."],
-    ["diez-de-diez trap-rap", "Lytos", "Discografía Conceptual & Storytelling", "10/10 ★", "La Caja de Pandora / Silencio / Disculpa", "Lírica teatral, técnica vocal desgarradora y narrativas psicológicas que erizan la piel."],
-    ["trap-rap", "Crazy Point", "Antología Sad Rap & R&B Urbano", "9.6/10 ★", "Dime Qué Pasó / Ya No Estoy Aquí / Cicatrices", "Melodías melancólicas y letras sinceras que conectan directo en noches de lluvia y reflexión."]
+    ["diez-de-diez alt-rock", "Gorillaz", "Demon Days (2005)", "10/10", "Feel Good Inc. / El Mañana", "Obra maestra absoluta de Damon Albarn y Jamie Hewlett. Mezcla perfecta de hip-hop alternativo, electrónica oscura y crítica social sin un solo tema de relleno."],
+    ["diez-de-diez alt-rock", "Gorillaz", "Plastic Beach (2010)", "10/10", "On Melancholy Hill / Empire Ants", "Un viaje conceptual synth-pop y orquestal irrepetible. La transición de Empire Ants y la melancolía de este álbum lo hacen eterno."],
+    ["diez-de-diez alt-rock", "Gorillaz", "Gorillaz (Álbum Debut - 2001)", "9.8/10", "Clint Eastwood / Tomorrow Comes Today", "El inicio de la banda virtual más grande de la historia: dub, trip-hop, punk y rap lo-fi con una identidad visual y sonora única."],
+    ["alt-rock", "Gorillaz", "Song Machine, Season One: Strange Timez (2020)", "9.5/10", "Momentary Bliss / Aries", "Colaboraciones brutales (Robert Smith, Elton John, slowthai, Peter Hook) donde cada episodio suena fresco y experimental."],
+    ["alt-rock", "Gorillaz", "Cracker Island (2023)", "9.3/10", "Silent Running / New Gold", "Producción impecable con bajos funk de Thundercat, Bad Bunny en Tormenta y la voz hipnótica de 2-D."],
+    ["alt-rock", "Gorillaz", "The Now Now (2018)", "9.2/10", "Humility / Souk Eye", "El disco más íntimo y melancólico de 2-D, ideal para viajar o programar de madrugada."],
+    ["diez-de-diez alt-rock", "Twenty One Pilots", "Trench (2018)", "10/10", "Jumpsuit / Chlorine / Nico and the Niners", "Producción conceptual perfecta junto a Paul Meany. El lore de Dema, los bajos distorsionados de Jumpsuit y la batería de Josh Dun en su punto más alto."],
+    ["diez-de-diez alt-rock", "Twenty One Pilots", "Clancy (2024)", "10/10", "Overcompensate / Navigating / Paladin Strait", "El cierre épico de la narrativa de Trench: energético, maduro, con estribillos gigantes y una honestidad lírica brutal."],
+    ["diez-de-diez alt-rock", "Twenty One Pilots", "Vessel (2013)", "9.9/10", "Holding on to You /Ode to Sleep / Car Radio", "Poesía pura sobre salud mental e insomnio: convierte la ansiedad nocturna en himnos llenos de esperanza."],
+    ["alt-rock", "Twenty One Pilots", "Blurryface (2015)", "9.6/10", "Heavydirtysoul / Ride / Goner", "El álbum que definió una generación enfrentando las inseguridades personificadas en Blurryface."],
+    ["alt-rock", "Twenty One Pilots", "Scaled And Icy (2021)", "9.0/10", "Redecorate / Shy Away", "Contraste brillante entre melodías coloridas y letras profundas, cerrando con la joya oscura de Redecorate."],
+    ["diez-de-diez alt-rock", "Zoé", "MTV Unplugged: Música de Fondo (2011)", "10/10", "Soñé / Labios Rotos / Luna", "Uno de los mejores Unplugged en español de todos los tiempos. Arreglos espaciales junto a Denise Gutiérrez, Bunbury y Chetes."],
+    ["diez-de-diez alt-rock", "Zoé", "Memo Rex Commander y el Corazón Atómico (2006)", "9.9/10", "Vía Láctea / No Me Destruyas / Paula", "Rock espacial psicodélico y sintetizadores galácticos que te transportan a otra dimensión."],
+    ["alt-rock", "Zoé", "Prográmaton (2013)", "9.6/10", "Arrullo de Estrellas / 10 A.M.", "Lírica poética y metafísica de León Larregui con una producción analógica impecable."],
+    ["alt-rock", "Zoé", "Rocanlover (2003) & Aztlán (2018)", "9.5/10", "Love / Azul / Hielo", "Equilibrio perfecto entre el rock alternativo clásico de los 2000 y su madurez atmosférica."],
+    ["diez-de-diez pop-alt", "Oliver Tree", "Ugly Is Beautiful (2020)", "9.8/10", "Hurt / Miracle Man / Alien Boy", "Mezcla explosiva de indie rock alternativo, distorsión, hip-hop y humor absurdo con melodías adictivas."],
+    ["pop-alt", "Oliver Tree", "Cowboy Tears (2022) & Alone In A Crowd (2023)", "9.2/10", "Cowboys Don't Cry / Bounce / Miss You", "Reinvención constante desde el emo-country alternativo hasta el dance-pop nostálgico."],
+    ["diez-de-diez pop-alt", "Melanie Martinez", "Cry Baby (2015)", "9.8/10", "Dollhouse / Pity Party / Mad Hatter", "Estética dark-pop conceptual impecable: transforma cuentos infantiles en metáforas psicológicas oscuras."],
+    ["pop-alt", "Melanie Martinez", "K-12 (2019) & PORTALS (2023)", "9.5/10", "Show & Tell / VOID / EVIL", "Evolución artística total hacia el art-pop alternativo y el rock feérico con bajos pesados en VOID y EVIL."],
+    ["diez-de-diez pop-alt", "Lana Del Rey", "Born to Die (2012) & Norman Fucking Rockwell! (2019)", "10/10", "Born to Die / Venice Bitch / Cinnamon Girl", "Cinematografía pura hecha música: cuerdas nostálgicas, poesía melancólica y atmósfera hipnótica."],
+    ["pop-alt", "Sabrina Carpenter", "Short n' Sweet (2024) & emails i can't send (2022)", "9.5/10", "Espresso / Taste / Nonsense / Feather", "Pop inteligente, carismático, con armonías vocales impecables y producción brillante."],
+    ["diez-de-diez trap-rap", "Duki", "Súper Sangre Joven (2019)", "10/10", "Goteo / Hitboy / Señorita", "El disco que consagró el sonido del trap argentino: energía pura, flows inalcanzables y clásicos de principio a fin."],
+    ["diez-de-diez trap-rap", "Duki", "Desde el Fin del Mundo (2021) & Ameri (2024)", "9.8/10", "Malbec / Ticket / Barro / Nueva Era", "Versatilidad total: desde el trap más crudo y rockero hasta la introspección emocional de Barro."],
+    ["diez-de-diez trap-rap", "YSY A", "Antezana 247 (2018)", "10/10", "Vuelta a la Luna / Tamo Loco / Linaje", "Álbum histórico grabado en la mansión de Antezana 247. La biblia del trap argentino y la cultura de El Quinto Escalón."],
+    ["trap-rap", "YSY A", "Hecho a Mano (2019) & Trap de Verdad (2021)", "9.7/10", "Full Ice / Pasto / Trap de Verdad", "Cero autotune forzado, pura energía sísmica, métricas agresivas y amor real por el género."],
+    ["diez-de-diez trap-rap", "Wos", "Caravana (2019) & Oscuro Éxtasis (2021)", "10/10", "Canguro / Melón Vino / Arrancármelo / Niño Gordo Flaco", "Fusión magistral de rap contestatario, rock alternativo argentino y sensibilidad poética."],
+    ["trap-rap", "C.R.O", "Cuervos (2019) & Mal de la Cabeza (2023)", "9.6/10", "Reina / Ciudad Gris / h.i.j.o.s d.e l.a n.o.c.h.e", "El rey de la melancolía nocturna y la versatilidad entre el boombap oscuro, el trap y el rock."],
+    ["trap-rap", "KHEA & Neo Pistea", "Trapicheo (2020) & Punkdemia (2021)", "9.5/10", "Loca / She Don't Give a FO / Tumbando el Club Remix", "Los himnos fundacionales de la época dorada (2017-2020) que cambiaron la música urbana en español."],
+    ["diez-de-diez trap-rap", "Lytos", "Discografía Conceptual & Storytelling", "10/10", "La Caja de Pandora / Silencio / Disculpa", "Lírica teatral, técnica vocal desgarradora y narrativas psicológicas que erizan la piel."],
+    ["trap-rap", "Crazy Point", "Antología Sad Rap & R&B Urbano", "9.6/10", "Dime Qué Pasó / Ya No Estoy Aquí / Cicatrices", "Melodías melancólicas y letras sinceras que conectan directo en noches de lluvia y reflexión."]
+];
+
+const URL_POKEAPI_OFFICIAL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+
+const TITULARES_POKEMON_DATA = [
+    {
+        rango: 1,
+        id: 212,
+        nombre: "Scizor",
+        region: "Johto",
+        tipos: "Bicho / Acero",
+        objeto: "Baya Zidra (Sitrus Berry)",
+        habilidad: "Experto (Technician)",
+        mecanica: "Megaevolución a Mega-Scizor / Dinamax",
+        rol: "Ofensivo físico con Técnica y prioridad en Puño Bala; candidato a Megaevolución."
+    },
+    {
+        rango: 2,
+        id: 454,
+        nombre: "Toxicroak",
+        region: "Sinnoh",
+        tipos: "Veneno / Lucha",
+        objeto: "Baya Zidra (Sitrus Berry)",
+        habilidad: "Piel Seca (Dry Skin)",
+        mecanica: "Cobertura Táctica Mixta",
+        rol: "Atacante mixto táctico con Piel Seca y cobertura de tipo Lucha/Veneno."
+    },
+    {
+        rango: 3,
+        id: 937,
+        nombre: "Ceruledge",
+        region: "Paldea",
+        tipos: "Fuego / Fantasma",
+        objeto: "Vidasfera (Life Orb)",
+        habilidad: "Cuerpo Llama (Flame Body)",
+        mecanica: "Teracristalización Ofensiva",
+        rol: "Veloz sweeper físico con Espada Lamentable y portador ideal de la Teracristalización ofensiva."
+    },
+    {
+        rango: 4,
+        id: 849,
+        nombre: "Toxtricity",
+        region: "Galar",
+        tipos: "Eléctrico / Veneno",
+        objeto: "Vidasfera (Life Orb)",
+        habilidad: "Punk Rock",
+        mecanica: "Gigamax",
+        rol: "Atacante especial con la habilidad Punk Rock para potenciar ataques de sonido masivos y opción a Gigamax."
+    },
+    {
+        rango: 5,
+        id: 553,
+        nombre: "Krookodile",
+        region: "Unova",
+        tipos: "Tierra / Siniestro",
+        objeto: "Vidasfera (Life Orb)",
+        habilidad: "Intimidación (Intimidate)",
+        mecanica: "Pivot Intimidatorio",
+        rol: "Threat intimidatorio con acceso a cobertura terrestre y siniestra letal."
+    },
+    {
+        rango: 6,
+        id: 715,
+        nombre: "Noivern",
+        region: "Kalos",
+        tipos: "Volador / Dragón",
+        objeto: "Vidasfera (Life Orb)",
+        habilidad: "Allanador (Infiltrator)",
+        mecanica: "Control de Velocidad (Speed Control)",
+        rol: "Cleaner rápido especializado en control de velocidad e ingreso con Ida y Vuelta."
+    }
 ];
 
 const POKEDEX_PERSONAL_DATA = [
-    ["dream-team johto-kanto competitivo", 212, "Scizor", "Bicho / Acero", "Experto (Technician)", "Puño Bala / Danza Espada / Ida y Vuelta", "★ MI POKÉMON FAVORITO #1 • Sweeper Físico Titular"],
-    ["dream-team hoenn-gen3 competitivo", 254, "Sceptile", "Planta", "Espesura", "Hoja Aguda / Gigadrenado / Pulso Dragón", "Starter Favorito de Hoenn • Velocidad Extrema"],
-    ["dream-team hoenn-gen3 competitivo", 257, "Blaziken", "Fuego / Lucha", "Impulso", "Patada Ígnea / Gancho Alto / Danza Espada", "Sweeper Mixto de Pokémon Esmeralda"],
-    ["dream-team hoenn-gen3 competitivo", 260, "Swampert", "Agua / Tierra", "Torrente", "Terremoto / Cascada / Rayo Hielo", "Tanque Defensivo (Solo débil a Planta x4)"],
-    ["dream-team johto-kanto competitivo", 94, "Gengar", "Fantasma / Veneno", "Levitación (Gen 3)", "Bola Sombra / Rayo / Fuego Fatuo", "Atacante Especial Fantasma Clásico"],
-    ["dream-team johto-kanto competitivo", 248, "Tyranitar", "Roca / Siniestro", "Chorro Arena", "Avalancha / Triturar / Danza Dragón", "Pseudo-Legendario de Johto • Poder Bruto"],
-    ["hoenn-gen3 competitivo", 384, "Rayquaza", "Dragón / Volador", "Bucle Aire", "Enfado / Velocidad Extrema / Vuelo", "Legendario Insignia de Pokémon Esmeralda"],
-    ["hoenn-gen3 competitivo", 376, "Metagross", "Acero / Psíquico", "Cuerpo Puro", "Puño Meteoro / Terremoto / Explosión", "Supercomputadora viviente de Hoenn"],
-    ["hoenn-gen3 competitivo", 373, "Salamence", "Dragón / Volador", "Intimidación", "Garra Dragón / Danza Dragón / Lanzallamas", "Dragón dominante de 3ra Generación"],
-    ["hoenn-gen3", 282, "Gardevoir", "Psíquico", "Rastro", "Psíquico / Paz Mental / Rayo", "Elegancia y poder especial en Hoenn"],
-    ["hoenn-gen3", 306, "Aggron", "Acero / Roca", "Cabeza Roca", "Cola Férrea / Doble Filo / Terremoto", "Armadura pesada de las cuevas de Hoenn"],
-    ["hoenn-gen3", 330, "Flygon", "Tierra / Dragón", "Levitación", "Terremoto / Garra Dragón / Vuelo", "El espíritu del desierto de la Ruta 111"],
-    ["hoenn-gen3", 359, "Absol", "Siniestro", "Presión", "Danza Espada / Tajo Umbrío / Golpe Aéreo", "Estética oscura y crítico letal"],
-    ["hoenn-gen3", 286, "Breloom", "Planta / Lucha", "Efecto Espora", "Espora / Puño Certero / Ultrapuño", "Estrategia SubPunch implacable en Gen 3"],
-    ["hoenn-gen3", 350, "Milotic", "Agua", "Escama Especial", "Surf / Rayo Hielo / Recuperación", "Muralla especial indomable del Frente Batalla"],
-    ["hoenn-gen3", 380, "Latias", "Dragón / Psíquico", "Levitación", "Rocío Bondad / Psíquico / Paz Mental", "Eón guardián de Hoenn"],
-    ["hoenn-gen3", 381, "Latios", "Dragón / Psíquico", "Levitación", " Brillo Mágico / Garra Dragón / Rayo", "Velocidad y ataque especial supremo"],
-    ["johto-kanto", 123, "Scyther", "Bicho / Volador", "Enjambre / Experto", "Cuchillada / Ataque Ala / Danza Espada", "Pre-evolución directa de Scizor"],
-    ["johto-kanto competitivo", 6, "Charizard", "Fuego / Volador", "Mar Llamas", "Lanzallamas / Vuelo / Garra Dragón", "Ícono eterno de Rojo Fuego"],
-    ["johto-kanto", 157, "Typhlosion", "Fuego", "Mar Llamas", "Estallido / Lanzallamas / Puño Trueno", "Compañero fiel de la región Johto"],
-    ["johto-kanto", 160, "Feraligatr", "Agua", "Torrente", "Hidrobomba / Triturar / Puño Hielo", "Fuerza salvaje de Oro y Plata"],
-    ["johto-kanto competitivo", 197, "Umbreon", "Siniestro", "Sincronía", "Luz Lunar / Tóxico /Juego Sucio", "Mi Eeveelution favorita: diseño nocturno perfecto"],
-    ["johto-kanto", 214, "Heracross", "Bicho / Lucha", "Agallas", "Megacuerno / Demolición / Avalancha", "El compañero Bicho de Scizor en Johto"],
-    ["johto-kanto competitivo", 149, "Dragonite", "Dragón / Volador", "Foco Interno", "Velocidad Extrema / Enfado / Puño Fuego", "El dragón original de Kanto"]
+    ["kanto mecanica", "1. KANTO", 6, "Charizard", "Fuego / Volador", "Vidasfera (Life Orb)", "Poder Solar (Solar Power)", "Miedosa (Timid)", ["Lanzallamas", "Onda Ígnea", "Tajo Aéreo", "Sol Matinal"], "Capacidad de Megaevolucionar a Mega-Charizard Y / Dinamax", ""],
+    ["kanto", "1. KANTO", 34, "Nidoking", "Veneno / Tierra", "Vidasfera (Life Orb)", "Potencia Bruta (Sheer Force)", "Miedosa (Timid)", ["Tierra Viva", "Lanzallamas", "Rayo Hielo", "Bomba Lodo"], "", ""],
+    ["kanto mecanica", "1. KANTO", 65, "Alakazam", "Psíquico", "Banda Focus (Focus Sash)", "Muro Mágico (Magic Guard)", "Miedosa (Timid)", ["Psíquico", "Bola Sombra", "Onda Certera", "Maquinación"], "Capacidad de Megaevolucionar a Mega-Alakazam", ""],
+    ["kanto", "1. KANTO", 82, "Magneton", "Eléctrico / Acero", "Gafas Elección (Choice Specs)", "Imán (Magnet Pull)", "Miedosa (Timid)", ["Rayo", "Foco Esplendor", "Voltiocambio", "Tri-Ataque"], "", ""],
+    ["kanto", "1. KANTO", 91, "Cloyster", "Agua / Hielo", "Banda Focus (Focus Sash)", "Encadenado (Skill Link)", "Alegre (Jolly)", ["Carámbano", "Capa Guijarro", "Escama Canto", "Rompecoraza"], "", ""],
+    ["kanto mecanica", "1. KANTO", 94, "Gengar", "Fantasma / Veneno", "Lodo Negro (Black Sludge)", "Cuerpo Maldito (Cursed Body)", "Miedosa (Timid)", ["Bola Sombra", "Bomba Lodo", "Mismo Destino", "Sustituto"], "Capacidad de Megaevolucionar a Mega-Gengar / Dinamax", ""],
+
+    ["johto", "2. JOHTO", 157, "Typhlosion", "Fuego", "Gafas Elección (Choice Specs)", "Absorbe Fuego (Flash Fire)", "Miedosa (Timid)", ["Erupción", "Lanzallamas", "Onda Ígnea", "Foco Esplendor"], "", ""],
+    ["johto", "2. JOHTO", 169, "Crobat", "Veneno / Volador", "Lodo Negro (Black Sludge)", "Foco Interno (Inner Focus)", "Alegre (Jolly)", ["Pájaro Osado", "Respiro", "Desarme", "Ida y Vuelta"], "", ""],
+    ["johto mecanica", "2. JOHTO", 248, "Tyranitar", "Roca / Siniestro", "Restos (Leftovers)", "Chorro de Arena (Sand Stream)", "Cuidadosa (Careful)", ["Roca Afilada", "Triturar", "Trampa Rocas", "Danza Dragón"], "Capacidad de Megaevolucionar a Mega-Tyranitar / Dinamax", ""],
+    ["johto titulares mecanica", "2. JOHTO", 212, "Scizor", "Bicho / Acero", "Baya Zidra (Sitrus Berry)", "Experto (Technician)", "Firme (Adamant)", ["Puño Bala", "Desarme", "Ida y Vuelta", "Danza Espada"], "Capacidad de Megaevolucionar a Mega-Scizor / Dinamax", "TITULAR #1: Ofensivo físico con Técnica y prioridad en Puño Bala; candidato a Megaevolución."],
+    ["johto", "2. JOHTO", 202, "Wobbuffet", "Psíquico", "Restos (Leftovers)", "Sombra Trampa (Shadow Tag)", "Osada (Bold)", ["Contraataque", "Manto Espejo", "Mismo Destino", "Otra Vez"], "", ""],
+    ["johto", "2. JOHTO", 171, "Lanturn", "Agua / Eléctrico", "Chaleco Asalto (Assault Vest)", "Absorbe Agua (Water Absorb)", "Modesta (Modest)", ["Rayo", "Hidrobomba", "Rayo Hielo", "Voltiocambio"], "", ""],
+
+    ["hoenn mecanica", "3. HOENN", 257, "Blaziken", "Fuego / Lucha", "Vidasfera (Life Orb)", "Impulso (Speed Boost)", "Firme (Adamant)", ["Envite Ígneo", "Patada Salto Alta", "Danza Espada", "Protección"], "Capacidad de Megaevolucionar a Mega-Blaziken / Dinamax", ""],
+    ["hoenn", "3. HOENN", 272, "Ludicolo", "Agua / Planta", "Vidasfera (Life Orb)", "Nado Rápido (Swift Swim)", "Modesta (Modest)", ["Hidrobomba", "Rayo Solar", "Rayo Hielo", "Surf"], "", ""],
+    ["hoenn mecanica", "3. HOENN", 282, "Gardevoir", "Psíquico / Hada", "Gafas Elección (Choice Specs)", "Piel Feérica (Pixilate)", "Miedosa (Timid)", ["Vozarrón", "Psíquico", "Onda Certera", "Bola Sombra"], "Capacidad de Megaevolucionar a Mega-Gardevoir", ""],
+    ["hoenn", "3. HOENN", 289, "Slaking", "Normal", "Cinta Elección (Choice Band)", "Ausente (Truant)", "Firme (Adamant)", ["Golpe Aéreo", "Terremoto", "Golpetazo", "Puño Fuego"], "", ""],
+    ["hoenn mecanica", "3. HOENN", 306, "Aggron", "Acero / Roca", "Restos (Leftovers)", "Roca Sólida (Solid Rock)", "Agitada (Impish)", ["Cabeza de Hierro", "Roca Afilada", "Trampa Rocas", "Rugido"], "Capacidad de Megaevolucionar a Mega-Aggron", ""],
+    ["hoenn mecanica", "3. HOENN", 330, "Flygon", "Tierra / Dragón", "Vidasfera (Life Orb)", "Levitación (Levitate)", "Alegre (Jolly)", ["Terremoto", "Enfado", "Idas y Vuelta", "Garra Dragón"], "Dinamax", ""],
+
+    ["sinnoh", "4. SINNOH", 389, "Torterra", "Planta / Tierra", "Restos (Leftovers)", "Capa Espesa (Overgrow)", "Agitada (Impish)", ["Terremoto", "Llave Mota", "Síntesis", "Trampa Rocas"], "", ""],
+    ["sinnoh", "4. SINNOH", 419, "Floatzel", "Agua", "Vidasfera (Life Orb)", "Nado Rápido (Swift Swim)", "Miedosa (Timid)", ["Hidrobomba", "Rayo Hielo", "Surf", "Onda Certera"], "", ""],
+    ["sinnoh mecanica", "4. SINNOH", 445, "Garchomp", "Dragón / Tierra", "Vidasfera (Life Orb)", "Piel Tosca (Rough Skin)", "Alegre (Jolly)", ["Terremoto", "Garra Dragón", "Danza Espada", "Colmillo Ígneo"], "Megaevolución a Mega-Garchomp / Dinamax / Teracristalización", ""],
+    ["sinnoh titulares", "4. SINNOH", 454, "Toxicroak", "Veneno / Lucha", "Baya Zidra (Sitrus Berry)", "Piel Seca (Dry Skin)", "Firme (Adamant)", ["Puño Dinámico", "Gunk Shot", "Desarme", "Sucker Punch"], "", "TITULAR #2: Atacante mixto táctico con Piel Seca y cobertura de tipo Lucha/Veneno."],
+    ["sinnoh", "4. SINNOH", 452, "Drapion", "Veneno / Siniestro", "Vidasfera (Life Orb)", "Francotirador (Sniper)", "Alegre (Jolly)", ["Puya Nociva", "Desarme", "Terremoto", "Danza Espada"], "", ""],
+    ["sinnoh", "4. SINNOH", 478, "Froslass", "Hielo / Fantasma", "Banda Focus (Focus Sash)", "Manto Nieve (Snow Cloak)", "Miedosa (Timid)", ["Ventisca", "Bola Sombra", "Mismo Destino", "Púas"], "", ""],
+
+    ["unova", "5. UNOVA", 503, "Samurott", "Agua", "Vidasfera (Life Orb)", "Torrente (Torrent)", "Firme (Adamant)", ["Cascada", "Megacuerno", "Aqua Jet", "Danza Espada"], "", ""],
+    ["unova", "5. UNOVA", 530, "Excadrill", "Tierra / Acero", "Pañuelo Elección (Choice Scarf)", "Rompemoldes (Mold Breaker)", "Alegre (Jolly)", ["Terremoto", "Cabeza de Hierro", "Avalancha", "Puño Certero"], "", ""],
+    ["unova titulares", "5. UNOVA", 553, "Krookodile", "Tierra / Siniestro", "Vidasfera (Life Orb)", "Intimidación (Intimidate)", "Alegre (Jolly)", ["Terremoto", "Triturar", "Roca Afilada", "Demolición"], "", "TITULAR #5: Threat intimidatorio con acceso a cobertura terrestre y siniestra letal."],
+    ["unova", "5. UNOVA", 591, "Amoonguss", "Planta / Veneno", "Cascoviejo (Rocky Helmet)", "Regeneración (Regenerator)", "Osada (Bold)", ["Espora", "Gigadrenaje", "Bomba Lodo", "Polvo Ira"], "", ""],
+    ["unova", "5. UNOVA", 609, "Chandelure", "Fantasma / Fuego", "Gafas Elección (Choice Specs)", "Absorbe Fuego (Flash Fire)", "Modesta (Modest)", ["Llama Fucsia", "Bola Sombra", "Psíquico", "Llamarada"], "", ""],
+    ["unova", "5. UNOVA", 596, "Galvantula", "Bicho / Eléctrico", "Vidasfera (Life Orb)", "Ojo Compuesto (Compound Eyes)", "Miedosa (Timid)", ["Trueno", "Zumbido", "Voltiocambio", "Rayo Hielo"], "", ""],
+
+    ["kalos mecanica", "6. KALOS", 658, "Greninja", "Agua / Siniestro", "Vidasfera (Life Orb)", "Mutatipo (Protean)", "Miedosa (Timid)", ["Surf", "Rayo Hielo", "Ida y Vuelta", "Pulso Umbrío"], "Dinamax / Teracristal", ""],
+    ["kalos", "6. KALOS", 675, "Pangoro", "Lucha / Siniestro", "Cinta Elección (Choice Band)", "Puño Férreo (Iron Fist)", "Firme (Adamant)", ["Puño Drenaje", "Puño Cometa", "Desarme", "Puño Bala"], "", ""],
+    ["kalos", "6. KALOS", 681, "Aegislash", "Acero / Fantasma", "Restos (Leftovers)", "Cambiodosis (Stance Change)", "Mansa (Quiet)", ["Bola Sombra", "Foco Esplendor", "Escudo Real", "Canon"], "", ""],
+    ["kalos titulares", "6. KALOS", 715, "Noivern", "Volador / Dragón", "Vidasfera (Life Orb)", "Allanador (Infiltrator)", "Miedosa (Timid)", ["Dracoaliento", "Vendaval", "Lanzallamas", "Ida y Vuelta"], "", "TITULAR #6: Cleaner rápido especializado en control de velocidad e ingreso con Ida y Vuelta."],
+    ["kalos", "6. KALOS", 663, "Talonflame", "Fuego / Volador", "Gafas Elección (Choice Specs)", "Alas Galeote (Gale Wings)", "Miedosa (Timid)", ["Pájaro Osado", "Respiro", "Ida y Vuelta", "Envite Ígneo"], "", ""],
+    ["kalos", "6. KALOS", 660, "Diggersby", "Normal / Tierra", "Cinta Elección (Choice Band)", "Potencia (Huge Power)", "Firme (Adamant)", ["Terremoto", "Retorno", "Golpe Rápido", "Persecución"], "", ""],
+
+    ["alola", "7. ALOLA", 724, "Decidueye", "Planta / Fantasma", "Restos (Leftovers)", "Espesura (Overgrow)", "Firme (Adamant)", ["Puntada Sombría", "Hoja Aguda", "Sombra Nocturna", "Desarme"], "", ""],
+    ["alola", "7. ALOLA", 748, "Toxapex", "Veneno / Agua", "Lodo Negro (Black Sludge)", "Regeneración (Regenerator)", "Osada (Bold)", ["Escaldar", "Recuperación", "Niebla", "Tóxico"], "", ""],
+    ["alola", "7. ALOLA", 758, "Salazzle", "Veneno / Fuego", "Vidasfera (Life Orb)", "Corrosión (Corrosion)", "Miedosa (Timid)", ["Lanzallamas", "Bomba Lodo", "Pulso Dragón", "Maquinación"], "", ""],
+    ["alola mecanica", "7. ALOLA", 760, "Bewear", "Normal / Lucha", "Cascoviejo (Rocky Helmet)", "Peluche (Fluffy)", "Firme (Adamant)", ["Doble Golpetazo", "Fuerza Bruta", "Puño Hielo", "Triturar"], "Dinamax", ""],
+    ["alola", "7. ALOLA", 738, "Vikavolt", "Bicho / Eléctrico", "Gafas Elección (Choice Specs)", "Levitec (Levitate)", "Modesta (Modest)", ["Rayo", "Zumbido", "Onda Voltio", "Foco Esplendor"], "", ""],
+    ["alola mecanica", "7. ALOLA", 778, "Mimikyu", "Fantasma / Hada", "Vidasfera (Life Orb)", "Disfraz (Disguise)", "Alegre (Jolly)", ["Carantoña", "Garra Umbría", "Sombra Vil", "Danza Espada"], "Teracristalización / Dinamax", ""],
+
+    ["galar mecanica", "8. GALAR", 815, "Cinderace", "Fuego", "Vidasfera (Life Orb)", "Libero", "Alegre (Jolly)", ["Balón Ígneo", "Patada Salto Alta", "Ida y Vuelta", "Zen Headbutt"], "Gigamax", ""],
+    ["galar mecanica", "8. GALAR", 823, "Corviknight", "Volador / Acero", "Restos (Leftovers)", "Espejo Armadura (Mirror Armor)", "Cuidadosa (Careful)", ["Pájaro Osado", "Respiro", "Giro Bola", "Despeje"], "Gigamax", ""],
+    ["galar titulares mecanica", "8. GALAR", 849, "Toxtricity", "Eléctrico / Veneno", "Vidasfera (Life Orb)", "Punk Rock", "Modesta (Modest)", ["Overdrive", "Bomba Lodo", "Voltiocambio", "Alboroto"], "Gigamax", "TITULAR #4: Atacante especial con la habilidad Punk Rock para potenciar ataques de sonido masivos y opción a Gigamax."],
+    ["galar mecanica", "8. GALAR", 858, "Hatterene", "Psíquico / Hada", "Vidasfera (Life Orb)", "Mágico Espejo (Magic Bounce)", "Modesta (Modest)", ["Psíquico", "Brillo Mágico", "Espacio Raro", "Zona Mágica"], "Gigamax", ""],
+    ["galar", "8. GALAR", 862, "Obstagoon", "Siniestro / Normal", "Llama Esfera (Flame Orb)", "Agallas (Guts)", "Alegre (Jolly)", ["Tajo Umbría", "Desarme", "Imagen", "Puntapié"], "", ""],
+    ["galar mecanica", "8. GALAR", 887, "Dragapult", "Dragón / Fantasma", "Vidasfera (Life Orb)", "Infiltrador (Infiltrator)", "Miedosa (Timid)", ["Cometa Draco", "Bola Sombra", "Lanzallamas", "Voltiocambio"], "Dinamax", ""],
+
+    ["paldea mecanica", "9. PALDEA", 908, "Meowscarada", "Planta / Siniestro", "Vidasfera (Life Orb)", "Espadazo (Protean)", "Alegre (Jolly)", ["Truco Flor", "Desarme", "Puño Hielo", "Ida y Vuelta"], "Teracristalización", ""],
+    ["paldea titulares mecanica", "9. PALDEA", 937, "Ceruledge", "Fuego / Fantasma", "Vidasfera (Life Orb)", "Cuerpo Llama (Flame Body)", "Alegre (Jolly)", ["Espada Lamentable", "Puño Fantasma", "A Afilar", "Sombra Vil"], "Teracristalización", "TITULAR #3: Veloz sweeper físico con Espada Lamentable y portador ideal de la Teracristalización ofensiva."],
+    ["paldea", "9. PALDEA", 945, "Grafaiai", "Veneno / Normal", "Vidasfera (Life Orb)", "Prankster", "Alegre (Jolly)", ["Gunk Shot", "Ida y Vuelta", "Demolición", "Mofa"], "", ""],
+    ["paldea", "9. PALDEA", 959, "Tinkaton", "Hada / Acero", "Restos (Leftovers)", "Rompemoldes (Mold Breaker)", "Cuidadosa (Careful)", ["Martillo Gigante", "Despeje", "Truco", "Onda Trueno"], "", ""],
+    ["paldea", "9. PALDEA", 975, "Cetitan", "Hielo", "Vidasfera (Life Orb)", "Sebo (Thick Fat)", "Firme (Adamant)", ["Carámbano", "Terremoto", "Cuerpo Pesado", "Danza Espada"], "", ""],
+    ["paldea mecanica", "9. PALDEA", 984, "Colmilargo (Great Tusk)", "Tierra / Lucha", "Vidasfera (Life Orb)", "Paleoactivación (Protosynthesis)", "Alegre (Jolly)", ["Terremoto", "Cornada Certera", "Desarme", "Giro Rápido"], "Teracristalización", ""]
 ];
 
 function renderizarDev() {
@@ -1328,16 +1641,14 @@ function renderizarDev() {
 
         html += `
             <div class="item-dom-card card-dev" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-verde text-dark badge-compacto">${badge}</span>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${titulo}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-verde text-dark badge-compacto">${badge}</span>
                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-code-slash"></i>Doc
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${titulo}</h6>
+                <p class="texto-subtitulo small mb-0">${detalle}</p>
             </div>
         `;
     });
@@ -1359,16 +1670,14 @@ function renderizarEducan() {
 
         html += `
             <div class="item-dom-card card-educan" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-morada text-white badge-compacto">${badge}</span>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${titulo}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-morada text-white badge-compacto">${badge}</span>
                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-heart-pulse"></i>Guía
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${titulo}</h6>
+                <p class="texto-subtitulo small mb-0">${detalle}</p>
             </div>
         `;
     });
@@ -1390,16 +1699,14 @@ function renderizarArte() {
 
         html += `
             <div class="item-dom-card card-arte" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-verde text-dark badge-compacto">${badge}</span>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${titulo}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-verde text-dark badge-compacto">${badge}</span>
                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                        <i class="bi bi-stars"></i>Ver
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Ver
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${titulo}</h6>
+                <p class="texto-subtitulo small mb-0">${detalle}</p>
             </div>
         `;
     });
@@ -1421,16 +1728,46 @@ function renderizarIdiomas() {
 
         html += `
             <div class="item-dom-card card-idioma" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-morada text-white badge-compacto">${badge}</span>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${frase}">${frase}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-morada text-white badge-compacto">${badge}</span>
                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-translate"></i>Dict
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${frase}</h6>
+                <p class="texto-subtitulo small mb-0">${detalle}</p>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = html;
+}
+
+function renderizarColeccion() {
+    const contenedor = document.getElementById("contenedorColeccion");
+    if (!contenedor) return;
+
+    let html = "";
+    COLECCION_LEGO_HW_DATA.forEach((c) => {
+        const categoria = c[0];
+        const titulo = c[1];
+        const detalle = c[2];
+        const badge = c[3];
+        const url = c[4];
+        const esSueno = categoria.indexOf("challenger-sueno") !== -1;
+        const claseSueno = esSueno ? "card-challenger-sueno" : "";
+        const badgeClase = esSueno ? "barra-morada text-white" : "barra-verde text-dark";
+
+        html += `
+            <div class="item-dom-card card-coleccion ${claseSueno}" data-categoria="${categoria}">
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge ${badgeClase} badge-compacto">${badge}</span>
+                    <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
+                        <i class="bi bi-boxes"></i>Info
+                    </a>
+                </div>
+                <h6 class="mb-1 fw-bold ${esSueno ? 'texto-verde' : ''}">${titulo}</h6>
+                <p class="texto-subtitulo small mb-0">${detalle}</p>
             </div>
         `;
     });
@@ -1487,19 +1824,18 @@ function renderizarMusicboard() {
 
         html += `
             <div class="item-dom-card card-musicboard" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="badge barra-verde text-dark badge-compacto">${nota}</span>
-                            <span class="small fw-bold texto-morado text-truncate">${artista}</span>
-                        </div>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${album}">${album}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="Fav: ${trackFav} — ${resena}">Fav: ${trackFav} • ${resena}</small>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <span class="badge barra-verde text-dark badge-compacto">${nota}</span>
+                        <span class="small fw-bold texto-morado">${artista}</span>
                     </div>
                     <a href="${urlSpotify}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-spotify"></i>Álbum
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${album}</h6>
+                <small class="texto-verde d-block fw-semibold mb-1"><i class="bi bi-music-note-beamed me-1"></i>Track Fav: ${trackFav}</small>
+                <p class="texto-subtitulo small mb-0">${resena}</p>
             </div>
         `;
     });
@@ -1519,17 +1855,17 @@ function renderizarHeroes() {
                 <div class="heroe-img-wrap">
                     <img src="${h.img}" alt="${h.nombre}" class="heroe-img" loading="lazy">
                 </div>
-                <div class="overflow-hidden w-100">
-                    <div class="d-flex justify-content-between align-items-center">
+                <div class="p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="badge barra-morada text-white badge-compacto">${h.editorial}</span>
-                        <small class="texto-verde fw-bold badge-compacto">${h.identidad}</small>
+                        <small class="texto-verde fw-bold">${h.identidad}</small>
                     </div>
-                    <h6 class="fw-bold mb-0 small text-truncate">${h.nombre}</h6>
-                    <p class="small texto-subtitulo mb-0 text-truncate" title="${h.rol}">${h.rol}</p>
+                    <h5 class="fw-bold mb-1">${h.nombre}</h5>
+                    <p class="small texto-subtitulo mb-3">${h.rol}</p>
+                    <a href="${urlWiki}" target="_blank" rel="noopener noreferrer" class="link-spotify w-100 justify-content-center">
+                        <i class="bi bi-journal-richtext"></i>Explorar Historia (Wiki)
+                    </a>
                 </div>
-                <a href="${urlWiki}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                    <i class="bi bi-journal-richtext"></i>Wiki
-                </a>
             </div>
         `;
     });
@@ -1551,18 +1887,16 @@ function renderizarPeliculas() {
 
         html += `
             <div class="item-dom-card card-pelicula" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="badge barra-morada text-white badge-compacto">${saga}</span>
-                            <small class="texto-verde fw-bold badge-compacto">${anio}</small>
-                        </div>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${idx + 1}. ${titulo}</h6>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <span class="badge barra-morada text-white badge-compacto">${saga}</span>
+                        <small class="texto-verde fw-bold">${anio}</small>
                     </div>
                     <a href="${urlImdb}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-film"></i>IMDb
                     </a>
                 </div>
+                <h6 class="mb-0 fw-bold">${idx + 1}. ${titulo}</h6>
             </div>
         `;
     });
@@ -1588,18 +1922,14 @@ function renderizarSeries() {
 
         html += `
             <div class="item-dom-card card-serie" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="badge barra-verde text-dark badge-compacto">${anio}</span>
-                            <small class="texto-subtitulo text-truncate badge-compacto">${detalle}</small>
-                        </div>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${idx + 1}. ${titulo}</h6>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-verde text-dark badge-compacto">${anio}</span>
                     <a href="${urlImdb}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-tv"></i>IMDb
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${idx + 1}. ${titulo}</h6>
+                <small class="texto-subtitulo d-block">${detalle}</small>
             </div>
         `;
     });
@@ -1625,19 +1955,17 @@ function renderizarAnimes() {
 
         html += `
             <div class="item-dom-card card-anime" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="badge barra-morada text-white badge-compacto">Anime #${idx + 1}</span>
-                            <small class="texto-verde fw-bold badge-compacto">${anio}</small>
-                        </div>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${nombreLatino}">ES: ${nombreLatino}</h6>
-                        <small class="texto-morado d-block text-truncate badge-compacto" title="${nombreJapones}">JP: ${nombreJapones}</small>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge barra-morada text-white badge-compacto">Anime #${idx + 1}</span>
+                        <small class="texto-verde fw-bold">${anio}</small>
                     </div>
                     <a href="${urlMal}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
                         <i class="bi bi-play-btn"></i>MAL
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">ES: ${nombreLatino}</h6>
+                <small class="texto-morado d-block fw-semibold">JP: ${nombreJapones}</small>
             </div>
         `;
     });
@@ -1663,16 +1991,14 @@ function renderizarLibros() {
 
         html += `
             <div class="item-dom-card card-libro" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-verde text-dark badge-compacto">${autor}</span>
-                        <h6 class="mb-0 small fw-bold text-truncate" title="${titulo}">${idx + 1}. ${titulo}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-verde text-dark badge-compacto">${autor}</span>
                     <a href="${urlLibro}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                        <i class="bi bi-book"></i>Leer
+                        <i class="bi bi-book"></i>Goodreads
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold">${idx + 1}. ${titulo}</h6>
+                <small class="texto-subtitulo d-block">${detalle}</small>
             </div>
         `;
     });
@@ -1698,16 +2024,14 @@ function renderizarJuegos() {
 
         html += `
             <div class="item-dom-card card-juego" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="overflow-hidden">
-                        <span class="badge barra-morada text-white badge-compacto">${plataforma}</span>
-                        <h6 class="mb-0 small fw-bold texto-verde text-truncate" title="${titulo}">${titulo}</h6>
-                        <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${detalle}">${detalle}</small>
-                    </div>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <span class="badge barra-morada text-white badge-compacto">${plataforma}</span>
                     <a href="${urlJuego}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                        <i class="bi bi-controller"></i>PSN
+                        <i class="bi bi-controller"></i>PS Store
                     </a>
                 </div>
+                <h6 class="mb-1 fw-bold texto-verde">${titulo}</h6>
+                <small class="texto-subtitulo d-block">${detalle}</small>
             </div>
         `;
     });
@@ -1720,39 +2044,115 @@ function renderizarJuegos() {
 }
 
 function renderizarPokemon() {
+    const contenedorTitulares = document.getElementById("contenedorTitularesPokemon");
+    if (contenedorTitulares) {
+        let htmlTitulares = "";
+        TITULARES_POKEMON_DATA.forEach((t) => {
+            const urlSpriteTitular = URL_POKEAPI_OFFICIAL + t.id + ".png";
+            htmlTitulares += `
+                <div class="card-titular-mini">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="sprite-vgc-box">
+                            <img src="${urlSpriteTitular}" alt="${t.nombre}" class="sprite-vgc" loading="lazy">
+                        </div>
+                        <div class="w-100">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-1 mb-1">
+                                <span class="badge barra-verde text-dark badge-compacto">TITULAR #${t.rango} | ${t.region}</span>
+                                <span class="badge barra-morada text-white badge-compacto">${t.tipos}</span>
+                            </div>
+                            <h6 class="mb-1 fw-bold texto-verde">${t.nombre} <small class="texto-morado fw-normal">@ ${t.objeto}</small></h6>
+                            <p class="small mb-2">${t.rol}</p>
+                            <span class="badge-mecanica-activa">${t.mecanica}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        contenedorTitulares.innerHTML = htmlTitulares;
+    }
+
     const contenedor = document.getElementById("contenedorPokemon");
     if (!contenedor) return;
 
     let html = "";
     POKEDEX_PERSONAL_DATA.forEach((p) => {
         const categoria = p[0];
-        const id = p[1];
-        const nombre = p[2];
-        const tipos = p[3];
-        const habilidad = p[4];
-        const moveset = p[5];
-        const rol = p[6];
-        const urlSprite = URL_POKEAPI_EMERALD + id + ".png";
-        const urlDex = "https://www.wikidex.net/wiki/" + encodeURIComponent(nombre);
+        const regionLabel = p[1];
+        const id = p[2];
+        const nombre = p[3];
+        const tipos = p[4];
+        const objeto = p[5];
+        const habilidad = p[6];
+        const naturaleza = p[7];
+        const movimientos = p[8];
+        const mecanica = p[9];
+        const rolTitular = p[10];
+        const esTitular = categoria.indexOf("titulares") !== -1;
+        const claseTitular = esTitular ? "es-titular-vgc" : "";
+        const urlSprite = URL_POKEAPI_OFFICIAL + id + ".png";
+        const nombreLimpioWiki = nombre.split(" (")[0];
+        const urlDex = "https://www.wikidex.net/wiki/" + encodeURIComponent(nombreLimpioWiki);
+
+        const htmlMecanica = mecanica !== ""
+            ? `<span class="badge-mecanica-activa">Mecánica Especial: ${mecanica}</span>`
+            : `<span class="badge-mecanica-estandar">Mecánica: Estándar VGC / Showdown (Sin transformación)</span>`;
+
+        const htmlBadgeTitular = esTitular
+            ? `<span class="badge barra-verde text-dark badge-compacto">TITULAR 6v6</span>`
+            : "";
+
+        const htmlRolTitular = rolTitular !== ""
+            ? `<div class="mt-2 p-2 rounded small fw-semibold" style="background-color: rgba(0, 255, 157, 0.08); border-left: 3px solid #00ff9d;">${rolTitular}</div>`
+            : "";
+
+        let htmlBadgeRegion = "";
+        const matchRegion = regionLabel.match(/^(\d+)\.\s*(.+)$/);
+        if (matchRegion) {
+            const numPad = matchRegion[1].padStart(2, "0");
+            const nombreRegion = matchRegion[2];
+            htmlBadgeRegion = `<span class="badge-region-vgc"><span class="badge-gen-tag">${numPad}</span>${nombreRegion}</span>`;
+        } else {
+            htmlBadgeRegion = `<span class="badge-region-vgc">${regionLabel}</span>`;
+        }
 
         html += `
-            <div class="item-dom-card card-pokemon" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <div class="d-flex align-items-center gap-2 overflow-hidden">
-                        <img src="${urlSprite}" alt="${nombre}" class="portada-playlist es-sprite-respaldo" loading="lazy">
-                        <div class="overflow-hidden">
-                            <div class="d-flex align-items-center gap-1">
-                                <span class="badge barra-morada text-white badge-compacto">#${id} ${tipos}</span>
-                                <span class="badge barra-verde text-dark badge-compacto">${habilidad}</span>
+            <div class="card-pokemon-vgc card-pokemon ${claseTitular}" data-categoria="${categoria}">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="sprite-vgc-box">
+                            <img src="${urlSprite}" alt="${nombre}" class="sprite-vgc" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="d-flex flex-wrap align-items-center gap-1 mb-1">
+                                ${htmlBadgeRegion}
+                                <span class="badge barra-verde text-dark badge-compacto">#${id} | ${tipos}</span>
+                                ${htmlBadgeTitular}
                             </div>
-                            <h6 class="mb-0 small fw-bold text-truncate" title="${nombre} — ${rol}">${nombre}</h6>
-                            <small class="texto-subtitulo d-block text-truncate badge-compacto" title="${moveset} (${rol})">${moveset}</small>
+                            <h5 class="mb-0 fw-bold">${nombre}</h5>
+                            <small class="texto-morado fw-bold d-block">@ ${objeto}</small>
                         </div>
                     </div>
                     <a href="${urlDex}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                        <i class="bi bi-hdd-network"></i>Dex
+                        <i class="bi bi-hdd-network"></i>WikiDex
                     </a>
                 </div>
+
+                <div class="d-flex flex-wrap gap-2 my-2 pt-2 border-top border-secondary small">
+                    <span class="chip-bento"><strong>Habilidad:</strong> ${habilidad}</span>
+                    <span class="chip-bento"><strong>Naturaleza:</strong> ${naturaleza}</span>
+                </div>
+
+                <div class="grid-moveset-vgc">
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M1</span>${movimientos[0]}</div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M2</span>${movimientos[1]}</div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M3</span>${movimientos[2]}</div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M4</span>${movimientos[3]}</div>
+                </div>
+
+                <div class="mt-3">
+                    ${htmlMecanica}
+                </div>
+                ${htmlRolTitular}
             </div>
         `;
     });
@@ -1891,6 +2291,33 @@ function filtrarIdiomas(categoria) {
     if (contador) {
         contador.textContent = visibles + " / " + IDIOMAS_DATA.length + " Tarjetas";
     }
+}
+
+function filtrarColeccion(categoria) {
+    const tarjetas = document.querySelectorAll(".card-coleccion");
+    let visibles = 0;
+
+    tarjetas.forEach((card) => {
+        const catCard = card.dataset.categoria;
+        if (coincideCategoria(catCard, categoria)) {
+            card.style.display = "block";
+            visibles++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    actualizarBotonesFiltro("filtrosColeccion", categoria);
+    const contador = document.getElementById("contadorColeccion");
+    if (contador) {
+        contador.textContent = visibles + " / " + COLECCION_LEGO_HW_DATA.length + " Piezas";
+    }
+}
+
+function irAVideojuegosFiltro(categoria) {
+    cambiarTabCultura("videojuegos");
+    filtrar(categoria || "universo-lego");
+    cerrarMenu();
 }
 
 function filtrarHorario(categoria) {
@@ -2039,7 +2466,7 @@ function filtrarHeroes(categoria) {
     tarjetas.forEach((card) => {
         const catCard = card.dataset.categoria;
         if (coincideCategoria(catCard, categoria)) {
-            card.style.display = "flex";
+            card.style.display = "block";
             visibles++;
         } else {
             card.style.display = "none";
@@ -2179,6 +2606,35 @@ function filtrarPokemon(categoria) {
     }
 }
 
+function buscarEnPokemon(texto) {
+    const termino = texto.trim().toLowerCase();
+    const tarjetas = document.querySelectorAll("#salon-pokemon .card-pokemon");
+    let visibles = 0;
+
+    tarjetas.forEach((card) => {
+        if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
+            card.style.display = "block";
+            visibles++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    const contador = document.getElementById("contadorPokemon");
+    if (contador) {
+        contador.textContent = visibles + " / " + POKEDEX_PERSONAL_DATA.length + " Pokémon";
+    }
+}
+
+function irASalonPokemon(categoria) {
+    filtrarPokemon(categoria || "titulares");
+    cerrarMenu();
+    const seccion = document.getElementById("salon-pokemon");
+    if (seccion) {
+        seccion.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+}
+
 function buscarEnIdentidad(texto) {
     const termino = texto.trim().toLowerCase();
     const tarjetas = document.querySelectorAll("#actividades .item-dom-card");
@@ -2205,18 +2661,90 @@ function buscarEnMusica(texto) {
 
 function buscarEnCultura(texto) {
     const termino = texto.trim().toLowerCase();
-    const tarjetas = document.querySelectorAll("#cultura .item-dom-card, #cultura .heroe-card");
+    const tarjetas = document.querySelectorAll("#cultura .item-dom-card");
     tarjetas.forEach((card) => {
-        const esHeroe = card.classList.contains("heroe-card");
         if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
-            card.style.display = esHeroe ? "flex" : "block";
+            card.style.display = "block";
         } else {
             card.style.display = "none";
         }
     });
 }
 
+function buscarEnHeroes(texto) {
+    const termino = texto.trim().toLowerCase();
+    const tarjetas = document.querySelectorAll("#panteon-heroes .heroe-card");
+    tarjetas.forEach((card) => {
+        if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+let modoAcordeonActivo = false;
+
+function cambiarSuperBoveda(seccion) {
+    modoAcordeonActivo = false;
+    const btnAcordeon = document.getElementById("btnModoAcordeon");
+    if (btnAcordeon) {
+        btnAcordeon.classList.remove("activo");
+        btnAcordeon.innerHTML = `<i class="bi bi-arrows-expand me-1"></i>Modo Acordeón: Expandir Todo`;
+    }
+
+    const mapaIds = {
+        favoritos: "favoritos",
+        cultura: "cultura",
+        heroes: "panteon-heroes"
+    };
+
+    Object.keys(mapaIds).forEach((clave) => {
+        const panel = document.getElementById(mapaIds[clave]);
+        if (panel) {
+            panel.style.display = clave === seccion ? "block" : "none";
+        }
+    });
+
+    const botonesSuper = document.querySelectorAll("#superTabsBoveda .btn-super-tab");
+    botonesSuper.forEach((btn) => {
+        if (btn.dataset.superTab === seccion) {
+            btn.classList.add("activo");
+        } else {
+            btn.classList.remove("activo");
+        }
+    });
+}
+
+function alternarModoAcordeonBoveda() {
+    modoAcordeonActivo = !modoAcordeonActivo;
+    const btnAcordeon = document.getElementById("btnModoAcordeon");
+    const paneles = document.querySelectorAll(".panel-super-boveda");
+
+    if (modoAcordeonActivo) {
+        paneles.forEach((p) => {
+            p.style.display = "block";
+        });
+        if (btnAcordeon) {
+            btnAcordeon.classList.add("activo");
+            btnAcordeon.innerHTML = `<i class="bi bi-arrows-collapse me-1"></i>Volver a Vista Pestañas Compactas`;
+        }
+    } else {
+        cambiarSuperBoveda("favoritos");
+    }
+}
+
 function cambiarTabCultura(nombreTab) {
+    if (nombreTab === "superheroes") {
+        cambiarSuperBoveda("heroes");
+        return;
+    }
+    if (nombreTab === "pokemon") {
+        irASalonPokemon("titulares");
+        return;
+    }
+
+    cambiarSuperBoveda("cultura");
     const paneles = document.querySelectorAll(".panel-cultura");
     paneles.forEach((panel) => {
         if (panel.id === "panel-" + nombreTab) {
@@ -2237,12 +2765,14 @@ function cambiarTabCultura(nombreTab) {
 }
 
 function navegarFiltroPlaylist(categoria) {
+    cambiarSuperBoveda("favoritos");
     cambiarTabMusica("playlists");
     filtrarPlaylists(categoria);
     cerrarMenu();
 }
 
 function navegarFiltroCancion(categoria) {
+    cambiarSuperBoveda("favoritos");
     cambiarTabMusica("canciones");
     const botonDestino = document.querySelector(`#filtrosCanciones .btn-filtro[data-filtro="${categoria}"]`);
     const ramaDestino = botonDestino ? botonDestino.dataset.ramaItem : "todos";
@@ -2251,6 +2781,7 @@ function navegarFiltroCancion(categoria) {
 }
 
 function navegarMusicboard(categoria) {
+    cambiarSuperBoveda("favoritos");
     cambiarTabMusica("musicboard");
     filtrarMusicboard(categoria);
     cerrarMenu();
@@ -2261,10 +2792,17 @@ function navegarTabCultura(nombreTab) {
     cerrarMenu();
 }
 
+function navegarPanteonHeroes(categoria) {
+    cambiarSuperBoveda("heroes");
+    filtrarHeroes(categoria);
+    cerrarMenu();
+}
+
 renderizarDev();
 renderizarEducan();
 renderizarArte();
 renderizarIdiomas();
+renderizarColeccion();
 renderizarHorarioSheets();
 renderizarBovedaPlaylists();
 renderizarBovedaCanciones();
@@ -2281,6 +2819,7 @@ filtrarDev("csharp-net");
 filtrarEducan("rehabilitacion");
 filtrarArte("poesia-barras");
 filtrarIdiomas("frances");
+filtrarColeccion("challenger-sueno");
 filtrarHorario("rutina-diaria");
 filtrarPlaylists("gaming-ps4");
 seleccionarRamaCanciones("bandas", "gorillaz");
@@ -2290,8 +2829,8 @@ filtrarPeliculas("sagas");
 filtrarSeries("drama");
 filtrarAnimes("shonen");
 filtrarLibros("terror");
-filtrar("accion");
-filtrarPokemon("dream-team");
+filtrar("sagas-legendarias");
+filtrarPokemon("titulares");
 
 const form = document.getElementById("contactForm");
 const nombreClienteInput = document.getElementById("nombreCliente");
@@ -2333,7 +2872,9 @@ const VOCABULARIO_VALIDO = new Set([
     "contacto", "llamar", "mensaje", "propuesta", "trabajo", "trabajar", "servicio", "servicios",
     "para", "con", "por", "como", "una", "uno", "del", "las", "los", "que", "mas", "sobre",
     "favor", "gracias", "saludos", "atento", "espero", "respuesta", "informacion", "detalles",
-    "implementar", "mejorar", "gestion", "ventas", "inventario", "control", "clientes", "usuarios"
+    "implementar", "mejorar", "gestion", "ventas", "inventario", "control", "clientes", "usuarios",
+    "microsoft", "google", "upds", "bolivia", "lapaz", "tech", "solutions", "srl", "juan", "perez",
+    "carlos", "maria", "luis", "ana", "jose", "diego", "fernando", "gabriel", "alejandro"
 ]);
 
 function normalizarPalabra(palabra) {
@@ -2379,11 +2920,11 @@ function esPalabraSinSentido(palabraCruda) {
 
 function validarTextoPropuesta(texto) {
     if (texto.length < 12) {
-        return { valido: false, error: "⚠️ Describe tu propuesta con al menos 12 caracteres." };
+        return { valido: false, error: "[!] Describe tu propuesta con al menos 12 caracteres." };
     }
     const tokens = texto.trim().split(/\s+/);
     if (tokens.length < 3) {
-        return { valido: false, error: "⚠️ Escribe al menos 3 palabras explicando lo que necesitas." };
+        return { valido: false, error: "[!] Escribe al menos 3 palabras explicando lo que necesitas." };
     }
 
     let palabrasConLetras = 0;
@@ -2404,22 +2945,215 @@ function validarTextoPropuesta(texto) {
     }
 
     if (palabrasConLetras < 3) {
-        return { valido: false, error: "❌ El mensaje debe contener palabras reales y no solo símbolos." };
+        return { valido: false, error: "[X] El mensaje debe contener palabras reales y no solo símbolos." };
     }
 
     if (palabrasSospechosas > 0) {
-        return { valido: false, error: "❌ Se detectó texto sin sentido o teclado aleatorio (ej. spam)." };
+        return { valido: false, error: "[X] Se detectó texto sin sentido o teclado aleatorio (ej. spam)." };
     }
 
     if (palabrasReconocidas === 0 && palabrasConLetras < 5) {
-        return { valido: false, error: "❌ Redacta una propuesta real comprensible en español." };
+        return { valido: false, error: "[X] Redacta una propuesta real comprensible en español." };
     }
 
     return { valido: true, error: "" };
 }
 
+function marcarEstadoCampo(inputEl, spanError, estado, mensajeError) {
+    if (!inputEl || !spanError) return;
+
+    if (estado === null) {
+        spanError.innerHTML = "";
+        inputEl.classList.remove("campo-invalido", "campo-valido");
+    } else if (estado === true) {
+        spanError.innerHTML = "";
+        inputEl.classList.remove("campo-invalido");
+        inputEl.classList.add("campo-valido");
+    } else {
+        spanError.innerHTML = mensajeError;
+        inputEl.classList.remove("campo-valido");
+        inputEl.classList.add("campo-invalido");
+    }
+}
+
+function validarCampoNombre(forzarObligatorio) {
+    const nombre = nombreClienteInput.value.trim();
+    if (nombre === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(nombreClienteInput, errorNombre, false, "[!] Campo obligatorio");
+        } else {
+            marcarEstadoCampo(nombreClienteInput, errorNombre, null, "");
+        }
+        return false;
+    }
+
+    const palabras = nombre.split(/\s+/);
+    let tieneSpam = false;
+    for (let i = 0; i < palabras.length; i++) {
+        if (esPalabraSinSentido(palabras[i])) {
+            tieneSpam = true;
+            break;
+        }
+    }
+
+    if (nombre.length < 3 || !/[a-zA-ZáéíóúÁÉÍÓÚñÑ]{2,}/.test(nombre) || tieneSpam) {
+        marcarEstadoCampo(nombreClienteInput, errorNombre, false, "[X] Ingresa un nombre o empresa real");
+        return false;
+    }
+
+    marcarEstadoCampo(nombreClienteInput, errorNombre, true, "");
+    return true;
+}
+
+function validarCampoCorreo(forzarObligatorio) {
+    const valorCorreo = correoInput.value.trim().toLowerCase();
+    if (valorCorreo === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(correoInput, errorCorreo, false, "[!] Campo obligatorio");
+        } else {
+            marcarEstadoCampo(correoInput, errorCorreo, null, "");
+        }
+        return false;
+    }
+
+    const regexCorreoGmail = /^[a-zA-Z0-9._%+-]{3,}@gmail\.com$/;
+    if (!regexCorreoGmail.test(valorCorreo)) {
+        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Debe ser un correo válido terminado en @gmail.com");
+        return false;
+    }
+
+    const usuarioLocal = valorCorreo.split("@")[0];
+    if (esPalabraSinSentido(usuarioLocal)) {
+        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Ingresa un correo @gmail.com real (sin texto aleatorio)");
+        return false;
+    }
+
+    marcarEstadoCampo(correoInput, errorCorreo, true, "");
+    return true;
+}
+
+function validarCampoTelefono(forzarObligatorio) {
+    const telefono = telefonoInput.value.trim();
+    if (telefono === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(telefonoInput, errorTelefono, false, "[!] Campo obligatorio");
+        } else {
+            marcarEstadoCampo(telefonoInput, errorTelefono, null, "");
+        }
+        return false;
+    }
+
+    const soloNumeros = /^\d{7,15}$/;
+    if (!soloNumeros.test(telefono)) {
+        marcarEstadoCampo(telefonoInput, errorTelefono, false, "[X] Solo dígitos numéricos (7 a 15 números, sin letras ni símbolos)");
+        return false;
+    }
+
+    if (/^(\d)\1{6,}$/.test(telefono)) {
+        marcarEstadoCampo(telefonoInput, errorTelefono, false, "[X] Ingresa un número de WhatsApp válido");
+        return false;
+    }
+
+    marcarEstadoCampo(telefonoInput, errorTelefono, true, "");
+    return true;
+}
+
+function validarCampoFecha(forzarObligatorio) {
+    const fecha = fechaReunionInput.value;
+    const fechaMinimaHoy = obtenerFechaHoyLocal();
+
+    if (fecha === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(fechaReunionInput, errorFecha, false, "[!] Selecciona una fecha");
+        } else {
+            marcarEstadoCampo(fechaReunionInput, errorFecha, null, "");
+        }
+        return false;
+    }
+
+    if (fecha < fechaMinimaHoy) {
+        marcarEstadoCampo(fechaReunionInput, errorFecha, false, "[X] No se permiten fechas pasadas");
+        return false;
+    }
+
+    marcarEstadoCampo(fechaReunionInput, errorFecha, true, "");
+    return true;
+}
+
+function validarCampoServicio(forzarObligatorio) {
+    const servicio = servicioInput.value;
+    if (servicio === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(servicioInput, errorServicio, false, "[!] Selecciona un servicio");
+        } else {
+            marcarEstadoCampo(servicioInput, errorServicio, null, "");
+        }
+        return false;
+    }
+
+    marcarEstadoCampo(servicioInput, errorServicio, true, "");
+    return true;
+}
+
+function validarCampoMensaje(forzarObligatorio) {
+    const mensaje = mensajeInput.value.trim();
+    if (mensaje === "") {
+        if (forzarObligatorio) {
+            marcarEstadoCampo(mensajeInput, errorMensaje, false, "[!] Escribe los detalles del trabajo");
+        } else {
+            marcarEstadoCampo(mensajeInput, errorMensaje, null, "");
+        }
+        return false;
+    }
+
+    const resultadoTexto = validarTextoPropuesta(mensaje);
+    if (!resultadoTexto.valido) {
+        marcarEstadoCampo(mensajeInput, errorMensaje, false, resultadoTexto.error);
+        return false;
+    }
+
+    marcarEstadoCampo(mensajeInput, errorMensaje, true, "");
+    return true;
+}
+
+nombreClienteInput.addEventListener("input", () => validarCampoNombre(false));
+nombreClienteInput.addEventListener("blur", () => validarCampoNombre(true));
+
+correoInput.addEventListener("input", () => validarCampoCorreo(false));
+correoInput.addEventListener("blur", () => validarCampoCorreo(true));
+
+telefonoInput.addEventListener("input", () => validarCampoTelefono(false));
+telefonoInput.addEventListener("blur", () => validarCampoTelefono(true));
+prefijoPaisInput.addEventListener("change", () => {
+    if (telefonoInput.value.trim() !== "") {
+        validarCampoTelefono(false);
+    }
+});
+
+fechaReunionInput.addEventListener("input", () => validarCampoFecha(false));
+fechaReunionInput.addEventListener("change", () => validarCampoFecha(true));
+fechaReunionInput.addEventListener("blur", () => validarCampoFecha(true));
+
+servicioInput.addEventListener("change", () => validarCampoServicio(true));
+servicioInput.addEventListener("blur", () => validarCampoServicio(true));
+
+mensajeInput.addEventListener("input", () => validarCampoMensaje(false));
+mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    alertaBox.innerHTML = "";
+
+    const vNombre = validarCampoNombre(true);
+    const vCorreo = validarCampoCorreo(true);
+    const vTelefono = validarCampoTelefono(true);
+    const vFecha = validarCampoFecha(true);
+    const vServicio = validarCampoServicio(true);
+    const vMensaje = validarCampoMensaje(true);
+
+    if (!vNombre || !vCorreo || !vTelefono || !vFecha || !vServicio || !vMensaje) {
+        return;
+    }
 
     const nombre = nombreClienteInput.value.trim();
     const valorCorreo = correoInput.value.trim().toLowerCase();
@@ -2427,77 +3161,11 @@ form.addEventListener("submit", (e) => {
     const telefono = telefonoInput.value.trim();
     const fecha = fechaReunionInput.value;
     const servicio = servicioInput.value;
-    const mensaje = mensajeInput.value.trim();
-
-    const regexCorreoGmail = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-    const soloNumeros = /^\d{7,15}$/;
     const fechaMinimaHoy = obtenerFechaHoyLocal();
-
-    errorNombre.innerHTML = "";
-    errorCorreo.innerHTML = "";
-    errorTelefono.innerHTML = "";
-    errorFecha.innerHTML = "";
-    errorServicio.innerHTML = "";
-    errorMensaje.innerHTML = "";
-    alertaBox.innerHTML = "";
-
-    let hayErrores = false;
-
-    if (nombre === "") {
-        errorNombre.innerHTML = "⚠️ Campo obligatorio";
-        hayErrores = true;
-    } else if (nombre.length < 3 || esPalabraSinSentido(nombre)) {
-        errorNombre.innerHTML = "❌ Ingresa un nombre o empresa real";
-        hayErrores = true;
-    }
-
-    if (valorCorreo === "") {
-        errorCorreo.innerHTML = "⚠️ Campo obligatorio";
-        hayErrores = true;
-    } else if (!regexCorreoGmail.test(valorCorreo)) {
-        errorCorreo.innerHTML = "❌ Debe ser un correo válido terminado en @gmail.com";
-        hayErrores = true;
-    }
-
-    if (telefono === "") {
-        errorTelefono.innerHTML = "⚠️ Campo obligatorio";
-        hayErrores = true;
-    } else if (!soloNumeros.test(telefono)) {
-        errorTelefono.innerHTML = "❌ Solo dígitos numéricos (7 a 15 números, sin letras ni símbolos)";
-        hayErrores = true;
-    }
-
-    if (fecha === "") {
-        errorFecha.innerHTML = "⚠️ Selecciona una fecha";
-        hayErrores = true;
-    } else if (fecha < fechaMinimaHoy) {
-        errorFecha.innerHTML = "❌ No se permiten fechas pasadas";
-        hayErrores = true;
-    }
-
-    if (servicio === "") {
-        errorServicio.innerHTML = "⚠️ Selecciona un servicio";
-        hayErrores = true;
-    }
-
-    if (mensaje === "") {
-        errorMensaje.innerHTML = "⚠️ Escribe los detalles del trabajo";
-        hayErrores = true;
-    } else {
-        const resultadoTexto = validarTextoPropuesta(mensaje);
-        if (!resultadoTexto.valido) {
-            errorMensaje.innerHTML = resultadoTexto.error;
-            hayErrores = true;
-        }
-    }
-
-    if (hayErrores) {
-        return;
-    }
 
     alertaBox.innerHTML = `
         <div class="alert alert-success mt-3 mb-0 border-success bg-transparent">
-            <p class="msg-exito mb-1">✅ ¡Propuesta enviada con éxito, ${nombre}!</p>
+            <p class="msg-exito mb-1"><i class="bi bi-check-circle-fill me-1"></i>¡Propuesta enviada con éxito, ${nombre}!</p>
             <small class="texto-subtitulo d-block">
                 Reunión agendada para el <strong>${fecha}</strong> por el servicio de <em>${servicio}</em>.<br>
                 Te contactaremos a tu WhatsApp <strong>${prefijo} ${telefono}</strong> y al correo <strong>${valorCorreo}</strong>.
@@ -2507,4 +3175,10 @@ form.addEventListener("submit", (e) => {
 
     form.reset();
     fechaReunionInput.setAttribute("min", fechaMinimaHoy);
+    marcarEstadoCampo(nombreClienteInput, errorNombre, null, "");
+    marcarEstadoCampo(correoInput, errorCorreo, null, "");
+    marcarEstadoCampo(telefonoInput, errorTelefono, null, "");
+    marcarEstadoCampo(fechaReunionInput, errorFecha, null, "");
+    marcarEstadoCampo(servicioInput, errorServicio, null, "");
+    marcarEstadoCampo(mensajeInput, errorMensaje, null, "");
 });
