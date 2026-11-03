@@ -95,6 +95,9 @@
                         </h6>
                         <ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
+                                    onclick="navegarDobleSeleccion('todos')"><i
+                                        class="bi bi-ui-checks me-2 texto-verde"></i>Doble Selección (DOM: Género y Artistas)</a></li>
+                            <li class="nav-item"><a class="nav-link enlace-menu" href="#favoritos"
                                     onclick="navegarFiltroCancion('gorillaz')"><i
                                         class="bi bi-music-note-beamed me-2 texto-morado"></i>Gorillaz & Twenty One
                                     Pilots</a></li>
@@ -639,7 +642,7 @@
                             <i class="bi bi-music-note-list me-1"></i>Mis Playlists Spotify (155)
                         </button>
                         <button type="button" class="btn btn-tab-cultura" data-tab-musica="canciones" onclick="cambiarTabMusica('canciones')">
-                            <i class="bi bi-disc me-1"></i>Discografías, Trap & OSTs (387)
+                            <i class="bi bi-disc me-1"></i>Discografías, Trap & OSTs (391)
                         </button>
                         <button type="button" class="btn btn-tab-cultura" data-tab-musica="musicboard" onclick="cambiarTabMusica('musicboard')">
                             <i class="bi bi-star-fill me-1"></i>Reseñas Musicboard (30)
@@ -673,6 +676,23 @@
                 </div>
 
                 <div id="bloque-canciones" class="panel-musica" style="display: none;">
+                    <div class="caja-filtros-toolbar d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3 p-2" id="toolbarDobleSeleccion">
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge barra-verde text-dark fw-bold"><i class="bi bi-ui-checks me-1"></i>Doble Selección (DOM):</span>
+                            <select id="selectGeneroMusical" class="form-select form-select-sm input-tematico" style="width: auto; min-width: 210px;" onchange="alCambiarGeneroMusical(this.value)">
+                                <option value="todos">Todos los Géneros</option>
+                                <option value="rock-alt">Rock / Alternativo</option>
+                                <option value="rap-trap">Rap / Trap</option>
+                                <option value="pop-indie">Pop / Indie</option>
+                                <option value="soundtracks">OSTs Videojuegos</option>
+                            </select>
+                            <select id="selectArtistaMusical" class="form-select form-select-sm input-tematico" style="width: auto; min-width: 200px;" onchange="alCambiarArtistaMusical(this.value)">
+                                <option value="todos">Todos los Artistas (Catálogo Completo)</option>
+                            </select>
+                        </div>
+                        <span id="contadorDobleSeleccion" class="small texto-subtitulo">Filtrado dinámico del catálogo musical</span>
+                    </div>
+
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                         <div class="caja-filtros-toolbar flex-grow-1" id="ramasCanciones">
                             <button type="button" class="btn btn-tab-cultura activo" data-rama="bandas" onclick="seleccionarRamaCanciones('bandas')">
@@ -685,7 +705,7 @@
                                 <i class="bi bi-controller me-1"></i>OSTs Videojuegos (5)
                             </button>
                             <button type="button" class="btn btn-tab-cultura" data-rama="todos" onclick="seleccionarRamaCanciones('todos')">
-                                <i class="bi bi-collection-play me-1"></i>Archivo Total (387)
+                                <i class="bi bi-collection-play me-1"></i>Archivo Total (391)
                             </button>
                         </div>
                         <span id="contadorCanciones" class="badge barra-verde text-dark">0 Temas / Álbumes</span>
@@ -721,7 +741,7 @@
                         <button type="button" class="btn btn-filtro" data-rama-item="osts" data-filtro="fifa-fc"
                             onclick="filtrarCanciones('fifa-fc')" style="display: none;"><i class="bi bi-trophy me-1"></i>OST FIFA 23 - EA FC 27</button>
                         <button type="button" class="btn btn-filtro" data-rama-item="todos" data-filtro="todos"
-                            onclick="filtrarCanciones('todos')" style="display: none;"><i class="bi bi-grid-fill me-1"></i>Ver Todo el Archivo (387)</button>
+                            onclick="filtrarCanciones('todos')" style="display: none;"><i class="bi bi-grid-fill me-1"></i>Ver Todo el Archivo (391)</button>
                     </div>
 
                     <div class="boveda-scroll">

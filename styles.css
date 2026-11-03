@@ -34,8 +34,10 @@ h6,
 }
 
 .navbar {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.95);
     border-bottom: 3px solid #7e22ce;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -321,8 +323,10 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background-color: #130f1e;
+    background-color: rgba(19, 15, 30, 0.94);
     border-bottom: 3px solid #a855f7;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 body.dark-mode .enlace-menu,
@@ -1144,17 +1148,23 @@ body.dark-mode .card-titular-mini:hover {
 
 .grid-pokemon-vgc {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-pokemon-vgc {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     background-color: #f8fafc;
     color: #0f172a;
     border: 1px solid #cbd5e1;
     border-left: 4px solid #7e22ce;
     border-radius: 14px;
-    padding: 16px;
+    padding: 14px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1210,21 +1220,33 @@ body.dark-mode .sprite-vgc-box {
 }
 
 .grid-moveset-vgc {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
     margin-top: 10px;
 }
 
 .move-pill-vgc {
+    box-sizing: border-box;
+    flex: 1 1 calc(50% - 6px);
+    min-width: 120px;
+    max-width: 100%;
     background-color: #e2e8f0;
     color: #0f172a;
     border: 1px solid #cbd5e1;
     border-left: 3px solid #7e22ce;
     border-radius: 6px;
-    padding: 5px 8px;
-    font-size: 0.78rem;
+    padding: 4px 6px;
+    font-size: 0.73rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 body.dark-mode .move-pill-vgc {
@@ -1235,14 +1257,21 @@ body.dark-mode .move-pill-vgc {
 }
 
 .badge-mecanica-activa {
-    display: inline-block;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     background-color: rgba(168, 85, 247, 0.18);
     color: #7e22ce;
     border: 1px solid #7e22ce;
     border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 0.76rem;
+    padding: 6px 10px;
+    font-size: 0.72rem;
     font-weight: 700;
+    line-height: 1.35;
 }
 
 body.dark-mode .badge-mecanica-activa {
@@ -1252,14 +1281,21 @@ body.dark-mode .badge-mecanica-activa {
 }
 
 .badge-mecanica-estandar {
-    display: inline-block;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
     background-color: rgba(148, 163, 184, 0.12);
     color: #64748b;
     border: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 0.75rem;
+    padding: 6px 10px;
+    font-size: 0.72rem;
     font-weight: 600;
+    line-height: 1.35;
 }
 
 body.dark-mode .badge-mecanica-estandar {

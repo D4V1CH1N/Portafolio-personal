@@ -255,6 +255,11 @@ const ETIQUETAS_VIBRA = {
 };
 
 const CANCIONES_Y_DISCOS = [
+    ["seleccion-top", "Canserbero", "Jeremías 17:5", "Rap Conciencia (Muerte - 2012)", URL_SPOTIFY_SEARCH + "Canserbero%20Jeremias%2017%205"],
+    ["seleccion-top", "Canserbero", "Es Épico", "Rap Conciencia (Muerte - 2012)", URL_SPOTIFY_SEARCH + "Canserbero%20Es%20Epico"],
+    ["seleccion-top", "Canserbero", "Pensando en Ti", "Rap Romántico / Conciencia (Vida - 2010)", URL_SPOTIFY_SEARCH + "Canserbero%20Pensando%20En%20Ti"],
+    ["seleccion-top", "Canserbero", "Maquiavélico", "Rap Poético (Muerte - 2012)", URL_SPOTIFY_SEARCH + "Canserbero%20Maquiavelico"],
+
     ["gorillaz", "Gorillaz", "Gorillaz (Álbum Debut - 2001)", "Álbum Estudio", URL_SPOTIFY_SEARCH + "Gorillaz%20Album%202001%20Gorillaz"],
     ["gorillaz", "Gorillaz", "G-Sides (B-Sides - 2002)", "Álbum Compilatorio", URL_SPOTIFY_SEARCH + "G-Sides%20Gorillaz"],
     ["gorillaz", "Gorillaz", "Demon Days (Álbum - 2005)", "Álbum Estudio", URL_SPOTIFY_SEARCH + "Demon%20Days%20Gorillaz"],
@@ -1219,7 +1224,7 @@ function renderizarBovedaCanciones() {
         const urlDestino = linkSpotify(titulo + " " + artista, urlFija);
 
         html += `
-            <div class="item-dom-card card-cancion card-musica" data-categoria="${categoria}">
+            <div class="item-dom-card card-cancion card-musica" data-categoria="${categoria}" data-artista="${artista}">
                 <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
                     <span class="badge barra-verde text-dark badge-compacto">${detalle}</span>
                     <a href="${urlDestino}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
@@ -2117,19 +2122,19 @@ function renderizarPokemon() {
 
         html += `
             <div class="card-pokemon-vgc card-pokemon ${claseTitular}" data-categoria="${categoria}">
-                <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
-                    <div class="d-flex align-items-center gap-3">
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2 w-100 flex-wrap">
+                    <div class="d-flex align-items-center gap-2 flex-grow-1" style="min-width: 0;">
                         <div class="sprite-vgc-box">
                             <img src="${urlSprite}" alt="${nombre}" class="sprite-vgc" loading="lazy">
                         </div>
-                        <div>
+                        <div style="min-width: 0; overflow: hidden;">
                             <div class="d-flex flex-wrap align-items-center gap-1 mb-1">
                                 ${htmlBadgeRegion}
                                 <span class="badge barra-verde text-dark badge-compacto">#${id} | ${tipos}</span>
                                 ${htmlBadgeTitular}
                             </div>
-                            <h5 class="mb-0 fw-bold">${nombre}</h5>
-                            <small class="texto-morado fw-bold d-block">@ ${objeto}</small>
+                            <h5 class="mb-0 fw-bold text-truncate">${nombre}</h5>
+                            <small class="texto-morado fw-bold d-block text-truncate">@ ${objeto}</small>
                         </div>
                     </div>
                     <a href="${urlDex}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
@@ -2143,13 +2148,13 @@ function renderizarPokemon() {
                 </div>
 
                 <div class="grid-moveset-vgc">
-                    <div class="move-pill-vgc"><span class="badge-move-slot">M1</span>${movimientos[0]}</div>
-                    <div class="move-pill-vgc"><span class="badge-move-slot">M2</span>${movimientos[1]}</div>
-                    <div class="move-pill-vgc"><span class="badge-move-slot">M3</span>${movimientos[2]}</div>
-                    <div class="move-pill-vgc"><span class="badge-move-slot">M4</span>${movimientos[3]}</div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M1</span><span>${movimientos[0]}</span></div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M2</span><span>${movimientos[1]}</span></div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M3</span><span>${movimientos[2]}</span></div>
+                    <div class="move-pill-vgc"><span class="badge-move-slot">M4</span><span>${movimientos[3]}</span></div>
                 </div>
 
-                <div class="mt-3">
+                <div class="mt-3 w-100" style="overflow: hidden;">
                     ${htmlMecanica}
                 </div>
                 ${htmlRolTitular}
@@ -2362,6 +2367,12 @@ function cambiarTabMusica(nombreTab) {
             btn.classList.remove("activo");
         }
     });
+}
+
+function navegarTabMusica(nombreTab) {
+    cerrarMenu();
+    cambiarSuperBoveda("musica");
+    cambiarTabMusica(nombreTab);
 }
 
 function seleccionarRamaCanciones(rama, filtroEspecifico) {
@@ -2798,6 +2809,232 @@ function navegarPanteonHeroes(categoria) {
     cerrarMenu();
 }
 
+const ARTISTAS_POR_GENERO = {
+    todos: [
+        { valor: "todos", etiqueta: "Todos los Artistas (Catálogo Completo)" },
+        { valor: "gorillaz", etiqueta: "Gorillaz" },
+        { valor: "twenty-one-pilots", etiqueta: "Twenty One Pilots" },
+        { valor: "zoe", etiqueta: "Zoé" },
+        { valor: "duki", etiqueta: "Duki" },
+        { valor: "ysy-a", etiqueta: "Ysy A" },
+        { valor: "cro", etiqueta: "C.R.O" },
+        { valor: "neo-pistea", etiqueta: "Neo Pistea" },
+        { valor: "khea", etiqueta: "Khea" },
+        { valor: "ecko", etiqueta: "Ecko" },
+        { valor: "paulo-londra", etiqueta: "Paulo Londra" },
+        { valor: "lytos", etiqueta: "Lytos" },
+        { valor: "crazy-point", etiqueta: "Crazy Point" },
+        { valor: "canserbero", etiqueta: "Canserbero" },
+        { valor: "oliver-tree", etiqueta: "Oliver Tree" },
+        { valor: "melanie-martinez", etiqueta: "Melanie Martinez" },
+        { valor: "flatout2", etiqueta: "OST FlatOut 2" },
+        { valor: "gh3", etiqueta: "OST Guitar Hero 3" },
+        { valor: "nfs-carbon", etiqueta: "OST Need for Speed Carbon" },
+        { valor: "thps3", etiqueta: "OST Tony Hawk's Pro Skater 3" },
+        { valor: "fifa-fc", etiqueta: "OST EA Sports FIFA / FC" }
+    ],
+    "rock-alt": [
+        { valor: "todos-rock", etiqueta: "Todo Rock / Alt" },
+        { valor: "gorillaz", etiqueta: "Gorillaz" },
+        { valor: "twenty-one-pilots", etiqueta: "Twenty One Pilots" },
+        { valor: "zoe", etiqueta: "Zoé" },
+        { valor: "audioslave", etiqueta: "Audioslave" },
+        { valor: "metallica", etiqueta: "Metallica" },
+        { valor: "guns-roses", etiqueta: "Guns N' Roses" },
+        { valor: "rise-against", etiqueta: "Rise Against" },
+        { valor: "fall-out-boy", etiqueta: "Fall Out Boy" },
+        { valor: "papa-roach", etiqueta: "Papa Roach" },
+        { valor: "nickelback", etiqueta: "Nickelback" },
+        { valor: "the-killers", etiqueta: "The Killers" },
+        { valor: "the-strokes", etiqueta: "The Strokes" },
+        { valor: "muse", etiqueta: "Muse" },
+        { valor: "red-hot", etiqueta: "Red Hot Chili Peppers" }
+    ],
+    "rap-trap": [
+        { valor: "todos-trap", etiqueta: "Todo Rap / Trap" },
+        { valor: "duki", etiqueta: "Duki" },
+        { valor: "canserbero", etiqueta: "Canserbero" },
+        { valor: "lytos", etiqueta: "Lytos" },
+        { valor: "crazy-point", etiqueta: "Crazy Point" },
+        { valor: "ysy-a", etiqueta: "Ysy A" },
+        { valor: "cro", etiqueta: "C.R.O" },
+        { valor: "neo-pistea", etiqueta: "Neo Pistea" },
+        { valor: "khea", etiqueta: "Khea" },
+        { valor: "ecko", etiqueta: "Ecko" },
+        { valor: "paulo-londra", etiqueta: "Paulo Londra" },
+        { valor: "kendrick-lamar", etiqueta: "Kendrick Lamar" },
+        { valor: "milo-j", etiqueta: "Milo J" },
+        { valor: "alcolirykoz", etiqueta: "Alcolirykoz" },
+        { valor: "suicideboys", etiqueta: "$uicideboy$" }
+    ],
+    "pop-indie": [
+        { valor: "todos-pop", etiqueta: "Todo Pop / Indie" },
+        { valor: "oliver-tree", etiqueta: "Oliver Tree" },
+        { valor: "melanie-martinez", etiqueta: "Melanie Martinez" },
+        { valor: "billie-eilish", etiqueta: "Billie Eilish" },
+        { valor: "glass-animals", etiqueta: "Glass Animals" },
+        { valor: "charli-xcx", etiqueta: "Charli xcx" },
+        { valor: "joji", etiqueta: "Joji" },
+        { valor: "dominic-fike", etiqueta: "Dominic Fike" },
+        { valor: "stromae", etiqueta: "Stromae" }
+    ],
+    soundtracks: [
+        { valor: "todos-ost", etiqueta: "Todos los Soundtracks" },
+        { valor: "flatout2", etiqueta: "OST FlatOut 2" },
+        { valor: "gh3", etiqueta: "OST Guitar Hero 3" },
+        { valor: "nfs-carbon", etiqueta: "OST Need for Speed Carbon" },
+        { valor: "thps3", etiqueta: "OST Tony Hawk's Pro Skater 3" },
+        { valor: "fifa-fc", etiqueta: "OST EA Sports FIFA / FC" }
+    ]
+};
+
+function alCambiarGeneroMusical(generoKey, activarTab = true) {
+    const selectArtista = document.getElementById("selectArtistaMusical");
+    const lista = ARTISTAS_POR_GENERO[generoKey] || ARTISTAS_POR_GENERO.todos;
+    if (selectArtista) {
+        let html = "";
+        lista.forEach((item, index) => {
+            html += `<option value="${item.valor}" ${index === 0 ? "selected" : ""}>${item.etiqueta}</option>`;
+        });
+        selectArtista.innerHTML = html;
+    }
+    const valorInicial = lista[0].valor;
+    ejecutarFiltroDobleSeleccion(valorInicial, activarTab);
+}
+
+function alCambiarArtistaMusical(artistaKey) {
+    ejecutarFiltroDobleSeleccion(artistaKey, true);
+}
+
+function ejecutarFiltroDobleSeleccion(claveFiltro, activarTab = true) {
+    if (activarTab) {
+        cambiarTabMusica("canciones");
+    }
+    const tarjetas = document.querySelectorAll(".card-cancion");
+    let visibles = 0;
+
+    tarjetas.forEach((card) => {
+        const cat = (card.dataset.categoria || "").toLowerCase();
+        const art = (card.dataset.artista || "").toLowerCase();
+        let coincide = false;
+
+        if (claveFiltro === "todos") {
+            coincide = true;
+        } else if (claveFiltro === "todos-rock") {
+            coincide = cat.indexOf("gorillaz") !== -1 || cat.indexOf("twenty-one-pilots") !== -1 || cat.indexOf("zoe") !== -1 || cat.indexOf("flatout2") !== -1 || cat.indexOf("gh3") !== -1 || cat.indexOf("thps3") !== -1;
+        } else if (claveFiltro === "todos-trap") {
+            coincide = cat.indexOf("trap-argentino") !== -1 || cat.indexOf("lytos") !== -1 || cat.indexOf("crazy-point") !== -1 || cat.indexOf("seleccion-top") !== -1;
+        } else if (claveFiltro === "todos-pop") {
+            coincide = cat.indexOf("oliver-tree") !== -1 || cat.indexOf("melanie-martinez") !== -1 || cat.indexOf("fifa-fc") !== -1;
+        } else if (claveFiltro === "todos-ost") {
+            coincide = cat.indexOf("flatout2") !== -1 || cat.indexOf("gh3") !== -1 || cat.indexOf("nfs-carbon") !== -1 || cat.indexOf("thps3") !== -1 || cat.indexOf("fifa-fc") !== -1;
+        } else if (claveFiltro === "gorillaz") {
+            coincide = cat.indexOf("gorillaz") !== -1 || art.indexOf("gorillaz") !== -1;
+        } else if (claveFiltro === "twenty-one-pilots") {
+            coincide = cat.indexOf("twenty-one-pilots") !== -1 || art.indexOf("twenty one pilots") !== -1;
+        } else if (claveFiltro === "zoe") {
+            coincide = cat.indexOf("zoe") !== -1 || art.indexOf("zo") !== -1;
+        } else if (claveFiltro === "duki") {
+            coincide = art.indexOf("duki") !== -1;
+        } else if (claveFiltro === "canserbero") {
+            coincide = art.indexOf("canserbero") !== -1;
+        } else if (claveFiltro === "lytos") {
+            coincide = cat.indexOf("lytos") !== -1 || art.indexOf("lytos") !== -1;
+        } else if (claveFiltro === "crazy-point") {
+            coincide = cat.indexOf("crazy-point") !== -1 || art.indexOf("crazy point") !== -1;
+        } else if (claveFiltro === "ysy-a") {
+            coincide = art.indexOf("ysy a") !== -1;
+        } else if (claveFiltro === "cro") {
+            coincide = art.indexOf("c.r.o") !== -1;
+        } else if (claveFiltro === "neo-pistea") {
+            coincide = art.indexOf("neo pistea") !== -1;
+        } else if (claveFiltro === "khea") {
+            coincide = art.indexOf("khea") !== -1;
+        } else if (claveFiltro === "ecko") {
+            coincide = art.indexOf("ecko") !== -1;
+        } else if (claveFiltro === "paulo-londra") {
+            coincide = art.indexOf("paulo londra") !== -1;
+        } else if (claveFiltro === "kendrick-lamar") {
+            coincide = art.indexOf("kendrick lamar") !== -1;
+        } else if (claveFiltro === "milo-j") {
+            coincide = art.indexOf("milo j") !== -1;
+        } else if (claveFiltro === "alcolirykoz") {
+            coincide = art.indexOf("alcolirykoz") !== -1;
+        } else if (claveFiltro === "suicideboys") {
+            coincide = art.indexOf("$uicideboy$") !== -1;
+        } else if (claveFiltro === "oliver-tree") {
+            coincide = cat.indexOf("oliver-tree") !== -1 || art.indexOf("oliver tree") !== -1;
+        } else if (claveFiltro === "melanie-martinez") {
+            coincide = cat.indexOf("melanie-martinez") !== -1 || art.indexOf("melanie martinez") !== -1;
+        } else if (claveFiltro === "billie-eilish") {
+            coincide = art.indexOf("billie eilish") !== -1;
+        } else if (claveFiltro === "glass-animals") {
+            coincide = art.indexOf("glass animals") !== -1;
+        } else if (claveFiltro === "charli-xcx") {
+            coincide = art.indexOf("charli xcx") !== -1;
+        } else if (claveFiltro === "joji") {
+            coincide = art.indexOf("joji") !== -1;
+        } else if (claveFiltro === "dominic-fike") {
+            coincide = art.indexOf("dominic fike") !== -1;
+        } else if (claveFiltro === "stromae") {
+            coincide = art.indexOf("stromae") !== -1;
+        } else if (claveFiltro === "audioslave") {
+            coincide = art.indexOf("audioslave") !== -1;
+        } else if (claveFiltro === "metallica") {
+            coincide = art.indexOf("metallica") !== -1;
+        } else if (claveFiltro === "guns-roses") {
+            coincide = art.indexOf("guns n' roses") !== -1 || art.indexOf("guns") !== -1;
+        } else if (claveFiltro === "rise-against") {
+            coincide = art.indexOf("rise against") !== -1;
+        } else if (claveFiltro === "fall-out-boy") {
+            coincide = art.indexOf("fall out boy") !== -1;
+        } else if (claveFiltro === "papa-roach") {
+            coincide = art.indexOf("papa roach") !== -1;
+        } else if (claveFiltro === "nickelback") {
+            coincide = art.indexOf("nickelback") !== -1;
+        } else if (claveFiltro === "the-killers") {
+            coincide = art.indexOf("the killers") !== -1;
+        } else if (claveFiltro === "the-strokes") {
+            coincide = art.indexOf("the strokes") !== -1;
+        } else if (claveFiltro === "muse") {
+            coincide = art.indexOf("muse") !== -1;
+        } else if (claveFiltro === "red-hot") {
+            coincide = art.indexOf("red hot chili peppers") !== -1;
+        } else if (claveFiltro === "flatout2" || claveFiltro === "gh3" || claveFiltro === "nfs-carbon" || claveFiltro === "thps3" || claveFiltro === "fifa-fc") {
+            coincide = cat.indexOf(claveFiltro) !== -1;
+        } else {
+            coincide = art.indexOf(claveFiltro.toLowerCase()) !== -1 || cat.indexOf(claveFiltro.toLowerCase()) !== -1;
+        }
+
+        if (coincide) {
+            card.style.display = "block";
+            visibles++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    const contador = document.getElementById("contadorDobleSeleccion");
+    if (contador) {
+        contador.textContent = visibles + " canciones filtradas en el catálogo";
+    }
+    const contadorGeneral = document.getElementById("contadorCanciones");
+    if (contadorGeneral) {
+        contadorGeneral.textContent = visibles + " / " + CANCIONES_Y_DISCOS.length + " Canciones";
+    }
+}
+
+function navegarDobleSeleccion(generoKey) {
+    cerrarMenu();
+    cambiarSuperBoveda("favoritos");
+    cambiarTabMusica("canciones");
+    const selectGen = document.getElementById("selectGeneroMusical");
+    if (selectGen) {
+        selectGen.value = generoKey || "todos";
+        alCambiarGeneroMusical(generoKey || "todos");
+    }
+}
+
 renderizarDev();
 renderizarEducan();
 renderizarArte();
@@ -2831,6 +3068,8 @@ filtrarAnimes("shonen");
 filtrarLibros("terror");
 filtrar("sagas-legendarias");
 filtrarPokemon("titulares");
+alCambiarGeneroMusical("todos", false);
+cambiarTabMusica("playlists");
 
 const form = document.getElementById("contactForm");
 const nombreClienteInput = document.getElementById("nombreCliente");
