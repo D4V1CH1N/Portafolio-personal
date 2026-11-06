@@ -1,43 +1,692 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina sencilla - Laboratorio Subcarpetas</title>
+    <title>LevelUp Arcade Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <div align="center">
-        <h1>Gorillaz</h1>
-        
-        <p style="max-width: 700px; text-align: justify;">
-            Gorillaz es una aclamada banda virtual británica creada en 1998 por el músico Damon Albarn y el artista de cómics Jamie Hewlett. El grupo está compuesto por cuatro integrantes ficticios: <strong>2-D, Murdoc Niccals, Noodle y Russel Hobbs</strong>.
-        </p>
-        
-        <br>
-        <img src="https://imgs.search.brave.com/54O82WMQz2w09YR6x4avb4xxjSNvuPNYHtw7ZM_iQDE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wdXJv/ZGlzZW5vLmxhdC93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMi8w/NC9HT1JJTExBZZ0xMS5qcGc" alt="Miembros de la banda virtual Gorillaz" width="500">
-        <br><br>
+    <header id="encabezado">
+        <div class="logo">LevelUp Arcade Bar</div>
+        <span id="indicador-tema">Tema: General</span>
+        <button id="btn-menu">Menu</button>
+        <nav id="menu">
+            <a href="#servicios">Servicios</a>
+            <a href="#carrito-final">Carrito</a>
+            <button id="btn-tema">Modo claro</button>
+        </nav>
+    </header>
 
-        <p style="max-width: 700px; text-align: justify;">
-            Conocidos por su mezcla única de géneros como el rock alternativo, el hip hop, la electrónica y el pop, han lanzado álbumes icónicos como <em>Demon Days (2005)</em>, <em>Plastic Beach (2010)</em> y <em>Gorillaz (2001)</em>, redefiniendo el concepto de la música moderna y el arte visual.<br><br>
-            Hasta el año 2026 donde sacaron su último álbum de estudio titulado <em>The Mountain (2026)</em> el cual unió culturas de todo el mundo, teniendo influencia hindú, budista y hasta latina para combinar sonidos que nunca antes se habían escuchado en un solo álbum, siendo este un éxito rotundo en todo el mundo y llegando a ser el álbum más vendido de la banda hasta la fecha.
-        </p>
+    <main>
 
-        <br>
-        <img src="https://imgs.search.brave.com/UD7n2RTQE52r_67sTl3mr7vABGSaQHNVufn1uAjC_C4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/ZXZlcnktZ29yaWxs/YXotYWxidW0tY292/ZXItaW4tdGhlLXN0/eWxlLW9mLWV2ZXJ5/LWdvcmlsbGF6LXYw/LWl3c3AzcTR4anFx/YTEucG5nP3dpZHRo/PTY0MCZjcm9wPXNt/YXJ0JmF1dG89d2Vi/cCZzPWVmMzA0Y2Rj/OTc0Yzg5ZGFmNmE4/NTMzMmU4NTIxODg5/YTI1YTdkNDU" alt="Álbumes y arte de Gorillaz" width="400">
-        <br><br>
+        <section id="servicios">
+            <h2>Servicios</h2>
 
-        <p style="max-width: 700px; text-align: justify;">
-            Damon Albarn en entrevistas actuales dijo que Gorillaz no está cerca del retiro, mencionando a "herederos" para que sigan con el proyecto.
-        </p>
+            <div class="filtros">
+                <button class="btn-filtro activo" data-filtro="todos">Todos</button>
+                <button class="btn-filtro" data-filtro="consolas">Consolas</button>
+                <button class="btn-filtro" data-filtro="pcs">PCs</button>
+                <button class="btn-filtro" data-filtro="arcades">Arcades</button>
+                <button class="btn-filtro" data-filtro="comida">Comida</button>
+            </div>
 
-        <br>
-        <p>
-            <a href="https://www.youtube.com/watch?v=HyHNuVaZJ-k" target="_blank">
-                🎵 Ver video musical oficial de Gorillaz en YouTube
-            </a>
-        </p>
-    </div>
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="playstation"
+                data-nombre="PlayStation 5" data-precio="15">
+                <h3>PlayStation 5</h3>
+                <p class="precio">15 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Inventario: 15 consolas PlayStation 5</li>
+                        <li>SSD ultrarrápido de 825 GB</li>
+                        <li>Smart TV 4K de 55 pulgadas</li>
+                        <li>Controles DualSense</li>
+                        <li>Juegos: EA Sports FC, Mortal Kombat, Tekken</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-disponible" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="playstation"
+                data-nombre="PlayStation 4" data-precio="12">
+                <h3>PlayStation 4</h3>
+                <p class="precio">12 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola PlayStation 4 Slim de 1 TB</li>
+                        <li>Smart TV Full HD de 43 pulgadas</li>
+                        <li>Controles DualShock 4</li>
+                        <li>Juegos: FIFA, GTA V, God of War</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-uso" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="playstation"
+                data-nombre="PlayStation 3" data-precio="10">
+                <h3>PlayStation 3</h3>
+                <p class="precio">10 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola PlayStation 3 Super Slim</li>
+                        <li>Televisor de 32 pulgadas</li>
+                        <li>Controles DualShock 3</li>
+                        <li>Juegos: Uncharted, Gran Turismo 5, Pro Evolution Soccer</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-disponible" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="xbox"
+                data-nombre="Xbox Series X" data-precio="15">
+                <h3>Xbox Series X</h3>
+                <p class="precio">15 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Inventario: 20 consolas Xbox Series X</li>
+                        <li>1 TB de almacenamiento</li>
+                        <li>Smart TV 4K de 55 pulgadas</li>
+                        <li>Controles inalámbricos y Game Pass</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-reservado" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="xboxone" data-nombre="Xbox One" data-precio="13">
+                <h3>Xbox One</h3>
+                <p class="precio">13 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola Xbox One S de 1 TB</li>
+                        <li>Smart TV Full HD de 43 pulgadas</li>
+                        <li>Controles inalámbricos</li>
+                        <li>Juegos: Forza Horizon 4, Halo, Fortnite</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-disponible" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="xbox360" data-nombre="Xbox 360" data-precio="10">
+                <h3>Xbox 360</h3>
+                <p class="precio">10 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola Xbox 360 Slim de 250 GB</li>
+                        <li>Televisor de 32 pulgadas</li>
+                        <li>Controles inalámbricos</li>
+                        <li>Juegos: Halo 3, Gears of War, Kinect Sports</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-uso" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="switch" data-nombre="Nintendo Switch" data-precio="12">
+                <h3>Nintendo Switch</h3>
+                <p class="precio">12 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola Nintendo Switch conectada al dock</li>
+                        <li>Smart TV Full HD de 40 pulgadas</li>
+                        <li>Controles Joy-Con</li>
+                        <li>Juegos: Mario Kart 8 Deluxe, Super Smash Bros. Ultimate, Zelda</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-disponible" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="consolas" data-plataforma="switch2" data-nombre="Nintendo Switch 2" data-precio="18">
+                <h3>Nintendo Switch 2</h3>
+                <p class="precio">18 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Consola Nintendo Switch 2 conectada al dock</li>
+                        <li>Smart TV 4K de 50 pulgadas</li>
+                        <li>Controles Joy-Con 2</li>
+                        <li>Juegos: Mario Kart World, Donkey Kong Bananza</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-uso" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Controles</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 control">1 Control +0 Bs</option>
+                                    <option value="5" data-etiqueta="2 controles">2 Controles +5 Bs</option>
+                                    <option value="10" data-etiqueta="3 controles">3 Controles +10 Bs</option>
+                                    <option value="15" data-etiqueta="4 controles">4 Controles +15 Bs</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="pcs" data-plataforma="pc" data-nombre="PC Gamer RTX 4070"
+                data-precio="20">
+                <h3>PC Gamer Gama Alta - RTX 4070</h3>
+                <p class="precio">20 Bs/hora</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Inventario: 40 PCs Gamer de gama alta</li>
+                        <li>Tarjeta gráfica RTX 4070, Intel Core i7, 32 GB RAM</li>
+                        <li>Monitor de 144 Hz</li>
+                        <li>Teclado mecánico, mouse de 10000 DPI y audífonos</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-uso" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Jugadores</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 jugador">1 Jugador / Pase Estándar</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Jugadores</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 jugador">1 Jugador / Pase Estándar</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria filtrable" data-categoria="arcades" data-plataforma="arcade"
+                data-nombre="Arcade Clásica" data-precio="10">
+                <h3>Máquinas Arcade Clásicas</h3>
+                <p class="precio">10 Bs/hora libre</p>
+                <button class="accordion-btn">Ver Estaciones y Fichas Técnicas</button>
+                <div class="accordion-panel">
+                    <ul class="ficha">
+                        <li>Inventario: 20 máquinas Arcade clásicas</li>
+                        <li>Gabinete original con joystick y botones</li>
+                        <li>Más de 3000 juegos clásicos</li>
+                        <li>Títulos: King of Fighters, Pac-Man, Metal Slug</li>
+                    </ul>
+                    <div class="grilla-estaciones">
+                        <div class="estacion estado-disponible" data-numero="1">
+                            <h4>Estación #1</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Jugadores</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 jugador">1 Jugador / Pase Estándar</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                        <div class="estacion estado-uso" data-numero="2">
+                            <h4>Estación #2</h4>
+                            <span class="etiqueta-estado">En Uso</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-reservado" data-numero="3">
+                            <h4>Estación #3</h4>
+                            <span class="etiqueta-estado">Reservado</span>
+                            <p class="nota">No disponible para reservar</p>
+                        </div>
+                        <div class="estacion estado-disponible" data-numero="4">
+                            <h4>Estación #4</h4>
+                            <span class="etiqueta-estado">Disponible</span>
+                            <div class="config">
+                                <label>Jugadores</label>
+                                <select class="select-controles">
+                                    <option value="0" data-etiqueta="1 jugador">1 Jugador / Pase Estándar</option>
+                                </select>
+                                <label>Horas de uso</label>
+                                <input type="number" class="input-horas" min="1" max="8" value="1">
+                                <button class="btn-reservar-estacion">Añadir Reserva al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bloque-comida" class="filtrable" data-categoria="comida">
+                <h3>Menú de Snacks - Pedido desde tu Estación</h3>
+                <p class="contador-snacks">Snacks seleccionados: <span id="contador-snacks">0</span></p>
+                <div class="catalogo">
+                    <div class="card" data-nombre="Hamburguesa Doble LevelUp" data-precio="25">
+                        <h4>Hamburguesa Doble LevelUp</h4>
+                        <p class="precio">25 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Pizza Personal Pepperoni" data-precio="30">
+                        <h4>Pizza Personal Pepperoni</h4>
+                        <p class="precio">30 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Alitas BBQ x6" data-precio="28">
+                        <h4>Alitas BBQ x6</h4>
+                        <p class="precio">28 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Salchipapa Gamer" data-precio="20">
+                        <h4>Salchipapa</h4>
+                        <p class="precio">18 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Nachos con Queso" data-precio="18">
+                        <h4>Nachos con Queso</h4>
+                        <p class="precio">18 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Bebida Energética Monster" data-precio="15">
+                        <h4>Bebida Energética Monster</h4>
+                        <p class="precio">15 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                    <div class="card" data-nombre="Gaseosa 500ml" data-precio="10">
+                        <h4>Gaseosa 500ml</h4>
+                        <p class="precio">10 Bs</p>
+                        <button class="btn-pedir-snack">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="carrito-final">
+            <h2>Tu Carrito de Reserva y Snacks</h2>
+
+            <div class="panel-carrito">
+                <p>Ítems en el carrito: <span id="contador-items">0</span></p>
+                <ul id="lista-carrito"></ul>
+                <p class="total">Total a pagar: <span id="total-pagar">0</span> Bs</p>
+                <button id="btn-vaciar">Vaciar Carrito</button>
+
+                <form id="form-reserva">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Escribe tu nombre completo">
+
+                    <label for="tipo-orden">Tipo de orden</label>
+                    <select id="tipo-orden">
+                        <option value="Reserva de estación nueva">Reserva de estación nueva</option>
+                        <option value="Pedido de comida a mi estación actual">Pedido de comida a mi estación actual
+                        </option>
+                    </select>
+
+                    <button type="submit" id="btn-enviar">Confirmar y Enviar</button>
+                </form>
+
+                <div id="mensaje"></div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
