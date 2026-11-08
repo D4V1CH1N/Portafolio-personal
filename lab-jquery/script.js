@@ -284,7 +284,8 @@ $(document).ready(function () {
                 aplicarTemaFondo(temaFondo, tituloTema);
             }
         });
-        $('#menu-movil').slideUp('fast');
+        $('#btn-menu').removeClass('activo');
+        $('#menu-movil').removeClass('activo show').slideUp('fast');
     }
 
     function iniciarRelojPromo10Minutos() {
@@ -391,8 +392,9 @@ $(document).ready(function () {
     });
 
     $('#btn-menu').click(function () {
-        $('#menu-movil').slideToggle('fast');
-        registrarBitacora('MENU MOVIL', 'Despliegue de navegacion movil con slideToggle');
+        $(this).toggleClass('activo');
+        $('#menu-movil').toggleClass('activo show').stop(true, true).slideToggle('fast');
+        registrarBitacora('MENU MOVIL', 'Despliegue de navegacion movil con toggleClass y slideToggle');
     });
 
     $('#btn-like-lobby').click(function () {
@@ -452,6 +454,20 @@ $(document).ready(function () {
             $('.item-pc[data-gama="' + gama + '"]').fadeIn('fast');
         }
         registrarBitacora('FILTRO PC', 'Filtro de gama PC activado: ' + $(this).text());
+    });
+
+    $('.btn-filtro-snack').click(function () {
+        var categoria = $(this).attr('data-categoria');
+        $('.btn-filtro-snack').removeClass('activo');
+        $(this).addClass('activo');
+
+        if (categoria === 'todos') {
+            $('.card-snack').fadeIn('fast');
+        } else {
+            $('.card-snack').hide();
+            $('.card-snack[data-categoria="' + categoria + '"]').fadeIn('fast');
+        }
+        registrarBitacora('FILTRO SNACK', 'Categoria de snacks seleccionada: ' + $(this).text());
     });
 
     $(document).on('click', '.accordion-btn', function () {

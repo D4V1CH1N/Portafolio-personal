@@ -48,7 +48,11 @@
                     <span>Bs</span>
                 </div>
                 <button id="btn-tema" class="btn-hud-top" data-accion="Alternar Modo Noche / Claro">Modo Claro</button>
-                <button id="btn-menu" class="btn-hud-top" data-accion="Menu Movil">MENU</button>
+                <button id="btn-menu" class="btn-hud-top" data-accion="Menu Movil" aria-label="Menu Movil">
+                    <span class="linea-hamburguesa"></span>
+                    <span class="linea-hamburguesa"></span>
+                    <span class="linea-hamburguesa"></span>
+                </button>
             </div>
 
             <nav id="menu-movil">
@@ -539,7 +543,12 @@
                 <div class="barra-vista-interna">
                     <button class="btn-volver" data-accion="Volver al Lobby">&lt; Volver al Lobby</button>
                     <h2 class="titulo-vista">ARSENAL DE COMIDA Y SNACKS A TU PUESTO</h2>
-                    <span class="tarifa-tag">Entrega directa a tu Consola, PC o Gabinete Arcade</span>
+                    <div class="filtros-snacks">
+                        <button class="btn-filtro-snack activo" data-categoria="todos">Todos</button>
+                        <button class="btn-filtro-snack" data-categoria="comida">Comida</button>
+                        <button class="btn-filtro-snack" data-categoria="bebida">Bebidas</button>
+                        <button class="btn-filtro-snack" data-categoria="combo">Combos</button>
+                    </div>
                 </div>
 
                 <div class="contenedor-scroll-vista">
