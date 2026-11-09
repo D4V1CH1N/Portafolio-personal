@@ -3379,17 +3379,28 @@ if (mensajeInput) {
 }
 
 function initModoMovil() {
-    $('#deviceBadge').hide();
-    if (window.innerWidth <= 1024 || /Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        if ($('main > section.activa').length === 0) {
-            $('main > section').removeClass('activa');
-            $('#inicio').addClass('activa');
-        }
-    }
+    $('#deviceBadge').remove();
+    $('main > section').hide().removeClass('activa');
+    $('main > section').first().show().addClass('activa');
 }
 
 $(document).ready(function() {
-    initModoMovil();
+    if (window.innerWidth <= 1024 || /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        initModoMovil();
+    } else {
+        $('#deviceBadge').remove();
+        $('main > section').show();
+    }
+
+    $(window).on('resize', function() {
+        if (window.innerWidth <= 1024) {
+            if ($('main > section.activa').length === 0) {
+                initModoMovil();
+            }
+        } else {
+            $('main > section').show().removeClass('activa');
+        }
+    });
 
     $('#btn-menu-movil, #hamburgerBtn').click(function() { 
         $('#nav-links, #navMenu').slideToggle(300); 
@@ -3399,18 +3410,25 @@ $(document).ready(function() {
         $('body').toggleClass('dark-mode'); 
     });
 
-    $('.nav-btn').click(function(e) {
-        let idNuevaSeccion = $(this).attr('data-target') || ($(this).attr('href') ? $(this).attr('href').replace('#', '') : '');
-        if (!idNuevaSeccion || $('#' + idNuevaSeccion).length === 0) return;
+    $('.nav-btn, .nav-menu a, #navMenu a').click(function(e) {
         if (window.innerWidth <= 1024) {
-            e.preventDefault();
-            $('main > section.activa').fadeOut('fast', function() {
-                $(this).removeClass('activa');
-                $('#' + idNuevaSeccion).fadeIn('fast').addClass('activa');
-            });
-            $('.btn-subdivision').removeClass('activo');
-            $('.btn-subdivision[data-target="' + idNuevaSeccion + '"]').addClass('activo');
-            $('#nav-links, #navMenu').slideUp(300);
+            let target = $(this).attr('href') || ($(this).data('target') ? ('#' + $(this).data('target')) : '');
+            if (target === '#favoritos') {
+                target = '#boveda-central';
+            }
+            if (target === '#salon-pokemon') {
+                target = '#actividades';
+            }
+            if (target && target.startsWith('#') && $(target).length) {
+                e.preventDefault();
+                $('main > section.activa').fadeOut('fast', function() {
+                    $(this).removeClass('activa');
+                    $(target).fadeIn('fast').addClass('activa');
+                });
+                $('.btn-subdivision').removeClass('activo');
+                $('.btn-subdivision[data-target="' + target.replace('#', '') + '"]').addClass('activo');
+                $('#nav-links, .nav-menu, #navMenu').slideUp(300);
+            }
         }
     });
 

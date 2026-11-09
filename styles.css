@@ -1301,12 +1301,13 @@ body.dark-mode .badge-mecanica-estandar {
         margin: 0 !important;
     }
     main > section {
-        display: none !important;
+        display: none;
     }
     main > section.activa {
         display: block !important;
-        height: 85vh !important;
+        height: calc(100vh - 80px);
         overflow-y: auto !important;
+        padding-bottom: 30px;
     }
     .btn, .btn-toggle, .btn-burguer, .btn-subdivision, .nav-btn, .nav-menu ul li a {
         font-size: 16px !important;
