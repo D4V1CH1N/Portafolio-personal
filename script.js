@@ -1,41 +1,3 @@
-if (window.innerWidth < 768 || /Android|iPhone|iPad/i.test(navigator.userAgent)) { 
-    console.log("Modo PWA Activado"); 
-    initModoMovil(); 
-}
-
-function initModoMovil() {
-    $('body').addClass('modo-movil').css({
-        'overflow': 'hidden',
-        'height': '100vh'
-    });
-    $('main > section, header#inicio, footer#redes').hide();
-    $('#inicio').show();
-    let seccionActual = $('#inicio');
-
-    $('#navMenu a[href^="#"], a.enlace-menu, .navbar-brand').on('click', function(e) {
-        let destinoId = $(this).attr('href');
-        if (!destinoId || destinoId === '#') return;
-        let $destino = $(destinoId);
-        if ($destino.length) {
-            let $seccionDestino = $destino.is('section, header, footer') ? $destino : $destino.closest('section, header, footer');
-            if ($seccionDestino.length && !$seccionDestino.is(seccionActual)) {
-                e.preventDefault();
-                seccionActual.fadeOut('fast', function() {
-                    $seccionDestino.fadeIn('fast');
-                    seccionActual = $seccionDestino;
-                    if ($destino[0] !== $seccionDestino[0]) {
-                        $destino[0].scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            }
-        }
-        if ($('#navMenu').is(':visible')) {
-            $('#navMenu').slideToggle(300);
-            $('#hamburgerBtn, #burguerBtn').removeClass('open').attr('aria-expanded', 'false');
-        }
-    });
-}
-
 const PROTOCOLO_WEB = "https:" + "/" + "/";
 const URL_SPOTIFY_SEARCH = PROTOCOLO_WEB + "open.spotify.com/search/";
 const URL_SPOTIFY_PLAYLIST = PROTOCOLO_WEB + "open.spotify.com/playlist/";
@@ -79,31 +41,10 @@ try {
 } catch (err) {
 }
 
-$('#themeBtn').click(function() {
-    $('body').toggleClass('dark-mode');
-});
-
-$('#hamburgerBtn, #burguerBtn').click(function() {
-    $('#navMenu').slideToggle(300);
-    $(this).toggleClass('open');
-    let expandido = $(this).hasClass('open');
-    $(this).attr('aria-expanded', expandido ? 'true' : 'false');
-});
-
 function cerrarMenu() {
-    $('#navMenu').slideUp(300);
-    $('#hamburgerBtn, #burguerBtn').removeClass('open').attr('aria-expanded', 'false');
+    $('#nav-links, #navMenu').slideUp(300);
+    $('#btn-menu-movil, #hamburgerBtn').removeClass('open').attr('aria-expanded', 'false');
 }
-
-$('.btn-toggle, #hamburgerBtn').hover(
-    function() {
-        $(this).stop().animate({ opacity: 0.8 }, 200);
-    },
-    function() {
-        $(this).stop().animate({ opacity: 1 }, 200);
-    }
-);
-$('.navbar-brand').css({ opacity: 0.2 }).animate({ opacity: 1 }, 600);
 
 function linkSpotify(consulta, urlFija) {
     if (urlFija && urlFija.length > 0) {
@@ -3420,85 +3361,85 @@ servicioInput.addEventListener("blur", () => validarCampoServicio(true));
 mensajeInput.addEventListener("input", () => validarCampoMensaje(false));
 mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
 
-$('#contactForm').submit(function(e) {
-    e.preventDefault();
-    let valido = true;
-    let nombre = $('#nombreCliente').val().trim();
-    let correo = $('#correo').val().trim();
-    let telefono = $('#telefono').val().trim();
-    let fecha = $('#fechaReunion').val().trim();
-    let servicio = $('#servicio').val();
-    let mensaje = $('#mensaje').val().trim();
-    let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+$(document).ready(function() {
+    $('#btn-menu-movil, #hamburgerBtn').click(function() { 
+        $('#nav-links, #navMenu').slideToggle(300); 
+    });
 
-    if (nombre === '') {
-        $('#errorNombre').text('Nombre obligatorio').fadeIn();
-        valido = false;
-    } else {
-        $('#errorNombre').fadeOut();
-    }
+    $('#btn-theme, #themeBtn').click(function() { 
+        $('body').toggleClass('dark-mode'); 
+    });
 
-    if (correo === '') {
-        $('#errorCorreo').text('Correo obligatorio').fadeIn();
-        valido = false;
-    } else if (!regexCorreo.test(correo)) {
-        $('#errorCorreo').text('Correo electronico invalido').fadeIn();
-        valido = false;
-    } else {
-        $('#errorCorreo').fadeOut();
-    }
+    $('.nav-btn').click(function() {
+        if(window.innerWidth <= 1024) {
+            let idNuevaSeccion = $(this).attr('data-target') || ($(this).attr('href') ? $(this).attr('href').replace('#', '') : '');
+            if(!idNuevaSeccion || $('#' + idNuevaSeccion).length === 0) return;
+            $('main > section.activa').fadeOut('fast', function() {
+                $(this).removeClass('activa');
+                $('#' + idNuevaSeccion).fadeIn('fast').addClass('activa');
+            });
+            $('.btn-subdivision').removeClass('activo');
+            $('.btn-subdivision[data-target="' + idNuevaSeccion + '"]').addClass('activo');
+            $('#nav-links, #navMenu').slideUp(300);
+        }
+    });
 
-    if (telefono === '') {
-        $('#errorTelefono').text('Telefono obligatorio').fadeIn();
-        valido = false;
-    } else {
-        $('#errorTelefono').fadeOut();
-    }
+    $('.tarjeta-habilidad').hover(
+        function() { $(this).animate({ opacity: 0.7 }, 200); },
+        function() { $(this).animate({ opacity: 1 }, 200); }
+    );
 
-    if (fecha === '') {
-        $('#errorFecha').text('Fecha obligatoria').fadeIn();
-        valido = false;
-    } else {
-        $('#errorFecha').fadeOut();
-    }
+    $('#form-contacto, #contactForm').submit(function(e) {
+        e.preventDefault();
+        if($('#input-nombre').val() === '') { 
+            $('#error-nombre').fadeIn(); 
+            return; 
+        }
+        $('#error-nombre').fadeOut();
+        $('#alerta-exito, #successAlert').slideDown().delay(3000).slideUp();
+        this.reset();
+    });
 
-    if (!servicio || servicio === '') {
-        $('#errorServicio').text('Selecciona un servicio').fadeIn();
-        valido = false;
-    } else {
-        $('#errorServicio').fadeOut();
-    }
-
-    if (mensaje === '') {
-        $('#errorMensaje').text('Mensaje obligatorio').fadeIn();
-        valido = false;
-    } else {
-        $('#errorMensaje').fadeOut();
-    }
-
-    if (valido) {
-        $('#successAlert').slideDown().delay(3000).slideUp();
-        $('#contactForm')[0].reset();
-    }
-});
-
-let timerInactividad = setInterval(function() {
-    $('#inactivityModal').css('display', 'flex').hide().fadeIn('fast');
-    setTimeout(function() {
-        $('#inactivityModal').fadeOut('fast');
-    }, 4000);
-}, 30000);
-
-$(document).on('mousemove keydown click scroll touchstart', function() {
-    clearInterval(timerInactividad);
-    timerInactividad = setInterval(function() {
-        $('#inactivityModal').css('display', 'flex').hide().fadeIn('fast');
-        setTimeout(function() {
-            $('#inactivityModal').fadeOut('fast');
-        }, 4000);
+    let timerInactividad = setInterval(function() {
+        $('#modal-cv').fadeIn();
+        setTimeout(function() { $('#modal-cv').fadeOut(); }, 5000);
+        clearInterval(timerInactividad);
     }, 30000);
-});
 
-$('#btnCerrarInactividad').click(function() {
-    $('#inactivityModal').fadeOut('fast');
+    $('#cerrar-modal-cv, #btn-cerrar-modal-cv').click(function() {
+        $('#modal-cv').fadeOut();
+    });
+
+    $('#btnModalCV').click(function() {
+        $('#modal-cv').fadeIn();
+    });
+
+    $('#capa1').change(function() {
+        let valor = $(this).val();
+        let $capa2 = $('#capa2');
+        $capa2.html('<option value="">-- Seleccione opcion --</option>').prop('disabled', false);
+        if(valor === 'academico') {
+            $capa2.append('<option value="web2">Diseno Web II (SIS-0141)</option>');
+        } else if(valor === 'desarrollo') {
+            $capa2.append('<option value="pwa">Arquitectura PWA</option>');
+        } else {
+            $capa2.prop('disabled', true);
+            $('#resultadoFiltro').text('Seleccione las capas anteriores...');
+        }
+    });
+
+    $('#capa2').change(function() {
+        let seleccion = $(this).find('option:selected').text();
+        $('#resultadoFiltro').html(seleccion ? 'Capa 3: ' + seleccion : 'Seleccione las capas...');
+    });
+
+    let infoDispositivo = "Laptop / PC";
+    if(/Android/i.test(navigator.userAgent)) {
+        infoDispositivo = "Android Detectado - PWA";
+    } else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        infoDispositivo = "iOS Detectado - PWA";
+    } else if(window.innerWidth <= 1024) {
+        infoDispositivo = "Tablet / Movil - PWA";
+    }
+    $('#deviceBadge').text(infoDispositivo);
 });

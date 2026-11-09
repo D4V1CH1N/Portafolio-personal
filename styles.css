@@ -1263,26 +1263,33 @@ body.dark-mode .badge-mecanica-estandar {
     border-color: #3b2854;
 }
 
-body.modo-movil {
-    overflow: hidden !important;
-    height: 100vh !important;
+.modal-cv-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
-body.modo-movil main > section,
-body.modo-movil header#inicio,
-body.modo-movil footer#redes {
-    height: calc(100vh - 65px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-bottom: 50px;
-    -webkit-overflow-scrolling: touch;
+.modal-cv-box {
+    max-width: 440px;
+    width: 100%;
+    background: #0f172a;
+    border: 2px solid #7e22ce;
+    border-radius: 12px;
+    padding: 20px;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-    .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
+@media (max-width: 1024px) {
+    body, html { overflow: hidden !important; height: 100vh !important; }
+    main > section { display: none !important; }
+    main > section.activa { display: block !important; height: 85vh; overflow-y: auto !important; }
 }
