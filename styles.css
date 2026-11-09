@@ -1289,7 +1289,35 @@ body.dark-mode .badge-mecanica-estandar {
 }
 
 @media (max-width: 1024px) {
-    body, html { overflow: hidden !important; height: 100vh !important; }
-    main > section { display: none !important; }
-    main > section.activa { display: block !important; height: 85vh; overflow-y: auto !important; }
+    body, html {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+    .pwa-container, .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin: 0 !important;
+    }
+    main > section {
+        display: none !important;
+    }
+    main > section.activa {
+        display: block !important;
+        height: 85vh !important;
+        overflow-y: auto !important;
+    }
+    .btn, .btn-toggle, .btn-burguer, .btn-subdivision, .nav-btn, .nav-menu ul li a {
+        font-size: 16px !important;
+        padding: 12px !important;
+        min-height: 44px !important;
+    }
+    .pwa-subdivision-header {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .pwa-nav-pills {
+        flex-wrap: nowrap !important;
+    }
 }

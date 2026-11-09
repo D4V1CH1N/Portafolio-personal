@@ -3053,8 +3053,8 @@ filtrarPokemon("titulares");
 alCambiarGeneroMusical("todos", false);
 cambiarTabMusica("playlists");
 
-const form = document.getElementById("contactForm");
-const nombreClienteInput = document.getElementById("nombreCliente");
+const form = document.getElementById("form-contacto") || document.getElementById("contactForm");
+const nombreClienteInput = document.getElementById("input-nombre") || document.getElementById("nombreCliente");
 const correoInput = document.getElementById("correo");
 const prefijoPaisInput = document.getElementById("prefijoPais");
 const telefonoInput = document.getElementById("telefono");
@@ -3063,7 +3063,7 @@ const servicioInput = document.getElementById("servicio");
 const mensajeInput = document.getElementById("mensaje");
 const alertaBox = document.getElementById("alertaBox");
 
-const errorNombre = document.getElementById("errorNombre");
+const errorNombre = document.getElementById("error-nombre") || document.getElementById("errorNombre");
 const errorCorreo = document.getElementById("errorCorreo");
 const errorTelefono = document.getElementById("errorTelefono");
 const errorFecha = document.getElementById("errorFecha");
@@ -3079,7 +3079,9 @@ function obtenerFechaHoyLocal() {
 }
 
 const fechaActual = obtenerFechaHoyLocal();
-fechaReunionInput.setAttribute("min", fechaActual);
+if (fechaReunionInput) {
+    fechaReunionInput.setAttribute("min", fechaActual);
+}
 
 const VOCABULARIO_VALIDO = new Set([
     "hola", "buenos", "buenas", "dias", "tardes", "noches", "david", "chato", "estimado",
@@ -3337,31 +3339,58 @@ function validarCampoMensaje(forzarObligatorio) {
     return true;
 }
 
-nombreClienteInput.addEventListener("input", () => validarCampoNombre(false));
-nombreClienteInput.addEventListener("blur", () => validarCampoNombre(true));
+if (nombreClienteInput) {
+    nombreClienteInput.addEventListener("input", () => validarCampoNombre(false));
+    nombreClienteInput.addEventListener("blur", () => validarCampoNombre(true));
+}
 
-correoInput.addEventListener("input", () => validarCampoCorreo(false));
-correoInput.addEventListener("blur", () => validarCampoCorreo(true));
+if (correoInput) {
+    correoInput.addEventListener("input", () => validarCampoCorreo(false));
+    correoInput.addEventListener("blur", () => validarCampoCorreo(true));
+}
 
-telefonoInput.addEventListener("input", () => validarCampoTelefono(false));
-telefonoInput.addEventListener("blur", () => validarCampoTelefono(true));
-prefijoPaisInput.addEventListener("change", () => {
-    if (telefonoInput.value.trim() !== "") {
-        validarCampoTelefono(false);
+if (telefonoInput) {
+    telefonoInput.addEventListener("input", () => validarCampoTelefono(false));
+    telefonoInput.addEventListener("blur", () => validarCampoTelefono(true));
+}
+
+if (prefijoPaisInput) {
+    prefijoPaisInput.addEventListener("change", () => {
+        if (telefonoInput && telefonoInput.value.trim() !== "") {
+            validarCampoTelefono(false);
+        }
+    });
+}
+
+if (fechaReunionInput) {
+    fechaReunionInput.addEventListener("input", () => validarCampoFecha(false));
+    fechaReunionInput.addEventListener("change", () => validarCampoFecha(true));
+    fechaReunionInput.addEventListener("blur", () => validarCampoFecha(true));
+}
+
+if (servicioInput) {
+    servicioInput.addEventListener("change", () => validarCampoServicio(true));
+    servicioInput.addEventListener("blur", () => validarCampoServicio(true));
+}
+
+if (mensajeInput) {
+    mensajeInput.addEventListener("input", () => validarCampoMensaje(false));
+    mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
+}
+
+function initModoMovil() {
+    $('#deviceBadge').hide();
+    if (window.innerWidth <= 1024 || /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        if ($('main > section.activa').length === 0) {
+            $('main > section').removeClass('activa');
+            $('#inicio').addClass('activa');
+        }
     }
-});
-
-fechaReunionInput.addEventListener("input", () => validarCampoFecha(false));
-fechaReunionInput.addEventListener("change", () => validarCampoFecha(true));
-fechaReunionInput.addEventListener("blur", () => validarCampoFecha(true));
-
-servicioInput.addEventListener("change", () => validarCampoServicio(true));
-servicioInput.addEventListener("blur", () => validarCampoServicio(true));
-
-mensajeInput.addEventListener("input", () => validarCampoMensaje(false));
-mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
+}
 
 $(document).ready(function() {
+    initModoMovil();
+
     $('#btn-menu-movil, #hamburgerBtn').click(function() { 
         $('#nav-links, #navMenu').slideToggle(300); 
     });
@@ -3370,10 +3399,11 @@ $(document).ready(function() {
         $('body').toggleClass('dark-mode'); 
     });
 
-    $('.nav-btn').click(function() {
-        if(window.innerWidth <= 1024) {
-            let idNuevaSeccion = $(this).attr('data-target') || ($(this).attr('href') ? $(this).attr('href').replace('#', '') : '');
-            if(!idNuevaSeccion || $('#' + idNuevaSeccion).length === 0) return;
+    $('.nav-btn').click(function(e) {
+        let idNuevaSeccion = $(this).attr('data-target') || ($(this).attr('href') ? $(this).attr('href').replace('#', '') : '');
+        if (!idNuevaSeccion || $('#' + idNuevaSeccion).length === 0) return;
+        if (window.innerWidth <= 1024) {
+            e.preventDefault();
             $('main > section.activa').fadeOut('fast', function() {
                 $(this).removeClass('activa');
                 $('#' + idNuevaSeccion).fadeIn('fast').addClass('activa');
@@ -3391,7 +3421,7 @@ $(document).ready(function() {
 
     $('#form-contacto, #contactForm').submit(function(e) {
         e.preventDefault();
-        if($('#input-nombre').val() === '') { 
+        if ($('#input-nombre').val() === '') { 
             $('#error-nombre').fadeIn(); 
             return; 
         }
@@ -3418,9 +3448,9 @@ $(document).ready(function() {
         let valor = $(this).val();
         let $capa2 = $('#capa2');
         $capa2.html('<option value="">-- Seleccione opcion --</option>').prop('disabled', false);
-        if(valor === 'academico') {
+        if (valor === 'academico') {
             $capa2.append('<option value="web2">Diseno Web II (SIS-0141)</option>');
-        } else if(valor === 'desarrollo') {
+        } else if (valor === 'desarrollo') {
             $capa2.append('<option value="pwa">Arquitectura PWA</option>');
         } else {
             $capa2.prop('disabled', true);
@@ -3432,14 +3462,4 @@ $(document).ready(function() {
         let seleccion = $(this).find('option:selected').text();
         $('#resultadoFiltro').html(seleccion ? 'Capa 3: ' + seleccion : 'Seleccione las capas...');
     });
-
-    let infoDispositivo = "Laptop / PC";
-    if(/Android/i.test(navigator.userAgent)) {
-        infoDispositivo = "Android Detectado - PWA";
-    } else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        infoDispositivo = "iOS Detectado - PWA";
-    } else if(window.innerWidth <= 1024) {
-        infoDispositivo = "Tablet / Movil - PWA";
-    }
-    $('#deviceBadge').text(infoDispositivo);
 });
