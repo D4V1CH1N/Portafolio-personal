@@ -1,3 +1,41 @@
+if (window.innerWidth < 768 || /Android|iPhone|iPad/i.test(navigator.userAgent)) { 
+    console.log("Modo PWA Activado"); 
+    initModoMovil(); 
+}
+
+function initModoMovil() {
+    $('body').addClass('modo-movil').css({
+        'overflow': 'hidden',
+        'height': '100vh'
+    });
+    $('main > section, header#inicio, footer#redes').hide();
+    $('#inicio').show();
+    let seccionActual = $('#inicio');
+
+    $('#navMenu a[href^="#"], a.enlace-menu, .navbar-brand').on('click', function(e) {
+        let destinoId = $(this).attr('href');
+        if (!destinoId || destinoId === '#') return;
+        let $destino = $(destinoId);
+        if ($destino.length) {
+            let $seccionDestino = $destino.is('section, header, footer') ? $destino : $destino.closest('section, header, footer');
+            if ($seccionDestino.length && !$seccionDestino.is(seccionActual)) {
+                e.preventDefault();
+                seccionActual.fadeOut('fast', function() {
+                    $seccionDestino.fadeIn('fast');
+                    seccionActual = $seccionDestino;
+                    if ($destino[0] !== $seccionDestino[0]) {
+                        $destino[0].scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        }
+        if ($('#navMenu').is(':visible')) {
+            $('#navMenu').slideToggle(300);
+            $('#hamburgerBtn, #burguerBtn').removeClass('open').attr('aria-expanded', 'false');
+        }
+    });
+}
+
 const PROTOCOLO_WEB = "https:" + "/" + "/";
 const URL_SPOTIFY_SEARCH = PROTOCOLO_WEB + "open.spotify.com/search/";
 const URL_SPOTIFY_PLAYLIST = PROTOCOLO_WEB + "open.spotify.com/playlist/";
@@ -41,28 +79,31 @@ try {
 } catch (err) {
 }
 
-const themeBtn = document.getElementById("themeBtn");
-const bodyElement = document.body;
-
-themeBtn.addEventListener("click", () => {
-    bodyElement.classList.toggle("dark-mode");
+$('#themeBtn').click(function() {
+    $('body').toggleClass('dark-mode');
 });
 
-const burguerBtn = document.getElementById("burguerBtn");
-const navMenu = document.getElementById("navMenu");
-
-burguerBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
-    burguerBtn.classList.toggle("open");
-    const expandido = navMenu.classList.contains("show");
-    burguerBtn.setAttribute("aria-expanded", expandido ? "true" : "false");
+$('#hamburgerBtn, #burguerBtn').click(function() {
+    $('#navMenu').slideToggle(300);
+    $(this).toggleClass('open');
+    let expandido = $(this).hasClass('open');
+    $(this).attr('aria-expanded', expandido ? 'true' : 'false');
 });
 
 function cerrarMenu() {
-    navMenu.classList.remove("show");
-    burguerBtn.classList.remove("open");
-    burguerBtn.setAttribute("aria-expanded", "false");
+    $('#navMenu').slideUp(300);
+    $('#hamburgerBtn, #burguerBtn').removeClass('open').attr('aria-expanded', 'false');
 }
+
+$('.btn-toggle, #hamburgerBtn').hover(
+    function() {
+        $(this).stop().animate({ opacity: 0.8 }, 200);
+    },
+    function() {
+        $(this).stop().animate({ opacity: 1 }, 200);
+    }
+);
+$('.navbar-brand').css({ opacity: 0.2 }).animate({ opacity: 1 }, 600);
 
 function linkSpotify(consulta, urlFija) {
     if (urlFija && urlFija.length > 0) {
@@ -3379,45 +3420,85 @@ servicioInput.addEventListener("blur", () => validarCampoServicio(true));
 mensajeInput.addEventListener("input", () => validarCampoMensaje(false));
 mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
 
-form.addEventListener("submit", (e) => {
+$('#contactForm').submit(function(e) {
     e.preventDefault();
-    alertaBox.innerHTML = "";
+    let valido = true;
+    let nombre = $('#nombreCliente').val().trim();
+    let correo = $('#correo').val().trim();
+    let telefono = $('#telefono').val().trim();
+    let fecha = $('#fechaReunion').val().trim();
+    let servicio = $('#servicio').val();
+    let mensaje = $('#mensaje').val().trim();
+    let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const vNombre = validarCampoNombre(true);
-    const vCorreo = validarCampoCorreo(true);
-    const vTelefono = validarCampoTelefono(true);
-    const vFecha = validarCampoFecha(true);
-    const vServicio = validarCampoServicio(true);
-    const vMensaje = validarCampoMensaje(true);
-
-    if (!vNombre || !vCorreo || !vTelefono || !vFecha || !vServicio || !vMensaje) {
-        return;
+    if (nombre === '') {
+        $('#errorNombre').text('Nombre obligatorio').fadeIn();
+        valido = false;
+    } else {
+        $('#errorNombre').fadeOut();
     }
 
-    const nombre = nombreClienteInput.value.trim();
-    const valorCorreo = correoInput.value.trim().toLowerCase();
-    const prefijo = prefijoPaisInput.value;
-    const telefono = telefonoInput.value.trim();
-    const fecha = fechaReunionInput.value;
-    const servicio = servicioInput.value;
-    const fechaMinimaHoy = obtenerFechaHoyLocal();
+    if (correo === '') {
+        $('#errorCorreo').text('Correo obligatorio').fadeIn();
+        valido = false;
+    } else if (!regexCorreo.test(correo)) {
+        $('#errorCorreo').text('Correo electronico invalido').fadeIn();
+        valido = false;
+    } else {
+        $('#errorCorreo').fadeOut();
+    }
 
-    alertaBox.innerHTML = `
-        <div class="alert alert-success mt-3 mb-0 border-success bg-transparent">
-            <p class="msg-exito mb-1"><i class="bi bi-check-circle-fill me-1"></i>¡Propuesta enviada con éxito, ${nombre}!</p>
-            <small class="texto-subtitulo d-block">
-                Reunión agendada para el <strong>${fecha}</strong> por el servicio de <em>${servicio}</em>.<br>
-                Te contactaremos a tu WhatsApp <strong>${prefijo} ${telefono}</strong> y al correo <strong>${valorCorreo}</strong>.
-            </small>
-        </div>
-    `;
+    if (telefono === '') {
+        $('#errorTelefono').text('Telefono obligatorio').fadeIn();
+        valido = false;
+    } else {
+        $('#errorTelefono').fadeOut();
+    }
 
-    form.reset();
-    fechaReunionInput.setAttribute("min", fechaMinimaHoy);
-    marcarEstadoCampo(nombreClienteInput, errorNombre, null, "");
-    marcarEstadoCampo(correoInput, errorCorreo, null, "");
-    marcarEstadoCampo(telefonoInput, errorTelefono, null, "");
-    marcarEstadoCampo(fechaReunionInput, errorFecha, null, "");
-    marcarEstadoCampo(servicioInput, errorServicio, null, "");
-    marcarEstadoCampo(mensajeInput, errorMensaje, null, "");
+    if (fecha === '') {
+        $('#errorFecha').text('Fecha obligatoria').fadeIn();
+        valido = false;
+    } else {
+        $('#errorFecha').fadeOut();
+    }
+
+    if (!servicio || servicio === '') {
+        $('#errorServicio').text('Selecciona un servicio').fadeIn();
+        valido = false;
+    } else {
+        $('#errorServicio').fadeOut();
+    }
+
+    if (mensaje === '') {
+        $('#errorMensaje').text('Mensaje obligatorio').fadeIn();
+        valido = false;
+    } else {
+        $('#errorMensaje').fadeOut();
+    }
+
+    if (valido) {
+        $('#successAlert').slideDown().delay(3000).slideUp();
+        $('#contactForm')[0].reset();
+    }
+});
+
+let timerInactividad = setInterval(function() {
+    $('#inactivityModal').css('display', 'flex').hide().fadeIn('fast');
+    setTimeout(function() {
+        $('#inactivityModal').fadeOut('fast');
+    }, 4000);
+}, 30000);
+
+$(document).on('mousemove keydown click scroll touchstart', function() {
+    clearInterval(timerInactividad);
+    timerInactividad = setInterval(function() {
+        $('#inactivityModal').css('display', 'flex').hide().fadeIn('fast');
+        setTimeout(function() {
+            $('#inactivityModal').fadeOut('fast');
+        }, 4000);
+    }, 30000);
+});
+
+$('#btnCerrarInactividad').click(function() {
+    $('#inactivityModal').fadeOut('fast');
 });
