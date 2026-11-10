@@ -32,27 +32,7 @@ $(document).ready(function() {
         });
 
         $box.attr('data-hidratado', 'true');
-
-        $('#textoBtnHidratar').text('Hidratado');
-        $('#btnHidratar, #btnHidratarBanner').removeClass('btn-naranja-pwa').addClass('btn-verde-pwa').prop('disabled', true);
-        $('#bannerEstadoHidratacion').css('border-color', '#00ff9d');
-        $('#tituloEstadoHidratado').removeClass('texto-naranja').addClass('texto-verde').html('<i class="bi bi-check-circle-fill me-1"></i>Estado: Hidratado');
-        $('#descEstadoHidratado').text('data-hidratado="true" | Todos los modales y eventos vinculados');
-        $('#alertaRequiereHidratar').stop(true, true).hide();
-        $('#alertaHidratacionExito').slideDown().delay(3000).slideUp();
     }
 
-    $(document).on('click', '#btnHidratar, #btnHidratarBanner', function(e) {
-        e.preventDefault();
-        hidratarInterfaz();
-    });
-
-    $(document).on('click', '.btn-abrir-modal', function(e) {
-        let $box = $('#contenedorPWA');
-        if ($box.attr('data-hidratado') !== 'true') {
-            e.preventDefault();
-            $('#alertaRequiereHidratar').slideDown().delay(2500).slideUp();
-        }
-    });
+    setTimeout(hidratarInterfaz, 500);
 });
-
