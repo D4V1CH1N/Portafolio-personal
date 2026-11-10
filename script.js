@@ -3481,3 +3481,31 @@ $(document).ready(function() {
         $('#resultadoFiltro').html(seleccion ? 'Capa 3: ' + seleccion : 'Seleccione las capas...');
     });
 });
+
+$(document).ready(function() {
+    if (window.innerWidth <= 1024) {
+        if ($('.controles-scroll-vertical').length === 0) {
+            $('body').append('<div class="controles-scroll-vertical"><button class="btn-nav-vertical" id="btnScrollUp">&uarr;</button><button class="btn-nav-vertical" id="btnScrollDown">&darr;</button></div>');
+        }
+
+        $('#btnScrollDown').click(function() {
+            let container = $('main > section.activa .boveda-scroll:visible, main > section.activa .tabla-scroll:visible').first();
+            if (!container.length) {
+                container = $('main > section.activa .boveda-scroll, main > section.activa .tabla-scroll, main > section.activa').first();
+            }
+            if (container.length) {
+                container[0].scrollBy({ top: 350, behavior: 'smooth' });
+            }
+        });
+
+        $('#btnScrollUp').click(function() {
+            let container = $('main > section.activa .boveda-scroll:visible, main > section.activa .tabla-scroll:visible').first();
+            if (!container.length) {
+                container = $('main > section.activa .boveda-scroll, main > section.activa .tabla-scroll, main > section.activa').first();
+            }
+            if (container.length) {
+                container[0].scrollBy({ top: -350, behavior: 'smooth' });
+            }
+        });
+    }
+});

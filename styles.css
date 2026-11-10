@@ -1305,16 +1305,36 @@ body.dark-mode .badge-mecanica-estandar {
     }
     main > section.activa {
         display: block !important;
-        height: calc(100vh - 140px);
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        padding-bottom: 80px !important;
-        -webkit-overflow-scrolling: touch;
+        overflow: hidden !important;
+        height: calc(100vh - 80px) !important;
+        position: relative;
     }
-    .boveda-scroll, .panel-super-boveda, .panel-identidad, .panel-cultura, .panel-musica {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
+    .boveda-scroll, .tabla-scroll {
+        overflow: hidden !important;
+        max-height: calc(100vh - 190px) !important;
+    }
+    .controles-scroll-vertical {
+        position: fixed;
+        bottom: 25px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 99999;
+    }
+    .btn-nav-vertical {
+        background: #7e22ce;
+        color: #00ff9d;
+        border: 2px solid #00ff9d;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        cursor: pointer;
     }
     .nav-menu {
         max-height: 70vh;
@@ -1326,10 +1346,15 @@ body.dark-mode .badge-mecanica-estandar {
         min-height: 44px !important;
     }
     .pwa-subdivision-header {
-        overflow-x: auto;
-        white-space: nowrap;
+        display: none !important;
     }
     .pwa-nav-pills {
         flex-wrap: nowrap !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .controles-scroll-vertical {
+        display: none !important;
     }
 }
