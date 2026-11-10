@@ -1305,9 +1305,20 @@ body.dark-mode .badge-mecanica-estandar {
     }
     main > section.activa {
         display: block !important;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 140px);
         overflow-y: auto !important;
-        padding-bottom: 30px;
+        overflow-x: hidden !important;
+        padding-bottom: 80px !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    .boveda-scroll, .panel-super-boveda, .panel-identidad, .panel-cultura, .panel-musica {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    .nav-menu {
+        max-height: 70vh;
+        overflow-y: auto;
     }
     .btn, .btn-toggle, .btn-burguer, .btn-subdivision, .nav-btn, .nav-menu ul li a {
         font-size: 16px !important;
