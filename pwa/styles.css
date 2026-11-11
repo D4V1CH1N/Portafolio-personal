@@ -120,14 +120,14 @@ html {
 
 .hud-widget {
     position: absolute;
-    bottom: calc(70px + 2vh) !important;
-    padding: 15px !important;
+    bottom: 100px !important;
+    padding: 12px 15px !important;
     border-radius: 16px !important;
     background: rgba(15, 23, 42, 0.9) !important;
     border: 1px solid rgba(126, 34, 206, 0.6);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    z-index: 10;
+    z-index: 8000 !important;
 }
 
 .hud-widget-left {
