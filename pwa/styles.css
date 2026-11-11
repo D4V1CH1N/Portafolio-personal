@@ -6,6 +6,7 @@ body, html {
     overflow: hidden !important;
     background: #0f172a;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #f8fafc;
     box-sizing: border-box;
@@ -31,7 +32,7 @@ body, html {
     width: 100vw;
     height: 100vh;
     background: url('../assassins.jpg') center/cover no-repeat;
-    filter: brightness(0.35) contrast(1.1);
+    filter: brightness(0.35);
     z-index: -1;
 }
 
@@ -42,61 +43,154 @@ body, html {
     overflow: hidden;
 }
 
-.app-lobby {
+.hud-profile {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    padding: 8px 15px 8px 8px;
+    border-radius: 50px;
+    border: 1px solid #7e22ce;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.hud-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #00ff9d;
+    object-fit: cover;
+}
+
+.hud-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hud-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.hud-title {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.hud-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hud-icon-music {
+    color: #00ff9d;
+    font-size: 12px;
+}
+
+.hud-progress-bar {
+    width: 70px;
+    height: 6px;
+    background: #334155;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.hud-progress-fill {
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(90deg, #7e22ce, #00ff9d);
+}
+
+.hud-level {
+    font-size: 10px;
+    font-weight: bold;
+    color: #00ff9d;
+}
+
+.hud-side-left {
+    position: absolute;
+    top: 110px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10;
+}
+
+.hud-side-btn {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(0, 255, 157, 0.4);
+    color: #ffffff;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 70px);
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
-.avatar-container {
-    position: relative;
-    display: inline-block;
+.hud-side-btn:active {
+    transform: scale(0.92);
+    border-color: #00ff9d;
 }
 
-.avatar-game {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #00ff9d;
-    box-shadow: 0 0 25px rgba(0, 255, 157, 0.55), inset 0 0 15px rgba(0, 255, 157, 0.3);
-    margin-bottom: 15px;
-    object-fit: cover;
-}
-
-.lobby-name {
-    font-size: 28px;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: 1.5px;
+.hud-side-btn i {
+    font-size: 20px;
     color: #00ff9d;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 255, 157, 0.4);
+    margin-bottom: 2px;
 }
 
-.lobby-title {
-    font-size: 15px;
+.hud-side-btn span {
+    font-size: 9px;
     font-weight: 600;
+    text-transform: uppercase;
     color: #cbd5e1;
-    margin-top: 6px;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-.lobby-badge {
-    margin-top: 10px;
-    display: inline-block;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 20px;
-    background: rgba(126, 34, 206, 0.3);
-    border: 1px solid #7e22ce;
+.hud-side-right {
+    position: absolute;
+    top: 110px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10;
+}
+
+.hud-social-btn {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(126, 34, 206, 0.5);
     color: #c084fc;
-    letter-spacing: 0.5px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.hud-social-btn:active {
+    transform: scale(0.92);
+    color: #00ff9d;
 }
 
 .bottom-nav {
@@ -106,40 +200,39 @@ body, html {
     width: 100%;
     height: 70px;
     background: rgba(15, 23, 42, 0.96);
-    backdrop-filter: blur(12px);
-    border-top: 2px solid #7e22ce;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 100;
-    padding: 0 10px;
+    border-top: 2px solid #7e22ce;
+    z-index: 9000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
 }
 
-.btn-abrir-modal {
+.bottom-nav-btn {
     background: none;
     border: none;
-    color: #00ff9d;
-    font-weight: 700;
-    font-size: 13px;
-    cursor: pointer;
+    color: #94a3b8;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 4px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: transform 0.15s ease, color 0.15s ease;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+    width: 25%;
+    padding: 6px 0;
 }
 
-.btn-abrir-modal i {
-    font-size: 18px;
+.bottom-nav-btn i {
+    font-size: 22px;
+    color: #00ff9d;
 }
 
-.btn-abrir-modal:active {
-    color: #c084fc;
-    transform: scale(0.92);
+.bottom-nav-btn:active {
+    transform: scale(0.9);
+    color: #00ff9d;
 }
 
 .app-modal {
@@ -148,25 +241,23 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.82);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.75);
     z-index: 9999;
     display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
+    align-items: flex-end;
+    backdrop-filter: blur(4px);
 }
 
 .app-modal-content {
     background: #0f172a;
     width: 100%;
-    max-width: 580px;
-    max-height: 88vh;
-    border: 2px solid #7e22ce;
-    border-radius: 14px;
+    height: 88vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top: 3px solid #00ff9d;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 30px rgba(126, 34, 206, 0.45);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
@@ -174,18 +265,17 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 18px;
-    border-bottom: 1px solid rgba(126, 34, 206, 0.5);
-    background: rgba(30, 41, 59, 0.6);
+    padding: 15px 20px;
+    border-bottom: 1px solid #3b2854;
     color: #ffffff;
+    background: rgba(30, 41, 59, 0.5);
 }
 
 .modal-header h2 {
     margin: 0;
     font-size: 18px;
-    font-weight: 800;
     color: #00ff9d;
-    letter-spacing: 0.5px;
+    font-weight: 800;
 }
 
 .btn-cerrar-modal {
@@ -193,11 +283,11 @@ body, html {
     color: #ffffff;
     border: none;
     padding: 6px 12px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 12px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.15s ease;
+    font-size: 13px;
+    transition: background 0.2s;
 }
 
 .btn-cerrar-modal:active {
@@ -205,9 +295,11 @@ body, html {
 }
 
 .modal-body {
-    padding: 18px;
+    padding: 20px;
     overflow-y: auto;
-    color: #ffffff;
+    overflow-x: hidden;
+    color: #e0e6ed;
+    padding-bottom: 40px;
     font-size: 13.5px;
     line-height: 1.55;
     -webkit-overflow-scrolling: touch;

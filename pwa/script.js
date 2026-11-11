@@ -9,7 +9,8 @@ $(document).ready(function() {
             $(target).fadeIn('fast');
         });
 
-        $(document).off('click', '.btn-cerrar-modal').on('click', '.btn-cerrar-modal', function() {
+        $(document).off('click', '.btn-cerrar-modal').on('click', '.btn-cerrar-modal', function(e) {
+            e.preventDefault();
             $(this).closest('.app-modal').fadeOut('fast');
         });
 
@@ -19,20 +20,33 @@ $(document).ready(function() {
             }
         });
 
-        $(document).off('submit', '#pwaForm').on('submit', '#pwaForm', function(e) {
+        $(document).off('click', '.btn-filtro-pwa').on('click', '.btn-filtro-pwa', function(e) {
             e.preventDefault();
-            let nombre = $('#pwa-nombre').val().trim();
+            let cat = $(this).data('categoria');
+            if (cat === 'todos') {
+                $('.item-musica-pwa').show();
+            } else {
+                $('.item-musica-pwa').hide();
+                $('.item-musica-pwa[data-categoria="' + cat + '"]').show();
+            }
+            $('.btn-filtro-pwa').removeClass('badge-pill-naranja');
+            $(this).addClass('badge-pill-naranja');
+        });
+
+        $(document).off('submit', '#pwaForm, #form-contacto').on('submit', '#pwaForm, #form-contacto', function(e) {
+            e.preventDefault();
+            let nombre = ($('#input-nombre').val() || $('#pwa-nombre').val() || '').trim();
             if (nombre === '') {
-                $('#error-nombre-pwa').fadeIn();
+                $('#error-nombre').fadeIn();
                 return;
             }
-            $('#error-nombre-pwa').fadeOut();
-            $('#alertaExitoPwa').slideDown().delay(3000).slideUp();
+            $('#error-nombre').fadeOut();
+            $('#alerta-exito').slideDown().delay(3000).slideUp();
             this.reset();
         });
 
         $box.attr('data-hidratado', 'true');
     }
 
-    setTimeout(hidratarInterfaz, 500);
+    setTimeout(hidratarInterfaz, 300);
 });

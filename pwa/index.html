@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>David Zalles - Lobby Duel Links PWA</title>
+    <title>David Zalles - Gamer Lobby PWA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -18,29 +18,62 @@
 
     <div id="contenedorPWA" data-hidratado="false">
 
-        <main class="app-lobby">
-            <div class="avatar-container">
-                <img src="../assassins.jpg" alt="Chato Avatar" class="avatar-game">
+        <div class="hud-profile">
+            <img src="../assassins.jpg" alt="Chato" class="hud-avatar">
+            <div class="hud-info">
+                <h1 class="hud-name">DAVID ZALLES</h1>
+                <div class="hud-title">Ingeniería & Desarrollo</div>
+                <div class="hud-progress-container">
+                    <i class="bi bi-spotify hud-icon-music"></i>
+                    <div class="hud-progress-bar">
+                        <div class="hud-progress-fill"></div>
+                    </div>
+                    <span class="hud-level">LVL 20</span>
+                </div>
             </div>
-            <h1 class="lobby-name">DAVID ZALLES</h1>
-            <span class="lobby-title">Ingeniería & Desarrollo</span>
-            <span class="lobby-badge">UPDS • Nivel 2026</span>
-        </main>
+        </div>
+
+        <div class="hud-side-left">
+            <button type="button" class="hud-side-btn btn-abrir-modal" data-target="#modal-boveda">
+                <i class="bi bi-headphones"></i>
+                <span>Música</span>
+            </button>
+            <button type="button" class="hud-side-btn btn-abrir-modal" data-target="#modal-boveda">
+                <i class="bi bi-controller"></i>
+                <span>Juegos</span>
+            </button>
+            <button type="button" class="hud-side-btn btn-abrir-modal" data-target="#modal-esencia">
+                <i class="bi bi-heart-pulse"></i>
+                <span>Edu-can</span>
+            </button>
+        </div>
+
+        <div class="hud-side-right">
+            <a href="https://github.com/D4V1CH1N" target="_blank" rel="noopener noreferrer" class="hud-social-btn" aria-label="GitHub">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://open.spotify.com/user/d4v1ch1n2" target="_blank" rel="noopener noreferrer" class="hud-social-btn" aria-label="Spotify">
+                <i class="bi bi-spotify"></i>
+            </a>
+            <a href="https://www.instagram.com/nullssj.zip" target="_blank" rel="noopener noreferrer" class="hud-social-btn" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
 
         <nav class="bottom-nav">
-            <button type="button" class="btn-abrir-modal" data-target="#modal-esencia">
-                <i class="bi bi-controller"></i>
+            <button type="button" class="bottom-nav-btn btn-abrir-modal" data-target="#modal-esencia">
+                <i class="bi bi-cpu"></i>
                 <span>Esencia</span>
             </button>
-            <button type="button" class="btn-abrir-modal" data-target="#modal-boveda">
-                <i class="bi bi-headphones"></i>
+            <button type="button" class="bottom-nav-btn btn-abrir-modal" data-target="#modal-boveda">
+                <i class="bi bi-collection-play"></i>
                 <span>Bóveda</span>
             </button>
-            <button type="button" class="btn-abrir-modal" data-target="#modal-horario">
-                <i class="bi bi-calendar3"></i>
+            <button type="button" class="bottom-nav-btn btn-abrir-modal" data-target="#modal-horario">
+                <i class="bi bi-calendar-week"></i>
                 <span>Horario</span>
             </button>
-            <button type="button" class="btn-abrir-modal" data-target="#modal-contacto">
+            <button type="button" class="bottom-nav-btn btn-abrir-modal" data-target="#modal-contacto">
                 <i class="bi bi-envelope"></i>
                 <span>Contacto</span>
             </button>
@@ -50,15 +83,15 @@
             <div class="app-modal-content">
                 <div class="modal-header">
                     <h2>Esencia & Stack</h2>
-                    <button type="button" class="btn-cerrar-modal">Cerrar &times;</button>
+                    <button type="button" class="btn-cerrar-modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="card-item">
-                        <h3 class="texto-verde"><i class="bi bi-laptop me-2"></i>Ingeniería & Stack Profesional</h3>
+                        <h3 class="texto-verde"><i class="bi bi-laptop me-2"></i>Ingeniería & Perfil Productivo</h3>
                         <ul>
-                            <li><strong>Ingeniería en Sistemas (UPDS):</strong> Administración y optimización de bases de datos en SQL Server y PostgreSQL, desarrollo C# (.NET) y Python.</li>
+                            <li><strong>Ingeniería en Sistemas (UPDS):</strong> Administración y modelado de bases de datos en SQL Server y PostgreSQL, desarrollo en C# (.NET) y Python.</li>
                             <li><strong>Trabajo en Edu-can La Paz:</strong> Paseo y rehabilitación conductual canina con refuerzo positivo (100% libre de dolor).</li>
-                            <li><strong>Idiomas:</strong> Práctica constante de Francés e Inglés técnico aplicado a software.</li>
+                            <li><strong>Idiomas y Crecimiento:</strong> Práctica constante de Francés e Inglés técnico aplicado a software.</li>
                         </ul>
                     </div>
 
@@ -66,26 +99,26 @@
                         <h3 class="texto-morado"><i class="bi bi-palette me-2"></i>Pasatiempos (Ocio & Arte)</h3>
                         <ul>
                             <li><strong>Música y Voz:</strong> Escucha de álbumes cronológicos completos, composición y canto.</li>
-                            <li><strong>Letras y Trazos:</strong> Poesía y bocetos de graffiti estilo wildstyle.</li>
-                            <li><strong>Calle y Consola:</strong> Skate nocturno, sagas clásicas de PS2 a PS4 y gaming móvil.</li>
+                            <li><strong>Letras y Trazos:</strong> Poesía y bocetos de graffiti estilo wildstyle en papel.</li>
+                            <li><strong>Calle y Consola:</strong> Skate nocturno, sagas clásicas de PS2 a PS4 y gaming competitivo en móviles.</li>
                             <li><strong>Coleccionismo:</strong> Armado y personalización de LEGO y modelos a escala Hot Wheels 1:64.</li>
                         </ul>
                     </div>
 
                     <div class="card-item">
                         <h3 class="texto-naranja"><i class="bi bi-car-front me-2"></i>Auto de mis Sueños</h3>
-                        <p style="margin: 0;"><strong>Dodge Challenger SRT Hellcat</strong> en morado Plum Crazy Purple con rines de 20 pulgadas, carrocería Widebody y motor HEMI V8 Supercharged de más de 700 HP.</p>
+                        <p style="margin: 0;"><strong>Dodge Challenger SRT Hellcat</strong> en morado Plum Crazy Purple con rines de 20 pulgadas, carrocería ensanchada Widebody y motor HEMI V8 Supercharged de más de 700 HP.</p>
                     </div>
 
                     <div class="card-item">
                         <h3 class="texto-verde"><i class="bi bi-trophy me-2"></i>Salón de la Fama Pokémon</h3>
                         <p style="margin-bottom: 8px;"><strong>Scizor (#212):</strong> Líder del Salón de la Fama personal (Kanto a Paldea).</p>
                         <div>
-                            <span class="badge-pill badge-pill-naranja">Ceruledge</span>
-                            <span class="badge-pill">Grafaiai</span>
-                            <span class="badge-pill badge-pill-verde">Tinkaton</span>
-                            <span class="badge-pill">Cetitan</span>
-                            <span class="badge-pill">Colmilargo</span>
+                            <span class="badge-pill badge-pill-naranja">Ceruledge (Fuego/Fantasma)</span>
+                            <span class="badge-pill">Grafaiai (Veneno/Normal)</span>
+                            <span class="badge-pill badge-pill-verde">Tinkaton (Hada/Acero)</span>
+                            <span class="badge-pill">Cetitan (Hielo)</span>
+                            <span class="badge-pill badge-pill-morado">Colmilargo (Tierra/Lucha)</span>
                         </div>
                     </div>
                 </div>
@@ -95,35 +128,52 @@
         <div id="modal-boveda" class="app-modal">
             <div class="app-modal-content">
                 <div class="modal-header">
-                    <h2>Bóveda & Playlists</h2>
-                    <button type="button" class="btn-cerrar-modal">Cerrar &times;</button>
+                    <h2>Bóveda & Cultura</h2>
+                    <button type="button" class="btn-cerrar-modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="card-item">
-                        <h3 class="texto-verde"><i class="bi bi-spotify me-2"></i>Bóveda Spotify (+160 Playlists)</h3>
-                        <div>
-                            <span class="badge-pill badge-pill-verde">Rap / Trap: El Asesino</span>
-                            <span class="badge-pill">Rock / Alt: Emergencia</span>
-                            <span class="badge-pill">Gaming PS4: Sangre y Codigo</span>
-                            <span class="badge-pill badge-pill-naranja">Chill / Lo-Fi: Favorite Songs</span>
-                            <span class="badge-pill">Varios / Raros: Musiquilla</span>
-                            <span class="badge-pill badge-pill-verde">Prime Trap Argentino</span>
-                            <span class="badge-pill">UK Drill</span>
+                        <h3 class="texto-verde"><i class="bi bi-spotify me-2"></i>Catálogo Spotify (+160 Playlists)</h3>
+                        <div style="margin-bottom: 10px;">
+                            <button type="button" class="btn-filtro-pwa badge-pill badge-pill-naranja" data-categoria="todos">Todos</button>
+                            <button type="button" class="btn-filtro-pwa badge-pill" data-categoria="rap-trap">Rap / Trap</button>
+                            <button type="button" class="btn-filtro-pwa badge-pill" data-categoria="rock-alt">Rock / Alt</button>
+                            <button type="button" class="btn-filtro-pwa badge-pill" data-categoria="gaming-ps4">Gaming PS4</button>
+                            <button type="button" class="btn-filtro-pwa badge-pill" data-categoria="chill-lofi">Chill / Lo-Fi</button>
+                            <button type="button" class="btn-filtro-pwa badge-pill" data-categoria="varios-raros">Varios / Raros</button>
                         </div>
+                        <ul style="padding-left: 18px; margin: 0;">
+                            <li class="item-musica-pwa" data-categoria="rap-trap">El Asesino (Rap / Trap Prime)</li>
+                            <li class="item-musica-pwa" data-categoria="rock-alt">Emergencia (Rock / Alt)</li>
+                            <li class="item-musica-pwa" data-categoria="gaming-ps4">Sangre y Codigo (Gaming PS4)</li>
+                            <li class="item-musica-pwa" data-categoria="chill-lofi">Favorite Songs (Chill / Lo-Fi)</li>
+                            <li class="item-musica-pwa" data-categoria="varios-raros">Musiquilla (Varios / Raros)</li>
+                            <li class="item-musica-pwa" data-categoria="rap-trap">Trap Shileno & UK Drill</li>
+                            <li class="item-musica-pwa" data-categoria="rock-alt">Math-Rock & Doomer</li>
+                        </ul>
                     </div>
 
                     <div class="card-item">
-                        <h3 class="texto-morado"><i class="bi bi-disc me-2"></i>Discografías de Referencia</h3>
+                        <h3 class="texto-morado"><i class="bi bi-controller me-2"></i>Universo LEGO & Videojuegos</h3>
                         <ul>
-                            <li><strong>Gorillaz & Twenty One Pilots:</strong> Narrativa y conceptualismo sonoro.</li>
-                            <li><strong>Oliver Tree, Melanie Martinez & Zoé:</strong> Sonoridades híbridas y lírica experimental.</li>
+                            <li><strong>Videojuegos Completados al 100%:</strong> 23 entregas clásicas y modernas de LEGO completadas.</li>
+                            <li><strong>Hot Wheels Car Culture:</strong> Muscle Mopar, JDM Legends, Super Treasure Hunts STH, RLC y piezas custom.</li>
+                            <li><strong>Arquitectura SNOT:</strong> Técnicas Studs Not On Top para lograr superficies lisas y aerodinámicas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-item">
+                        <h3 class="texto-verde"><i class="bi bi-disc me-2"></i>Discografías de Cabecera</h3>
+                        <ul>
+                            <li><strong>Gorillaz & Twenty One Pilots:</strong> Concepto musical y narrativa visual completa.</li>
+                            <li><strong>Oliver Tree, Melanie Martinez & Zoé:</strong> Hibridación de géneros y lírica alternativa.</li>
                             <li><strong>Soundtracks de Culto:</strong> FlatOut 2, Guitar Hero 3, Need For Speed Underground y FIFA clásicos.</li>
                         </ul>
                     </div>
 
                     <div class="card-item">
-                        <h3 class="texto-naranja"><i class="bi bi-star-fill me-2"></i>Musicboard Reviews (10/10)</h3>
-                        <p style="margin: 0;">Análisis y reseñas detalladas de álbumes imprescindibles registradas en mi perfil de Musicboard.</p>
+                        <h3 class="texto-naranja"><i class="bi bi-star-fill me-2"></i>Reseñas Musicboard (10/10)</h3>
+                        <p style="margin: 0;">Críticas y calificaciones analíticas de álbumes y mixtapes de culto en mi perfil de Musicboard.</p>
                     </div>
                 </div>
             </div>
@@ -132,8 +182,8 @@
         <div id="modal-horario" class="app-modal">
             <div class="app-modal-content">
                 <div class="modal-header">
-                    <h2>Horario Semanal</h2>
-                    <button type="button" class="btn-cerrar-modal">Cerrar &times;</button>
+                    <h2>Horario Sheets</h2>
+                    <button type="button" class="btn-cerrar-modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="card-item">
@@ -143,7 +193,7 @@
                                 <tr>
                                     <th>Franja</th>
                                     <th>Horario</th>
-                                    <th>Actividad</th>
+                                    <th>Actividad Principal</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,12 +205,12 @@
                                 <tr>
                                     <td><strong class="texto-morado">Tarde</strong></td>
                                     <td>14:00 - 18:30</td>
-                                    <td>Edu-can La Paz: Paseo y rehabilitación conductual positiva</td>
+                                    <td>Edu-can La Paz: Paseos estructurados y rehabilitación conductual positiva</td>
                                 </tr>
                                 <tr>
                                     <td><strong class="texto-naranja">Noche</strong></td>
                                     <td>19:30 - 23:30</td>
-                                    <td>Desarrollo de software, idiomas, skate nocturno y producción</td>
+                                    <td>Desarrollo de software, idiomas, skate nocturno y producción musical</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -169,9 +219,9 @@
                     <div class="card-item">
                         <h3 class="texto-morado"><i class="bi bi-bullseye me-2"></i>Compromisos de Disciplina</h3>
                         <ul>
-                            <li>Bienestar y seguridad animal en sesiones de Edu-can.</li>
-                            <li>Desarrollo de arquitectura limpia y escalable.</li>
-                            <li>Equilibrio constante entre arte, deporte y software.</li>
+                            <li>100% libre de dolor y refuerzo positivo en cada interacción canina.</li>
+                            <li>Consistencia académica y práctica diaria de C# y SQL.</li>
+                            <li>Mantenimiento regular de la vitrina LEGO y Hot Wheels.</li>
                         </ul>
                     </div>
                 </div>
@@ -181,38 +231,38 @@
         <div id="modal-contacto" class="app-modal">
             <div class="app-modal-content">
                 <div class="modal-header">
-                    <h2>Contacto & Propuestas</h2>
-                    <button type="button" class="btn-cerrar-modal">Cerrar &times;</button>
+                    <h2>Contacto Profesional</h2>
+                    <button type="button" class="btn-cerrar-modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div id="alertaExitoPwa" style="display: none; background: rgba(0, 255, 157, 0.15); border: 1px solid #00ff9d; color: #00ff9d; border-radius: 8px; padding: 12px; margin-bottom: 14px; font-size: 13px;">
-                        Mensaje enviado con exito. Me comunicare contigo a la brevedad.
+                    <div id="alerta-exito" style="display: none; background: rgba(0, 255, 157, 0.15); border: 1px solid #00ff9d; color: #00ff9d; border-radius: 8px; padding: 12px; margin-bottom: 14px; font-size: 13px;">
+                        Mensaje enviado con éxito. Me comunicaré contigo a la brevedad.
                     </div>
 
                     <form id="pwaForm">
-                        <input type="text" id="pwa-nombre" class="input-box" placeholder="Tu nombre o empresa">
-                        <div id="error-nombre-pwa" style="display: none; color: #ef4444; font-size: 12px; margin-top: -8px; margin-bottom: 10px;">Por favor ingresa tu nombre o empresa.</div>
+                        <input type="text" id="input-nombre" class="input-box" placeholder="Tu nombre o empresa">
+                        <div id="error-nombre" style="display: none; color: #ef4444; font-size: 12px; margin-top: -8px; margin-bottom: 10px;">Por favor ingresa tu nombre o empresa.</div>
 
-                        <input type="email" id="pwa-correo" class="input-box" placeholder="Correo electronico">
-                        <input type="tel" id="pwa-telefono" class="input-box" placeholder="Telefono o WhatsApp">
+                        <input type="email" id="correo" class="input-box" placeholder="Correo electrónico">
+                        <input type="tel" id="telefono" class="input-box" placeholder="Teléfono o WhatsApp">
 
-                        <select id="pwa-servicio" class="input-box">
+                        <select id="servicio" class="input-box">
                             <option value="desarrollo">Desarrollo Web / Sistemas Software</option>
                             <option value="educan">Adiestramiento Canino Positivo (Edu-can)</option>
-                            <option value="musica">Produccion Musical & Letras</option>
-                            <option value="arte">Arte Urbano & Diseno</option>
+                            <option value="musica">Producción Musical & Letras</option>
+                            <option value="arte">Arte Urbano & Diseño</option>
                         </select>
 
-                        <textarea id="pwa-mensaje" class="input-box" rows="3" placeholder="Detalles de tu propuesta o requerimiento..."></textarea>
+                        <textarea id="mensaje" class="input-box" rows="3" placeholder="Detalles de tu propuesta o requerimiento..."></textarea>
 
                         <button type="submit" class="btn-submit">Enviar Mensaje</button>
                     </form>
 
                     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(126, 34, 206, 0.4); text-align: center;">
-                        <span style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 10px;">Perfiles y Canales Directos</span>
+                        <span style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 10px;">Canales Directos</span>
                         <div style="display: flex; justify-content: space-around; font-size: 22px;">
                             <a href="https://github.com/D4V1CH1N" target="_blank" rel="noopener noreferrer" style="color: #00ff9d;"><i class="bi bi-github"></i></a>
-                            <a href="https://open.spotify.com/user/d4v1ch1n2?si=rEGIUfmTRSmoyjnojdjYXw" target="_blank" rel="noopener noreferrer" style="color: #00ff9d;"><i class="bi bi-spotify"></i></a>
+                            <a href="https://open.spotify.com/user/d4v1ch1n2" target="_blank" rel="noopener noreferrer" style="color: #00ff9d;"><i class="bi bi-spotify"></i></a>
                             <a href="https://www.instagram.com/nullssj.zip" target="_blank" rel="noopener noreferrer" style="color: #c084fc;"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
