@@ -4,12 +4,16 @@ body, html {
     width: 100vw;
     height: 100vh;
     overflow: hidden !important;
-    background: #0f172a;
+    background: transparent;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #f8fafc;
     box-sizing: border-box;
+}
+
+html {
+    background: #0f172a;
 }
 
 *, *:before, *:after {
@@ -33,7 +37,7 @@ body, html {
     height: 100vh;
     background: url('../assassins.jpg') center/cover no-repeat;
     filter: brightness(0.35);
-    z-index: -1;
+    z-index: -10;
 }
 
 #contenedorPWA {
@@ -57,6 +61,73 @@ body, html {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     z-index: 10;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hud-profile:active {
+    transform: scale(0.95);
+}
+
+.hud-widget {
+    position: absolute;
+    bottom: 85px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(126, 34, 206, 0.6);
+    border-radius: 12px;
+    padding: 10px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.hud-widget-left {
+    left: 15px;
+    width: 145px;
+}
+
+.hud-widget-right {
+    right: 15px;
+    width: 140px;
+}
+
+.hud-widget-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #00ff9d;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 157, 0.3);
+    padding-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.hud-widget-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.hud-widget-content .badge {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 9.5px;
+    padding: 3px 6px;
+}
+
+.hud-widget-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    justify-items: center;
+}
+
+.mini-sprite {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.8));
 }
 
 .hud-avatar {

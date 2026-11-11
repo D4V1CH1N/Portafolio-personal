@@ -19,7 +19,7 @@
 
     <div id="contenedorPWA" data-hidratado="false">
 
-        <div class="hud-profile">
+        <div class="hud-profile btn-abrir-modal" data-target="#modal-perfil">
             <img src="../assassins.jpg" alt="Chato" class="hud-avatar">
             <div class="hud-info">
                 <h1 class="hud-name">DAVID ZALLES</h1>
@@ -61,6 +61,27 @@
             </a>
         </div>
 
+        <div class="hud-widget hud-widget-left">
+            <div class="hud-widget-title"><i class="bi bi-boxes"></i> Top Colección</div>
+            <div class="hud-widget-content">
+                <span class="badge barra-morada text-white badge-compacto mb-1">Challenger Plum Crazy</span>
+                <span class="badge barra-verde text-dark badge-compacto mb-1">LEGO Avengers Tower</span>
+                <span class="badge barra-morada text-white badge-compacto">Batmobile Tumbler 1989</span>
+            </div>
+        </div>
+
+        <div class="hud-widget hud-widget-right">
+            <div class="hud-widget-title"><i class="bi bi-trophy"></i> Mi Equipo VGC</div>
+            <div class="hud-widget-grid">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png" alt="Scizor" class="mini-sprite">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png" alt="Toxicroak" class="mini-sprite">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/937.png" alt="Ceruledge" class="mini-sprite">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png" alt="Toxtricity" class="mini-sprite">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png" alt="Krookodile" class="mini-sprite">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png" alt="Noivern" class="mini-sprite">
+            </div>
+        </div>
+
         <nav class="bottom-nav">
             <button type="button" class="bottom-nav-btn btn-abrir-modal" data-target="#modal-esencia">
                 <i class="bi bi-cpu"></i>
@@ -79,6 +100,23 @@
                 <span>Contacto</span>
             </button>
         </nav>
+
+        <div id="modal-perfil" class="app-modal">
+            <div class="app-modal-content">
+                <div class="modal-header">
+                    <h2><i class="bi bi-person-badge"></i> Perfil del Jugador</h2>
+                    <button type="button" class="btn-cerrar-modal">✖</button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="titulo-verde">Filosofía & Identidad</h4>
+                    <p><strong>Lema:</strong> "¡Bomba!" <br> <strong>Ideología:</strong> "Nada es verdad, todo está permitido." Basada en el amor propio, superación constante e independencia.</p>
+                    <h4 class="titulo-morado mt-3">Auto de los Sueños</h4>
+                    <p>Dodge Challenger SRT Demon / Hellcat (Plum Crazy Purple). Rines de 20", Widebody y motor HEMI V8 Supercharged de más de 700 HP.</p>
+                    <h4 class="titulo-verde mt-3">Arte, Expresión & Idiomas</h4>
+                    <p>Canto, composición musical, poesía métrica y diseño de bocetos Graffiti Wildstyle. Aprendizaje activo de Francés (FR) e Inglés (EN) aplicado a tecnología y cultura.</p>
+                </div>
+            </div>
+        </div>
 
         <div id="modal-esencia" class="app-modal">
             <div class="app-modal-content">
