@@ -37,11 +37,7 @@ html {
     height: 100vh;
     z-index: 0;
     pointer-events: none;
-    background-color: #0f172a;
-    background-image: url('assassins.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #0f172a;
 }
 
 .bg-slide {
@@ -83,13 +79,13 @@ html {
     0% {
         opacity: 0;
     }
-    10% {
+    5% {
         opacity: 1;
     }
     25% {
         opacity: 1;
     }
-    35% {
+    30% {
         opacity: 0;
     }
     100% {
