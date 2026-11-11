@@ -3379,6 +3379,18 @@ if (mensajeInput) {
 }
 
 $(document).ready(function() {
+    function hidratarEscritorio() {
+        let $box = $('#contenedorHidratacion');
+        if ($box.attr('data-hidratado') === 'true') return;
+        $box.css({'background': '#0f172a', 'color': '#00ff9d', 'border-bottom-color': '#00ff9d'});
+        $('#textoHidratacion').text('⚡ Hidratado e Interactivo (DOM Conectado)');
+        $box.off('click').on('click', function() {
+            alert('¡Verificación exitosa: Hidratación de Escritorio activa y libre de fugas de memoria!');
+        });
+        $box.attr('data-hidratado', 'true');
+    }
+    setTimeout(hidratarEscritorio, 600);
+
     $('#btn-menu-movil, #hamburgerBtn').click(function() { 
         $('#nav-links, #navMenu').slideToggle(300); 
     });

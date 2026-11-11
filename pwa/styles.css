@@ -93,7 +93,7 @@ html {
     }
 }
 
-#contenedorPWA {
+#appLobbyWrapper, .app-lobby-wrapper {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -103,7 +103,7 @@ html {
 
 .hud-profile {
     position: absolute;
-    top: 4vh;
+    top: calc(30px + 2vh);
     left: 4vw;
     max-width: 80vw;
     display: flex;

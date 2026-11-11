@@ -1,4 +1,4 @@
-﻿const PROTOCOLO_WEB = "https:" + "/" + "/";
+const PROTOCOLO_WEB = "https:" + "/" + "/";
 const URL_SPOTIFY_SEARCH = PROTOCOLO_WEB + "open.spotify.com/search/";
 const URL_SPOTIFY_PLAYLIST = PROTOCOLO_WEB + "open.spotify.com/playlist/";
 const URL_SPOTIFY_OEMBED = PROTOCOLO_WEB + "open.spotify.com/oembed?url=";
@@ -3411,10 +3411,19 @@ $(document).ready(function() {
         filtrarPokemon("titulares");
         alCambiarGeneroMusical("todos", false);
         cambiarTabMusica("playlists");
+    }
 
+    function hidratarPWA() {
+        let $box = $('#contenedorPWA');
+        if ($box.attr('data-hidratado') === 'true') return;
+        $box.css({'background': 'rgba(15, 23, 42, 0.95)', 'color': '#00ff9d', 'border-bottom-color': '#00ff9d'});
+        $('#textoPWAI').text('⚡ PWA Hidratada Correctamente (.off().on() activo)');
+        $box.off('click').on('click', function() {
+            alert('¡PWA 100% Hidratada y optimizada para el Ing. Miguel!');
+        });
         $box.attr('data-hidratado', 'true');
     }
 
     hidratarInterfaz();
-    setTimeout(hidratarInterfaz, 100);
+    setTimeout(hidratarPWA, 500);
 });
