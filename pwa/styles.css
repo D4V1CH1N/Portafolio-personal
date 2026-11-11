@@ -29,15 +29,63 @@ html {
     scrollbar-width: none !important;
 }
 
-.app-background {
+.app-bg-slider {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: url('../assassins.jpg') center/cover no-repeat;
-    filter: brightness(0.35);
     z-index: -10;
+    background: #0f172a;
+}
+
+.bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    filter: brightness(0.35);
+    animation: fadeSlider 20s infinite;
+}
+
+.bg-slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bg-slide:nth-child(2) {
+    animation-delay: 5s;
+    filter: brightness(0.5);
+}
+
+.bg-slide:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.bg-slide:nth-child(4) {
+    animation-delay: 15s;
+}
+
+@keyframes fadeSlider {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    35% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 #contenedorPWA {
@@ -71,11 +119,11 @@ html {
 
 .hud-widget {
     position: absolute;
-    bottom: 85px;
-    background: rgba(15, 23, 42, 0.85);
+    bottom: 100px !important;
+    padding: 15px !important;
+    border-radius: 16px !important;
+    background: rgba(15, 23, 42, 0.9) !important;
     border: 1px solid rgba(126, 34, 206, 0.6);
-    border-radius: 12px;
-    padding: 10px;
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     z-index: 10;
@@ -83,12 +131,12 @@ html {
 
 .hud-widget-left {
     left: 15px;
-    width: 145px;
+    width: 160px;
 }
 
 .hud-widget-right {
     right: 15px;
-    width: 140px;
+    width: 160px;
 }
 
 .hud-widget-title {
@@ -124,10 +172,41 @@ html {
 }
 
 .mini-sprite {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.8));
+}
+
+.vip-card {
+    position: relative;
+    padding: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.philosophy-card {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-left: 4px solid #00ff9d;
+}
+
+.car-card {
+    background: linear-gradient(135deg, #2e1065, #4c1d95);
+    border-left: 4px solid #c084fc;
+}
+
+.absolute-icon {
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    transform: rotate(-15deg);
+}
+
+.text-sm {
+    font-size: 12px;
 }
 
 .hud-avatar {
