@@ -3342,6 +3342,19 @@ if (mensajeInput) {
     mensajeInput.addEventListener("blur", () => validarCampoMensaje(true));
 }
 $(document).ready(function() {
+    function actualizarEstadoRed() {
+        let $estado = $('#estadoRed');
+        $estado.fadeIn('fast');
+        if (navigator.onLine) {
+            $estado.html('<i class="bi bi-wifi"></i> En Línea').css({'background': '#dcfce7', 'color': '#166534', 'border': '1px solid #166534'});
+            setTimeout(() => $estado.fadeOut('slow'), 3000);
+        } else {
+            $estado.html('<i class="bi bi-wifi-off"></i> Modo Offline Activo (Datos Locales)').css({'background': '#ffedd5', 'color': '#9a3412', 'border': '1px solid #9a3412'});
+        }
+    }
+    $(window).on('online offline', actualizarEstadoRed);
+    actualizarEstadoRed();
+
     function hidratarInterfaz() {
         let $box = $('#contenedorPWA');
         if ($box.attr('data-hidratado') === 'true') return;

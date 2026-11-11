@@ -10,10 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css?v=13.0">
+    <link rel="stylesheet" href="styles.css?v=14.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00ff9d">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker PWA Registrado con Éxito:', reg.scope))
+                .catch(err => console.error('Fallo en Registro de SW:', err));
+            });
+        }
+    </script>
 </head>
 
 <body class="dark-mode">
+
+    <div id="estadoRed" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 99999; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none;"></div>
 
     <div id="contenedorPWA" data-hidratado="false" style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(30, 41, 59, 0.95); color: #f97316; padding: 6px; text-align: center; font-size: 11px; font-weight: bold; border-bottom: 1px solid #f97316; z-index: 10000; backdrop-filter: blur(5px); cursor: pointer;">
         📱 PWA [SSR]: <span id="textoPWAI">Cargando DOM (Deshidratado)...</span>
