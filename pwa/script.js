@@ -3349,6 +3349,7 @@ $(document).ready(function() {
         $(document).off('click', '.btn-abrir-modal').on('click', '.btn-abrir-modal', function(e) {
             e.preventDefault();
             let target = $(this).data('target');
+            $('.app-modal').fadeOut('fast');
             $(target).fadeIn('fast');
         });
 
@@ -3414,5 +3415,6 @@ $(document).ready(function() {
         $box.attr('data-hidratado', 'true');
     }
 
-    setTimeout(hidratarInterfaz, 300);
+    hidratarInterfaz();
+    setTimeout(hidratarInterfaz, 100);
 });
