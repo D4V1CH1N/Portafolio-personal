@@ -35,8 +35,13 @@ html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -10;
-    background: #0f172a;
+    z-index: 0;
+    pointer-events: none;
+    background-color: #0f172a;
+    background-image: url('assassins.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .bg-slide {
@@ -49,24 +54,28 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0;
-    filter: brightness(0.35);
+    filter: brightness(0.65);
     animation: fadeSlider 20s infinite;
 }
 
 .bg-slide:nth-child(1) {
+    background-image: url('assassins.jpg');
     animation-delay: 0s;
 }
 
 .bg-slide:nth-child(2) {
+    background-image: url('scizor.jpg');
     animation-delay: 5s;
-    filter: brightness(0.5);
+    filter: brightness(0.7);
 }
 
 .bg-slide:nth-child(3) {
+    background-image: url('Gorillaz.jpg');
     animation-delay: 10s;
 }
 
 .bg-slide:nth-child(4) {
+    background-image: url('kingdomheart.jpg');
     animation-delay: 15s;
 }
 
@@ -93,6 +102,7 @@ html {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hud-profile {
