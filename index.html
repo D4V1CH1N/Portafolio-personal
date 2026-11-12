@@ -17,10 +17,10 @@
     <meta name="theme-color" content="#00ff9d">
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('Service Worker PWA Registrado con Éxito:', reg.scope))
-                .catch(err => console.error('Fallo en Registro de SW:', err));
+                    .then(reg => console.log('Service Worker PWA Registrado con Éxito:', reg.scope))
+                    .catch(err => console.error('Fallo en Registro de SW:', err));
             });
         }
     </script>
@@ -35,11 +35,12 @@
 
 <body class="dark-mode">
 
-    <div id="estadoRed" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 99999; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none;"></div>
-
-    <div id="contenedorHidratacion" data-hidratado="false" style="background: #1e293b; color: #f97316; padding: 10px; text-align: center; font-size: 13px; font-weight: bold; border-bottom: 2px solid #f97316; position: sticky; top: 0; z-index: 99999; cursor: pointer;">
-        ⏳ [SSR]: HTML Plano Estático (<span id="textoHidratacion">Deshidratado</span>) - Clic para probar
+    <div id="estadoRed"
+        style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 99999; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none;">
     </div>
+
+    <div id="contenedorHidratacion" data-hidratado="false" style="display: none;"><span id="textoHidratacion"></span></div>
+    <div id="toastNotificacion"></div>
 
     <nav class="navbar sticky-top">
         <div class="container">
@@ -232,7 +233,8 @@
                             class="d-block w-100" alt="Sistemas">
                         <div class="carousel-caption d-block texto-carrusel">
                             <h3>Ingeniería en Sistemas & Desarrollo</h3>
-                            <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de sistemas.
+                            <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de
+                                sistemas.
                             </p>
                         </div>
                     </div>
@@ -241,7 +243,8 @@
                             class="d-block w-100" alt="Perros">
                         <div class="carousel-caption d-block texto-carrusel">
                             <h3>Paseo y Adiestramiento Canino - Edu-can</h3>
-                            <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en La
+                            <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en
+                                La
                                 Paz.</p>
                         </div>
                     </div>
@@ -301,8 +304,7 @@
                                     </h6>
                                 </div>
                             </div>
-                            <a href="#actividades" onclick="irASalonPokemon('titulares')"
-                                class="btn btn-sm btn-toggle">
+                            <a href="#actividades" onclick="irASalonPokemon('titulares')" class="btn btn-sm btn-toggle">
                                 Ver Equipo VGC
                             </a>
                         </div>
@@ -328,12 +330,17 @@
                         </ul>
 
                         <div class="mt-auto d-flex flex-wrap gap-2 pt-2 border-top border-secondary">
-                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-code-slash me-1"></i>C# & .NET</span>
-                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-database me-1"></i>SQL Server</span>
+                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-code-slash me-1"></i>C# &
+                                .NET</span>
+                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-database me-1"></i>SQL
+                                Server</span>
                             <span class="chip-bento tarjeta-habilidad"><i class="bi bi-braces me-1"></i>Python</span>
-                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-award me-1"></i>Edu-can La Paz</span>
-                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-globe2 me-1"></i>Francés & Inglés</span>
-                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-boxes me-1"></i>LEGO & Hot Wheels</span>
+                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-award me-1"></i>Edu-can La
+                                Paz</span>
+                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-globe2 me-1"></i>Francés &
+                                Inglés</span>
+                            <span class="chip-bento tarjeta-habilidad"><i class="bi bi-boxes me-1"></i>LEGO & Hot
+                                Wheels</span>
                         </div>
                     </div>
                 </div>
@@ -737,7 +744,7 @@
                 <h3 class="titulo-verde mb-0"><i class="bi bi-funnel-fill me-2"></i>Filtro Dinamico de 3 Capas</h3>
             </div>
             <div class="row g-3">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <label for="capa1" class="form-label fw-bold texto-verde">Capa 1: Area</label>
                     <select id="capa1" class="form-select input-tematico">
                         <option value="">-- Elija Area --</option>
@@ -745,15 +752,88 @@
                         <option value="desarrollo">Desarrollo Software</option>
                     </select>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <label for="capa2" class="form-label fw-bold texto-morado">Capa 2: Modulo</label>
                     <select id="capa2" class="form-select input-tematico" disabled>
                         <option value="">-- Primero elija area --</option>
                     </select>
                 </div>
+                <div class="col-12 col-md-4">
+                    <label for="capa3" class="form-label fw-bold texto-verde">Capa 3: Especialidad</label>
+                    <select id="capa3" class="form-select input-tematico" disabled>
+                        <option value="">-- Primero elija modulo --</option>
+                    </select>
+                </div>
                 <div class="col-12">
-                    <label class="form-label fw-bold texto-verde">Capa 3: Resultado</label>
-                    <div id="resultadoFiltro" class="item-card p-3 rounded" style="background: rgba(249, 115, 22, 0.12); border-left: 4px solid #f97316; color: #cbd5e1; font-weight: 600;">Seleccione las capas anteriores...</div>
+                    <label class="form-label fw-bold texto-verde">Resultado de Filtro en Cascada</label>
+                    <div id="resultadoFiltro" class="item-card p-3 rounded"
+                        style="background: rgba(249, 115, 22, 0.12); border-left: 4px solid #f97316; color: #cbd5e1; font-weight: 600;">
+                        Seleccione las 3 capas para ver el resultado...</div>
+                </div>
+            </div>
+
+            <hr class="my-4" style="border-color: #334155;">
+
+            <div class="mb-3">
+                <h3 class="titulo-verde mb-2"><i class="bi bi-search me-2"></i>Buscador en Tiempo Real por Teclado</h3>
+                <input type="text" id="buscadorEnTiempoReal" class="form-control input-tematico"
+                    placeholder="Filtrar por texto en tiempo real (keyup)...">
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold texto-morado d-block mb-2"><i class="bi bi-tags me-1"></i>Filtro por Categorias (Dataset):</span>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-filtro boton-filtro-dataset activo" data-categoria="todos">Todos</button>
+                    <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="software">Software</button>
+                    <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="canino">Edu-can</button>
+                    <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="arte">Arte & Musica</button>
+                </div>
+            </div>
+
+            <div class="row g-2 mb-4">
+                <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="software">
+                    <div class="item-card p-3 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                        <strong class="texto-verde">C# .NET & SQL</strong>
+                        <p class="small mb-0 text-secondary">Desarrollo backend y arquitecturas de software empresarial.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="canino">
+                    <div class="item-card p-3 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                        <strong class="texto-morado">Edu-can Canino</strong>
+                        <p class="small mb-0 text-secondary">Modificacion de conducta y adiestramiento canino profesional.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="arte">
+                    <div class="item-card p-3 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                        <strong class="texto-verde">Composicion & Beatmaking</strong>
+                        <p class="small mb-0 text-secondary">Letras de rap, metrica musical y diseno urbano.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" style="border-color: #334155;">
+
+            <h3 class="titulo-verde mb-3"><i class="bi bi-chevron-bar-expand me-2"></i>Acordeones Desplegables</h3>
+            <div class="acordeon-item mb-2">
+                <div class="acordeon-gatillo p-3 rounded d-flex justify-content-between align-items-center"
+                    style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
+                    <span><i class="bi bi-cpu me-2"></i>Arquitectura de Hidratacion SSR y Eventos</span>
+                    <i class="bi bi-chevron-down icono-acordeon"></i>
+                </div>
+                <div class="acordeon-contenido p-3 rounded-bottom"
+                    style="background: rgba(15, 23, 42, 0.85); border: 1px solid #334155; border-top: none; color: #cbd5e1;">
+                    Ciclo de vida controlado sin fugas de memoria gracias al desacoplamiento .off().on().
+                </div>
+            </div>
+            <div class="acordeon-item mb-2">
+                <div class="acordeon-gatillo p-3 rounded d-flex justify-content-between align-items-center"
+                    style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
+                    <span><i class="bi bi-cloud-arrow-down me-2"></i>PWA Store & Forward (Offline-First)</span>
+                    <i class="bi bi-chevron-down icono-acordeon"></i>
+                </div>
+                <div class="acordeon-contenido p-3 rounded-bottom"
+                    style="background: rgba(15, 23, 42, 0.85); border: 1px solid #334155; border-top: none; color: #cbd5e1;">
+                    Las solicitudes realizadas sin conexion a internet se encolan automaticamente en LocalStorage bajo la clave colaSincronizacionPWA y se despachan al recuperar la red.
                 </div>
             </div>
         </section>
@@ -1255,7 +1335,8 @@
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
                             <label for="input-nombre" class="form-label fw-bold texto-verde mb-0"><i
                                     class="bi bi-person-badge me-1"></i>Nombre Completo o Empresa</label>
-                            <span id="error-nombre" class="msg-error-inline" style="display: none; color: #ef4444; font-size: 0.8rem;">Nombre obligatorio</span>
+                            <span id="error-nombre" class="msg-error-inline"
+                                style="display: none; color: #ef4444; font-size: 0.8rem;">Nombre obligatorio</span>
                             <span id="errorNombre" class="msg-error-inline"></span>
                         </div>
                         <input type="text" id="input-nombre" class="form-control input-tematico"
@@ -1321,6 +1402,26 @@
                         </select>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                            <label for="horasEstimadas" class="form-label fw-bold texto-verde mb-0"><i
+                                    class="bi bi-clock-history me-1"></i>Horas Estimadas del Proyecto</label>
+                        </div>
+                        <input type="number" id="horasEstimadas" min="1" max="200" class="form-control input-tematico"
+                            placeholder="Ej. 10">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                            <label class="form-label fw-bold texto-morado mb-0"><i
+                                    class="bi bi-calculator me-1"></i>Presupuesto Estimado (Calculo en Tiempo Real)</label>
+                        </div>
+                        <div id="resultadoCalculoMetrica" class="item-card p-2 rounded"
+                            style="background: rgba(0, 255, 157, 0.1); border: 1px solid #00ff9d; color: #00ff9d; font-weight: bold; min-height: 44px; display: flex; align-items: center; padding-left: 12px;">
+                            $0.00 USD
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap mb-1">
                             <label for="mensaje" class="form-label fw-bold texto-verde mb-0"><i
@@ -1339,8 +1440,12 @@
                 </form>
 
                 <div id="alertaBox"></div>
-                <div id="alerta-exito" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
-                <div id="successAlert" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
+                <div id="alerta-exito" class="alert alert-success mt-3"
+                    style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta
+                    enviada con exito. Nos comunicaremos a la brevedad.</div>
+                <div id="successAlert" class="alert alert-success mt-3"
+                    style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta
+                    enviada con exito. Nos comunicaremos a la brevedad.</div>
             </div>
         </section>
 
@@ -1348,7 +1453,8 @@
 
     <footer id="redes" class="py-3 text-center border-top border-secondary">
         <div class="container">
-            <small class="texto-subtitulo">David Alexander Zalles Soria (Chato) - Ingenieria en Sistemas UPDS 2026</small>
+            <small class="texto-subtitulo">David Alexander Zalles Soria (Chato) - Ingenieria en Sistemas UPDS
+                2026</small>
         </div>
     </footer>
 
@@ -1373,10 +1479,13 @@
         </div>
     </div>
 
-    <div id="inactivityModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background: rgba(0, 0, 0, 0.75); z-index: 99999; justify-content: center; align-items: center;">
-        <div class="mi-card p-4 text-center" style="max-width: 420px; width: 90%; border: 2px solid #7e22ce; border-radius: 12px; background: #0f172a; color: #ffffff;">
+    <div id="inactivityModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background: rgba(0, 0, 0, 0.75); z-index: 99999; justify-content: center; align-items: center;">
+        <div class="mi-card p-4 text-center"
+            style="max-width: 420px; width: 90%; border: 2px solid #7e22ce; border-radius: 12px; background: #0f172a; color: #ffffff;">
             <h5 class="titulo-morado mb-2">Aviso de Inactividad</h5>
-            <p class="small texto-subtitulo mb-3">Has estado inactivo durante 30 segundos. Esta ventana se cerrara automaticamente.</p>
+            <p class="small texto-subtitulo mb-3">Has estado inactivo durante 30 segundos. Esta ventana se cerrara
+                automaticamente.</p>
             <button id="btnCerrarInactividad" class="btn btn-sm btn-toggle" type="button">Continuar</button>
         </div>
     </div>

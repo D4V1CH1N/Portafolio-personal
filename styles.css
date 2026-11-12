@@ -1287,3 +1287,36 @@ body.dark-mode .badge-mecanica-estandar {
     color: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
+.acordeon-gatillo {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.acordeon-gatillo:hover {
+    background-color: rgba(126, 34, 206, 0.2);
+}
+
+.acordeon-contenido {
+    display: none;
+}
+
+#toastNotificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100000;
+    display: none;
+    min-width: 260px;
+    background: rgba(15, 23, 42, 0.96);
+    color: #00ff9d;
+    border: 1px solid #00ff9d;
+    border-radius: 12px;
+    padding: 12px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}

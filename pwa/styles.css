@@ -103,7 +103,7 @@ html {
 
 .hud-profile {
     position: absolute;
-    top: calc(30px + 2dvh);
+    top: 4dvh;
     left: 4vw;
     max-width: 80vw;
     display: flex;
@@ -814,6 +814,10 @@ html {
     background-color: #0d0b14 !important;
     color: #e0e6ed !important;
     border: 1px solid #3b2854 !important;
+    min-height: 44px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-tematico:focus {
@@ -821,6 +825,86 @@ html {
     color: #ffffff !important;
     border-color: #00ff9d !important;
     box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25) !important;
+    outline: none !important;
+}
+
+select.input-tematico:focus {
+    border-color: #f97316 !important;
+    box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25) !important;
+}
+
+#menuDesplegablePWA {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    width: 220px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid #7e22ce;
+    border-radius: 16px;
+    padding: 10px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 9500;
+    display: none;
+    max-height: calc(100dvh - 140px);
+    overflow-y: auto;
+}
+
+.item-menu-pwa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: #e2e8f0;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.item-menu-pwa:hover, .item-menu-pwa:active {
+    background: rgba(126, 34, 206, 0.3);
+    color: #00ff9d;
+}
+
+.acordeon-gatillo {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.acordeon-gatillo:active {
+    background-color: rgba(126, 34, 206, 0.2);
+}
+
+.acordeon-contenido {
+    display: none;
+}
+
+#toastNotificacion {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100000;
+    display: none;
+    min-width: 260px;
+    max-width: 90vw;
+    background: rgba(15, 23, 42, 0.96);
+    color: #00ff9d;
+    border: 1px solid #00ff9d;
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .btn-red {

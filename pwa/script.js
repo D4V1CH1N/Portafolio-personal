@@ -3352,25 +3352,41 @@ $(document).ready(function() {
             $estado.html('<i class="bi bi-wifi-off"></i> Modo Offline Activo (Datos Locales)').css({'background': '#ffedd5', 'color': '#9a3412', 'border': '1px solid #9a3412'});
         }
     }
-    $(window).on('online offline', actualizarEstadoRed);
+    $(window).off('online.red offline.red').on('online.red offline.red', actualizarEstadoRed);
     actualizarEstadoRed();
 
-    $(window).on('online', function() {
-        let cola = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
-        if (cola.length > 0) {
-            setTimeout(() => {
-                $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexión recuperada: ' + cola.length + ' registro(s) sincronizado(s) con éxito.</div>').slideDown();
-                localStorage.removeItem('colaContactosOffline');
-                $('#form-contacto')[0].reset();
-                
-                setTimeout(() => $('#alertaBox').slideUp(), 5000);
-            }, 1500);
+    function desplegarToastExito(mensajeNotificacion) {
+        let $toast = $('#toastNotificacion');
+        if (!$toast.length) {
+            $('body').append('<div id="toastNotificacion"></div>');
+            $toast = $('#toastNotificacion');
         }
-    });
+        $toast.html('<div class="p-3 rounded shadow-lg d-flex align-items-center gap-2" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d; font-weight: 600;"><i class="bi bi-check-circle-fill"></i><span>' + mensajeNotificacion + '</span></div>');
+        $toast.stop(true, true).slideDown(300, function() {
+            setTimeout(function() {
+                $toast.fadeOut(400);
+            }, 3000);
+        });
+    }
 
     function hidratarInterfaz() {
         let $box = $('#contenedorPWA');
         if ($box.attr('data-hidratado') === 'true') return;
+
+        $(document).off('click', '#btnMenuPWA').on('click', '#btnMenuPWA', function(e) {
+            e.stopPropagation();
+            $('#menuDesplegablePWA').slideToggle(250);
+        });
+
+        $(document).off('click', '#menuDesplegablePWA .item-menu-pwa').on('click', '#menuDesplegablePWA .item-menu-pwa', function() {
+            $('#menuDesplegablePWA').slideUp(200);
+        });
+
+        $(document).off('click.menuFuera').on('click.menuFuera', function(e) {
+            if (!$(e.target).closest('#menuDesplegablePWA, #btnMenuPWA').length) {
+                $('#menuDesplegablePWA').slideUp(200);
+            }
+        });
 
         $(document).off('click', '.btn-abrir-modal').on('click', '.btn-abrir-modal', function(e) {
             e.preventDefault();
@@ -3390,6 +3406,109 @@ $(document).ready(function() {
             }
         });
 
+        $(document).off('click', '.acordeon-gatillo').on('click', '.acordeon-gatillo', function() {
+            $(this).next('.acordeon-contenido').slideToggle(300);
+            $(this).find('.icono-acordeon').toggleClass('bi-chevron-down bi-chevron-up');
+        });
+
+        $(document).off('input change', '#horasEstimadas, #servicio').on('input change', '#horasEstimadas, #servicio', function() {
+            let horas = parseFloat($('#horasEstimadas').val()) || 0;
+            let servicioSeleccionado = $('#servicio').val() || '';
+            let tarifaPorHora = 25;
+            if (servicioSeleccionado.indexOf('Paseo') > -1) {
+                tarifaPorHora = 15;
+            } else if (servicioSeleccionado.indexOf('Composici') > -1) {
+                tarifaPorHora = 20;
+            }
+            let totalCalculado = horas * tarifaPorHora;
+            $('#resultadoCalculoMetrica').text('$' + totalCalculado.toFixed(2) + ' USD (' + horas + ' hrs x $' + tarifaPorHora + '/hr)');
+        });
+
+        $(document).off('keyup', '#buscadorEnTiempoReal').on('keyup', '#buscadorEnTiempoReal', function() {
+            let terminoBusqueda = $(this).val().toLowerCase().trim();
+            $('.tarjeta-filtrable').each(function() {
+                let textoTarjeta = $(this).text().toLowerCase();
+                if (terminoBusqueda === '' || textoTarjeta.indexOf(terminoBusqueda) > -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        $(document).off('click', '.boton-filtro-dataset').on('click', '.boton-filtro-dataset', function() {
+            let categoriaObjetivo = this.dataset.categoria;
+            $('.boton-filtro-dataset').removeClass('activo');
+            $(this).addClass('activo');
+            let listaElementos = document.querySelectorAll('.item-categoria-dataset');
+            listaElementos.forEach(function(itemElemento) {
+                if (categoriaObjetivo === 'todos' || itemElemento.dataset.categoria === categoriaObjetivo) {
+                    itemElemento.style.display = 'block';
+                } else {
+                    itemElemento.style.display = 'none';
+                }
+            });
+            desplegarToastExito('Filtro por categoria aplicado.');
+        });
+
+        $(document).off('change', '#capa1').on('change', '#capa1', function() {
+            let valorCapa1 = $(this).val();
+            let $capa2 = $('#capa2');
+            let $capa3 = $('#capa3');
+            $capa2.html('<option value="">-- Seleccione Modulo --</option>');
+            $capa3.html('<option value="">-- Primero elija modulo --</option>').prop('disabled', true);
+            if (valorCapa1 === 'academico') {
+                $capa2.append('<option value="web2">Diseno Web II</option>');
+                $capa2.append('<option value="ingsw">Ingenieria de Software</option>');
+                $capa2.prop('disabled', false);
+            } else if (valorCapa1 === 'desarrollo') {
+                $capa2.append('<option value="pwa">Arquitectura PWA</option>');
+                $capa2.append('<option value="backend">Desarrollo Backend</option>');
+                $capa2.prop('disabled', false);
+            } else {
+                $capa2.prop('disabled', true);
+            }
+            $('#resultadoFiltro').text('Seleccione las 3 capas para ver el resultado...');
+        });
+
+        $(document).off('change', '#capa2').on('change', '#capa2', function() {
+            let valorCapa2 = $(this).val();
+            let $capa3 = $('#capa3');
+            $capa3.html('<option value="">-- Seleccione Especialidad --</option>');
+            if (valorCapa2 === 'web2') {
+                $capa3.append('<option value="ui">Frontend UI y Accesibilidad</option>');
+                $capa3.append('<option value="dom">Hidratacion y Ciclo de Vida DOM</option>');
+                $capa3.prop('disabled', false);
+            } else if (valorCapa2 === 'ingsw') {
+                $capa3.append('<option value="agil">Metodologias Agiles y Scrum</option>');
+                $capa3.append('<option value="patrones">Patrones de Arquitectura</option>');
+                $capa3.prop('disabled', false);
+            } else if (valorCapa2 === 'pwa') {
+                $capa3.append('<option value="sw">Service Workers y Cache Storage</option>');
+                $capa3.append('<option value="offline">Sincronizacion Offline-First</option>');
+                $capa3.prop('disabled', false);
+            } else if (valorCapa2 === 'backend') {
+                $capa3.append('<option value="sql">Bases de Datos SQL Server</option>');
+                $capa3.append('<option value="api">Arquitectura RESTful API</option>');
+                $capa3.prop('disabled', false);
+            } else {
+                $capa3.prop('disabled', true);
+            }
+            $('#resultadoFiltro').text('Seleccione la Capa 3...');
+        });
+
+        $(document).off('change', '#capa3').on('change', '#capa3', function() {
+            let textoCapa1 = $('#capa1 option:selected').text();
+            let textoCapa2 = $('#capa2 option:selected').text();
+            let textoCapa3 = $(this).find('option:selected').text();
+            if ($(this).val()) {
+                $('#resultadoFiltro').html('<div class="p-2" style="background: rgba(0,255,157,0.15); border-left: 4px solid #00ff9d; color: #00ff9d;"><strong>Filtro 3 Capas Activo:</strong> ' + textoCapa1 + ' &gt; ' + textoCapa2 + ' &gt; ' + textoCapa3 + '</div>');
+                desplegarToastExito('Filtro en Cascada completado con exito.');
+            } else {
+                $('#resultadoFiltro').text('Seleccione la Capa 3...');
+            }
+        });
+
         $('#form-contacto').off('submit').on('submit', function(e) {
             e.preventDefault();
             
@@ -3398,6 +3517,7 @@ $(document).ready(function() {
                 correo: $('#correo').val(),
                 telefono: $('#telefono').val(),
                 servicio: $('#servicio').val(),
+                horas: $('#horasEstimadas').val() || '0',
                 mensaje: $('#mensaje').val(),
                 fecha: new Date().toISOString()
             };
@@ -3405,14 +3525,32 @@ $(document).ready(function() {
             let $alertaBox = $('#alertaBox');
 
             if (!navigator.onLine) {
-                let cola = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
+                let cola = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
                 cola.push(datosFormulario);
-                localStorage.setItem('colaContactosOffline', JSON.stringify(cola));
-                
-                $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado localmente - Pendiente de envío (Offline)</div>').slideDown();
+                localStorage.setItem('colaSincronizacionPWA', JSON.stringify(cola));
+                $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado localmente - Pendiente de envio (Offline)</div>').slideDown();
             } else {
-                $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta enviada con éxito. Nos comunicaremos a la brevedad.</div>').slideDown();
+                $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>').slideDown();
+                desplegarToastExito('Propuesta enviada al servidor.');
                 this.reset();
+            }
+        });
+
+        $(window).off('online.sincronizacion').on('online.sincronizacion', function() {
+            let cola = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
+            if (cola.length > 0) {
+                setTimeout(function() {
+                    localStorage.removeItem('colaSincronizacionPWA');
+                    let formulario = document.getElementById('form-contacto');
+                    if (formulario) {
+                        formulario.reset();
+                    }
+                    $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexion recuperada: ' + cola.length + ' registro(s) sincronizado(s) con exito.</div>').slideDown();
+                    desplegarToastExito('Sincronizacion offline completada (' + cola.length + ' registros).');
+                    setTimeout(function() {
+                        $('#alertaBox').slideUp();
+                    }, 5000);
+                }, 1200);
             }
         });
 
@@ -3456,14 +3594,9 @@ $(document).ready(function() {
     function hidratarPWA() {
         let $box = $('#contenedorPWA');
         if ($box.attr('data-hidratado') === 'true') return;
-        $box.css({'background': 'rgba(15, 23, 42, 0.95)', 'color': '#00ff9d', 'border-bottom-color': '#00ff9d'});
-        $('#textoPWAI').text('⚡ PWA Hidratada Correctamente (.off().on() activo)');
-        $box.off('click').on('click', function() {
-            alert('¡PWA 100% Hidratada y optimizada para el Ing. Miguel!');
-        });
         $box.attr('data-hidratado', 'true');
     }
 
     hidratarInterfaz();
-    setTimeout(hidratarPWA, 500);
+    setTimeout(hidratarPWA, 300);
 });

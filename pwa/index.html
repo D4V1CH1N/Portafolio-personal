@@ -28,9 +28,8 @@
 
     <div id="estadoRed" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 99999; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none;"></div>
 
-    <div id="contenedorPWA" data-hidratado="false" style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(30, 41, 59, 0.95); color: #f97316; padding: 6px; text-align: center; font-size: 11px; font-weight: bold; border-bottom: 1px solid #f97316; z-index: 10000; backdrop-filter: blur(5px); cursor: pointer;">
-        📱 PWA [SSR]: <span id="textoPWAI">Cargando DOM (Deshidratado)...</span>
-    </div>
+    <div id="contenedorPWA" data-hidratado="false" style="display: none;"><span id="textoPWAI"></span></div>
+    <div id="toastNotificacion"></div>
 
     <div class="app-bg-slider">
         <div class="bg-slide" style="background-image: url('assassins.jpg');"></div>
@@ -72,6 +71,9 @@
         </div>
 
         <div class="hud-side-right">
+            <button type="button" id="btnMenuPWA" class="hud-social-btn" aria-label="Menu" style="background: rgba(15, 23, 42, 0.85); border: 1px solid #00ff9d; color: #00ff9d;">
+                <i class="bi bi-list"></i>
+            </button>
             <a href="https://github.com/D4V1CH1N" target="_blank" rel="noopener noreferrer" class="hud-social-btn" aria-label="GitHub">
                 <i class="bi bi-github"></i>
             </a>
@@ -81,6 +83,27 @@
             <a href="https://www.instagram.com/nullssj.zip" target="_blank" rel="noopener noreferrer" class="hud-social-btn" aria-label="Instagram">
                 <i class="bi bi-instagram"></i>
             </a>
+        </div>
+
+        <div id="menuDesplegablePWA">
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-perfil">
+                <i class="bi bi-person-circle"></i><span>Perfil & CV</span>
+            </button>
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-esencia">
+                <i class="bi bi-cpu"></i><span>Esencia Dev</span>
+            </button>
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-musica">
+                <i class="bi bi-headphones"></i><span>Música & Beats</span>
+            </button>
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-juegos">
+                <i class="bi bi-controller"></i><span>Juegos & VGC</span>
+            </button>
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-educan">
+                <i class="bi bi-heart-pulse"></i><span>Edu-can Canino</span>
+            </button>
+            <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-contacto">
+                <i class="bi bi-envelope-at"></i><span>Contacto & Cotizar</span>
+            </button>
         </div>
 
         <div class="hud-widget hud-widget-left">
@@ -491,6 +514,20 @@
                                 </select>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                                    <label for="horasEstimadas" class="form-label fw-bold texto-verde mb-0"><i class="bi bi-clock-history me-1"></i>Horas Estimadas del Proyecto</label>
+                                </div>
+                                <input type="number" id="horasEstimadas" min="1" max="200" class="form-control input-tematico" placeholder="Ej. 10">
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
+                                    <label class="form-label fw-bold texto-morado mb-0"><i class="bi bi-calculator me-1"></i>Presupuesto Estimado (Calculo en Tiempo Real)</label>
+                                </div>
+                                <div id="resultadoCalculoMetrica" class="item-card p-2 rounded" style="background: rgba(0, 255, 157, 0.1); border: 1px solid #00ff9d; color: #00ff9d; font-weight: bold; min-height: 44px; display: flex; align-items: center; padding-left: 12px;">$0.00 USD</div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap mb-1">
                                     <label for="mensaje" class="form-label fw-bold texto-verde mb-0"><i class="bi bi-card-text me-1"></i>Detalles del Proyecto o Propuesta</label>
@@ -509,6 +546,93 @@
                         <div id="alertaBox"></div>
                         <div id="alerta-exito" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
                         <div id="successAlert" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
+                    </div>
+
+                    <div class="card mi-card p-4 mt-4">
+                        <h4 class="titulo-verde mb-3"><i class="bi bi-funnel-fill me-2"></i>Filtro Dinámico de 3 Capas</h4>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-4">
+                                <label for="capa1" class="form-label fw-bold texto-verde">Capa 1: Área</label>
+                                <select id="capa1" class="form-select input-tematico">
+                                    <option value="">-- Elija Área --</option>
+                                    <option value="academico">Académico (UPDS)</option>
+                                    <option value="desarrollo">Desarrollo Software</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="capa2" class="form-label fw-bold texto-morado">Capa 2: Módulo</label>
+                                <select id="capa2" class="form-select input-tematico" disabled>
+                                    <option value="">-- Primero elija área --</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="capa3" class="form-label fw-bold texto-verde">Capa 3: Especialidad</label>
+                                <select id="capa3" class="form-select input-tematico" disabled>
+                                    <option value="">-- Primero elija módulo --</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div id="resultadoFiltro" class="item-card p-3 rounded" style="background: rgba(249, 115, 22, 0.12); border-left: 4px solid #f97316; color: #cbd5e1; font-weight: 600;">Seleccione las 3 capas para ver el resultado...</div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" style="border-color: #334155;">
+
+                        <h4 class="titulo-verde mb-3"><i class="bi bi-search me-2"></i>Buscador en Tiempo Real por Teclado</h4>
+                        <input type="text" id="buscadorEnTiempoReal" class="form-control input-tematico mb-3" placeholder="Filtrar por texto en tiempo real (keyup)...">
+
+                        <div class="mb-3">
+                            <span class="fw-bold texto-morado d-block mb-2"><i class="bi bi-tags me-1"></i>Filtro por Categorías (Dataset):</span>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-filtro boton-filtro-dataset activo" data-categoria="todos">Todos</button>
+                                <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="software">Software</button>
+                                <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="canino">Edu-can</button>
+                                <button type="button" class="btn btn-filtro boton-filtro-dataset" data-categoria="arte">Arte & Música</button>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="software">
+                                <div class="item-card p-2 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                                    <strong class="texto-verde">C# .NET & SQL</strong>
+                                    <p class="small mb-0 text-secondary">Desarrollo backend y arquitecturas de software empresarial.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="canino">
+                                <div class="item-card p-2 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                                    <strong class="texto-morado">Edu-can Canino</strong>
+                                    <p class="small mb-0 text-secondary">Modificación de conducta y adiestramiento canino profesional.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 item-categoria-dataset tarjeta-filtrable" data-categoria="arte">
+                                <div class="item-card p-2 rounded" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155;">
+                                    <strong class="texto-verde">Composición & Beatmaking</strong>
+                                    <p class="small mb-0 text-secondary">Letras de rap, métrica musical y diseño urbano.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" style="border-color: #334155;">
+
+                        <h4 class="titulo-verde mb-3"><i class="bi bi-chevron-bar-expand me-2"></i>Acordeones Desplegables</h4>
+                        <div class="acordeon-item mb-2">
+                            <div class="acordeon-gatillo p-3 rounded d-flex justify-content-between align-items-center" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
+                                <span><i class="bi bi-cpu me-2"></i>Arquitectura de Hidratación SSR y Eventos</span>
+                                <i class="bi bi-chevron-down icono-acordeon"></i>
+                            </div>
+                            <div class="acordeon-contenido p-3 rounded-bottom" style="background: rgba(15, 23, 42, 0.85); border: 1px solid #334155; border-top: none; color: #cbd5e1;">
+                                Ciclo de vida controlado sin fugas de memoria gracias al desacoplamiento .off().on().
+                            </div>
+                        </div>
+                        <div class="acordeon-item mb-2">
+                            <div class="acordeon-gatillo p-3 rounded d-flex justify-content-between align-items-center" style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
+                                <span><i class="bi bi-cloud-arrow-down me-2"></i>PWA Store & Forward (Offline-First)</span>
+                                <i class="bi bi-chevron-down icono-acordeon"></i>
+                            </div>
+                            <div class="acordeon-contenido p-3 rounded-bottom" style="background: rgba(15, 23, 42, 0.85); border: 1px solid #334155; border-top: none; color: #cbd5e1;">
+                                Las solicitudes realizadas sin conexión a internet se encolan automáticamente en LocalStorage bajo la clave colaSincronizacionPWA y se despachan al recuperar la red.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
