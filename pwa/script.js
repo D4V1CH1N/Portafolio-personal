@@ -3203,22 +3203,15 @@ function validarCampoCorreo(forzarObligatorio) {
         return false;
     }
 
-    const regexCorreoGmail = /^[a-zA-Z0-9._%+-]{3,}@gmail\.com$/;
-    if (!regexCorreoGmail.test(valorCorreo)) {
-        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Debe ser un correo válido terminado en @gmail.com");
-        return false;
-    }
-
-    const usuarioLocal = valorCorreo.split("@")[0];
-    if (esPalabraSinSentido(usuarioLocal)) {
-        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Ingresa un correo @gmail.com real (sin texto aleatorio)");
+    const regexCorreoEstandar = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexCorreoEstandar.test(valorCorreo)) {
+        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Ingresa un correo electronico valido");
         return false;
     }
 
     marcarEstadoCampo(correoInput, errorCorreo, true, "");
     return true;
 }
-
 function validarCampoTelefono(forzarObligatorio) {
     const telefono = telefonoInput.value.trim();
     if (telefono === "") {
@@ -3515,10 +3508,15 @@ $(document).ready(function() {
             let datosFormulario = {
                 nombre: $('#input-nombre').val(),
                 correo: $('#correo').val(),
-                telefono: $('#telefono').val(),
+                telefono: (($('#prefijoPais').val() || '') + ' ' + ($('#telefono').val() || '')).trim(),
+                fechaEstimada: $('#fechaReunion').val(),
                 servicio: $('#servicio').val(),
+                horasEstimadas: $('#horasEstimadas').val() || '0',
                 horas: $('#horasEstimadas').val() || '0',
+                detallesProyecto: $('#mensaje').val(),
                 mensaje: $('#mensaje').val(),
+                presupuestoCalculado: $('#resultadoCalculoMetrica').text().trim(),
+                fechaRegistro: new Date().toISOString(),
                 fecha: new Date().toISOString()
             };
 
@@ -3601,6 +3599,21 @@ $(document).ready(function() {
         if ($box.attr('data-hidratado') === 'true') return;
         $box.attr('data-hidratado', 'true');
     }
+
+    let temporizadorInactividadCV;
+    function reiniciarTemporizadorInactividad() {
+        if (temporizadorInactividadCV) {
+            clearTimeout(temporizadorInactividadCV);
+        }
+        temporizadorInactividadCV = setTimeout(function() {
+            $('#modal-perfil, #modal-cv').fadeIn();
+        }, 40000);
+    }
+    reiniciarTemporizadorInactividad();
+
+    $(document).off('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad').on('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad', function() {
+        reiniciarTemporizadorInactividad();
+    });
 
     hidratarInterfaz();
     setTimeout(hidratarPWA, 300);

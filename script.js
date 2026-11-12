@@ -3239,15 +3239,9 @@ function validarCampoCorreo(forzarObligatorio) {
         return false;
     }
 
-    const regexCorreoGmail = /^[a-zA-Z0-9._%+-]{3,}@gmail\.com$/;
-    if (!regexCorreoGmail.test(valorCorreo)) {
-        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Debe ser un correo válido terminado en @gmail.com");
-        return false;
-    }
-
-    const usuarioLocal = valorCorreo.split("@")[0];
-    if (esPalabraSinSentido(usuarioLocal)) {
-        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Ingresa un correo @gmail.com real (sin texto aleatorio)");
+    const regexCorreoEstandar = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexCorreoEstandar.test(valorCorreo)) {
+        marcarEstadoCampo(correoInput, errorCorreo, false, "[X] Ingresa un correo electronico valido");
         return false;
     }
 
@@ -3546,10 +3540,15 @@ $(document).ready(function() {
         let datosFormulario = {
             nombre: $('#input-nombre').val(),
             correo: $('#correo').val(),
-            telefono: $('#telefono').val(),
+            telefono: (($('#prefijoPais').val() || '') + ' ' + ($('#telefono').val() || '')).trim(),
+            fechaEstimada: $('#fechaReunion').val(),
             servicio: $('#servicio').val(),
+            horasEstimadas: $('#horasEstimadas').val() || '0',
             horas: $('#horasEstimadas').val() || '0',
+            detallesProyecto: $('#mensaje').val(),
             mensaje: $('#mensaje').val(),
+            presupuestoCalculado: $('#resultadoCalculoMetrica').text().trim(),
+            fechaRegistro: new Date().toISOString(),
             fecha: new Date().toISOString()
         };
 
@@ -3590,11 +3589,20 @@ $(document).ready(function() {
         }
     });
 
-    let timerInactividad = setInterval(function() {
-        $('#modal-cv').fadeIn();
-        setTimeout(function() { $('#modal-cv').fadeOut(); }, 5000);
-        clearInterval(timerInactividad);
-    }, 30000);
+    let temporizadorInactividadCV;
+    function reiniciarTemporizadorInactividad() {
+        if (temporizadorInactividadCV) {
+            clearTimeout(temporizadorInactividadCV);
+        }
+        temporizadorInactividadCV = setTimeout(function() {
+            $('#modal-cv').fadeIn();
+        }, 40000);
+    }
+    reiniciarTemporizadorInactividad();
+
+    $(document).off('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad').on('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad', function() {
+        reiniciarTemporizadorInactividad();
+    });
 
     $(document).off('click', '#cerrar-modal-cv, #btn-cerrar-modal-cv').on('click', '#cerrar-modal-cv, #btn-cerrar-modal-cv', function() {
         $('#modal-cv').fadeOut();
