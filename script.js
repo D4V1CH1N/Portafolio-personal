@@ -3428,15 +3428,43 @@ $(document).ready(function() {
         function() { $(this).animate({ opacity: 1 }, 200); }
     );
 
-    $('#form-contacto, #contactForm').submit(function(e) {
+    $('#form-contacto').off('submit').on('submit', function(e) {
         e.preventDefault();
-        if ($('#input-nombre').val() === '') { 
-            $('#error-nombre').fadeIn(); 
-            return; 
+        
+        let datosFormulario = {
+            nombre: $('#input-nombre').val(),
+            correo: $('#correo').val(),
+            telefono: $('#telefono').val(),
+            servicio: $('#servicio').val(),
+            mensaje: $('#mensaje').val(),
+            fecha: new Date().toISOString()
+        };
+
+        let $alertaBox = $('#alertaBox');
+
+        if (!navigator.onLine) {
+            let cola = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
+            cola.push(datosFormulario);
+            localStorage.setItem('colaContactosOffline', JSON.stringify(cola));
+            
+            $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado localmente - Pendiente de envío (Offline)</div>').slideDown();
+        } else {
+            $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta enviada con éxito. Nos comunicaremos a la brevedad.</div>').slideDown();
+            this.reset();
         }
-        $('#error-nombre').fadeOut();
-        $('#alerta-exito, #successAlert').slideDown().delay(3000).slideUp();
-        this.reset();
+    });
+
+    $(window).on('online', function() {
+        let cola = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
+        if (cola.length > 0) {
+            setTimeout(() => {
+                $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexión recuperada: ' + cola.length + ' registro(s) sincronizado(s) con éxito.</div>').slideDown();
+                localStorage.removeItem('colaContactosOffline');
+                $('#form-contacto')[0].reset();
+                
+                setTimeout(() => $('#alertaBox').slideUp(), 5000);
+            }, 1500);
+        }
     });
 
     let timerInactividad = setInterval(function() {
