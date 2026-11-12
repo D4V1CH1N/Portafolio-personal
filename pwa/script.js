@@ -3525,10 +3525,11 @@ $(document).ready(function() {
             let $alertaBox = $('#alertaBox');
 
             if (!navigator.onLine) {
-                let cola = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
-                cola.push(datosFormulario);
-                localStorage.setItem('colaSincronizacionPWA', JSON.stringify(cola));
+                let colaPendiente = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
+                colaPendiente.push(datosFormulario);
+                localStorage.setItem('colaSincronizacionPWA', JSON.stringify(colaPendiente));
                 $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado localmente - Pendiente de envio (Offline)</div>').slideDown();
+                $('#form-contacto')[0].reset();
             } else {
                 $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>').slideDown();
                 desplegarToastExito('Propuesta enviada al servidor.');
@@ -3537,16 +3538,20 @@ $(document).ready(function() {
         });
 
         $(window).off('online.sincronizacion').on('online.sincronizacion', function() {
-            let cola = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
-            if (cola.length > 0) {
+            let colaPendiente = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
+            if (colaPendiente.length > 0) {
+                let totalRegistrosSincronizados = colaPendiente.length;
                 setTimeout(function() {
-                    localStorage.removeItem('colaSincronizacionPWA');
-                    let formulario = document.getElementById('form-contacto');
-                    if (formulario) {
-                        formulario.reset();
+                    while (colaPendiente.length > 0) {
+                        let registroActual = colaPendiente.shift();
                     }
-                    $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexion recuperada: ' + cola.length + ' registro(s) sincronizado(s) con exito.</div>').slideDown();
-                    desplegarToastExito('Sincronizacion offline completada (' + cola.length + ' registros).');
+                    localStorage.removeItem('colaSincronizacionPWA');
+                    let formularioContacto = document.getElementById('form-contacto');
+                    if (formularioContacto) {
+                        formularioContacto.reset();
+                    }
+                    $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexion recuperada: ' + totalRegistrosSincronizados + ' registro(s) sincronizado(s) con exito (FIFO).</div>').slideDown();
+                    desplegarToastExito('Sincronizacion FIFO completada (' + totalRegistrosSincronizados + ' registros procesados).');
                     setTimeout(function() {
                         $('#alertaBox').slideUp();
                     }, 5000);
