@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "titulo": "Feel Good Inc.",
+    "artista": "Gorillaz",
+    "genero": "Rock / Alt",
+    "pokemonId": 212,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
+  },
+  {
+    "id": 2,
+    "titulo": "Clint Eastwood",
+    "artista": "Gorillaz",
+    "genero": "Rock / Alt",
+    "pokemonId": 94,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+  },
+  {
+    "id": 3,
+    "titulo": "Stressed Out",
+    "artista": "Twenty One Pilots",
+    "genero": "Rock / Alt",
+    "pokemonId": 849,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png"
+  },
+  {
+    "id": 4,
+    "titulo": "Chlorine",
+    "artista": "Twenty One Pilots",
+    "genero": "Rock / Alt",
+    "pokemonId": 454,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/454.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/454.png"
+  },
+  {
+    "id": 5,
+    "titulo": "Life Goes On",
+    "artista": "Oliver Tree",
+    "genero": "Pop / Indie",
+    "pokemonId": 937,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/937.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/937.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/937.png"
+  },
+  {
+    "id": 6,
+    "titulo": "Alien Boy",
+    "artista": "Oliver Tree",
+    "genero": "Pop / Indie",
+    "pokemonId": 386,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/386.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/386.png"
+  },
+  {
+    "id": 7,
+    "titulo": "Dollhouse",
+    "artista": "Melanie Martinez",
+    "genero": "Pop / Indie",
+    "pokemonId": 282,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
+  },
+  {
+    "id": 8,
+    "titulo": "Play Date",
+    "artista": "Melanie Martinez",
+    "genero": "Pop / Indie",
+    "pokemonId": 302,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png"
+  },
+  {
+    "id": 9,
+    "titulo": "Labios Rotos",
+    "artista": "Zoe",
+    "genero": "Rock / Alt",
+    "pokemonId": 197,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png"
+  },
+  {
+    "id": 10,
+    "titulo": "Soñe",
+    "artista": "Zoe",
+    "genero": "Rock / Alt",
+    "pokemonId": 359,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png"
+  },
+  {
+    "id": 11,
+    "titulo": "No Me Olvides",
+    "artista": "Lytos",
+    "genero": "Rap / Trap",
+    "pokemonId": 715,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png"
+  },
+  {
+    "id": 12,
+    "titulo": "Givenchy",
+    "artista": "Duki",
+    "genero": "Rap / Trap",
+    "pokemonId": 553,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/553.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/553.png"
+  },
+  {
+    "id": 13,
+    "titulo": "She Don't Give a FO",
+    "artista": "Duki",
+    "genero": "Rap / Trap",
+    "pokemonId": 384,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
+  },
+  {
+    "id": 14,
+    "titulo": "Breathing (FlatOut 2 OST)",
+    "artista": "Yellowcard",
+    "genero": "Soundtrack Gaming",
+    "pokemonId": 373,
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png"
+  }
+]

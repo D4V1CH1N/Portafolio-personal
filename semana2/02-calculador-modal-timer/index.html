@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 2 - 02 Calculador y Modal Timer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <a href="#inicio" class="brand">David Zalles | Portafolio UPDS</a>
+        <button id="hamburgerBtn" class="btn-hamburguesa" type="button" aria-label="Menu">
+            <i class="bi bi-list"></i>
+        </button>
+        <nav id="navMenu" class="nav-menu">
+            <a href="#inicio">Perfil</a>
+            <a href="#acordeon">Trayectoria</a>
+            <a href="#catalogo">Catalogo</a>
+            <a href="#contacto">Contacto</a>
+            <button id="themeBtn" class="btn-accion" type="button"><i class="bi bi-moon-stars"></i> Tema</button>
+        </nav>
+    </header>
+    <main class="container-main">
+        <section id="inicio" class="panel-card">
+            <h1 class="titulo-morado">David Zalles - Arquitectura Frontend & PWA</h1>
+            <p>Estudiante de Ingenieria de Sistemas (UPDS), desarrollador C# .NET / Web / Android y creador de EDU-CAN en Santa Cruz, Bolivia.</p>
+            <div class="grid-cards">
+                <div class="tarjeta-habilidad"><strong>C# .NET & SQL</strong><p>Arquitectura limpia multi-caja.</p></div>
+                <div class="tarjeta-habilidad"><strong>jQuery & DOM</strong><p>Control de eventos sin memory leaks.</p></div>
+                <div class="tarjeta-habilidad"><strong>EDU-CAN</strong><p>Rehabilitacion canina profesional.</p></div>
+            </div>
+        </section>
+
+        <section id="acordeon" class="panel-card">
+            <h2 class="titulo-morado">Bitacora Academica (Acordeon jQuery)</h2>
+            <div class="acordeon-gatillo"><span>Proyecto EDU-CAN Bolivia</span><i class="bi bi-chevron-down"></i></div>
+            <div class="acordeon-contenido"><p>Sistema de gestion de paseos y rehabilitacion de perros con historiales por conducta.</p></div>
+            <div class="acordeon-gatillo"><span>Colecciones (Hot Wheels / Pokemon)</span><i class="bi bi-chevron-down"></i></div>
+            <div class="acordeon-contenido"><p>Registro digital de Dodge Challenger, Corvette Stingray y equipo competitivo Scizor.</p></div>
+        </section>
+        <section id="calculador" class="panel-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <h2 class="titulo-morado" style="margin:0;">Calculador Dinamico (40 BOB/h) & Modal 30s</h2>
+                <button type="button" id="btnAbrirTarifaFlash" class="btn-accion"><i class="bi bi-stopwatch"></i> Tarifa Flash (30s)</button>
+            </div>
+            <div class="grid-cards">
+                <div>
+                    <label for="hrs"><strong>Horas de estudio o cabina:</strong></label>
+                    <input type="number" id="hrs" min="0" max="100" class="campo-form" placeholder="Ej. 3">
+                </div>
+                <div>
+                    <strong>Total estimado:</strong>
+                    <div id="total" class="item-tarjeta texto-verde" style="font-size:1.25rem; font-weight:800; margin-top:6px;">0 BOB</div>
+                </div>
+            </div>
+        </section>
+        <section id="catalogo" class="panel-card">
+            <h2 class="titulo-morado">Catalogo Interactivo (Dataset & Buscador)</h2>
+            <input type="text" id="buscadorEnTiempoReal" class="campo-form" placeholder="Filtrar tarjetas por palabra clave...">
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                <button type="button" class="btn-outline boton-filtro-dataset activo" data-categoria="todos">Todos</button>
+                <button type="button" class="btn-outline boton-filtro-dataset" data-categoria="dev">Dev</button>
+                <button type="button" class="btn-outline boton-filtro-dataset" data-categoria="musica">Musica</button>
+            </div>
+            <div class="grid-cards">
+                <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="dev"><strong>App Escritorio C#</strong><p>Facturacion e inventario SQL Server.</p></div>
+                <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="musica"><strong>Twenty One Pilots</strong><p>Heavydirtysoul / Stressed Out /Ride.</p></div>
+                <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="musica"><strong>Gorillaz</strong><p>Clint Eastwood / Feel Good Inc.</p></div>
+            </div>
+        </section>
+        <section id="contacto" class="panel-card">
+            <h2 class="titulo-morado">Contacto y Sincronizacion</h2>
+            <form id="form-contacto">
+                <label for="input-nombre">Nombre</label>
+                <input type="text" id="input-nombre" class="campo-form" required placeholder="Tu nombre">
+                <label for="correo">Correo electronico</label>
+                <input type="email" id="correo" class="campo-form" required placeholder="correo@ejemplo.com">
+                <label for="mensaje">Propuesta</label>
+                <textarea id="mensaje" rows="2" class="campo-form" required placeholder="Detalle del proyecto"></textarea>
+                <button type="submit" class="btn-accion">Enviar Propuesta</button>
+                <div id="alertaBox" style="display:none; margin-top:10px;"></div>
+            </form>
+        </section>
+        <section id="panelBitacoraEnVivo" class="panel-card">
+            <h2 class="titulo-morado">Bitacoras Dia 1 & Dia 2 (Event Bubbling y Prepend)</h2>
+            <div id="liveContainer" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+                <button type="button" class="btn-outline" data-prod="Album Blurryface">Vinilo Blurryface</button>
+                <button type="button" class="btn-accion" data-action="like" data-likes="0">Like Live</button>
+            </div>
+            <input type="text" id="chatInput" class="campo-form" placeholder="Chat en vivo (Enter)...">
+            <div id="logOutput" class="log-terminal"></div>
+            <form id="orderForm" style="margin-top:14px;">
+                <input type="text" id="userTikTok" class="campo-form" placeholder="Usuario Live" required>
+                <select id="variantSelect" class="campo-form">
+                    <option value="Estandar">Estandar</option>
+                    <option value="Edicion Deluxe">Edicion Deluxe</option>
+                </select>
+                <button type="submit" class="btn-accion">Registrar Pedido Dia 2</button>
+            </form>
+            <div id="logDia2" class="log-terminal"></div>
+        </section>
+    </main>
+    <div id="toastNotificacion"></div>
+    <div id="modalTimer30s" class="modal-overlay-s2">
+        <div class="modal-caja-s2" style="text-align:center;">
+            <h3 class="titulo-morado">Tarifa Flash (30s)</h3>
+            <div id="contadorTarifaFlash" class="texto-verde" style="font-size:2.5rem; font-weight:800; margin:16px 0;">30s</div>
+            <button type="button" id="btnConfirmarTarifaFlash" class="btn-accion">Confirmar Tarifa</button>
+            <button type="button" id="btnCerrarTimer30s" class="btn-outline" style="margin-left:8px;">Cerrar</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
