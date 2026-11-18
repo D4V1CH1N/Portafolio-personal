@@ -5,6 +5,7 @@
     "artista": "Gorillaz",
     "genero": "Rock / Alt",
     "pokemonId": 212,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
@@ -15,6 +16,7 @@
     "artista": "Gorillaz",
     "genero": "Rock / Alt",
     "pokemonId": 94,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
@@ -25,6 +27,7 @@
     "artista": "Twenty One Pilots",
     "genero": "Rock / Alt",
     "pokemonId": 849,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/849.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/849.png"
@@ -35,6 +38,7 @@
     "artista": "Twenty One Pilots",
     "genero": "Rock / Alt",
     "pokemonId": 454,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/454.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/454.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/454.png"
@@ -45,6 +49,7 @@
     "artista": "Oliver Tree",
     "genero": "Pop / Indie",
     "pokemonId": 937,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/937.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/937.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/937.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/937.png"
@@ -55,16 +60,18 @@
     "artista": "Oliver Tree",
     "genero": "Pop / Indie",
     "pokemonId": 386,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/386.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/386.png"
   },
   {
     "id": 7,
-    "titulo": "Dollhouse",
+    "titulo": "Cry Baby",
     "artista": "Melanie Martinez",
     "genero": "Pop / Indie",
     "pokemonId": 282,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
@@ -74,10 +81,11 @@
     "titulo": "Play Date",
     "artista": "Melanie Martinez",
     "genero": "Pop / Indie",
-    "pokemonId": 302,
-    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
-    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png",
-    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png"
+    "pokemonId": 778,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/778.png",
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/778.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png"
   },
   {
     "id": 9,
@@ -85,16 +93,18 @@
     "artista": "Zoe",
     "genero": "Rock / Alt",
     "pokemonId": 197,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/197.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png"
   },
   {
     "id": 10,
-    "titulo": "Soñe",
+    "titulo": "Soñé",
     "artista": "Zoe",
     "genero": "Rock / Alt",
     "pokemonId": 359,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png"
@@ -105,6 +115,7 @@
     "artista": "Lytos",
     "genero": "Rap / Trap",
     "pokemonId": 715,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png"
@@ -115,28 +126,53 @@
     "artista": "Duki",
     "genero": "Rap / Trap",
     "pokemonId": 553,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/553.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/553.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/553.png"
   },
   {
     "id": 13,
-    "titulo": "She Don't Give a FO",
-    "artista": "Duki",
-    "genero": "Rap / Trap",
-    "pokemonId": 384,
-    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
-    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png",
-    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
+    "titulo": "Redbone",
+    "artista": "Childish Gambino",
+    "genero": "Funk / Soul",
+    "pokemonId": 150,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
   },
   {
     "id": 14,
-    "titulo": "Breathing (FlatOut 2 OST)",
+    "titulo": "Breathing",
     "artista": "Yellowcard",
-    "genero": "Soundtrack Gaming",
+    "genero": "FlatOut 2 OST",
     "pokemonId": 373,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
     "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
     "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png",
     "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png"
+  },
+  {
+    "id": 15,
+    "titulo": "Es Epico",
+    "artista": "Canserbero",
+    "genero": "Rap Conciencia",
+    "pokemonId": 248,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png",
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+  },
+  {
+    "id": 16,
+    "titulo": "Feather (feat. Cise Starr)",
+    "artista": "Nujabes & Deftones Vibes",
+    "genero": "Lo-Fi / Instrumental",
+    "pokemonId": 385,
+    "portada": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
+    "portadaMini": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
+    "portadaMedia": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/385.png",
+    "portadaOriginal": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/385.png"
   }
 ]

@@ -33,12 +33,13 @@
 
     <div class="app-bg-slider">
         <div class="bg-slide" style="background-image: url('assassins.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('scizor.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('Gorillaz.jpg');"></div>
-        <div class="bg-slide" style="background-image: url('kingdomheart.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/mq4nkwx3jzju6dfzn9t9s/scizor.jpg?rlkey=m35z431gwv22uvdvbrp87c5n2&st=acklkspb&raw=1');"></div>
+        <div class="bg-slide" style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/c2g9v5gx4yvui5jlpghi4/Gorillaz.jpg?rlkey=2xff5hmrelfu19gzjt3n7m81r&st=p7kwgkeg&raw=1');"></div>
+        <div class="bg-slide" style="background-image: url('https://dl.dropboxusercontent.com/scl/fi/0vjvjbl808mesqq7jrasn/kingdomheart.jpg?rlkey=00ozurttxde3rz4pw8hybsmyl&st=dxe57qcg&raw=1');"></div>
     </div>
 
     <div id="appLobbyWrapper" class="app-lobby-wrapper">
+
 
         <div class="hud-profile btn-abrir-modal" data-target="#modal-perfil">
             <img src="../assassins.jpg" alt="Chato" class="hud-avatar">
@@ -91,7 +92,7 @@
 
         <div id="menuDesplegablePWA">
             <div class="p-2 border-bottom border-secondary mb-2">
-                <span id="badgeRolActivo" class="badge barra-verde text-dark d-block mb-2">Rol: cliente</span>
+                <span id="badgeRolActivo" class="badge barra-verde text-dark d-block mb-2">Cliente</span>
                 <div class="d-flex flex-wrap gap-1" id="barraRolesRapidos">
                     <button type="button" class="btn-rol-rapido activo" data-rol="cliente">Cliente</button>
                     <button type="button" class="btn-rol-rapido" data-rol="encargado">Encargado</button>
@@ -120,6 +121,9 @@
             <button type="button" class="item-menu-pwa btn-abrir-modal" data-target="#modal-contacto">
                 <i class="bi bi-envelope-at"></i><span>Contacto & Cotizar</span>
             </button>
+            <button type="button" id="btn-theme" class="item-menu-pwa">
+                <i class="bi bi-circle-half"></i><span>Alternar Modo</span>
+            </button>
         </div>
 
         <div class="hud-widget hud-widget-left">
@@ -130,7 +134,6 @@
                 <span class="badge barra-morada text-white badge-compacto">Batmobile Tumbler 1989</span>
             </div>
         </div>
-
         <div class="hud-widget hud-widget-right">
             <div class="hud-widget-title"><i class="bi bi-trophy"></i> Mi Equipo VGC</div>
             <div class="hud-widget-grid">
@@ -184,7 +187,7 @@
                             <p class="text-sm">Hellcat Plum Crazy Purple. Rines 20", Widebody, Motor V8 HEMI Supercharged +700 HP.</p>
                         </div>
 
-                        <h4 class="text-info mt-4 mb-3" style="color:#00ff9d !important;"><i class="bi bi-stars"></i> Talentos, Arte & Idiomas</h4>
+                        <h4 class="mt-4 mb-3" style="color: #00ff9d;"><i class="bi bi-stars"></i> Talentos, Arte & Idiomas</h4>
                         
                         <div class="skill-bar-container">
                             <div class="d-flex justify-content-between text-white text-sm mb-1"><span>Francés (FR) & Inglés (EN)</span><span>Fluido</span></div>
@@ -463,7 +466,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card mi-card p-4">
                         <h3 class="titulo-verde mb-2"><i class="bi bi-briefcase-fill me-2"></i>Formulario Profesional de Contratación</h3>
                         <p class="texto-subtitulo mb-4">
@@ -563,7 +565,6 @@
                         <div id="alerta-exito" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
                         <div id="successAlert" class="alert alert-success mt-3" style="display: none; background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;">Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>
                     </div>
-
                     <div class="card mi-card p-4 mt-4">
                         <h4 class="titulo-verde mb-3"><i class="bi bi-funnel-fill me-2"></i>Filtro Dinámico de 3 Capas</h4>
                         <div class="row g-3">
@@ -772,6 +773,7 @@
             </div>
         </div>
 
+
         <div id="modal-juegos" class="app-modal">
             <div class="app-modal-content">
                 <div class="modal-header">
@@ -880,6 +882,7 @@
             </div>
         </div>
 
+
         <div id="modal-educan" class="app-modal">
             <div class="app-modal-content">
                 <div class="modal-header">
@@ -932,7 +935,14 @@
                         </div>
                         <div id="contenedorCatalogoKaraoke" class="row g-2"></div>
                     </section>
-
+                    <section class="cola-karaoke p-3 mb-3 mi-card">
+                        <h4 class="titulo-verde mb-2"><i class="bi bi-vinyl-fill me-2"></i>Cola Dinamica Blindada</h4>
+                        <div class="d-flex gap-2 mb-3">
+                            <input type="text" id="inputCancion" class="form-control input-tematico" placeholder="Escribe tema o artista...">
+                            <button type="button" id="btnPedir" class="btn-tactil">Pedir</button>
+                        </div>
+                        <div id="listaCanciones"></div>
+                    </section>
                     <section class="modulo-reservas p-3 mb-3 mi-card">
                         <h4 class="titulo-morado mb-2"><i class="bi bi-calendar-check me-2"></i>Reservas (Anti-XSS)</h4>
                         <form id="formReserva" class="row g-2">
@@ -953,16 +963,6 @@
                         </form>
                         <ul id="listaReservas" class="lista-segura mt-3"></ul>
                     </section>
-
-                    <section class="cola-karaoke p-3 mb-3 mi-card">
-                        <h4 class="titulo-verde mb-2"><i class="bi bi-vinyl-fill me-2"></i>Cola Dinamica Blindada</h4>
-                        <div class="d-flex gap-2 mb-3">
-                            <input type="text" id="inputCancion" class="form-control input-tematico" placeholder="Escribe tema o artista...">
-                            <button type="button" id="btnPedir" class="btn-tactil">Pedir</button>
-                        </div>
-                        <div id="listaCanciones"></div>
-                    </section>
-
                     <section id="panelBitacoraEnVivo" class="p-3 mb-3 mi-card" style="display: none;">
                         <h4 class="titulo-morado mb-2"><i class="bi bi-broadcast me-2"></i>Bitacora en Vivo</h4>
                         <div id="liveContainer" class="row g-2 mb-2">
@@ -998,7 +998,6 @@
                         </form>
                         <div id="logDia2" class="log-terminal"></div>
                     </section>
-
                     <section id="panelAdminSistema" class="p-3 mb-3 mi-card" style="display: none;">
                         <div class="d-flex justify-content-between align-items-center mb-2 gap-2">
                             <h5 class="titulo-verde mb-0">Panel Administrador</h5>

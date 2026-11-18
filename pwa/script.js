@@ -3366,6 +3366,10 @@ $(document).ready(function() {
         let $box = $('#contenedorPWA');
         if ($box.attr('data-hidratado') === 'true') return;
 
+        $(document).off('click', '#btn-theme, #themeBtn').on('click', '#btn-theme, #themeBtn', function() {
+            $('body').toggleClass('dark-mode');
+        });
+
         $(document).off('click', '#btnMenuPWA').on('click', '#btnMenuPWA', function(e) {
             e.stopPropagation();
             $('#menuDesplegablePWA').slideToggle(250);
@@ -3584,7 +3588,7 @@ $(document).ready(function() {
         function aplicarPermisosPorRolPWA(rol) {
             let rolNormalizado = ['cliente', 'encargado', 'administrador'].includes(rol) ? rol : 'cliente';
             localStorage.setItem('sesionActivaRol', rolNormalizado);
-            $('#badgeRolActivo').text('Rol: ' + rolNormalizado.charAt(0).toUpperCase() + rolNormalizado.slice(1));
+            $('#badgeRolActivo').text(rolNormalizado.charAt(0).toUpperCase() + rolNormalizado.slice(1));
             $('#barraRolesRapidos .btn-rol-rapido').removeClass('activo');
             $('#barraRolesRapidos .btn-rol-rapido[data-rol="' + rolNormalizado + '"]').addClass('activo');
 
@@ -3660,13 +3664,31 @@ $(document).ready(function() {
         });
 
         async function resolverPortadaMultimediaPWA(cancion) {
-            let claveCache = 'cachePortadaTrack_' + cancion.id;
+            let claveCache = 'cachePortadaAlbumV2_' + cancion.id;
             let cacheLocal = localStorage.getItem(claveCache);
             if (cacheLocal) {
                 try {
                     return JSON.parse(cacheLocal);
                 } catch (errCache) {
                 }
+            }
+            try {
+                let query = encodeURIComponent(cancion.artista + ' ' + cancion.titulo);
+                let resItunes = await fetch('https://itunes.apple.com/search?term=' + query + '&entity=song&limit=1');
+                if (resItunes.ok) {
+                    let dataItunes = await resItunes.json();
+                    if (dataItunes.results && dataItunes.results.length > 0 && dataItunes.results[0].artworkUrl100) {
+                        let baseUrl = dataItunes.results[0].artworkUrl100;
+                        let pack = {
+                            mini: baseUrl.replace('100x100bb', '60x60bb'),
+                            media: baseUrl.replace('100x100bb', '600x600bb'),
+                            original: baseUrl.replace('100x100bb', '1000x1000bb')
+                        };
+                        localStorage.setItem(claveCache, JSON.stringify(pack));
+                        return pack;
+                    }
+                }
+            } catch (errItunes) {
             }
             if (cancion.pokemonId) {
                 try {
@@ -3684,24 +3706,6 @@ $(document).ready(function() {
                     }
                 } catch (errPoke) {
                 }
-            }
-            try {
-                let query = encodeURIComponent(cancion.artista + ' ' + cancion.titulo);
-                let resItunes = await fetch('https://itunes.apple.com/search?term=' + query + '&entity=song&limit=1');
-                if (resItunes.ok) {
-                    let dataItunes = await resItunes.json();
-                    if (dataItunes.results && dataItunes.results.length > 0 && dataItunes.results[0].artworkUrl100) {
-                        let baseUrl = dataItunes.results[0].artworkUrl100;
-                        let pack = {
-                            mini: baseUrl,
-                            media: baseUrl.replace('100x100bb', '600x600bb'),
-                            original: baseUrl.replace('100x100bb', '1000x1000bb')
-                        };
-                        localStorage.setItem(claveCache, JSON.stringify(pack));
-                        return pack;
-                    }
-                }
-            } catch (errItunes) {
             }
             return {
                 mini: cancion.portadaMini,

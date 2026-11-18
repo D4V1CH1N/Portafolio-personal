@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const btnTheme = document.getElementById('btnTheme');
+    const themeBtn = document.getElementById('themeBtn');
     if (localStorage.getItem('temaOscuroS1') === 'true') {
         document.body.classList.add('dark-mode');
     }
-    if (btnTheme) {
-        btnTheme.addEventListener('click', function() {
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             localStorage.setItem('temaOscuroS1', document.body.classList.contains('dark-mode'));
         });
@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
         buscador.addEventListener('keyup', aplicarFiltro);
     }
 
-    const btnMenu = document.getElementById('btnMenuMovil');
+    const burguerBtn = document.getElementById('burguerBtn');
     const navMenu = document.getElementById('navMenu');
-    if (btnMenu && navMenu) {
-        btnMenu.addEventListener('click', function() {
+    if (burguerBtn && navMenu) {
+        burguerBtn.addEventListener('click', function() {
             navMenu.classList.toggle('abierto');
         });
         navMenu.querySelectorAll('a').forEach(function(link) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const formContacto = document.getElementById('formContacto');
+    const contactForm = document.getElementById('contactForm');
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const regexTel = /^[67]\d{7}$/;
 
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
         errEl.textContent = ok ? '' : msg;
     }
 
-    if (formContacto) {
-        formContacto.addEventListener('submit', function(e) {
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const nombre = document.getElementById('nombreInput');
             const correo = document.getElementById('correoInput');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alerta.className = 'alerta-ok';
                 alerta.style.display = 'block';
                 alerta.textContent = 'Propuesta validada y enviada correctamente.';
-                formContacto.reset();
+                contactForm.reset();
             }
         });
     }

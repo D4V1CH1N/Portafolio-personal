@@ -17,7 +17,36 @@ $(document).ready(function() {
     });
 
     $(document).off('click', '.acordeon-gatillo').on('click', '.acordeon-gatillo', function() {
-        $(this).next('.acordeon-contenido').slideToggle(250);
+        $(this).next('.acordeon-contenido').slideToggle('fast');
+    });
+
+    $(document).off('change', '#capa1').on('change', '#capa1', function() {
+        let v = $(this).val();
+        $('#capa2').html('<option value="">-- Capa 2 --</option>');
+        $('#capa3').html('<option value="">-- Capa 3 --</option>').prop('disabled', true);
+        if (v === 'academico') {
+            $('#capa2').append('<option value="web2">Diseno Web II</option><option value="bd">Base de Datos</option>').prop('disabled', false);
+        } else if (v === 'desarrollo') {
+            $('#capa2').append('<option value="pwa">Arquitectura PWA</option><option value="net">C# .NET</option>').prop('disabled', false);
+        } else {
+            $('#capa2').prop('disabled', true);
+        }
+    });
+
+    $(document).off('change', '#capa2').on('change', '#capa2', function() {
+        let v = $(this).val();
+        $('#capa3').html('<option value="">-- Capa 3 --</option>');
+        if (v) {
+            $('#capa3').append('<option value="dom">DOM y Eventos</option><option value="sync">Offline Sync</option>').prop('disabled', false);
+        } else {
+            $('#capa3').prop('disabled', true);
+        }
+    });
+
+    $(document).off('change', '#capa3').on('change', '#capa3', function() {
+        if ($(this).val()) {
+            $('#resultadoFiltro').text('Cascada: ' + $('#capa1 option:selected').text() + ' > ' + $('#capa2 option:selected').text() + ' > ' + $(this).find('option:selected').text());
+        }
     });
 
     $(document).off('mouseenter mouseleave', '.tarjeta-habilidad').on({
@@ -133,7 +162,7 @@ $(document).ready(function() {
                 let d = await res.json();
                 if (d.results && d.results[0] && d.results[0].artworkUrl100) {
                     let u = d.results[0].artworkUrl100;
-                    let pack = { mini: u, media: u.replace('100x100bb', '600x600bb'), original: u.replace('100x100bb', '1000x1000bb') };
+                    let pack = { mini: u.replace('100x100bb', '60x60bb'), media: u.replace('100x100bb', '600x600bb'), original: u.replace('100x100bb', '1000x1000bb') };
                     localStorage.setItem(key, JSON.stringify(pack));
                     return pack;
                 }
@@ -151,9 +180,9 @@ $(document).ready(function() {
             let lista = await response.json();
             $box.empty();
             lista.forEach(function(c) {
-                let $card = $('<div>').addClass('fila-fetch');
+                let $card = $('<article>').addClass('fila-fetch tarjeta-pista').attr('data-id', c.id);
                 let $izq = $('<div>').css({ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 });
-                let $img = $('<img>').attr({ src: c.portadaMini, alt: c.titulo, loading: 'lazy', width: 64, height: 64 }).addClass('img-lazy-zoom')
+                let $img = $('<img>').attr({ src: c.portada || c.portadaMini, alt: c.titulo, loading: 'lazy', decoding: 'async', width: 64, height: 64 }).addClass('img-lazy-zoom img-expandible')
                     .data({ media: c.portadaMedia, original: c.portadaOriginal, titulo: c.titulo + ' - ' + c.artista });
                 let $txt = $('<div>').css('minWidth', 0).append($('<div>').css('fontWeight', '700').text(c.titulo), $('<div>').addClass('texto-verde').text(c.artista));
                 $izq.append($img, $txt);
@@ -238,7 +267,7 @@ $(document).ready(function() {
 
     function aplicarRolS2(rol) {
         let r = ['cliente', 'encargado', 'administrador'].includes(rol) ? rol : 'cliente';
-        localStorage.setItem('sesionActivaRol', r);
+        sessionStorage.setItem('sesionRolActiva', r);
         $('#badgeRolActivo').text('Rol: ' + r.charAt(0).toUpperCase() + r.slice(1));
         $('#barraRolesRapidos .btn-rol-rapido').removeClass('activo');
         $('#barraRolesRapidos .btn-rol-rapido[data-rol="' + r + '"]').addClass('activo');
@@ -256,7 +285,7 @@ $(document).ready(function() {
             $('#panelAdminSistema').fadeOut(200);
         }
     }
-    aplicarRolS2(localStorage.getItem('sesionActivaRol') || 'cliente');
+    aplicarRolS2(sessionStorage.getItem('sesionRolActiva') || 'cliente');
 
     $(document).off('click', '#barraRolesRapidos .btn-rol-rapido').on('click', '#barraRolesRapidos .btn-rol-rapido', function() {
         aplicarRolS2($(this).data('rol'));
@@ -310,7 +339,7 @@ $(document).ready(function() {
         if (!tema) return;
         let $fila = $('<div>').addClass('fila-cancion');
         let $btn = $('<button>').attr('type', 'button').addClass('btn-tactil btn-quitar').html('<i class="bi bi-trash"></i>');
-        if ((localStorage.getItem('sesionActivaRol') || 'cliente') === 'cliente') $btn.hide();
+        if ((sessionStorage.getItem('sesionRolActiva') || 'cliente') === 'cliente') $btn.hide();
         $fila.append($('<span>').addClass('titulo-truncado').text(tema), $btn);
         $('#listaCanciones').append($fila);
         $('#inputCancion').val('');

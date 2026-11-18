@@ -17,7 +17,36 @@ $(document).ready(function() {
     });
 
     $(document).off('click', '.acordeon-gatillo').on('click', '.acordeon-gatillo', function() {
-        $(this).next('.acordeon-contenido').slideToggle(250);
+        $(this).next('.acordeon-contenido').slideToggle('fast');
+    });
+
+    $(document).off('change', '#capa1').on('change', '#capa1', function() {
+        let v = $(this).val();
+        $('#capa2').html('<option value="">-- Capa 2 --</option>');
+        $('#capa3').html('<option value="">-- Capa 3 --</option>').prop('disabled', true);
+        if (v === 'academico') {
+            $('#capa2').append('<option value="web2">Diseno Web II</option><option value="bd">Base de Datos</option>').prop('disabled', false);
+        } else if (v === 'desarrollo') {
+            $('#capa2').append('<option value="pwa">Arquitectura PWA</option><option value="net">C# .NET</option>').prop('disabled', false);
+        } else {
+            $('#capa2').prop('disabled', true);
+        }
+    });
+
+    $(document).off('change', '#capa2').on('change', '#capa2', function() {
+        let v = $(this).val();
+        $('#capa3').html('<option value="">-- Capa 3 --</option>');
+        if (v) {
+            $('#capa3').append('<option value="dom">DOM y Eventos</option><option value="sync">Offline Sync</option>').prop('disabled', false);
+        } else {
+            $('#capa3').prop('disabled', true);
+        }
+    });
+
+    $(document).off('change', '#capa3').on('change', '#capa3', function() {
+        if ($(this).val()) {
+            $('#resultadoFiltro').text('Cascada: ' + $('#capa1 option:selected').text() + ' > ' + $('#capa2 option:selected').text() + ' > ' + $(this).find('option:selected').text());
+        }
     });
 
     $(document).off('mouseenter mouseleave', '.tarjeta-habilidad').on({

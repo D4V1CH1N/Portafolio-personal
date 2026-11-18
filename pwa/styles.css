@@ -2,8 +2,8 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100dvh !important;
-    overflow: hidden !important;
+    height: 100dvh;
+    overflow: hidden;
     background: transparent;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -21,12 +21,12 @@ html {
 }
 
 *::-webkit-scrollbar {
-    display: none !important;
+    display: none;
 }
 
 * {
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .app-bg-slider {
@@ -60,18 +60,18 @@ html {
 }
 
 .bg-slide:nth-child(2) {
-    background-image: url('scizor.jpg');
+    background-image: url('https://dl.dropboxusercontent.com/scl/fi/mq4nkwx3jzju6dfzn9t9s/scizor.jpg?rlkey=m35z431gwv22uvdvbrp87c5n2&st=acklkspb&raw=1');
     animation-delay: 5s;
     filter: brightness(0.7);
 }
 
 .bg-slide:nth-child(3) {
-    background-image: url('Gorillaz.jpg');
+    background-image: url('https://dl.dropboxusercontent.com/scl/fi/c2g9v5gx4yvui5jlpghi4/Gorillaz.jpg?rlkey=2xff5hmrelfu19gzjt3n7m81r&st=p7kwgkeg&raw=1');
     animation-delay: 10s;
 }
 
 .bg-slide:nth-child(4) {
-    background-image: url('kingdomheart.jpg');
+    background-image: url('https://dl.dropboxusercontent.com/scl/fi/0vjvjbl808mesqq7jrasn/kingdomheart.jpg?rlkey=00ozurttxde3rz4pw8hybsmyl&st=dxe57qcg&raw=1');
     animation-delay: 15s;
 }
 
@@ -126,14 +126,14 @@ html {
 
 .hud-widget {
     position: absolute;
-    bottom: 100px !important;
-    padding: 12px 15px !important;
-    border-radius: 16px !important;
-    background: rgba(15, 23, 42, 0.9) !important;
+    bottom: 100px;
+    padding: 12px 15px;
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.9);
     border: 1px solid rgba(126, 34, 206, 0.6);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    z-index: 8000 !important;
+    z-index: 8000;
 }
 
 .hud-widget-left {
@@ -455,8 +455,8 @@ html {
 
 .modal-body {
     padding: 15px;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    overflow-y: auto;
+    overflow-x: hidden;
     color: #e0e6ed;
     padding-bottom: 60px;
     font-size: 13.5px;
@@ -465,19 +465,19 @@ html {
 }
 
 .texto-verde {
-    color: #00ff9d !important;
+    color: #00ff9d;
 }
 
 .texto-morado {
-    color: #c084fc !important;
+    color: #c084fc;
 }
 
 .texto-naranja {
-    color: #f97316 !important;
+    color: #f97316;
 }
 
 .texto-subtitulo {
-    color: #94a3b8 !important;
+    color: #94a3b8;
 }
 
 .mi-card {
@@ -561,7 +561,7 @@ html {
     overflow: visible;
     background-color: transparent;
     border: none;
-    padding: 4px 0 !important;
+    padding: 4px 0;
 }
 
 .grid-masivo {
@@ -589,13 +589,13 @@ html {
 }
 
 .barra-verde {
-    background-color: #00ff9d !important;
-    color: #0d0b14 !important;
+    background-color: #00ff9d;
+    color: #0d0b14;
 }
 
 .barra-morada {
-    background-color: #a855f7 !important;
-    color: #ffffff !important;
+    background-color: #a855f7;
+    color: #ffffff;
 }
 
 .badge-compacto {
@@ -811,9 +811,9 @@ html {
 }
 
 .input-tematico {
-    background-color: #0d0b14 !important;
-    color: #e0e6ed !important;
-    border: 1px solid #3b2854 !important;
+    background-color: #0d0b14;
+    color: #e0e6ed;
+    border: 1px solid #3b2854;
     min-height: 44px;
     border-radius: 10px;
     font-size: 14px;
@@ -821,16 +821,16 @@ html {
 }
 
 .input-tematico:focus {
-    background-color: #0d0b14 !important;
-    color: #ffffff !important;
-    border-color: #00ff9d !important;
-    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25) !important;
-    outline: none !important;
+    background-color: #0d0b14;
+    color: #ffffff;
+    border-color: #00ff9d;
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+    outline: none;
 }
 
 select.input-tematico:focus {
-    border-color: #f97316 !important;
-    box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25) !important;
+    border-color: #f97316;
+    box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25);
 }
 
 #menuDesplegablePWA {
@@ -950,28 +950,28 @@ select.input-tematico:focus {
 }
 
 .tabla-sheets td {
-    background-color: #161224 !important;
-    color: #e0e6ed !important;
-    border-color: #3b2854 !important;
+    background-color: #161224;
+    color: #e0e6ed;
+    border-color: #3b2854;
 }
 
 .tabla-sheets th {
-    background-color: #581c87 !important;
-    color: #00ff9d !important;
+    background-color: #581c87;
+    color: #00ff9d;
     text-align: center;
-    border-color: #3b2854 !important;
+    border-color: #3b2854;
 }
 
 .tabla-sheets-compacta th,
 .tabla-sheets-compacta td {
-    padding: 10px 12px !important;
+    padding: 10px 12px;
     font-size: 0.85rem;
     vertical-align: middle;
 }
 
 .numero-fila {
-    background-color: #130f1e !important;
-    color: #c084fc !important;
+    background-color: #130f1e;
+    color: #c084fc;
     font-weight: bold;
 }
 
@@ -1091,9 +1091,9 @@ select.input-tematico:focus {
 }
 
 .card-challenger-sueno {
-    background: linear-gradient(135deg, rgba(88, 28, 135, 0.35) 0%, rgba(13, 11, 20, 0.95) 100%) !important;
-    border: 2px solid #a855f7 !important;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.35), inset 0 0 15px rgba(0, 255, 157, 0.1) !important;
+    background: linear-gradient(135deg, rgba(88, 28, 135, 0.35) 0%, rgba(13, 11, 20, 0.95) 100%);
+    border: 2px solid #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.35), inset 0 0 15px rgba(0, 255, 157, 0.1);
     position: relative;
 }
 

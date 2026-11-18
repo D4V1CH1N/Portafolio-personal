@@ -33,7 +33,7 @@
         </section>
 
         <section id="acordeon" class="panel-card">
-            <h2 class="titulo-morado">Bitacora Academica (Acordeon jQuery)</h2>
+            <h2 class="titulo-morado">Especificaciones de Proyectos</h2>
             <div class="acordeon-gatillo"><span>Proyecto EDU-CAN Bolivia</span><i class="bi bi-chevron-down"></i></div>
             <div class="acordeon-contenido"><p>Sistema de gestion de paseos y rehabilitacion de perros con historiales por conducta.</p></div>
             <div class="acordeon-gatillo"><span>Colecciones (Hot Wheels / Pokemon)</span><i class="bi bi-chevron-down"></i></div>
@@ -41,12 +41,12 @@
         </section>
         <section id="calculador" class="panel-card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <h2 class="titulo-morado" style="margin:0;">Calculador Dinamico (40 BOB/h) & Modal 30s</h2>
-                <button type="button" id="btnAbrirTarifaFlash" class="btn-accion"><i class="bi bi-stopwatch"></i> Tarifa Flash (30s)</button>
+                <h2 class="titulo-morado" style="margin:0;">Cotizador de Sesiones (40 BOB/h)</h2>
+                <button type="button" id="btnAbrirTarifaFlash" class="btn-accion"><i class="bi bi-stopwatch"></i> Tarifa Preferencial (30s)</button>
             </div>
             <div class="grid-cards">
                 <div>
-                    <label for="hrs"><strong>Horas de estudio o cabina:</strong></label>
+                    <label for="hrs"><strong>Horas estimadas:</strong></label>
                     <input type="number" id="hrs" min="0" max="100" class="campo-form" placeholder="Ej. 3">
                 </div>
                 <div>
@@ -56,12 +56,12 @@
             </div>
         </section>
         <section id="catalogoKaraoke" class="panel-card">
-            <h2 class="titulo-morado">Repertorio Karaoke HD (Fetch + Lazy Loading + Cache)</h2>
-            <p>Consulta asincrona hacia <code>../../data/canciones.json</code> con portadas iTunes / PokeAPI cacheadas y visor HD.</p>
+            <h2 class="titulo-morado">Repertorio Musical Destacado</h2>
+            <p>Selección musical integrada desde <code>../../data/canciones.json</code> con vista previa HD.</p>
             <div id="contenedorCatalogoKaraoke" class="catalogo-grid-fetch"></div>
         </section>
         <section id="catalogo" class="panel-card">
-            <h2 class="titulo-morado">Catalogo Interactivo (Dataset & Buscador)</h2>
+            <h2 class="titulo-morado">Filtro Rapido de Proyectos y Habilidades</h2>
             <input type="text" id="buscadorEnTiempoReal" class="campo-form" placeholder="Filtrar tarjetas por palabra clave...">
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
                 <button type="button" class="btn-outline boton-filtro-dataset activo" data-categoria="todos">Todos</button>
@@ -70,12 +70,25 @@
             </div>
             <div class="grid-cards">
                 <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="dev"><strong>App Escritorio C#</strong><p>Facturacion e inventario SQL Server.</p></div>
-                <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="musica"><strong>Twenty One Pilots</strong><p>Heavydirtysoul / Stressed Out /Ride.</p></div>
+                <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="musica"><strong>Twenty One Pilots</strong><p>Heavydirtysoul / Stressed Out / Ride.</p></div>
                 <div class="item-tarjeta item-categoria-dataset tarjeta-filtrable" data-categoria="musica"><strong>Gorillaz</strong><p>Clint Eastwood / Feel Good Inc.</p></div>
+            </div>
+            <div style="margin-top:16px; border-top:1px solid var(--border-color); padding-top:14px;">
+                <h3 class="titulo-morado" style="margin-top:0;">Explorador de Especialidades y Modulos</h3>
+                <div class="grid-cards">
+                    <select id="capa1" class="campo-form">
+                        <option value="">-- Area Principal --</option>
+                        <option value="academico">Academico UPDS</option>
+                        <option value="desarrollo">Desarrollo Software</option>
+                    </select>
+                    <select id="capa2" class="campo-form" disabled><option value="">-- Modulo --</option></select>
+                    <select id="capa3" class="campo-form" disabled><option value="">-- Especialidad --</option></select>
+                </div>
+                <div id="resultadoFiltro" class="texto-verde" style="font-weight:700;">Seleccione una especialidad...</div>
             </div>
         </section>
         <section id="contacto" class="panel-card">
-            <h2 class="titulo-morado">Contacto y Sincronizacion</h2>
+            <h2 class="titulo-morado">Contacto y Propuestas</h2>
             <form id="form-contacto">
                 <label for="input-nombre">Nombre</label>
                 <input type="text" id="input-nombre" class="campo-form" required placeholder="Tu nombre">
@@ -88,20 +101,20 @@
             </form>
         </section>
         <section id="panelBitacoraEnVivo" class="panel-card">
-            <h2 class="titulo-morado">Bitacoras Dia 1 & Dia 2 (Event Bubbling y Prepend)</h2>
+            <h2 class="titulo-morado">Centro de Interacciones y Registro de Eventos</h2>
             <div id="liveContainer" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
                 <button type="button" class="btn-outline" data-prod="Album Blurryface">Vinilo Blurryface</button>
-                <button type="button" class="btn-accion" data-action="like" data-likes="0">Like Live</button>
+                <button type="button" class="btn-accion" data-action="like" data-likes="0">Like</button>
             </div>
-            <input type="text" id="chatInput" class="campo-form" placeholder="Chat en vivo (Enter)...">
+            <input type="text" id="chatInput" class="campo-form" placeholder="Comentario rapido (Enter)...">
             <div id="logOutput" class="log-terminal"></div>
             <form id="orderForm" style="margin-top:14px;">
-                <input type="text" id="userTikTok" class="campo-form" placeholder="Usuario Live" required>
+                <input type="text" id="userTikTok" class="campo-form" placeholder="Usuario" required>
                 <select id="variantSelect" class="campo-form">
                     <option value="Estandar">Estandar</option>
                     <option value="Edicion Deluxe">Edicion Deluxe</option>
                 </select>
-                <button type="submit" class="btn-accion">Registrar Pedido Dia 2</button>
+                <button type="submit" class="btn-accion">Registrar Solicitud</button>
             </form>
             <div id="logDia2" class="log-terminal"></div>
         </section>

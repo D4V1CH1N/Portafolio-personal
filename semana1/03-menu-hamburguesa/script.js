@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const btnTheme = document.getElementById('btnTheme');
+    const themeBtn = document.getElementById('themeBtn');
     if (localStorage.getItem('temaOscuroS1') === 'true') {
         document.body.classList.add('dark-mode');
     }
-    if (btnTheme) {
-        btnTheme.addEventListener('click', function() {
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             localStorage.setItem('temaOscuroS1', document.body.classList.contains('dark-mode'));
         });
@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
         buscador.addEventListener('keyup', aplicarFiltro);
     }
 
-    const btnMenu = document.getElementById('btnMenuMovil');
+    const burguerBtn = document.getElementById('burguerBtn');
     const navMenu = document.getElementById('navMenu');
-    if (btnMenu && navMenu) {
-        btnMenu.addEventListener('click', function() {
+    if (burguerBtn && navMenu) {
+        burguerBtn.addEventListener('click', function() {
             navMenu.classList.toggle('abierto');
         });
         navMenu.querySelectorAll('a').forEach(function(link) {

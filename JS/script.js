@@ -42,7 +42,7 @@ try {
 }
 
 function cerrarMenu() {
-    $('#nav-links, #navMenu').slideUp(300);
+    $('#nav-links, #navMenu').removeClass('abierto');
     $('#btn-menu-movil, #hamburgerBtn').removeClass('open').attr('aria-expanded', 'false');
 }
 
@@ -1150,7 +1150,7 @@ function renderizarBovedaPlaylists() {
         const portadaConocida = PORTADAS_SPOTIFY_OFICIALES[urlLimpia] || "";
         const tienePortadaInicial = portadaConocida.length > 0;
         const srcInicial = tienePortadaInicial ? portadaConocida : urlSprite;
-        const claseImagen = tienePortadaInicial ? "portada-playlist es-portada-real" : "portada-playlist es-sprite-respaldo";
+        const claseImagen = tienePortadaInicial ? "portada-playlist es-portada-real img-expandible" : "portada-playlist es-sprite-respaldo img-expandible";
         const subtituloInicial = tienePortadaInicial ? "Portada Oficial Spotify" : textoRespaldo;
         const etiquetaVibra = ETIQUETAS_VIBRA[categoria] || categoria;
 
@@ -1169,6 +1169,9 @@ function renderizarBovedaPlaylists() {
                             data-cargado="false"
                             onerror="usarRespaldoPokemon(this)"
                             loading="lazy"
+                            decoding="async"
+                            width="64"
+                            height="64"
                         >
                         <div class="overflow-hidden">
                             <span class="badge barra-morada text-white badge-compacto mb-1">#${index + 1} | ${etiquetaVibra}</span>
@@ -1630,9 +1633,12 @@ function renderizarDev() {
             <div class="item-dom-card card-dev" data-categoria="${categoria}">
                 <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
                     <span class="badge barra-verde text-dark badge-compacto">${badge}</span>
-                    <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
-                        <i class="bi bi-code-slash"></i>Doc
-                    </a>
+                    <div class="d-flex gap-1 align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-info btn-ver-doc-modulo" data-titulo="${titulo}" data-badge="${badge}" data-detalle="${detalle}" data-url="${url}">Detalle</button>
+                        <a href="${url}" target="_blank" rel="noopener noreferrer" class="link-spotify flex-shrink-0">
+                            <i class="bi bi-code-slash"></i>Doc
+                        </a>
+                    </div>
                 </div>
                 <h6 class="mb-1 fw-bold">${titulo}</h6>
                 <p class="texto-subtitulo small mb-0">${detalle}</p>
@@ -1840,7 +1846,7 @@ function renderizarHeroes() {
         html += `
             <div class="heroe-card card-heroe" data-categoria="${h.categoria}">
                 <div class="heroe-img-wrap">
-                    <img src="${h.img}" alt="${h.nombre}" class="heroe-img" loading="lazy">
+                    <img src="${h.img}" alt="${h.nombre}" class="heroe-img img-expandible" loading="lazy" decoding="async">
                 </div>
                 <div class="p-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -2040,7 +2046,7 @@ function renderizarPokemon() {
                 <div class="card-titular-mini">
                     <div class="d-flex align-items-start gap-3">
                         <div class="sprite-vgc-box">
-                            <img src="${urlSpriteTitular}" alt="${t.nombre}" class="sprite-vgc" loading="lazy">
+                            <img src="${urlSpriteTitular}" alt="${t.nombre}" class="sprite-vgc img-expandible" loading="lazy" decoding="async" width="64" height="64">
                         </div>
                         <div class="w-100">
                             <div class="d-flex flex-wrap justify-content-between align-items-center gap-1 mb-1">
@@ -2107,7 +2113,7 @@ function renderizarPokemon() {
                 <div class="d-flex justify-content-between align-items-start gap-2 mb-2 w-100 flex-wrap">
                     <div class="d-flex align-items-center gap-2 flex-grow-1" style="min-width: 0;">
                         <div class="sprite-vgc-box">
-                            <img src="${urlSprite}" alt="${nombre}" class="sprite-vgc" loading="lazy">
+                            <img src="${urlSprite}" alt="${nombre}" class="sprite-vgc img-expandible" loading="lazy" decoding="async" width="64" height="64">
                         </div>
                         <div style="min-width: 0; overflow: hidden;">
                             <div class="d-flex flex-wrap align-items-center gap-1 mb-1">
@@ -2302,7 +2308,9 @@ function filtrarColeccion(categoria) {
 }
 
 function irAVideojuegosFiltro(categoria) {
-    cambiarTabCultura("videojuegos");
+    if (typeof window.mostrarVista === "function") {
+        window.mostrarVista("boveda", "sub-boveda-juegos");
+    }
     filtrar(categoria || "universo-lego");
     cerrarMenu();
 }
@@ -2620,12 +2628,11 @@ function buscarEnPokemon(texto) {
 }
 
 function irASalonPokemon(categoria) {
+    if (typeof window.mostrarVista === "function") {
+        window.mostrarVista("boveda", "sub-boveda-pokemon");
+    }
     filtrarPokemon(categoria || "titulares");
     cerrarMenu();
-    const seccion = document.getElementById("salon-pokemon");
-    if (seccion) {
-        seccion.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
 }
 
 function buscarEnIdentidad(texto) {
@@ -2728,16 +2735,11 @@ function alternarModoAcordeonBoveda() {
 }
 
 function cambiarTabCultura(nombreTab) {
-    if (nombreTab === "superheroes") {
-        cambiarSuperBoveda("heroes");
-        return;
-    }
     if (nombreTab === "pokemon") {
         irASalonPokemon("titulares");
         return;
     }
 
-    cambiarSuperBoveda("cultura");
     const paneles = document.querySelectorAll(".panel-cultura");
     paneles.forEach((panel) => {
         if (panel.id === "panel-" + nombreTab) {
@@ -3017,41 +3019,229 @@ function navegarDobleSeleccion(generoKey) {
     }
 }
 
+const GALERIA_LEGO_HW_DATA = [
+    {
+        categoria: "lego-pokemon",
+        etiqueta: "MEGA Pokemon",
+        titulo: "MEGA Pokemon Jumbo Poke Ball",
+        detalle: "Set de Bloques Construibles 3D - Exhibicion",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/ipi5s7t4x9m0p58rsybb5/mega-pokeball.jpg?rlkey=bydyp79fydy3o2mcly0bhfo5o&st=43cj6cp7&raw=1"
+    },
+    {
+        categoria: "lego-pokemon",
+        etiqueta: "MEGA Pokemon",
+        titulo: "MEGA Pokemon Motion Charizard",
+        detalle: "Set Articulado Mecanico de Bloques - 1664 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/ngmybd0pekaftds494v0n/mega-charizard.jpg?rlkey=c9escsrbhjdntbvbgsn0pdi0f&st=ungatjlv&raw=1"
+    },
+    {
+        categoria: "lego-pokemon",
+        etiqueta: "MEGA Pokemon",
+        titulo: "MEGA Construx Jumbo Pikachu",
+        detalle: "Figura Articulada de Ladrillos - 825 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/bkkdv7rs5ae4gxpyu0tpt/mega-pikachu.jpg?rlkey=os7irg6e5qbnedz4nx0aujmmz&st=dlm9887q&raw=1"
+    },
+    {
+        categoria: "lego-pokemon",
+        etiqueta: "MEGA Pokemon",
+        titulo: "MEGA Pokemon Motion Gyarados",
+        detalle: "Serpiente Marina Mecanica de Bloques - 2186 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/rfdpwyykf6jsp7x3omamv/mega-gyarados.jpg?rlkey=e89tpdclgikwnq855x5w4q2bi&st=snvqgycb&raw=1"
+    },
+    {
+        categoria: "lego-batman",
+        etiqueta: "LEGO Batman",
+        titulo: "LEGO 76240 Batmobile Tumbler",
+        detalle: "DC Ultimate Collector Series - 2049 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/3erxtkejk7yc963p20816/lego-76240-tumbler.jpg?rlkey=nnzpdabcvtqylvn7ohdkawxs8&st=p2qwcpyy&raw=1"
+    },
+    {
+        categoria: "lego-batman",
+        etiqueta: "LEGO Batman",
+        titulo: "LEGO 76252 Batcave Shadow Box",
+        detalle: "Caja Escenica Gotham City - 3981 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/q5o9iod2yttxj04z4c7qm/lego-76252-batcave.jpg?rlkey=de7ak4vb215qj6s01etj7cozq&st=23xnf0il&raw=1"
+    },
+    {
+        categoria: "lego-batman",
+        etiqueta: "LEGO Batman",
+        titulo: "LEGO 42127 Technic The Batman Batmobile",
+        detalle: "Modelo Technic con Piezas Reales y Motor - 1360 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/fysl29pzsqt530ma3r324/lego-42127-technic-batmobile.jpg?rlkey=nyrv8wo9m4cp3cwddvrwok15k&st=qiyl2zzc&raw=1"
+    },
+    {
+        categoria: "lego-batman",
+        etiqueta: "LEGO Batman",
+        titulo: "LEGO 76139 1989 Batmobile",
+        detalle: "Replica de Ladrillos LEGO + 3 Minifiguras - 3306 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/2p71wv3z8uzto231ufpfr/lego-76139-1989-batmobile.jpg?rlkey=0lta7npihoddqdolpufbn3eom&st=ap3kkm8a&raw=1"
+    },
+    {
+        categoria: "lego-potter",
+        etiqueta: "LEGO Harry Potter",
+        titulo: "LEGO 71043 Castillo de Hogwarts",
+        detalle: "Microescala Gran Salon y Torres - 6020 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/ygksbqn3wm6aitbywt3j8/lego-71043-hogwarts.jpg?rlkey=6ojnjild80809oohrijrnfwk9&st=l7v7b990&raw=1"
+    },
+    {
+        categoria: "lego-potter",
+        etiqueta: "LEGO Harry Potter",
+        titulo: "LEGO 76405 Expreso de Hogwarts Edicion Coleccionista",
+        detalle: "Locomotora de Bloques y Anden 9 3/4 - 5129 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/r31v8vro8weinbxqkdlfa/lego-76405-hogwarts-express.jpg?rlkey=y2h4694m0tdwu5spu72wxpior&st=ke4y4k9l&raw=1"
+    },
+    {
+        categoria: "lego-potter",
+        etiqueta: "LEGO Harry Potter",
+        titulo: "LEGO 76417 Banco Magico Gringotts & Callejon Diagon",
+        detalle: "Bovedas Subterraneas y Dragon - 4803 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/8tgv99ow78cvb62xmsfxj/lego-76417-gringotts.jpg?rlkey=isveg7yrbafjt0uubwfdbayc0&st=7ebksb0j&raw=1"
+    },
+    {
+        categoria: "lego-potter",
+        etiqueta: "LEGO Harry Potter",
+        titulo: "LEGO 76391 Iconos de Hogwarts Edicion Coleccionista",
+        detalle: "Hedwig Construible con Artefactos - 3010 Piezas",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/14pev6o567einwdxv80vg/lego-76391-hogwarts-icons.jpg?rlkey=i34chq3f6iyrapwk3xiuorzl2&st=hbovk6fz&raw=1"
+    },
+    {
+        categoria: "hw-callejeros",
+        etiqueta: "Hot Wheels Callejeros",
+        titulo: "Hot Wheels '18 Dodge Challenger SRT Demon 1:64",
+        detalle: "Die-Cast Escala 1:64 Serie Muscle Mania",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/hbusnddkcdwvjiupyymah/hw-challenger-demon.jpg?rlkey=ys2634s52ezmkehwnj2j9qj6i&st=4qxx585n&raw=1"
+    },
+    {
+        categoria: "hw-callejeros",
+        etiqueta: "Hot Wheels Callejeros",
+        titulo: "Hot Wheels Nissan Skyline GT-R (BNR34) 1:64",
+        detalle: "Die-Cast Escala 1:64 Blister New Models",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/a55dzxbniumvku5r32uot/hw-skyline-r34.jpg?rlkey=m5yotdvyjv401r5ik9iwohhda&st=9tvzk4g9&raw=1"
+    },
+    {
+        categoria: "hw-callejeros",
+        etiqueta: "Hot Wheels Callejeros",
+        titulo: "Hot Wheels Toyota Supra MK4 1:64",
+        detalle: "Die-Cast Escala 1:64 Fast & Furious Street",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/1u97u18t5kh6rgqhltnyr/hw-toyota-supra-mk4.jpg?rlkey=6rbek6jrmkl9ay97crur8cj7j&st=kz6d07s5&raw=1"
+    },
+    {
+        categoria: "hw-callejeros",
+        etiqueta: "Hot Wheels Callejeros",
+        titulo: "Hot Wheels Mazda RX-7 1:64",
+        detalle: "Die-Cast Escala 1:64 JDM Legends Street Tuners",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/3otr9bomz7qv0ubt7ce8o/hw-mazda-rx7.jpg?rlkey=8ibkz5m34rex5rd1lfg7sqsva&st=v4xo9vmh&raw=1"
+    },
+    {
+        categoria: "hw-carreras",
+        etiqueta: "Hot Wheels Carreras",
+        titulo: "Hot Wheels Porsche 911 GT3 1:64",
+        detalle: "Die-Cast Escala 1:64 Factory Fresh Track Spec",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/sxk7odl5n4plj0185lpoz/hw-porsche-gt3.jpg?rlkey=dcd4fdcb4g3mcevq9tzr2ahhm&st=jj7amlx4&raw=1"
+    },
+    {
+        categoria: "hw-carreras",
+        etiqueta: "Hot Wheels Carreras",
+        titulo: "Hot Wheels Corvette C8.R 1:64",
+        detalle: "Die-Cast Escala 1:64 Circuit Legends Endurance",
+        imagen: "https://dl.dropboxusercontent.com/scl/fi/1whxejrp1pmko38ctmbvw/hw-corvette-gt40.jpg?rlkey=c47ynql2k6fileia9adhaxqj2&st=putgsiiq&raw=1"
+    }
+];
+
+function renderizarGaleriaVisualLegoHw(categoria) {
+    const $grid = $('#galeriaVisualLegoHw');
+    if (!$grid.length) return;
+    const cat = categoria || 'todos';
+    const items = cat === 'todos'
+        ? GALERIA_LEGO_HW_DATA
+        : GALERIA_LEGO_HW_DATA.filter(function(item) { return item.categoria === cat; });
+
+    $grid.empty();
+    items.forEach(function(item) {
+        const $card = $('<article>').addClass('tarjeta-ods');
+        const $media = $('<div>').addClass('tarjeta-ods__media');
+        const $img = $('<img>')
+            .addClass('tarjeta-ods__imagen img-expandible')
+            .attr({
+                src: item.imagen,
+                'data-media': item.imagen,
+                'data-original': item.imagen,
+                alt: item.titulo,
+                width: '280',
+                height: '180',
+                loading: 'lazy',
+                decoding: 'async'
+            })
+            .data({
+                media: item.imagen,
+                original: item.imagen,
+                titulo: item.titulo
+            });
+        $media.append($img);
+
+        const $cuerpo = $('<div>').addClass('tarjeta-ods__cuerpo');
+        const $badge = $('<span>').addClass('tarjeta-ods__badge').text(item.etiqueta);
+        const $titulo = $('<h4>').addClass('tarjeta-ods__titulo').text(item.titulo);
+        const $texto = $('<p>').addClass('tarjeta-ods__texto').text(item.detalle);
+        $cuerpo.append($badge, $titulo, $texto);
+
+        $card.append($media, $cuerpo);
+        $grid.append($card);
+    });
+
+    $('#contadorGaleriaLegoHw').text(items.length + ' Coleccionables HD');
+}
+
+$(document).off('click', '.btn-filtro-galeria').on('click', '.btn-filtro-galeria', function() {
+    $('.btn-filtro-galeria').removeClass('activo');
+    $(this).addClass('activo');
+    renderizarGaleriaVisualLegoHw($(this).data('cat-galeria') || 'todos');
+});
+
+let bovedaRenderizada = false;
+
+function renderizarBovedaBajoDemanda() {
+    if (bovedaRenderizada) return;
+    bovedaRenderizada = true;
+    renderizarArte();
+    renderizarIdiomas();
+    renderizarColeccion();
+    renderizarGaleriaVisualLegoHw('todos');
+    renderizarBovedaPlaylists();
+    renderizarBovedaCanciones();
+    renderizarMusicboard();
+    renderizarHeroes();
+    renderizarPeliculas();
+    renderizarSeries();
+    renderizarAnimes();
+    renderizarLibros();
+    renderizarJuegos();
+    renderizarPokemon();
+
+    filtrarArte("poesia-barras");
+    filtrarIdiomas("frances");
+    filtrarColeccion("challenger-sueno");
+    filtrarPlaylists("gaming-ps4");
+    seleccionarRamaCanciones("bandas", "gorillaz");
+    filtrarMusicboard("diez-de-diez");
+    filtrarHeroes("antiheroes");
+    filtrarPeliculas("sagas");
+    filtrarSeries("drama");
+    filtrarAnimes("shonen");
+    filtrarLibros("terror");
+    filtrar("sagas-legendarias");
+    filtrarPokemon("titulares");
+    alCambiarGeneroMusical("todos", false);
+    cambiarTabMusica("playlists");
+}
+
 renderizarDev();
 renderizarEducan();
-renderizarArte();
-renderizarIdiomas();
-renderizarColeccion();
 renderizarHorarioSheets();
-renderizarBovedaPlaylists();
-renderizarBovedaCanciones();
-renderizarMusicboard();
-renderizarHeroes();
-renderizarPeliculas();
-renderizarSeries();
-renderizarAnimes();
-renderizarLibros();
-renderizarJuegos();
-renderizarPokemon();
 
 filtrarDev("csharp-net");
 filtrarEducan("rehabilitacion");
-filtrarArte("poesia-barras");
-filtrarIdiomas("frances");
-filtrarColeccion("challenger-sueno");
 filtrarHorario("rutina-diaria");
-filtrarPlaylists("gaming-ps4");
-seleccionarRamaCanciones("bandas", "gorillaz");
-filtrarMusicboard("diez-de-diez");
-filtrarHeroes("antiheroes");
-filtrarPeliculas("sagas");
-filtrarSeries("drama");
-filtrarAnimes("shonen");
-filtrarLibros("terror");
-filtrar("sagas-legendarias");
-filtrarPokemon("titulares");
-alCambiarGeneroMusical("todos", false);
-cambiarTabMusica("playlists");
 
 const form = document.getElementById("form-contacto") || document.getElementById("contactForm");
 const nombreClienteInput = document.getElementById("input-nombre") || document.getElementById("nombreCliente");
@@ -3408,27 +3598,101 @@ $(document).ready(function() {
         });
     }
 
-    $(document).off('click', '#btn-menu-movil, #hamburgerBtn').on('click', '#btn-menu-movil, #hamburgerBtn', function() { 
-        $('#nav-links, #navMenu').slideToggle(300); 
+    function activarSubpanel(subpanelId) {
+        let $target = $('#' + subpanelId);
+        if (!$target.length) return;
+        let $seccionPadre = $target.closest('.seccion-spa');
+        $seccionPadre.find('.subpanel-spa').hide().removeClass('activo');
+        $target.fadeIn(150).addClass('activo');
+        $seccionPadre.find('.subnav-btn').removeClass('activo');
+        $seccionPadre.find('.subnav-btn[data-subpanel="' + subpanelId + '"]').addClass('activo');
+    }
+    window.activarSubpanel = activarSubpanel;
+
+    function mostrarVista(nombreVista, subpanelOpcional) {
+        let rolActual = sessionStorage.getItem('sesionRolActiva') || 'visitante';
+        if (nombreVista === 'consola' && rolActual !== 'encargado' && rolActual !== 'administrador') {
+            desplegarToastExito('Inicia sesion como Encargado o Administrador para acceder al Panel.');
+            $('#modalAuth').fadeIn(200);
+            return;
+        }
+        let vistaObjetivo = nombreVista || 'inicio';
+        if (vistaObjetivo === 'boveda' && typeof renderizarBovedaBajoDemanda === 'function') {
+            renderizarBovedaBajoDemanda();
+        }
+        $('.seccion-spa').hide().removeClass('vista-activa');
+        let $panel = $('#vista-' + vistaObjetivo);
+        if ($panel.length) {
+            $panel.fadeIn(180).addClass('vista-activa');
+        }
+        $('.btn-nav-vista').removeClass('activo');
+        let $btnActivo = $('.btn-nav-vista[data-vista="' + vistaObjetivo + '"]');
+        $btnActivo.addClass('activo');
+        if ($btnActivo.length) {
+            $('#labelVistaActiva').text($btnActivo.text().trim());
+        }
+        $('#navMenu').slideUp(200);
+        if (subpanelOpcional) {
+            activarSubpanel(subpanelOpcional);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.mostrarVista = mostrarVista;
+
+    function renderizarDetalleSeguro(htmlDesdeServidor) {
+        const limpio = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(htmlDesdeServidor) : htmlDesdeServidor;
+        $('#detalleProyecto').html(limpio);
+    }
+    window.renderizarDetalleSeguro = renderizarDetalleSeguro;
+
+    $('#hamburgerBtn').off('click').on('click', function(e) {
+        e.stopPropagation();
+        $('#navMenu').stop(true, true).slideToggle(250);
+    });
+
+    $(document).off('click.cerrarNavFuera').on('click.cerrarNavFuera', function(e) {
+        if ($('#navMenu').is(':visible') && !$(e.target).closest('#navMenu, #hamburgerBtn').length) {
+            $('#navMenu').slideUp(200);
+        }
+    });
+
+    $(document).off('click', '.btn-nav-vista').on('click', '.btn-nav-vista', function() {
+        let vista = $(this).data('vista');
+        if (vista) {
+            mostrarVista(vista);
+            $('#navMenu').slideUp(200);
+        }
+    });
+
+    $(document).off('click', '.subnav-btn').on('click', '.subnav-btn', function() {
+        let subpanel = $(this).data('subpanel');
+        if (subpanel) {
+            activarSubpanel(subpanel);
+        }
+    });
+
+    $(document).off('click', '.btn-ver-doc-modulo, .tarjeta-ods__boton--destacado').on('click', '.btn-ver-doc-modulo, .tarjeta-ods__boton--destacado', function() {
+        let $btn = $(this);
+        if ($btn.hasClass('tarjeta-ods__boton--destacado')) {
+            let htmlProyecto = $btn.data('detalle-html') || ('<strong>' + ($btn.data('proyecto') || 'Proyecto') + '</strong>');
+            mostrarVista('stack', 'sub-stack-modulos');
+            renderizarDetalleSeguro(htmlProyecto);
+            return;
+        }
+        let htmlDoc = '<h5 class="texto-verde mb-1">' + $btn.data('titulo') + '</h5>' +
+            '<span class="badge barra-morada text-white mb-2">' + $btn.data('badge') + '</span>' +
+            '<p class="mb-2 small">' + $btn.data('detalle') + '</p>' +
+            '<a href="' + $btn.data('url') + '" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-toggle">Ver Documentacion Tecnica</a>';
+        renderizarDetalleSeguro(htmlDoc);
+        desplegarToastExito('Especificacion tecnica cargada con DOMPurify.');
     });
 
     $(document).off('click', '#btn-theme, #themeBtn').on('click', '#btn-theme, #themeBtn', function() { 
         $('body').toggleClass('dark-mode'); 
     });
 
-    $(document).off('click', '.nav-btn, .nav-menu a, #navMenu a').on('click', '.nav-btn, .nav-menu a, #navMenu a', function(e) {
-        let target = $(this).attr('href');
-        if (target && target.startsWith('#') && $(target).length) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: $(target).offset().top - 70
-            }, 400);
-            $('#nav-links, #navMenu').slideUp(300);
-        }
-    });
-
-    $(document).off('click', '.acordeon-gatillo').on('click', '.acordeon-gatillo', function() {
-        $(this).next('.acordeon-contenido').slideToggle(300);
+    $(document).off('click', '.acordeon-gatillo, .accordion-btn').on('click', '.acordeon-gatillo, .accordion-btn', function() {
+        $(this).next('.acordeon-contenido').slideToggle('fast');
         $(this).find('.icono-acordeon').toggleClass('bi-chevron-down bi-chevron-up');
     });
 
@@ -3598,6 +3862,29 @@ $(document).ready(function() {
         }
     });
 
+    localStorage.removeItem('sesionActivaRol');
+
+    function inicializarUsuariosBase() {
+        let cuentasDefault = [
+            { nombre: 'Cliente UPDS', correo: 'cliente@upds.edu.bo', password: 'cliente123', rol: 'cliente' },
+            { nombre: 'Staff Edu-can', correo: 'encargado@educan.bo', password: 'staff123', rol: 'encargado' },
+            { nombre: 'David Zalles Admin', correo: 'david@chato.dev', password: 'admin123', rol: 'administrador' }
+        ];
+        let actuales = JSON.parse(localStorage.getItem('dbUsuariosPortafolio'));
+        if (!Array.isArray(actuales) || actuales.length === 0) {
+            localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(cuentasDefault));
+            return cuentasDefault;
+        }
+        cuentasDefault.forEach(function(def) {
+            if (!actuales.some(function(u) { return u.correo === def.correo; })) {
+                actuales.push(def);
+            }
+        });
+        localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(actuales));
+        return actuales;
+    }
+    inicializarUsuariosBase();
+
     function actualizarMonitorAdmin() {
         let colaA = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
         let colaB = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
@@ -3607,26 +3894,49 @@ $(document).ready(function() {
         let $monitor = $('#monitorColaOffline');
         if ($monitor.length) {
             if (colaActiva.length === 0) {
-                $monitor.text('[SISTEMA]: 0 registros pendientes en cola offline (colaContactosOffline / colaSincronizacionPWA vacia).');
+                $monitor.text('[SISTEMA]: 0 registros pendientes en cola offline.');
             } else {
                 $monitor.text('[OFFLINE QUEUE]: ' + colaActiva.length + ' registro(s) en espera -> ' + JSON.stringify(colaActiva));
             }
         }
     }
 
-    function aplicarPermisosPorRol(rol) {
-        let rolNormalizado = ['cliente', 'encargado', 'administrador'].includes(rol) ? rol : 'cliente';
-        localStorage.setItem('sesionActivaRol', rolNormalizado);
-        $('#badgeRolActivo').text('Rol: ' + rolNormalizado.charAt(0).toUpperCase() + rolNormalizado.slice(1));
-        $('#barraRolesRapidos .btn-rol-rapido').removeClass('activo');
-        $('#barraRolesRapidos .btn-rol-rapido[data-rol="' + rolNormalizado + '"]').addClass('activo');
+    function aplicarPermisosPorRol(rol, nombreUsuario) {
+        let rolNormalizado = ['visitante', 'cliente', 'encargado', 'administrador'].includes(rol) ? rol : 'visitante';
+        if (rolNormalizado === 'visitante') {
+            sessionStorage.removeItem('sesionRolActiva');
+            sessionStorage.removeItem('sesionUsuarioNombre');
+        } else {
+            sessionStorage.setItem('sesionRolActiva', rolNormalizado);
+            if (nombreUsuario) {
+                sessionStorage.setItem('sesionUsuarioNombre', nombreUsuario);
+            }
+        }
+
+        let nombreEtiqueta = rolNormalizado.charAt(0).toUpperCase() + rolNormalizado.slice(1);
+        $('#badgeRolActual').text(nombreEtiqueta);
+
+        if (rolNormalizado === 'visitante') {
+            $('#btnAbrirLogin span').text('Iniciar Sesion');
+            $('#zonaCuentaActiva').hide();
+        } else {
+            $('#btnAbrirLogin span').text('Cambiar Cuenta / Salir');
+            let userLabel = sessionStorage.getItem('sesionUsuarioNombre') || nombreEtiqueta;
+            $('#textoCuentaActiva').text('Conectado como: ' + userLabel + ' (' + nombreEtiqueta + ')');
+            $('#zonaCuentaActiva').show();
+        }
 
         if (rolNormalizado === 'encargado' || rolNormalizado === 'administrador') {
+            $('#btnNavConsola').show();
             $('#panelBitacoraEnVivo').stop(true, true).fadeIn(200);
             $('.btn-quitar').show();
         } else {
+            $('#btnNavConsola').hide();
             $('#panelBitacoraEnVivo').stop(true, true).fadeOut(200);
             $('.btn-quitar').hide();
+            if ($('#vista-consola').hasClass('vista-activa')) {
+                mostrarVista('inicio');
+            }
         }
 
         if (rolNormalizado === 'administrador') {
@@ -3635,53 +3945,89 @@ $(document).ready(function() {
             actualizarMonitorAdmin();
         } else {
             $('#panelAdminSistema').stop(true, true).fadeOut(200);
+            $('#contenedorHidratacion').stop(true, true).fadeOut(200);
         }
     }
 
-    let rolGuardadoInicial = localStorage.getItem('sesionActivaRol') || 'cliente';
-    aplicarPermisosPorRol(rolGuardadoInicial);
+    let rolSesionInicial = sessionStorage.getItem('sesionRolActiva') || 'visitante';
+    let nombreSesionInicial = sessionStorage.getItem('sesionUsuarioNombre') || '';
+    aplicarPermisosPorRol(rolSesionInicial, nombreSesionInicial);
 
-    $(document).off('click', '#barraRolesRapidos .btn-rol-rapido').on('click', '#barraRolesRapidos .btn-rol-rapido', function() {
-        let rolSeleccionado = $(this).data('rol');
-        aplicarPermisosPorRol(rolSeleccionado);
-        desplegarToastExito('Vista cambiada a perfil: ' + rolSeleccionado.toUpperCase());
+    $(document).off('click', '#btnAbrirLogin').on('click', '#btnAbrirLogin', function() {
+        $('#modalAuth').fadeIn(200);
     });
 
-    $(document).off('click', '#btnAbrirLoginModal').on('click', '#btnAbrirLoginModal', function() {
-        $('#modalLoginRoles').fadeIn(200);
+    $(document).off('click', '#btnCerrarAuth').on('click', '#btnCerrarAuth', function() {
+        $('#modalAuth').fadeOut(200);
     });
 
-    $(document).off('click', '#btnCerrarLoginRoles').on('click', '#btnCerrarLoginRoles', function() {
-        $('#modalLoginRoles').fadeOut(200);
+    $(document).off('click', '#tabBtnLogin').on('click', '#tabBtnLogin', function() {
+        $('#tabBtnLogin').addClass('activo');
+        $('#tabBtnRegistro').removeClass('activo');
+        $('#formRegistroAuth').hide();
+        $('#formLoginAuth').fadeIn(150);
     });
 
-    $(document).off('submit', '#formRegistroRol').on('submit', '#formRegistroRol', function(e) {
+    $(document).off('click', '#tabBtnRegistro').on('click', '#tabBtnRegistro', function() {
+        $('#tabBtnRegistro').addClass('activo');
+        $('#tabBtnLogin').removeClass('activo');
+        $('#formLoginAuth').hide();
+        $('#formRegistroAuth').fadeIn(150);
+    });
+
+    $(document).off('click', '.btn-demo-auth').on('click', '.btn-demo-auth', function() {
+        let rolDemo = $(this).data('demo-rol');
+        let mapaDemo = {
+            cliente: { correo: 'cliente@upds.edu.bo', pass: 'cliente123' },
+            encargado: { correo: 'encargado@educan.bo', pass: 'staff123' },
+            administrador: { correo: 'david@chato.dev', pass: 'admin123' }
+        };
+        let cred = mapaDemo[rolDemo];
+        if (!cred) return;
+        $('#tabBtnLogin').trigger('click');
+        $('#authLoginCorreo').val(cred.correo);
+        $('#authLoginPass').val(cred.pass);
+    });
+
+    $(document).off('submit', '#formLoginAuth').on('submit', '#formLoginAuth', function(e) {
         e.preventDefault();
-        let usuario = $('#regUsuario').val().trim();
-        let password = $('#regPassword').val().trim();
-        let rol = $('#regRol').val();
-        if (!usuario || !password) return;
-        let usuarios = JSON.parse(localStorage.getItem('usuariosPortafolio')) || [];
-        usuarios = usuarios.filter(function(u) { return u.usuario !== usuario; });
-        usuarios.push({ usuario: usuario, password: password, rol: rol });
-        localStorage.setItem('usuariosPortafolio', JSON.stringify(usuarios));
-        aplicarPermisosPorRol(rol);
-        $('#formRegistroRol')[0].reset();
-        $('#modalLoginRoles').fadeOut(200);
-        desplegarToastExito('Usuario ' + usuario + ' registrado con rol ' + rol + '.');
+        let correo = $('#authLoginCorreo').val().trim().toLowerCase();
+        let pass = $('#authLoginPass').val().trim();
+        let usuarios = JSON.parse(localStorage.getItem('dbUsuariosPortafolio')) || [];
+        let cuenta = usuarios.find(function(u) {
+            return u.correo.toLowerCase() === correo && u.password === pass;
+        });
+        if (!cuenta) {
+            desplegarToastExito('Credenciales incorrectas. Verifica correo y contrasena.');
+            return;
+        }
+        aplicarPermisosPorRol(cuenta.rol, cuenta.nombre);
+        $('#formLoginAuth')[0].reset();
+        $('#modalAuth').fadeOut(200);
+        desplegarToastExito('Bienvenido ' + cuenta.nombre + ' (' + cuenta.rol.toUpperCase() + ').');
     });
 
-    $(document).off('submit', '#formLoginRol').on('submit', '#formLoginRol', function(e) {
+    $(document).off('submit', '#formRegistroAuth').on('submit', '#formRegistroAuth', function(e) {
         e.preventDefault();
-        let usuario = $('#loginUsuario').val().trim();
-        let rolSolicitado = $('#loginRol').val();
-        let usuarios = JSON.parse(localStorage.getItem('usuariosPortafolio')) || [];
-        let encontrado = usuarios.find(function(u) { return u.usuario === usuario; });
-        let rolFinal = encontrado ? encontrado.rol : rolSolicitado;
-        aplicarPermisosPorRol(rolFinal);
-        $('#formLoginRol')[0].reset();
-        $('#modalLoginRoles').fadeOut(200);
-        desplegarToastExito('Sesion activa: ' + (usuario || 'Invitado') + ' (' + rolFinal + ').');
+        let nombre = $('#authRegNombre').val().trim();
+        let correo = $('#authRegCorreo').val().trim().toLowerCase();
+        let pass = $('#authRegPass').val().trim();
+        let rol = $('#authRegRol').val();
+        if (!nombre || !correo || !pass) return;
+        let usuarios = JSON.parse(localStorage.getItem('dbUsuariosPortafolio')) || [];
+        usuarios = usuarios.filter(function(u) { return u.correo.toLowerCase() !== correo; });
+        usuarios.push({ nombre: nombre, correo: correo, password: pass, rol: rol });
+        localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(usuarios));
+        aplicarPermisosPorRol(rol, nombre);
+        $('#formRegistroAuth')[0].reset();
+        $('#modalAuth').fadeOut(200);
+        desplegarToastExito('Cuenta creada para ' + nombre + ' con perfil ' + rol + '.');
+    });
+
+    $(document).off('click', '#btnCerrarCuentaActual').on('click', '#btnCerrarCuentaActual', function() {
+        aplicarPermisosPorRol('visitante', '');
+        $('#modalAuth').fadeOut(200);
+        desplegarToastExito('Sesion cerrada correctamente.');
     });
 
     $(document).off('click', '#btnLimpiarMemoriaLocal').on('click', '#btnLimpiarMemoriaLocal', function() {
@@ -3692,13 +4038,31 @@ $(document).ready(function() {
     });
 
     async function resolverPortadaMultimedia(cancion) {
-        let claveCache = 'cachePortadaTrack_' + cancion.id;
+        let claveCache = 'cachePortadaAlbumV2_' + cancion.id;
         let cacheLocal = localStorage.getItem(claveCache);
         if (cacheLocal) {
             try {
                 return JSON.parse(cacheLocal);
             } catch (errCache) {
             }
+        }
+        try {
+            let query = encodeURIComponent(cancion.artista + ' ' + cancion.titulo);
+            let resItunes = await fetch('https://itunes.apple.com/search?term=' + query + '&entity=song&limit=1');
+            if (resItunes.ok) {
+                let dataItunes = await resItunes.json();
+                if (dataItunes.results && dataItunes.results.length > 0 && dataItunes.results[0].artworkUrl100) {
+                    let baseUrl = dataItunes.results[0].artworkUrl100;
+                    let pack = {
+                        mini: baseUrl.replace('100x100bb', '60x60bb'),
+                        media: baseUrl.replace('100x100bb', '600x600bb'),
+                        original: baseUrl.replace('100x100bb', '1000x1000bb')
+                    };
+                    localStorage.setItem(claveCache, JSON.stringify(pack));
+                    return pack;
+                }
+            }
+        } catch (errItunes) {
         }
         if (cancion.pokemonId) {
             try {
@@ -3717,24 +4081,6 @@ $(document).ready(function() {
             } catch (errPoke) {
             }
         }
-        try {
-            let query = encodeURIComponent(cancion.artista + ' ' + cancion.titulo);
-            let resItunes = await fetch('https://itunes.apple.com/search?term=' + query + '&entity=song&limit=1');
-            if (resItunes.ok) {
-                let dataItunes = await resItunes.json();
-                if (dataItunes.results && dataItunes.results.length > 0 && dataItunes.results[0].artworkUrl100) {
-                    let baseUrl = dataItunes.results[0].artworkUrl100;
-                    let pack = {
-                        mini: baseUrl,
-                        media: baseUrl.replace('100x100bb', '600x600bb'),
-                        original: baseUrl.replace('100x100bb', '1000x1000bb')
-                    };
-                    localStorage.setItem(claveCache, JSON.stringify(pack));
-                    return pack;
-                }
-            }
-        } catch (errItunes) {
-        }
         return {
             mini: cancion.portadaMini,
             media: cancion.portadaMedia,
@@ -3745,7 +4091,7 @@ $(document).ready(function() {
     async function cargarCatalogoKaraokeAsync() {
         let $contenedor = $('#contenedorCatalogoKaraoke');
         if (!$contenedor.length) return;
-        $contenedor.html('<div class="col-12 text-center py-3 text-info">Cargando repertorio desde JSON local...</div>');
+        $contenedor.html('<div class="col-12 text-center py-3 text-info">Cargando repertorio musical...</div>');
         try {
             let response = await fetch('data/canciones.json');
             if (!response.ok) {
@@ -3753,37 +4099,40 @@ $(document).ready(function() {
             }
             let canciones = await response.json();
             $contenedor.empty();
-            canciones.forEach(function(cancion) {
+            canciones.forEach(function(item) {
                 let $col = $('<div>').addClass('col-md-6 col-lg-4');
-                let $card = $('<div>').addClass('item-card d-flex align-items-center justify-content-between gap-2 p-2 rounded');
+                let $card = $('<article>')
+                    .attr('data-id', item.id)
+                    .addClass('tarjeta-pista item-card d-flex align-items-center justify-content-between gap-2 p-2 rounded');
                 let $izq = $('<div>').addClass('d-flex align-items-center gap-2 overflow-hidden');
                 let $img = $('<img>')
-                    .attr('src', cancion.portadaMini)
-                    .attr('alt', cancion.titulo)
+                    .attr('src', item.portada || item.portadaMini)
+                    .attr('alt', item.titulo)
                     .attr('loading', 'lazy')
+                    .attr('decoding', 'async')
                     .attr('width', '64')
                     .attr('height', '64')
-                    .addClass('img-lazy-zoom flex-shrink-0')
-                    .data('media', cancion.portadaMedia)
-                    .data('original', cancion.portadaOriginal)
-                    .data('titulo', cancion.titulo + ' - ' + cancion.artista);
+                    .addClass('img-lazy-zoom img-expandible flex-shrink-0')
+                    .data('media', item.portadaMedia)
+                    .data('original', item.portadaOriginal)
+                    .data('titulo', item.titulo + ' - ' + item.artista);
                 let $info = $('<div>').addClass('overflow-hidden');
-                let $tit = $('<div>').addClass('fw-bold text-truncate').text(cancion.titulo);
-                let $art = $('<div>').addClass('small texto-verde text-truncate').text(cancion.artista + ' | ' + cancion.genero);
+                let $tit = $('<div>').addClass('fw-bold text-truncate').text(item.titulo);
+                let $art = $('<div>').addClass('small texto-verde text-truncate').text(item.artista + ' | ' + item.genero);
                 $info.append($tit, $art);
                 $izq.append($img, $info);
 
                 let $btnAdd = $('<button>')
                     .attr('type', 'button')
                     .addClass('btn btn-sm btn-outline-success btn-agregar-cola flex-shrink-0')
-                    .data('cancion', cancion.titulo + ' - ' + cancion.artista)
+                    .data('cancion', item.titulo + ' - ' + item.artista)
                     .html('<i class="bi bi-plus-lg"></i>');
 
                 $card.append($izq, $btnAdd);
                 $col.append($card);
                 $contenedor.append($col);
 
-                resolverPortadaMultimedia(cancion).then(function(pack) {
+                resolverPortadaMultimedia(item).then(function(pack) {
                     $img.attr('src', pack.mini)
                         .data('media', pack.media)
                         .data('original', pack.original);
@@ -3795,13 +4144,42 @@ $(document).ready(function() {
     }
     cargarCatalogoKaraokeAsync();
 
-    $(document).off('click', '.img-lazy-zoom').on('click', '.img-lazy-zoom', function() {
-        let titulo = $(this).data('titulo') || $(this).attr('alt');
-        let mediaUrl = $(this).data('media') || $(this).attr('src');
-        let originalUrl = $(this).data('original') || mediaUrl;
+    $(document).off('click', '.img-expandible, .img-lazy-zoom, .tarjeta-pista img, .playlist-card img, .card-playlist img, .poke-card img, .heroe-img, .sprite-vgc').on('click', '.img-expandible, .img-lazy-zoom, .tarjeta-pista img, .playlist-card img, .card-playlist img, .poke-card img, .heroe-img, .sprite-vgc', function() {
+        let rawSrc = $(this).attr('src') || '';
+        let titulo = $(this).data('titulo') || $(this).attr('alt') || 'Imagen HD';
+        let previewUrl = $(this).attr('data-media') || $(this).data('media') || rawSrc;
+        let originalUrl = $(this).attr('data-original') || $(this).data('original') || rawSrc;
+
+        if (rawSrc.indexOf('dl.dropboxusercontent.com') > -1) {
+            previewUrl = $(this).attr('data-media') || $(this).data('media') || rawSrc;
+            originalUrl = $(this).attr('data-original') || $(this).data('original') || rawSrc;
+        } else if (/(60x60bb|100x100bb)/.test(rawSrc) || rawSrc.indexOf('mzstatic.com') > -1) {
+            previewUrl = rawSrc.replace(/\d+x\d+bb/, '600x600bb');
+            originalUrl = rawSrc.replace(/\d+x\d+bb/, '1000x1000bb');
+        } else if (rawSrc.indexOf('PokeAPI/sprites') > -1) {
+            let matchId = rawSrc.match(/\/(\d+)\.png/);
+            if (matchId && matchId[1]) {
+                let arteOficial = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + matchId[1] + '.png';
+                previewUrl = arteOficial;
+                originalUrl = arteOficial;
+            }
+        } else if (rawSrc.indexOf('commons.wikimedia.org') > -1) {
+            previewUrl = rawSrc.replace(/\?width=\d+/, '?width=900');
+            originalUrl = rawSrc.replace(/\?width=\d+/, '');
+        } else if (rawSrc.indexOf('images.unsplash.com') > -1) {
+            previewUrl = rawSrc.replace(/w=\d+/, 'w=1200');
+            originalUrl = rawSrc.replace(/w=\d+/, 'w=1600');
+        } else if ($(this).data('media')) {
+            previewUrl = $(this).data('media');
+        }
+
         $('#visorImagenTitulo').text(titulo);
-        $('#visorImagenMedia').attr('src', mediaUrl);
-        $('#visorEnlaceOriginal').attr('href', originalUrl);
+        $('#visorImagenMedia').attr('src', previewUrl);
+        $('#visorEnlaceOriginal').attr({
+            href: originalUrl,
+            target: '_blank',
+            rel: 'noopener'
+        });
         $('#modalVisorImagen').fadeIn(200);
     });
 
@@ -3816,11 +4194,11 @@ $(document).ready(function() {
         if (!nombre) return;
         let $li = $('<li>').addClass('item-reserva');
         let $txt = $('<span>').text(nombre + ' - ' + sala);
-        let $badge = $('<span>').addClass('badge barra-morada').text('Confirmada');
+        let $badge = $('<span>').addClass('badge barra-morada').text('Agendada');
         $li.append($txt, $badge);
         $('#listaReservas').prepend($li);
         this.reset();
-        desplegarToastExito('Reserva registrada con proteccion Anti-XSS.');
+        desplegarToastExito('Sesion agendada correctamente.');
     });
 
     function agregarAColaKaraoke(textoCancion) {
@@ -3833,8 +4211,8 @@ $(document).ready(function() {
             .addClass('btn-tactil btn-quitar')
             .attr('aria-label', 'Quitar cancion')
             .html('<i class="bi bi-trash"></i>');
-        let rolActual = localStorage.getItem('sesionActivaRol') || 'cliente';
-        if (rolActual === 'cliente') {
+        let rolActual = sessionStorage.getItem('sesionRolActiva') || 'visitante';
+        if (rolActual !== 'encargado' && rolActual !== 'administrador') {
             $btnQuitar.hide();
         }
         $fila.append($tituloSpan, $btnQuitar);
@@ -3846,13 +4224,13 @@ $(document).ready(function() {
         if (!valor.trim()) return;
         agregarAColaKaraoke(valor);
         $('#inputCancion').val('').focus();
-        desplegarToastExito('Cancion anadida a la cola.');
+        desplegarToastExito('Tema agregado a la lista.');
     });
 
     $(document).off('click', '.btn-agregar-cola').on('click', '.btn-agregar-cola', function() {
         let tema = $(this).data('cancion');
         agregarAColaKaraoke(tema);
-        desplegarToastExito('Tema agregado desde catalogo a la cola.');
+        desplegarToastExito('Tema agregado desde repertorio.');
     });
 
     $(document).off('click', '.btn-quitar').on('click', '.btn-quitar', function() {
@@ -3875,11 +4253,11 @@ $(document).ready(function() {
         }
     }
 
-    $(document).off('click', '#btnAbrirTarifaFlash').on('click', '#btnAbrirTarifaFlash', function() {
+    $(document).off('click', '#btnModal, #btnAbrirTarifaFlash').on('click', '#btnModal, #btnAbrirTarifaFlash', function() {
         detenerTimerFlash();
         let segundosRestantes = 30;
         $('#contadorTarifaFlash').text(segundosRestantes + 's').css('color', '#00ff9d');
-        $('#btnConfirmarTarifaFlash').prop('disabled', false).text('Confirmar Tarifa Flash');
+        $('#btnConfirmarTarifaFlash').prop('disabled', false).text('Confirmar Tarifa');
         $('#modalTimer30s').fadeIn(200);
         intervaloTimer30s = setInterval(function() {
             segundosRestantes--;
@@ -3899,7 +4277,7 @@ $(document).ready(function() {
     $(document).off('click', '#btnConfirmarTarifaFlash').on('click', '#btnConfirmarTarifaFlash', function() {
         detenerTimerFlash();
         $('#modalTimer30s').fadeOut(200);
-        desplegarToastExito('Tarifa Flash confirmada exitosamente (40 BOB/h asegurados).');
+        desplegarToastExito('Tarifa preferencial confirmada (40 BOB/h).');
     });
 
     $(document).off('click', '#btnCerrarTimer30s').on('click', '#btnCerrarTimer30s', function() {
@@ -3916,28 +4294,28 @@ $(document).ready(function() {
     $(document).off('click', '#liveContainer').on('click', '#liveContainer', function(e) {
         let $botonProd = $(e.target).closest('[data-prod]');
         if ($botonProd.length) {
-            escribirEnBitacoraDia1('Bubbling -> Click en producto: ' + $botonProd.data('prod'));
+            escribirEnBitacoraDia1('Interaccion -> Elemento: ' + $botonProd.data('prod'));
         }
         let $botonLike = $(e.target).closest('[data-action="like"]');
         if ($botonLike.length) {
             let actual = parseInt($botonLike.attr('data-likes') || '0', 10) + 1;
             $botonLike.attr('data-likes', actual);
-            escribirEnBitacoraDia1('Bubbling -> Like registrado (Total: ' + actual + ')');
+            escribirEnBitacoraDia1('Me gusta registrado (Total: ' + actual + ')');
         }
     });
 
     $(document).off('keyup', '#chatInput').on('keyup', '#chatInput', function(e) {
         if (e.key === 'Enter' && $(this).val().trim() !== '') {
-            escribirEnBitacoraDia1('Mensaje Live: ' + $(this).val().trim());
+            escribirEnBitacoraDia1('Comentario: ' + $(this).val().trim());
             $(this).val('');
         } else if ($(this).val().trim() !== '') {
-            escribirEnBitacoraDia1('Escribiendo en chat: ' + $(this).val());
+            escribirEnBitacoraDia1('Redaccion activa: ' + $(this).val());
         }
     });
 
     $(document).off('change', '#variantSelect').on('change', '#variantSelect', function() {
         let hora = new Date().toLocaleTimeString();
-        let $linea = $('<div>').text('[' + hora + '] Variante seleccionada: ' + $(this).val());
+        let $linea = $('<div>').text('[' + hora + '] Edicion seleccionada: ' + $(this).val());
         $('#logDia2').prepend($linea);
     });
 
@@ -3947,32 +4325,74 @@ $(document).ready(function() {
         let variante = $('#variantSelect').val();
         if (!user) return;
         let hora = new Date().toLocaleTimeString();
-        let $linea = $('<div>').text('[' + hora + '] Pedido Live -> Usuario: ' + user + ' | Edicion: ' + variante);
+        let $linea = $('<div>').text('[' + hora + '] Solicitud -> Usuario: ' + user + ' | Edicion: ' + variante);
         $('#logDia2').prepend($linea);
         this.reset();
-        desplegarToastExito('Pedido Live registrado en Bitacora Dia 2.');
+        desplegarToastExito('Solicitud registrada en el historial.');
     });
 
-    let temporizadorInactividadCV;
-    function reiniciarTemporizadorInactividad() {
-        if (temporizadorInactividadCV) {
-            clearTimeout(temporizadorInactividadCV);
+    const TIEMPO_INACTIVIDAD_MS = 5 * 60 * 1000;
+    let intervaloSesionModal = null;
+    let temporizadorInactividad = null;
+
+    function detenerCountdownSesion() {
+        if (intervaloSesionModal) {
+            clearInterval(intervaloSesionModal);
+            intervaloSesionModal = null;
         }
-        temporizadorInactividadCV = setTimeout(function() {
-            $('#modal-cv').fadeIn();
-        }, 40000);
+    }
+
+    function abrirModalControlSesion() {
+        detenerCountdownSesion();
+        let segundos = 30;
+        $('#contadorSesionModal').text('00:30').css('color', '#00ff9d');
+        $('#modalSesionTimer').fadeIn(200);
+        intervaloSesionModal = setInterval(function() {
+            segundos--;
+            if (segundos <= 0) {
+                detenerCountdownSesion();
+                $('#contadorSesionModal').text('00:00').css('color', '#ef4444');
+                aplicarPermisosPorRol('visitante', '');
+                $('#modalSesionTimer').fadeOut(350);
+                desplegarToastExito('Sesion cerrada por inactividad.');
+            } else {
+                let fmt = segundos < 10 ? '00:0' + segundos : '00:' + segundos;
+                $('#contadorSesionModal').text(fmt);
+            }
+        }, 1000);
+    }
+
+    function reiniciarTemporizadorInactividad() {
+        if ($('#modalSesionTimer').is(':visible')) return;
+        if (temporizadorInactividad) {
+            clearTimeout(temporizadorInactividad);
+        }
+        temporizadorInactividad = setTimeout(function() {
+            abrirModalControlSesion();
+        }, TIEMPO_INACTIVIDAD_MS);
     }
     reiniciarTemporizadorInactividad();
 
-    $(document).off('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad').on('mousemove.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad', function() {
+    $(document).off('mousemove.inactividad mousedown.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad').on('mousemove.inactividad mousedown.inactividad keydown.inactividad scroll.inactividad touchstart.inactividad', function() {
         reiniciarTemporizadorInactividad();
     });
 
-    $(document).off('click', '#cerrar-modal-cv, #btn-cerrar-modal-cv').on('click', '#cerrar-modal-cv, #btn-cerrar-modal-cv', function() {
-        $('#modal-cv').fadeOut();
+    $(document).off('click', '#btnExtenderSesion').on('click', '#btnExtenderSesion', function() {
+        detenerCountdownSesion();
+        $('#modalSesionTimer').fadeOut(200, function() {
+            reiniciarTemporizadorInactividad();
+        });
+        desplegarToastExito('Sesion extendida (+30s) con exito.');
     });
 
-    $(document).off('click', '#btnModalCV').on('click', '#btnModalCV', function() {
-        $('#modal-cv').fadeIn();
+    $(document).off('click', '#btnCerrarSesionTimer, #btnCerrarModalSesionX').on('click', '#btnCerrarSesionTimer, #btnCerrarModalSesionX', function() {
+        detenerCountdownSesion();
+        $('#modalSesionTimer').fadeOut(200, function() {
+            reiniciarTemporizadorInactividad();
+        });
+        if ($(this).attr('id') === 'btnCerrarSesionTimer') {
+            aplicarPermisosPorRol('visitante', '');
+            desplegarToastExito('Sesion cerrada correctamente.');
+        }
     });
 });

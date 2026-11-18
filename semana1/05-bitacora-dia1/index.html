@@ -10,14 +10,14 @@
 <body>
     <header class="app-header">
         <a href="#inicio" class="brand">David Zalles | Portafolio UPDS</a>
-        <button id="btnMenuMovil" class="btn-hamburguesa" type="button" aria-label="Menu">
+        <button id="burguerBtn" class="btn-hamburguesa" type="button" aria-label="Menu">
             <i class="bi bi-list"></i>
         </button>
         <nav id="navMenu" class="nav-menu">
             <a href="#inicio">Perfil</a>
             <a href="#catalogo">Catalogo</a>
             <a href="#contacto">Contacto</a>
-            <button id="btnTheme" class="btn-accion" type="button">
+            <button id="themeBtn" class="btn-accion" type="button">
                 <i class="bi bi-moon-stars"></i> Tema
             </button>
         </nav>
@@ -28,7 +28,7 @@
             <p>Desarrollador Web y Movil en Santa Cruz, Bolivia. Fundador de EDU-CAN, coleccionista de Hot Wheels y fanatico de Gorillaz, Twenty One Pilots y Pokemon.</p>
         </section>
         <section id="catalogo" class="panel-card">
-            <h2 class="panel-title">Catalogo Multitematico (Filtro DOM)</h2>
+            <h2 class="panel-title">Catalogo de Proyectos y Colecciones</h2>
             <input type="text" id="buscadorCatalogo" class="campo-form" placeholder="Buscar por nombre, artista o categoria...">
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
                 <button type="button" class="btn-outline filtro-cat activo" data-categoria="todos">Todos</button>
@@ -70,8 +70,8 @@
             </div>
         </section>
         <section id="contacto" class="panel-card">
-            <h2 class="panel-title">Formulario de Contacto (Validacion RegExp)</h2>
-            <form id="formContacto" novalidate>
+            <h2 class="panel-title">Contacto y Solicitud de Servicios</h2>
+            <form id="contactForm" novalidate>
                 <label for="nombreInput">Nombre completo</label>
                 <input type="text" id="nombreInput" class="campo-form" placeholder="Ej. Carlos Mendoza" required>
                 <span id="errorNombre" class="msg-error"></span>
@@ -102,7 +102,7 @@
             </form>
         </section>
         <section id="bitacora1" class="panel-card">
-            <h2 class="panel-title">Bitacora Dia 1: Event Bubbling & Chat Live</h2>
+            <h2 class="panel-title">Interacciones en Vivo y Mensajeria</h2>
             <div id="liveContainer" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
                 <button type="button" class="btn-outline" data-prod="Gorillaz Vinyl">Seleccionar Vinilo</button>
                 <button type="button" class="btn-outline" data-prod="Hot Wheels Challenger">Seleccionar Hot Wheels</button>
