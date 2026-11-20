@@ -1,13 +1,19 @@
-const CACHE_NAME = 'pwa-cache-v1';
+// Semana 2 - Service Worker Offline-First y Cache v8
+const CACHE_NAME = 'pwa-cache-v8';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './styles.css',
+    './styles.css?v=8',
     './script.js',
+    './script.js?v=8',
     './CSS/styles.css',
     './JS/script.js',
+    './JS/supabase-api.js',
     './manifest.json',
     './data/canciones.json',
+    'https://dl.dropboxusercontent.com/scl/fi/opdzkbtttcop66r3hp14b/assassins.jpg?rlkey=j55n68e06m3gt7p8nl4v4wvxc&st=9lt8mmqc&raw=1',
+    'https://dl.dropboxusercontent.com/scl/fi/wyb1qsoc0rd2anbrwnm38/arquitectura_empresarial.jpg?rlkey=n43mfg9oui2c1d10ab2p05jxi&st=5ttyzz6r&raw=1',
     'https://dl.dropboxusercontent.com/scl/fi/mq4nkwx3jzju6dfzn9t9s/scizor.jpg?rlkey=m35z431gwv22uvdvbrp87c5n2&st=acklkspb&raw=1',
     'https://dl.dropboxusercontent.com/scl/fi/ipi5s7t4x9m0p58rsybb5/mega-pokeball.jpg?rlkey=bydyp79fydy3o2mcly0bhfo5o&st=43cj6cp7&raw=1',
     'https://dl.dropboxusercontent.com/scl/fi/bkkdv7rs5ae4gxpyu0tpt/mega-pikachu.jpg?rlkey=os7irg6e5qbnedz4nx0aujmmz&st=dlm9887q&raw=1',
@@ -52,27 +58,63 @@ self.addEventListener('activate', event => {
     );
 });
 
+// Semana 3 - Exclusion Supabase y Estrategia Hibrida Fetch
 self.addEventListener('fetch', event => {
+    if (event.request.url.includes('supabase.co')) return;
     if (event.request.method !== 'GET') return;
+    const req = event.request;
+    const esRecursoCodigo = (
+        req.destination === 'document' ||
+        req.destination === 'style' ||
+        req.destination === 'script' ||
+        req.url.includes('.json')
+    );
+
+    if (esRecursoCodigo) {
+        const peticionFresca = req.mode === 'navigate'
+            ? fetch(req.url, { cache: 'no-cache' })
+            : fetch(req, { cache: 'no-cache' });
+
+        event.respondWith(
+            peticionFresca
+                .then(networkResponse => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        const responseClone = networkResponse.clone();
+                        caches.open(CACHE_NAME).then(cache => {
+                            cache.put(req, responseClone);
+                        });
+                    }
+                    return networkResponse;
+                })
+                .catch(() => {
+                    return caches.match(req, { ignoreSearch: true }).then(cachedResponse => {
+                        if (cachedResponse) return cachedResponse;
+                        if (req.mode === 'navigate') {
+                            return caches.match('./index.html', { ignoreSearch: true });
+                        }
+                    });
+                })
+        );
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(event.request).then(networkResponse => {
-                const esDropbox = event.request.url.indexOf('dl.dropboxusercontent.com') > -1;
+        caches.match(req, { ignoreSearch: true }).then(cachedResponse => {
+            const redActualizacion = fetch(req).then(networkResponse => {
+                const esDropbox = req.url.indexOf('dl.dropboxusercontent.com') > -1;
                 if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque' || (esDropbox && networkResponse.ok))) {
                     const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then(cache => {
-                        cache.put(event.request, responseClone);
+                        cache.put(req, responseClone);
                     });
                 }
                 return networkResponse;
-            }).catch(() => {
-                if (event.request.mode === 'navigate') {
-                    return caches.match('./index.html');
-                }
-            });
+            }).catch(() => cachedResponse || caches.match(req));
+
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return redActualizacion;
         })
     );
 });

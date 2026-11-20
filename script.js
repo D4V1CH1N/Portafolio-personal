@@ -1,3 +1,5 @@
+// Semana 1 - Configuracion Maestra y Portadas Spotify
+window.addEventListener('beforeinstallprompt', (e) => e.preventDefault());
 const PROTOCOLO_WEB = "https:" + "/" + "/";
 const URL_SPOTIFY_SEARCH = PROTOCOLO_WEB + "open.spotify.com/search/";
 const URL_SPOTIFY_PLAYLIST = PROTOCOLO_WEB + "open.spotify.com/playlist/";
@@ -2607,8 +2609,32 @@ function filtrarPokemon(categoria) {
     }
 }
 
+function normalizarTerminoBusqueda(texto, selectorInput) {
+    const limpio = String(texto || "").replace(/\s+/g, " ").trim().slice(0, 50);
+    if (selectorInput) {
+        const el = document.querySelector(selectorInput);
+        if (el && el.value.length > 50) {
+            el.value = el.value.slice(0, 50);
+        }
+    }
+    return limpio.toLowerCase();
+}
+
+function actualizarAvisoSinCoincidencias(contenedor, visibles) {
+    if (!contenedor) return;
+    const previo = contenedor.querySelector(":scope > .sin-coincidencias-box");
+    if (previo) previo.remove();
+    if (visibles === 0) {
+        const aviso = document.createElement("div");
+        aviso.className = "sin-coincidencias-box";
+        aviso.textContent = "Sin coincidencias para la busqueda actual";
+        contenedor.appendChild(aviso);
+    }
+}
+
 function buscarEnPokemon(texto) {
-    const termino = texto.trim().toLowerCase();
+    const termino = normalizarTerminoBusqueda(texto, "#buscadorPokemon");
+    const contenedor = document.getElementById("contenedorPokemon");
     const tarjetas = document.querySelectorAll("#salon-pokemon .card-pokemon");
     let visibles = 0;
 
@@ -2620,6 +2646,8 @@ function buscarEnPokemon(texto) {
             card.style.display = "none";
         }
     });
+
+    actualizarAvisoSinCoincidencias(contenedor, visibles);
 
     const contador = document.getElementById("contadorPokemon");
     if (contador) {
@@ -2636,7 +2664,7 @@ function irASalonPokemon(categoria) {
 }
 
 function buscarEnIdentidad(texto) {
-    const termino = texto.trim().toLowerCase();
+    const termino = normalizarTerminoBusqueda(texto);
     const tarjetas = document.querySelectorAll("#actividades .item-dom-card");
     tarjetas.forEach((card) => {
         if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
@@ -2648,39 +2676,72 @@ function buscarEnIdentidad(texto) {
 }
 
 function buscarEnMusica(texto) {
-    const termino = texto.trim().toLowerCase();
+    const termino = normalizarTerminoBusqueda(texto, "#buscadorMusica");
     const tarjetas = document.querySelectorAll("#favoritos .item-dom-card");
+    let visibles = 0;
     tarjetas.forEach((card) => {
         if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
             card.style.display = "block";
+            visibles++;
         } else {
             card.style.display = "none";
         }
     });
+    const contPlaylists = document.getElementById("contenedorPlaylists");
+    const contCanciones = document.getElementById("contenedorCanciones");
+    if (contPlaylists && contPlaylists.offsetParent !== null) {
+        actualizarAvisoSinCoincidencias(contPlaylists, visibles);
+    }
+    if (contCanciones && contCanciones.offsetParent !== null) {
+        actualizarAvisoSinCoincidencias(contCanciones, visibles);
+    }
 }
 
 function buscarEnCultura(texto) {
-    const termino = texto.trim().toLowerCase();
+    const termino = normalizarTerminoBusqueda(texto, "#buscadorCultura");
     const tarjetas = document.querySelectorAll("#cultura .item-dom-card");
+    let visibles = 0;
     tarjetas.forEach((card) => {
         if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
             card.style.display = "block";
+            visibles++;
         } else {
             card.style.display = "none";
         }
     });
+    const contenedorVisible = Array.from(document.querySelectorAll("#cultura .grid-masivo")).find((g) => g.offsetParent !== null);
+    actualizarAvisoSinCoincidencias(contenedorVisible, visibles);
 }
 
 function buscarEnHeroes(texto) {
-    const termino = texto.trim().toLowerCase();
+    const termino = normalizarTerminoBusqueda(texto, "#buscadorHeroes");
     const tarjetas = document.querySelectorAll("#panteon-heroes .heroe-card");
+    let visibles = 0;
     tarjetas.forEach((card) => {
         if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
             card.style.display = "block";
+            visibles++;
         } else {
             card.style.display = "none";
         }
     });
+    actualizarAvisoSinCoincidencias(document.getElementById("contenedorHeroes"), visibles);
+}
+
+function buscarEnJuegos(texto) {
+    const termino = normalizarTerminoBusqueda(texto, "#buscadorJuegos");
+    const contenedor = document.getElementById("contenedorJuegos");
+    const tarjetas = document.querySelectorAll("#contenedorJuegos .item-dom-card");
+    let visibles = 0;
+    tarjetas.forEach((card) => {
+        if (termino === "" || card.textContent.toLowerCase().indexOf(termino) !== -1) {
+            card.style.display = "block";
+            visibles++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+    actualizarAvisoSinCoincidencias(contenedor, visibles);
 }
 
 let modoAcordeonActivo = false;
@@ -3565,12 +3626,15 @@ if (mensajeInput) {
 $(document).ready(function() {
     function actualizarEstadoRed() {
         let $estado = $('#estadoRed');
+        let $badgeHeader = $('#badgeEstadoRedHeader');
         $estado.fadeIn('fast');
         if (navigator.onLine) {
             $estado.html('<i class="bi bi-wifi"></i> En Línea').css({'background': '#dcfce7', 'color': '#166534', 'border': '1px solid #166534'});
+            if ($badgeHeader.length) $badgeHeader.text('ONLINE').removeClass('barra-morada text-white').addClass('barra-verde text-dark');
             setTimeout(() => $estado.fadeOut('slow'), 3000);
         } else {
             $estado.html('<i class="bi bi-wifi-off"></i> Modo Offline Activo (Datos Locales)').css({'background': '#ffedd5', 'color': '#9a3412', 'border': '1px solid #9a3412'});
+            if ($badgeHeader.length) $badgeHeader.text('OFFLINE').removeClass('barra-verde text-dark').addClass('barra-morada text-white');
         }
     }
     $(window).off('online.red offline.red').on('online.red offline.red', actualizarEstadoRed);
@@ -3639,6 +3703,7 @@ $(document).ready(function() {
     }
     window.mostrarVista = mostrarVista;
 
+    // Semana 3 - Componentes Encapsulados DOMPurify
     function renderizarDetalleSeguro(htmlDesdeServidor) {
         const limpio = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(htmlDesdeServidor) : htmlDesdeServidor;
         $('#detalleProyecto').html(limpio);
@@ -3709,16 +3774,20 @@ $(document).ready(function() {
         $('#resultadoCalculoMetrica').text('$' + totalCalculado.toFixed(2) + ' USD (' + horas + ' hrs x $' + tarifaPorHora + '/hr)');
     });
 
-    $(document).off('keyup', '#buscadorEnTiempoReal').on('keyup', '#buscadorEnTiempoReal', function() {
-        let terminoBusqueda = $(this).val().toLowerCase().trim();
+    $(document).off('keyup.valBuscador', '#buscadorEnTiempoReal').on('keyup.valBuscador', '#buscadorEnTiempoReal', function() {
+        let terminoBusqueda = normalizarTerminoBusqueda($(this).val(), '#buscadorEnTiempoReal');
+        let visibles = 0;
+        let $contenedor = $('.tarjeta-filtrable').first().parent();
         $('.tarjeta-filtrable').each(function() {
             let textoTarjeta = $(this).text().toLowerCase();
             if (terminoBusqueda === '' || textoTarjeta.indexOf(terminoBusqueda) > -1) {
                 $(this).show();
+                visibles++;
             } else {
                 $(this).hide();
             }
         });
+        actualizarAvisoSinCoincidencias($contenedor[0], visibles);
     });
 
     $(document).off('click', '.boton-filtro-dataset').on('click', '.boton-filtro-dataset', function() {
@@ -3726,17 +3795,20 @@ $(document).ready(function() {
         $('.boton-filtro-dataset').removeClass('activo');
         $(this).addClass('activo');
         let listaElementos = document.querySelectorAll('.item-categoria-dataset');
+        let visibles = 0;
         listaElementos.forEach(function(itemElemento) {
             if (categoriaObjetivo === 'todos' || itemElemento.dataset.categoria === categoriaObjetivo) {
                 itemElemento.style.display = 'block';
+                visibles++;
             } else {
                 itemElemento.style.display = 'none';
             }
         });
+        actualizarAvisoSinCoincidencias($('.tarjeta-filtrable').first().parent()[0], visibles);
         desplegarToastExito('Filtro por categoria aplicado.');
     });
 
-    $(document).off('change', '#capa1').on('change', '#capa1', function() {
+    $(document).off('change.valCascada', '#capa1').on('change.valCascada', '#capa1', function() {
         let valorCapa1 = $(this).val();
         let $capa2 = $('#capa2');
         let $capa3 = $('#capa3');
@@ -3746,17 +3818,20 @@ $(document).ready(function() {
             $capa2.append('<option value="web2">Diseno Web II</option>');
             $capa2.append('<option value="ingsw">Ingenieria de Software</option>');
             $capa2.prop('disabled', false);
+            $('#resultadoFiltro').text('Seleccione las 3 capas para ver el resultado...');
         } else if (valorCapa1 === 'desarrollo') {
             $capa2.append('<option value="pwa">Arquitectura PWA</option>');
             $capa2.append('<option value="backend">Desarrollo Backend</option>');
             $capa2.prop('disabled', false);
+            $('#resultadoFiltro').text('Seleccione las 3 capas para ver el resultado...');
         } else {
             $capa2.prop('disabled', true);
+            $capa3.prop('disabled', true);
+            $('#resultadoFiltro').empty().text('');
         }
-        $('#resultadoFiltro').text('Seleccione las 3 capas para ver el resultado...');
     });
 
-    $(document).off('change', '#capa2').on('change', '#capa2', function() {
+    $(document).off('change.valCascada2', '#capa2').on('change.valCascada2', '#capa2', function() {
         let valorCapa2 = $(this).val();
         let $capa3 = $('#capa3');
         $capa3.html('<option value="">-- Seleccione Especialidad --</option>');
@@ -3782,16 +3857,45 @@ $(document).ready(function() {
         $('#resultadoFiltro').text('Seleccione la Capa 3...');
     });
 
-    $(document).off('change', '#capa3').on('change', '#capa3', function() {
+    $(document).off('change.valCascada3', '#capa3').on('change.valCascada3', '#capa3', function() {
         let textoCapa1 = $('#capa1 option:selected').text();
         let textoCapa2 = $('#capa2 option:selected').text();
         let textoCapa3 = $(this).find('option:selected').text();
         if ($(this).val()) {
-            $('#resultadoFiltro').html('<div class="p-2" style="background: rgba(0,255,157,0.15); border-left: 4px solid #00ff9d; color: #00ff9d;"><strong>Filtro 3 Capas Activo:</strong> ' + textoCapa1 + ' &gt; ' + textoCapa2 + ' &gt; ' + textoCapa3 + '</div>');
-            desplegarToastExito('Filtro en Cascada completado con exito.');
+            let resumenEsp = textoCapa1 + ' > ' + textoCapa2 + ' > ' + textoCapa3;
+            let $cajaResumen = $('<div>')
+                .addClass('p-2 mb-2')
+                .css({
+                    background: 'rgba(0,255,157,0.15)',
+                    borderLeft: '4px solid #00ff9d',
+                    color: '#00ff9d'
+                })
+                .append($('<strong>').text('Especialidad Seleccionada: '))
+                .append(document.createTextNode(resumenEsp));
+            let $btnCotizar = $('<button>')
+                .attr({
+                    type: 'button',
+                    id: 'btnCotizarEspecialidad'
+                })
+                .addClass('tarjeta-ods__boton--destacado')
+                .data('especialidad', resumenEsp)
+                .text('Solicitar Cotizacion para esta Especialidad');
+            $('#resultadoFiltro').empty().append($cajaResumen, $btnCotizar);
+            desplegarToastExito('Especialidad configurada. Puedes solicitar cotizacion.');
         } else {
             $('#resultadoFiltro').text('Seleccione la Capa 3...');
         }
+    });
+
+    $(document).off('click', '#btnCotizarEspecialidad').on('click', '#btnCotizarEspecialidad', function() {
+        let esp = $(this).data('especialidad') || '';
+        if (typeof window.mostrarVista === 'function') {
+            window.mostrarVista('servicios', 'sub-servicios-contacto');
+        }
+        let textoPropuesta = 'Solicito cotizacion e informacion sobre la especialidad: ' + esp + '. Requiero alcance tecnico y tiempos estimados.';
+        $('#mensaje').val(textoPropuesta).trigger('keyup');
+        $('#input-nombre').focus();
+        desplegarToastExito('Especialidad cargada en el Formulario de Propuestas.');
     });
 
     $(document).off('mouseenter mouseleave', '.tarjeta-habilidad').on({
@@ -3799,118 +3903,284 @@ $(document).ready(function() {
         mouseleave: function() { $(this).animate({ opacity: 1 }, 200); }
     }, '.tarjeta-habilidad');
 
+    function aplicarEstadoCampoContacto($campo, $error, esValido, msgError) {
+        $campo.toggleClass('campo-valido', esValido).toggleClass('campo-invalido', !esValido);
+        if (esValido) {
+            $error.removeClass('visible').text('');
+        } else {
+            $error.text(msgError).addClass('visible');
+        }
+        return esValido;
+    }
+
+    function validarCampoContacto(idCampo) {
+        if (idCampo === 'input-nombre') {
+            let v = ($('#input-nombre').val() || '').trim();
+            return aplicarEstadoCampoContacto(
+                $('#input-nombre'),
+                $('#errorNombre'),
+                /^[a-zA-ZÀ-ÿ\s]{3,60}$/.test(v),
+                'Solo letras y espacios (3 a 60 caracteres).'
+            );
+        }
+        if (idCampo === 'correo') {
+            let v = ($('#correo').val() || '').trim();
+            return aplicarEstadoCampoContacto(
+                $('#correo'),
+                $('#errorCorreo'),
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v),
+                'Ingresa un correo electronico valido.'
+            );
+        }
+        if (idCampo === 'servicio') {
+            let v = $('#servicio').val();
+            return aplicarEstadoCampoContacto(
+                $('#servicio'),
+                $('#errorServicio'),
+                Boolean(v && v.trim() !== ''),
+                'Selecciona un area o servicio.'
+            );
+        }
+        if (idCampo === 'mensaje') {
+            let v = ($('#mensaje').val() || '').trim();
+            $('#contadorMensaje').text(($('#mensaje').val() || '').length + ' / 500 caracteres');
+            return aplicarEstadoCampoContacto(
+                $('#mensaje'),
+                $('#errorMensaje'),
+                v.length >= 15 && v.length <= 500,
+                'El mensaje requiere entre 15 y 500 caracteres.'
+            );
+        }
+        return true;
+    }
+
+    $(document).off('blur.valContacto keyup.valContacto change.valContacto', '#input-nombre, #correo, #servicio, #mensaje').on('blur.valContacto keyup.valContacto change.valContacto', '#input-nombre, #correo, #servicio, #mensaje', function() {
+        validarCampoContacto(this.id);
+    });
+
     $('#form-contacto').off('submit').on('submit', function(e) {
         e.preventDefault();
-        
+        let nombreOk = validarCampoContacto('input-nombre');
+        let correoOk = validarCampoContacto('correo');
+        let servicioOk = validarCampoContacto('servicio');
+        let mensajeOk = validarCampoContacto('mensaje');
+        let $alertaBox = $('#alertaBox');
+
+        if (!nombreOk || !correoOk || !servicioOk || !mensajeOk) {
+            $alertaBox.empty().append(
+                $('<div>')
+                    .addClass('alert alert-danger mt-3')
+                    .css({ background: '#2a0f18', color: '#f43f5e', border: '1px solid #f43f5e' })
+                    .text('Corrige los campos marcados en rojo antes de enviar la propuesta.')
+            ).slideDown();
+            return;
+        }
+
         let datosFormulario = {
-            nombre: $('#input-nombre').val(),
-            correo: $('#correo').val(),
+            nombre: $('#input-nombre').val().trim(),
+            correo: $('#correo').val().trim(),
             telefono: (($('#prefijoPais').val() || '') + ' ' + ($('#telefono').val() || '')).trim(),
             fechaEstimada: $('#fechaReunion').val(),
             servicio: $('#servicio').val(),
             horasEstimadas: $('#horasEstimadas').val() || '0',
             horas: $('#horasEstimadas').val() || '0',
-            detallesProyecto: $('#mensaje').val(),
-            mensaje: $('#mensaje').val(),
+            detallesProyecto: $('#mensaje').val().trim(),
+            mensaje: $('#mensaje').val().trim(),
             presupuestoCalculado: $('#resultadoCalculoMetrica').text().trim(),
             fechaRegistro: new Date().toISOString(),
             fecha: new Date().toISOString()
         };
 
-        let $alertaBox = $('#alertaBox');
+        // Semana 3 - Envio de Consulta a Supabase y Cola FIFO Offline-First
+        const envioConsulta = window.SupabasePortafolio
+            ? window.SupabasePortafolio.guardarTablaConRespaldoFIFO('consultas', datosFormulario, 'consulta')
+            : Promise.resolve({ offline: !navigator.onLine });
 
-        if (!navigator.onLine) {
-            let colaPendiente = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
-            colaPendiente.push(datosFormulario);
-            localStorage.setItem('colaSincronizacionPWA', JSON.stringify(colaPendiente));
-            localStorage.setItem('colaContactosOffline', JSON.stringify(colaPendiente));
-            $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado localmente - Pendiente de envio (Offline)</div>').slideDown();
-            $('#form-contacto')[0].reset();
-            if (typeof actualizarMonitorAdmin === 'function') {
-                actualizarMonitorAdmin();
+        envioConsulta.then(function(resSupa) {
+            if (window.SupabasePortafolio) {
+                window.SupabasePortafolio.registrarActividadCliente({
+                    usuario: datosFormulario.correo,
+                    accion: 'consulta_contacto',
+                    detalle: 'Servicio: ' + datosFormulario.servicio
+                });
             }
-        } else {
-            $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta enviada con exito. Nos comunicaremos a la brevedad.</div>').slideDown();
-            desplegarToastExito('Propuesta enviada al servidor.');
-            this.reset();
-        }
-    });
-
-    $(window).off('online.sincronizacion').on('online.sincronizacion', function() {
-        let colaPendiente = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
-        if (colaPendiente.length > 0) {
-            let totalRegistrosSincronizados = colaPendiente.length;
-            setTimeout(function() {
-                while (colaPendiente.length > 0) {
-                    let registroActual = colaPendiente.shift();
-                }
-                localStorage.removeItem('colaSincronizacionPWA');
-                localStorage.removeItem('colaContactosOffline');
-                let formularioContacto = document.getElementById('form-contacto');
-                if (formularioContacto) {
-                    formularioContacto.reset();
-                }
-                $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexion recuperada: ' + totalRegistrosSincronizados + ' registro(s) sincronizado(s) con exito (FIFO).</div>').slideDown();
-                desplegarToastExito('Sincronizacion FIFO completada (' + totalRegistrosSincronizados + ' registros procesados).');
+            if (resSupa && resSupa.offline) {
+                let colaPendiente = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
+                colaPendiente.push(datosFormulario);
+                localStorage.setItem('colaContactosOffline', JSON.stringify(colaPendiente));
+                $alertaBox.html('<div class="alert alert-warning mt-3" style="background: #ffedd5; color: #9a3412; border: 1px solid #9a3412;"><i class="bi bi-clock-history me-2"></i>Guardado en cola FIFO local - Pendiente de envio (Offline)</div>').slideDown();
+                $('#form-contacto')[0].reset();
                 if (typeof actualizarMonitorAdmin === 'function') {
                     actualizarMonitorAdmin();
                 }
-                setTimeout(function() {
-                    $('#alertaBox').slideUp();
-                }, 5000);
-            }, 1200);
-        }
-    });
-
-    localStorage.removeItem('sesionActivaRol');
-
-    function inicializarUsuariosBase() {
-        let cuentasDefault = [
-            { nombre: 'Cliente UPDS', correo: 'cliente@upds.edu.bo', password: 'cliente123', rol: 'cliente' },
-            { nombre: 'Staff Edu-can', correo: 'encargado@educan.bo', password: 'staff123', rol: 'encargado' },
-            { nombre: 'David Zalles Admin', correo: 'david@chato.dev', password: 'admin123', rol: 'administrador' }
-        ];
-        let actuales = JSON.parse(localStorage.getItem('dbUsuariosPortafolio'));
-        if (!Array.isArray(actuales) || actuales.length === 0) {
-            localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(cuentasDefault));
-            return cuentasDefault;
-        }
-        cuentasDefault.forEach(function(def) {
-            if (!actuales.some(function(u) { return u.correo === def.correo; })) {
-                actuales.push(def);
+            } else {
+                $alertaBox.html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-check-circle me-2"></i>Propuesta registrada en Supabase y lista para gestion.</div>').slideDown();
+                desplegarToastExito('Propuesta enviada correctamente.');
+                $('#form-contacto')[0].reset();
+                if (typeof cargarPanelSupabaseDesktop === 'function') {
+                    cargarPanelSupabaseDesktop();
+                }
             }
         });
-        localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(actuales));
-        return actuales;
+        $('#input-nombre, #correo, #servicio, #mensaje').removeClass('campo-valido campo-invalido');
+        $('#errorNombre, #errorCorreo, #errorServicio, #errorMensaje').removeClass('visible').text('');
+        $('#contadorMensaje').text('0 / 500 caracteres');
+    });
+
+    // Semana 3 - Sincronizacion Automatica FIFO al Recuperar Red y en Carga Inicial
+    function procesarResultadoSyncDesktop(resSync) {
+        let colaFallback = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
+        let total = (resSync && resSync.procesados) ? resSync.procesados : colaFallback.length;
+        if (total > 0) {
+            localStorage.removeItem('colaContactosOffline');
+            let formularioContacto = document.getElementById('form-contacto');
+            if (formularioContacto) {
+                formularioContacto.reset();
+            }
+            $('#alertaBox').html('<div class="alert alert-success mt-3" style="background: #0f172a; color: #00ff9d; border: 1px solid #00ff9d;"><i class="bi bi-cloud-check me-2"></i>Conexion recuperada: ' + total + ' registro(s) sincronizado(s) con Supabase (FIFO).</div>').slideDown();
+            desplegarToastExito('Sincronizacion FIFO completada (' + total + ' registros).');
+            if (typeof actualizarMonitorAdmin === 'function') {
+                actualizarMonitorAdmin();
+            }
+            if (typeof cargarPanelSupabaseDesktop === 'function') {
+                cargarPanelSupabaseDesktop();
+            }
+            setTimeout(function() {
+                $('#alertaBox').slideUp();
+            }, 5000);
+        }
     }
-    inicializarUsuariosBase();
+
+    $(window).off('online.sincronizacion').on('online.sincronizacion', function() {
+        const hacerSync = window.SupabasePortafolio
+            ? window.SupabasePortafolio.sincronizarColaFIFO()
+            : Promise.resolve({ procesados: 0 });
+        hacerSync.then(procesarResultadoSyncDesktop);
+    });
+
+    if (navigator.onLine !== false && window.SupabasePortafolio && window.SupabasePortafolio.leerColaFIFO().length > 0) {
+        window.SupabasePortafolio.sincronizarColaFIFO().then(procesarResultadoSyncDesktop);
+    }
+
+    // Semana 2 - Arquitectura PWA Dual y Deteccion de Dispositivo
+    function verificarEnrutamientoPWA() {
+        if (window.location.search.indexOf('desktop=1') !== -1) return;
+        let esTactilMovil = (navigator.maxTouchPoints > 0 && window.innerWidth <= 900);
+        if (!esTactilMovil) return;
+        if (window.innerWidth > window.innerHeight && window.innerHeight <= 520) {
+            window.location.replace('./pwa/horizontal.html');
+        } else {
+            window.location.replace('./pwa/index.html');
+        }
+    }
+    verificarEnrutamientoPWA();
+    $(window).off('orientationchange.rutaPwa').on('orientationchange.rutaPwa', verificarEnrutamientoPWA);
+
+    // Semana 3 - Control de Sesion Volatil y Roles
+    localStorage.removeItem('sesionActivaRol');
+
+    function actualizarResumenOperativoDesktop() {
+        $('#contadorSesionesOperativoDesktop').text($('#listaReservas li').length);
+        $('#contadorSugerenciasOperativoDesktop').text($('#listaCanciones .fila-cancion').length);
+    }
+
+    function alternarSubtabConsolaDesktop(subtab) {
+        $('#tabsConsolaAdminDesktop .subtab-consola-btn').removeClass('activo');
+        $('#tabsConsolaAdminDesktop .subtab-consola-btn[data-subtab="' + subtab + '"]').addClass('activo');
+        if (subtab === 'sistema') {
+            $('#bloqueConsolaOperativaDesktop').hide();
+            $('#panelAdminSistema').show();
+            actualizarMonitorAdmin();
+        } else {
+            $('#panelAdminSistema').hide();
+            $('#bloqueConsolaOperativaDesktop').show();
+            actualizarResumenOperativoDesktop();
+        }
+    }
 
     function actualizarMonitorAdmin() {
-        let colaA = JSON.parse(localStorage.getItem('colaSincronizacionPWA')) || [];
+        let colaFifo = window.SupabasePortafolio ? window.SupabasePortafolio.leerColaFIFO() : [];
         let colaB = JSON.parse(localStorage.getItem('colaContactosOffline')) || [];
-        let colaActiva = colaA.length >= colaB.length ? colaA : colaB;
+        let colaActiva = colaFifo.length >= colaB.length ? colaFifo : colaB;
         let estadoHidratado = $('#contenedorHidratacion').attr('data-hidratado') === 'true' ? 'HIDRATADO (DOM Reactivo Activo)' : 'DESHIDRATADO (SSR Estatico)';
         $('#estadoHidratacionAdmin').text(estadoHidratado);
+        $('#contadorColaOfflineDesktop').text(colaActiva.length);
+        let swTexto = ('serviceWorker' in navigator && navigator.serviceWorker.controller) ? 'Activo (pwa-cache-v8)' : 'Registrado (pwa-cache-v8)';
+        $('#estadoSwAdminDesktop').text(swTexto);
         let $monitor = $('#monitorColaOffline');
         if ($monitor.length) {
             if (colaActiva.length === 0) {
-                $monitor.text('[SISTEMA]: 0 registros pendientes en cola offline.');
+                $monitor.text('[SISTEMA]: 0 registros pendientes en colaSincronizacion_portafolio_david.');
             } else {
-                $monitor.text('[OFFLINE QUEUE]: ' + colaActiva.length + ' registro(s) en espera -> ' + JSON.stringify(colaActiva));
+                $monitor.text('[OFFLINE FIFO]: ' + colaActiva.length + ' registro(s) en espera -> ' + JSON.stringify(colaActiva));
             }
         }
     }
 
-    function aplicarPermisosPorRol(rol, nombreUsuario) {
+    function renderListaGestionDesktop(selector, items, formateador) {
+        let $cont = $(selector);
+        if (!$cont.length) return;
+        $cont.empty();
+        if (!Array.isArray(items) || items.length === 0) {
+            $cont.append($('<div>').addClass('small text-secondary').text('Sin registros en portafolio_david.'));
+            return;
+        }
+        items.slice(0, 12).forEach(function(item) {
+            $cont.append($('<div>').addClass('py-1 border-bottom border-secondary').text(formateador(item)));
+        });
+    }
+
+    async function cargarPanelSupabaseDesktop() {
+        if (!window.SupabasePortafolio) return;
+        let [reservas, pedidos, consultas, promociones, actividad, extras] = await Promise.all([
+            window.SupabasePortafolio.listarRegistrosProyecto('reservas'),
+            window.SupabasePortafolio.listarRegistrosProyecto('pedidos'),
+            window.SupabasePortafolio.listarRegistrosProyecto('consultas'),
+            window.SupabasePortafolio.listarRegistrosProyecto('promociones'),
+            window.SupabasePortafolio.listarRegistrosProyecto('actividad_clientes'),
+            window.SupabasePortafolio.listarRegistrosProyecto('productos_extra')
+        ]);
+        renderListaGestionDesktop('#listaSupabaseReservasDesktop', reservas, function(r) {
+            return (r.cliente || r.nombre || 'Cliente') + ' - ' + (r.especialidad || r.sala || 'Sesion');
+        });
+        renderListaGestionDesktop('#listaSupabasePedidosDesktop', pedidos, function(p) {
+            return (p.usuario || p.cliente || 'Solicitud') + ' | ' + (p.variante || p.detalle || p.total || 'Item');
+        });
+        renderListaGestionDesktop('#listaSupabaseConsultasDesktop', consultas, function(c) {
+            return (c.nombre || 'Contacto') + ' - ' + (c.servicio || c.mensaje || 'Propuesta');
+        });
+        renderListaGestionDesktop('#listaSupabasePromocionesDesktop', promociones, function(pr) {
+            return (pr.titulo || pr.descripcion || 'Novedad');
+        });
+        renderListaGestionDesktop('#listaSupabaseActividadDesktop', actividad, function(a) {
+            return (a.cliente || a.usuario || 'Visitante') + ': ' + (a.accion || '') + ' (' + (a.detalle || '') + ')';
+        });
+        renderListaGestionDesktop('#listaSupabaseExtrasDesktop', extras, function(ex) {
+            return (ex.nombre || ex.titulo || 'Extra') + (ex.likes ? ' (' + ex.likes + ' likes)' : '');
+        });
+    }
+
+    function aplicarPermisosPorRol(rol, nombreUsuario, correoUsuario) {
         let rolNormalizado = ['visitante', 'cliente', 'encargado', 'administrador'].includes(rol) ? rol : 'visitante';
-        if (rolNormalizado === 'visitante') {
+        if (window.SupabasePortafolio) {
+            if (rolNormalizado === 'visitante') {
+                window.SupabasePortafolio.limpiarSesionActiva();
+            } else {
+                window.SupabasePortafolio.guardarSesionActiva({
+                    rol: rolNormalizado,
+                    nombre: nombreUsuario,
+                    correo: correoUsuario
+                });
+            }
+            window.SupabasePortafolio.aplicarClasesRolBody(rolNormalizado);
+        } else if (rolNormalizado === 'visitante') {
             sessionStorage.removeItem('sesionRolActiva');
             sessionStorage.removeItem('sesionUsuarioNombre');
+            sessionStorage.removeItem('sesionUsuarioCorreo');
         } else {
             sessionStorage.setItem('sesionRolActiva', rolNormalizado);
-            if (nombreUsuario) {
-                sessionStorage.setItem('sesionUsuarioNombre', nombreUsuario);
-            }
+            if (nombreUsuario) sessionStorage.setItem('sesionUsuarioNombre', nombreUsuario);
+            if (correoUsuario) sessionStorage.setItem('sesionUsuarioCorreo', correoUsuario);
         }
 
         let nombreEtiqueta = rolNormalizado.charAt(0).toUpperCase() + rolNormalizado.slice(1);
@@ -3919,46 +4189,73 @@ $(document).ready(function() {
         if (rolNormalizado === 'visitante') {
             $('#btnAbrirLogin span').text('Iniciar Sesion');
             $('#zonaCuentaActiva').hide();
+            $('#zonaFormulariosAuthDesktop').show();
         } else {
-            $('#btnAbrirLogin span').text('Cambiar Cuenta / Salir');
+            $('#btnAbrirLogin span').text('Cuenta / Salir');
             let userLabel = sessionStorage.getItem('sesionUsuarioNombre') || nombreEtiqueta;
-            $('#textoCuentaActiva').text('Conectado como: ' + userLabel + ' (' + nombreEtiqueta + ')');
+            let userEmail = sessionStorage.getItem('sesionUsuarioCorreo') || '';
+            $('#textoCuentaActiva').text(userLabel);
+            $('#textoCuentaCorreo').text(userEmail);
+            $('#badgeRolModalAuth').text(nombreEtiqueta);
             $('#zonaCuentaActiva').show();
+            $('#zonaFormulariosAuthDesktop').hide();
         }
 
-        if (rolNormalizado === 'encargado' || rolNormalizado === 'administrador') {
-            $('#btnNavConsola').show();
+        if (rolNormalizado === 'encargado') {
+            $('#btnNavConsola').show().html('<i class="bi bi-clipboard2-pulse"></i>Panel Operativo');
+            $('#tituloVistaConsolaDesktop').html('<i class="bi bi-clipboard2-pulse me-2"></i>Gestion Operativa (Encargado)');
+            $('#tabsConsolaAdminDesktop').hide();
+            $('#panelAdminSistema').hide();
+            $('#bloqueConsolaOperativaDesktop').show();
+            $('#panelGestionSupabaseDesktop').show();
             $('#panelBitacoraEnVivo').stop(true, true).fadeIn(200);
             $('.btn-quitar').show();
+            actualizarResumenOperativoDesktop();
+            cargarPanelSupabaseDesktop();
+        } else if (rolNormalizado === 'administrador') {
+            $('#btnNavConsola').show().html('<i class="bi bi-shield-lock"></i>Consola Admin');
+            $('#tituloVistaConsolaDesktop').html('<i class="bi bi-shield-lock me-2"></i>Consola de Administracion (Admin)');
+            $('#tabsConsolaAdminDesktop').show();
+            $('#panelGestionSupabaseDesktop').show();
+            $('#panelBitacoraEnVivo').show();
+            $('#contenedorHidratacion').stop(true, true).fadeIn(200);
+            $('.btn-quitar').show();
+            alternarSubtabConsolaDesktop('operaciones');
+            actualizarMonitorAdmin();
+            cargarPanelSupabaseDesktop();
         } else {
             $('#btnNavConsola').hide();
+            $('#tabsConsolaAdminDesktop').hide();
+            $('#panelGestionSupabaseDesktop').hide();
             $('#panelBitacoraEnVivo').stop(true, true).fadeOut(200);
+            $('#panelAdminSistema').stop(true, true).fadeOut(200);
+            $('#contenedorHidratacion').stop(true, true).fadeOut(200);
             $('.btn-quitar').hide();
             if ($('#vista-consola').hasClass('vista-activa')) {
                 mostrarVista('inicio');
             }
         }
-
-        if (rolNormalizado === 'administrador') {
-            $('#panelAdminSistema').stop(true, true).fadeIn(200);
-            $('#contenedorHidratacion').stop(true, true).fadeIn(200);
-            actualizarMonitorAdmin();
-        } else {
-            $('#panelAdminSistema').stop(true, true).fadeOut(200);
-            $('#contenedorHidratacion').stop(true, true).fadeOut(200);
-        }
     }
 
-    let rolSesionInicial = sessionStorage.getItem('sesionRolActiva') || 'visitante';
-    let nombreSesionInicial = sessionStorage.getItem('sesionUsuarioNombre') || '';
-    aplicarPermisosPorRol(rolSesionInicial, nombreSesionInicial);
+    let sesionRecuperada = window.SupabasePortafolio ? window.SupabasePortafolio.obtenerSesionActiva() : null;
+    let rolSesionInicial = (sesionRecuperada && sesionRecuperada.rol) || sessionStorage.getItem('sesionRolActiva') || 'visitante';
+    let nombreSesionInicial = (sesionRecuperada && sesionRecuperada.nombre) || sessionStorage.getItem('sesionUsuarioNombre') || '';
+    let correoSesionInicial = (sesionRecuperada && sesionRecuperada.correo) || sessionStorage.getItem('sesionUsuarioCorreo') || '';
+    aplicarPermisosPorRol(rolSesionInicial, nombreSesionInicial, correoSesionInicial);
 
-    $(document).off('click', '#btnAbrirLogin').on('click', '#btnAbrirLogin', function() {
-        $('#modalAuth').fadeIn(200);
+    $(document).off('click', '#tabsConsolaAdminDesktop .subtab-consola-btn').on('click', '#tabsConsolaAdminDesktop .subtab-consola-btn', function() {
+        alternarSubtabConsolaDesktop($(this).data('subtab') || 'operaciones');
     });
 
-    $(document).off('click', '#btnCerrarAuth').on('click', '#btnCerrarAuth', function() {
-        $('#modalAuth').fadeOut(200);
+    // Semana 3 - Portal de Acceso Centrado y Autenticacion Supabase
+    $(document).off('click', '#btnAbrirLogin').on('click', '#btnAbrirLogin', function() {
+        $('#modalAuth').addClass('activo').css('display', 'flex').hide().fadeIn(200);
+    });
+
+    $(document).off('click', '#btnCerrarAuth, #modalAuth').on('click', '#btnCerrarAuth, #modalAuth', function(e) {
+        if (e.target.id === 'btnCerrarAuth' || e.target.id === 'modalAuth' || $(e.target).closest('#btnCerrarAuth').length) {
+            $('#modalAuth').removeClass('activo').fadeOut(200);
+        }
     });
 
     $(document).off('click', '#tabBtnLogin').on('click', '#tabBtnLogin', function() {
@@ -3975,69 +4272,219 @@ $(document).ready(function() {
         $('#formRegistroAuth').fadeIn(150);
     });
 
-    $(document).off('click', '.btn-demo-auth').on('click', '.btn-demo-auth', function() {
-        let rolDemo = $(this).data('demo-rol');
-        let mapaDemo = {
-            cliente: { correo: 'cliente@upds.edu.bo', pass: 'cliente123' },
-            encargado: { correo: 'encargado@educan.bo', pass: 'staff123' },
-            administrador: { correo: 'david@chato.dev', pass: 'admin123' }
-        };
-        let cred = mapaDemo[rolDemo];
-        if (!cred) return;
-        $('#tabBtnLogin').trigger('click');
-        $('#authLoginCorreo').val(cred.correo);
-        $('#authLoginPass').val(cred.pass);
+    function validarLoginEnTiempoReal() {
+        let $correo = $('#authLoginCorreo');
+        let $pass = $('#authLoginPass');
+        let $msg = $('#msgValidacionLogin');
+        let correo = ($correo.val() || '').trim().toLowerCase();
+        let pass = ($pass.val() || '').trim();
+        let regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let correoOk = regexCorreo.test(correo);
+        let passOk = pass.length >= 6;
+
+        $correo.toggleClass('campo-valido', correoOk).toggleClass('campo-invalido', !correoOk);
+        $pass.toggleClass('campo-valido', passOk).toggleClass('campo-invalido', !passOk);
+
+        if (!correoOk) {
+            $msg.text('Ingresa un correo electronico valido.').addClass('visible');
+            return false;
+        }
+        if (!passOk) {
+            $msg.text('La contrasena debe tener al menos 6 caracteres.').addClass('visible');
+            return false;
+        }
+        $msg.removeClass('visible').text('');
+        return true;
+    }
+
+    $(document).off('keyup.valAuth blur.valAuth', '#authLoginCorreo, #authLoginPass').on('keyup.valAuth blur.valAuth', '#authLoginCorreo, #authLoginPass', function() {
+        validarLoginEnTiempoReal();
     });
 
-    $(document).off('submit', '#formLoginAuth').on('submit', '#formLoginAuth', function(e) {
+    $(document).off('submit', '#formLoginAuth').on('submit', '#formLoginAuth', async function(e) {
         e.preventDefault();
+        if (!validarLoginEnTiempoReal()) return;
         let correo = $('#authLoginCorreo').val().trim().toLowerCase();
         let pass = $('#authLoginPass').val().trim();
-        let usuarios = JSON.parse(localStorage.getItem('dbUsuariosPortafolio')) || [];
-        let cuenta = usuarios.find(function(u) {
-            return u.correo.toLowerCase() === correo && u.password === pass;
-        });
-        if (!cuenta) {
-            desplegarToastExito('Credenciales incorrectas. Verifica correo y contrasena.');
+        if (!window.SupabasePortafolio) return;
+
+        let resAuth = await window.SupabasePortafolio.buscarCuentaSupabase(correo, pass);
+        if (resAuth.offline) {
+            $('#msgValidacionLogin').text('Se requiere conexion a internet para verificar tu cuenta en Supabase.').addClass('visible');
             return;
         }
-        aplicarPermisosPorRol(cuenta.rol, cuenta.nombre);
+        let cuenta = resAuth.cuenta;
+        if (!cuenta) {
+            $('#authLoginCorreo, #authLoginPass').removeClass('campo-valido').addClass('campo-invalido');
+            $('#msgValidacionLogin').text('Credenciales incorrectas en Supabase. Verifica usuario y clave.').addClass('visible');
+            desplegarToastExito('Credenciales incorrectas.');
+            return;
+        }
+        $('#authLoginCorreo, #authLoginPass').removeClass('campo-valido campo-invalido');
+        $('#msgValidacionLogin').removeClass('visible').text('');
+        let nombreCuenta = cuenta.nombre || cuenta.usuario || correo;
+        let usuarioCuenta = cuenta.usuario || correo;
+        aplicarPermisosPorRol(cuenta.rol, nombreCuenta, usuarioCuenta);
+        window.SupabasePortafolio.registrarActividadCliente({
+            cliente: nombreCuenta,
+            accion: 'login',
+            detalle: 'Inicio de sesion Desktop (' + cuenta.rol + ')'
+        });
         $('#formLoginAuth')[0].reset();
-        $('#modalAuth').fadeOut(200);
-        desplegarToastExito('Bienvenido ' + cuenta.nombre + ' (' + cuenta.rol.toUpperCase() + ').');
+        $('#modalAuth').removeClass('activo').fadeOut(200);
+        desplegarToastExito('Bienvenido ' + nombreCuenta + ' (' + String(cuenta.rol || 'cliente').toUpperCase() + ').');
     });
 
-    $(document).off('submit', '#formRegistroAuth').on('submit', '#formRegistroAuth', function(e) {
+    function validarRegistroEnTiempoReal() {
+        let $nombre = $('#authRegNombre');
+        let $correo = $('#authRegCorreo');
+        let $pass = $('#authRegPass');
+        let $msg = $('#msgValidacionRegistro');
+        let nombre = ($nombre.val() || '').trim();
+        let correo = ($correo.val() || '').trim().toLowerCase();
+        let pass = ($pass.val() || '').trim();
+        let nombreOk = /^[a-zA-ZÀ-ÿ\s]{3,60}$/.test(nombre);
+        let correoOk = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correo);
+        let passOk = pass.length >= 6;
+
+        $nombre.toggleClass('campo-valido', nombreOk).toggleClass('campo-invalido', !nombreOk);
+        $correo.toggleClass('campo-valido', correoOk).toggleClass('campo-invalido', !correoOk);
+        $pass.toggleClass('campo-valido', passOk).toggleClass('campo-invalido', !passOk);
+
+        if (!nombreOk) {
+            $msg.text('Nombre invalido: minimo 3 letras (sin numeros ni simbolos).').addClass('visible');
+            return false;
+        }
+        if (!correoOk) {
+            $msg.text('Ingresa un correo electronico valido para registrarte.').addClass('visible');
+            return false;
+        }
+        if (!passOk) {
+            $msg.text('La contrasena debe tener minimo 6 caracteres.').addClass('visible');
+            return false;
+        }
+        $msg.removeClass('visible').text('');
+        return true;
+    }
+
+    $(document).off('keyup.valReg blur.valReg', '#authRegNombre, #authRegCorreo, #authRegPass').on('keyup.valReg blur.valReg', '#authRegNombre, #authRegCorreo, #authRegPass', function() {
+        validarRegistroEnTiempoReal();
+    });
+
+    $(document).off('submit', '#formRegistroAuth').on('submit', '#formRegistroAuth', async function(e) {
         e.preventDefault();
+        if (!validarRegistroEnTiempoReal()) return;
         let nombre = $('#authRegNombre').val().trim();
         let correo = $('#authRegCorreo').val().trim().toLowerCase();
         let pass = $('#authRegPass').val().trim();
-        let rol = $('#authRegRol').val();
-        if (!nombre || !correo || !pass) return;
-        let usuarios = JSON.parse(localStorage.getItem('dbUsuariosPortafolio')) || [];
-        usuarios = usuarios.filter(function(u) { return u.correo.toLowerCase() !== correo; });
-        usuarios.push({ nombre: nombre, correo: correo, password: pass, rol: rol });
-        localStorage.setItem('dbUsuariosPortafolio', JSON.stringify(usuarios));
-        aplicarPermisosPorRol(rol, nombre);
+        let rol = 'cliente';
+        if (!window.SupabasePortafolio) return;
+
+        let resReg = await window.SupabasePortafolio.registrarClienteSupabase(nombre, correo, pass);
+        if (resReg.duplicado) {
+            $('#authRegCorreo').removeClass('campo-valido').addClass('campo-invalido');
+            $('#msgValidacionRegistro').text('Ese correo ya esta registrado en portafolio_david.').addClass('visible');
+            return;
+        }
+        if (resReg.offline || !resReg.sincronizado) {
+            $('#msgValidacionRegistro').text('No se pudo completar el registro en Supabase. Verifica tu conexion.').addClass('visible');
+            return;
+        }
+        window.SupabasePortafolio.registrarActividadCliente({
+            cliente: nombre,
+            accion: 'registro_cliente',
+            detalle: 'Registro publico cliente Desktop'
+        });
+        $('#authRegNombre, #authRegCorreo, #authRegPass').removeClass('campo-valido campo-invalido');
+        $('#msgValidacionRegistro').removeClass('visible').text('');
+        aplicarPermisosPorRol(rol, nombre, correo);
         $('#formRegistroAuth')[0].reset();
-        $('#modalAuth').fadeOut(200);
-        desplegarToastExito('Cuenta creada para ' + nombre + ' con perfil ' + rol + '.');
+        $('#modalAuth').removeClass('activo').fadeOut(200);
+        desplegarToastExito('Cuenta creada en Supabase para ' + nombre + ' (cliente).');
     });
 
     $(document).off('click', '#btnCerrarCuentaActual').on('click', '#btnCerrarCuentaActual', function() {
         aplicarPermisosPorRol('visitante', '');
-        $('#modalAuth').fadeOut(200);
+        $('#modalAuth').removeClass('activo').fadeOut(200);
         desplegarToastExito('Sesion cerrada correctamente.');
     });
 
     $(document).off('click', '#btnLimpiarMemoriaLocal').on('click', '#btnLimpiarMemoriaLocal', function() {
         localStorage.removeItem('colaSincronizacionPWA');
         localStorage.removeItem('colaContactosOffline');
+        if (window.SupabasePortafolio) {
+            localStorage.removeItem(window.SupabasePortafolio.CLAVE_COLA_FIFO);
+        }
         actualizarMonitorAdmin();
         desplegarToastExito('Cola Offline depurada por Administrador.');
     });
 
+    $(document).off('click', '#btnRefrescarSupabaseDesktop').on('click', '#btnRefrescarSupabaseDesktop', function() {
+        cargarPanelSupabaseDesktop();
+        desplegarToastExito('Tablas Supabase actualizadas.');
+    });
+
+    $(document).off('click', '#btnSincronizarFifoDesktop').on('click', '#btnSincronizarFifoDesktop', function() {
+        if (!window.SupabasePortafolio) return;
+        window.SupabasePortafolio.sincronizarColaFIFO().then(function(r) {
+            actualizarMonitorAdmin();
+            cargarPanelSupabaseDesktop();
+            desplegarToastExito('FIFO sincronizado: ' + r.procesados + ' enviados, ' + r.pendientes + ' pendientes.');
+        });
+    });
+
+    $(document).off('submit', '#formPromocionDesktop').on('submit', '#formPromocionDesktop', function(e) {
+        e.preventDefault();
+        let titulo = ($('#inputPromoTituloDesktop').val() || '').trim();
+        if (!titulo || !window.SupabasePortafolio) return;
+        window.SupabasePortafolio.guardarTablaConRespaldoFIFO('promociones', {
+            titulo: titulo,
+            descripcion: titulo,
+            activa: true
+        }, 'promociones').then(function() {
+            $('#inputPromoTituloDesktop').val('');
+            cargarPanelSupabaseDesktop();
+            desplegarToastExito('Promocion registrada para el portafolio.');
+        });
+    });
+
+    // Semana 2 - Repertorio Musical Fetch Lazy Loading
     async function resolverPortadaMultimedia(cancion) {
+        if (cancion.spotifyUrl) {
+            let urlLimpia = cancion.spotifyUrl.split('?')[0];
+            if (PORTADAS_SPOTIFY_OFICIALES[urlLimpia]) {
+                let realUrl = PORTADAS_SPOTIFY_OFICIALES[urlLimpia];
+                return { mini: realUrl, media: realUrl, original: realUrl };
+            }
+            try {
+                let resOembed = await fetch(URL_SPOTIFY_OEMBED + encodeURIComponent(urlLimpia));
+                if (resOembed.ok) {
+                    let datosOembed = await resOembed.json();
+                    if (datosOembed && datosOembed.thumbnail_url) {
+                        PORTADAS_SPOTIFY_OFICIALES[urlLimpia] = datosOembed.thumbnail_url;
+                        guardarCachePortadas();
+                        return {
+                            mini: datosOembed.thumbnail_url,
+                            media: datosOembed.thumbnail_url,
+                            original: datosOembed.thumbnail_url
+                        };
+                    }
+                }
+            } catch (errOembed) {
+            }
+            return {
+                mini: cancion.portada || cancion.portadaMini,
+                media: cancion.portadaMedia || cancion.portadaMini,
+                original: cancion.portadaOriginal || cancion.portadaMedia || cancion.portadaMini
+            };
+        }
+        if (cancion.portadaMini && cancion.portadaMini.indexOf('emerald/') !== -1) {
+            return {
+                mini: cancion.portada || cancion.portadaMini,
+                media: cancion.portadaMedia || cancion.portadaMini,
+                original: cancion.portadaOriginal || cancion.portadaMedia || cancion.portadaMini
+            };
+        }
         let claveCache = 'cachePortadaAlbumV2_' + cancion.id;
         let cacheLocal = localStorage.getItem(claveCache);
         if (cacheLocal) {
@@ -4088,6 +4535,69 @@ $(document).ready(function() {
         };
     }
 
+    const CANCIONES_RESPALDO_DESKTOP = [
+        { id: 1, titulo: "SISAS", artista: "Playlist Spotify | Rap / Trap", genero: "Rap / Trap", pokemonId: 289, spotifyUrl: "https://open.spotify.com/playlist/2b4rtI2NJ76d5x1GrrJuY1", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png" },
+        { id: 2, titulo: "Sangre y Codigo", artista: "Playlist Spotify | Gaming PS4", genero: "Gaming PS4", pokemonId: 257, spotifyUrl: "https://open.spotify.com/playlist/356cdaFfhSWpUFP8rfVAzo", portada: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c7ac486332c2811ead9583f3", portadaMini: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c7ac486332c2811ead9583f3", portadaMedia: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c7ac486332c2811ead9583f3", portadaOriginal: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c7ac486332c2811ead9583f3" },
+        { id: 3, titulo: "GLitCH-h0P", artista: "Playlist Spotify | Gaming PS4", genero: "Gaming PS4", pokemonId: 380, spotifyUrl: "https://open.spotify.com/playlist/3XqlDXRNLKB4KJSbyhDjNZ", portada: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84fb35cef5e78d714c4988b8a2", portadaMini: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84fb35cef5e78d714c4988b8a2", portadaMedia: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84fb35cef5e78d714c4988b8a2", portadaOriginal: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84fb35cef5e78d714c4988b8a2" },
+        { id: 4, titulo: "Nin-Cor3", artista: "Playlist Spotify | Gaming PS4", genero: "Gaming PS4", pokemonId: 248, spotifyUrl: "https://open.spotify.com/playlist/6KIR70JxdBrabHuglEE1dy", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png" },
+        { id: 5, titulo: "R4v# mfk", artista: "Playlist Spotify | Gaming PS4", genero: "Gaming PS4", pokemonId: 3, spotifyUrl: "https://open.spotify.com/playlist/2x1TN7eeu1Rf37NInsajjS", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png" },
+        { id: 6, titulo: "HYP3", artista: "Playlist Spotify | Gaming PS4", genero: "Gaming PS4", pokemonId: 319, spotifyUrl: "https://open.spotify.com/playlist/157CR5vgVYfaCo8eoWekl6", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png" },
+        { id: 7, titulo: "El asesino", artista: "Playlist Spotify | Rap / Trap", genero: "Rap / Trap", pokemonId: 212, spotifyUrl: "https://open.spotify.com/playlist/4Rum8fiElouqBKP3PP1SIh", portada: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848abd40536ac267f4ae08b27f", portadaMini: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848abd40536ac267f4ae08b27f", portadaMedia: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848abd40536ac267f4ae08b27f", portadaOriginal: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848abd40536ac267f4ae08b27f" },
+        { id: 8, titulo: "Emergencia", artista: "Playlist Spotify | Rock / Alt", genero: "Rock / Alt", pokemonId: 254, spotifyUrl: "https://open.spotify.com/playlist/3oDK4P5TgunBb8GRPcfd9G", portada: "https://mosaic.scdn.co/300/ab67616d00001e025149c948fde506624246a684ab67616d00001e02566acaba72c5509e3887c4b0ab67616d00001e027c2b1dc1639152beaeadf00dab67616d00001e0290b88187a9831d91f2438927", portadaMini: "https://mosaic.scdn.co/300/ab67616d00001e025149c948fde506624246a684ab67616d00001e02566acaba72c5509e3887c4b0ab67616d00001e027c2b1dc1639152beaeadf00dab67616d00001e0290b88187a9831d91f2438927", portadaMedia: "https://mosaic.scdn.co/300/ab67616d00001e025149c948fde506624246a684ab67616d00001e02566acaba72c5509e3887c4b0ab67616d00001e027c2b1dc1639152beaeadf00dab67616d00001e0290b88187a9831d91f2438927", portadaOriginal: "https://mosaic.scdn.co/300/ab67616d00001e025149c948fde506624246a684ab67616d00001e02566acaba72c5509e3887c4b0ab67616d00001e027c2b1dc1639152beaeadf00dab67616d00001e0290b88187a9831d91f2438927" },
+        { id: 9, titulo: "Rap del Credo", artista: "Playlist Spotify | Rap / Trap", genero: "Rap / Trap", pokemonId: 260, spotifyUrl: "https://open.spotify.com/playlist/4VrpjOoamcYdvaLVgekjn7", portada: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84f1d63d798916673bb3fae4d6", portadaMini: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84f1d63d798916673bb3fae4d6", portadaMedia: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84f1d63d798916673bb3fae4d6", portadaOriginal: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84f1d63d798916673bb3fae4d6" },
+        { id: 10, titulo: "Favorite Songs", artista: "Playlist Spotify | Chill / Lo-Fi", genero: "Chill / Lo-Fi", pokemonId: 306, spotifyUrl: "https://open.spotify.com/playlist/7fvjGUXWoZsmTZ68VGrkD3", portada: "https://mosaic.scdn.co/300/ab67616d00001e02323a7e13e8db7c6ba5e09c58ab67616d00001e02567a5eb8a519900fb57c5591ab67616d00001e0285d6ba9f273b00251a381f2cab67616d00001e029a0e68fc6761a742bf9b8659", portadaMini: "https://mosaic.scdn.co/300/ab67616d00001e02323a7e13e8db7c6ba5e09c58ab67616d00001e02567a5eb8a519900fb57c5591ab67616d00001e0285d6ba9f273b00251a381f2cab67616d00001e029a0e68fc6761a742bf9b8659", portadaMedia: "https://mosaic.scdn.co/300/ab67616d00001e02323a7e13e8db7c6ba5e09c58ab67616d00001e02567a5eb8a519900fb57c5591ab67616d00001e0285d6ba9f273b00251a381f2cab67616d00001e029a0e68fc6761a742bf9b8659", portadaOriginal: "https://mosaic.scdn.co/300/ab67616d00001e02323a7e13e8db7c6ba5e09c58ab67616d00001e02567a5eb8a519900fb57c5591ab67616d00001e0285d6ba9f273b00251a381f2cab67616d00001e029a0e68fc6761a742bf9b8659" },
+        { id: 11, titulo: "BestAlbums.", artista: "Playlist Spotify | Rock / Alt", genero: "Rock / Alt", pokemonId: 383, spotifyUrl: "https://open.spotify.com/playlist/3EcShvyD30njVVhPVGM8Bt", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png" },
+        { id: 12, titulo: "HyP3R90P", artista: "Playlist Spotify | Varios / Raros", genero: "Varios / Raros", pokemonId: 230, spotifyUrl: "https://open.spotify.com/playlist/1JS4ls3C28V2Cff2CNTNBL", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png" },
+        { id: 13, titulo: "Clique |-/", artista: "Playlist Spotify | Rock / Alt", genero: "Rock / Alt", pokemonId: 244, spotifyUrl: "https://open.spotify.com/playlist/6icMn94oor2J8oEHiAPMpz", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png" },
+        { id: 14, titulo: "Programming..", artista: "Playlist Spotify | Chill / Lo-Fi", genero: "Chill / Lo-Fi", pokemonId: 310, spotifyUrl: "https://open.spotify.com/playlist/1c6YukmmlJYKTcmYGAvbvl", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png" },
+        { id: 15, titulo: "Late Night Chill", artista: "Playlist Spotify | Chill / Lo-Fi", genero: "Chill / Lo-Fi", pokemonId: 336, spotifyUrl: "https://open.spotify.com/playlist/6WXL3TpPeMDK8xOVslWl0z", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png" },
+        { id: 16, titulo: "Argentrap", artista: "Playlist Spotify | Rap / Trap", genero: "Rap / Trap", pokemonId: 356, spotifyUrl: "https://open.spotify.com/playlist/5DsmS5Y6xRRLtzfvp4mVpF", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png" }
+    ];
+
+    function renderizarListaCatalogoMusicaDesktop(canciones, $contenedor) {
+        $contenedor.empty();
+        canciones.forEach(function(item) {
+            let $col = $('<div>').addClass('col-md-6 col-lg-4');
+            let $card = $('<article>')
+                .attr('data-id', item.id)
+                .addClass('tarjeta-pista item-card d-flex align-items-center justify-content-between gap-2 p-2 rounded');
+            let $izq = $('<div>').addClass('d-flex align-items-center gap-2');
+            let $img = $('<img>')
+                .attr('src', item.portada || item.portadaMini)
+                .attr('alt', item.titulo)
+                .attr('loading', 'lazy')
+                .attr('decoding', 'async')
+                .attr('width', '64')
+                .attr('height', '64')
+                .addClass('img-lazy-zoom img-expandible img-ampliable flex-shrink-0')
+                .data('media', item.portadaMedia)
+                .data('original', item.portadaOriginal)
+                .data('titulo', item.titulo + ' (' + item.genero + ')');
+            let $info = $('<div>');
+            let $tit = $('<div>').addClass('fw-bold').text(item.titulo);
+            let $art = $('<div>').addClass('small texto-verde').text(item.artista);
+            $info.append($tit, $art);
+            $izq.append($img, $info);
+
+            let $btnAdd = $('<button>')
+                .attr('type', 'button')
+                .attr('aria-label', 'Agregar playlist a la lista')
+                .addClass('btn btn-sm btn-outline-success btn-agregar-cola flex-shrink-0')
+                .data('cancion', item.titulo + ' [' + item.genero + ']')
+                .html('<i class="bi bi-plus-lg me-1"></i>Lista');
+
+            $card.append($izq, $btnAdd);
+            $col.append($card);
+            $contenedor.append($col);
+
+            resolverPortadaMultimedia(item).then(function(pack) {
+                $img.attr('src', pack.mini)
+                    .data('media', pack.media)
+                    .data('original', pack.original);
+            });
+        });
+    }
+
     async function cargarCatalogoKaraokeAsync() {
         let $contenedor = $('#contenedorCatalogoKaraoke');
         if (!$contenedor.length) return;
@@ -4095,109 +4605,155 @@ $(document).ready(function() {
         try {
             let response = await fetch('data/canciones.json');
             if (!response.ok) {
-                throw new Error('Error al cargar repertorio');
+                throw new Error('HTTP ' + response.status);
             }
             let canciones = await response.json();
-            $contenedor.empty();
-            canciones.forEach(function(item) {
-                let $col = $('<div>').addClass('col-md-6 col-lg-4');
-                let $card = $('<article>')
-                    .attr('data-id', item.id)
-                    .addClass('tarjeta-pista item-card d-flex align-items-center justify-content-between gap-2 p-2 rounded');
-                let $izq = $('<div>').addClass('d-flex align-items-center gap-2 overflow-hidden');
-                let $img = $('<img>')
-                    .attr('src', item.portada || item.portadaMini)
-                    .attr('alt', item.titulo)
-                    .attr('loading', 'lazy')
-                    .attr('decoding', 'async')
-                    .attr('width', '64')
-                    .attr('height', '64')
-                    .addClass('img-lazy-zoom img-expandible flex-shrink-0')
-                    .data('media', item.portadaMedia)
-                    .data('original', item.portadaOriginal)
-                    .data('titulo', item.titulo + ' - ' + item.artista);
-                let $info = $('<div>').addClass('overflow-hidden');
-                let $tit = $('<div>').addClass('fw-bold text-truncate').text(item.titulo);
-                let $art = $('<div>').addClass('small texto-verde text-truncate').text(item.artista + ' | ' + item.genero);
-                $info.append($tit, $art);
-                $izq.append($img, $info);
-
-                let $btnAdd = $('<button>')
-                    .attr('type', 'button')
-                    .addClass('btn btn-sm btn-outline-success btn-agregar-cola flex-shrink-0')
-                    .data('cancion', item.titulo + ' - ' + item.artista)
-                    .html('<i class="bi bi-plus-lg"></i>');
-
-                $card.append($izq, $btnAdd);
-                $col.append($card);
-                $contenedor.append($col);
-
-                resolverPortadaMultimedia(item).then(function(pack) {
-                    $img.attr('src', pack.mini)
-                        .data('media', pack.media)
-                        .data('original', pack.original);
-                });
-            });
+            renderizarListaCatalogoMusicaDesktop(canciones, $contenedor);
         } catch (error) {
-            $contenedor.html('<div class="col-12 alert alert-danger">No se pudo cargar el catalogo: ' + error.message + '</div>');
+            renderizarListaCatalogoMusicaDesktop(CANCIONES_RESPALDO_DESKTOP, $contenedor);
         }
     }
     cargarCatalogoKaraokeAsync();
 
-    $(document).off('click', '.img-expandible, .img-lazy-zoom, .tarjeta-pista img, .playlist-card img, .card-playlist img, .poke-card img, .heroe-img, .sprite-vgc').on('click', '.img-expandible, .img-lazy-zoom, .tarjeta-pista img, .playlist-card img, .card-playlist img, .poke-card img, .heroe-img, .sprite-vgc', function() {
-        let rawSrc = $(this).attr('src') || '';
-        let titulo = $(this).data('titulo') || $(this).attr('alt') || 'Imagen HD';
-        let previewUrl = $(this).attr('data-media') || $(this).data('media') || rawSrc;
-        let originalUrl = $(this).attr('data-original') || $(this).data('original') || rawSrc;
+    // Semana 2 - Lightbox Seguro con Lazy Loading y Escape
+    $('img').each(function() {
+        if (!$(this).closest('#lightboxImagenVisor, #modalVisorImagen').length) {
+            $(this).addClass('img-ampliable');
+            if (!$(this).attr('loading')) {
+                $(this).attr('loading', 'lazy');
+            }
+        }
+    });
 
-        if (rawSrc.indexOf('dl.dropboxusercontent.com') > -1) {
-            previewUrl = $(this).attr('data-media') || $(this).data('media') || rawSrc;
-            originalUrl = $(this).attr('data-original') || $(this).data('original') || rawSrc;
-        } else if (/(60x60bb|100x100bb)/.test(rawSrc) || rawSrc.indexOf('mzstatic.com') > -1) {
-            previewUrl = rawSrc.replace(/\d+x\d+bb/, '600x600bb');
-            originalUrl = rawSrc.replace(/\d+x\d+bb/, '1000x1000bb');
-        } else if (rawSrc.indexOf('PokeAPI/sprites') > -1) {
+    function abrirLightboxSeguro(elImg) {
+        let rawSrc = $(elImg).attr('src') || elImg.currentSrc || '';
+        let titulo = $(elImg).data('titulo') || $(elImg).attr('alt') || 'Vista Ampliada';
+        let previewUrl = $(elImg).attr('data-original') || $(elImg).attr('data-media') || $(elImg).data('original') || $(elImg).data('media') || rawSrc;
+
+        if (/(60x60bb|100x100bb)/.test(rawSrc) || rawSrc.indexOf('mzstatic.com') > -1) {
+            previewUrl = rawSrc.replace(/\d+x\d+bb/, '1000x1000bb');
+        } else if (rawSrc.indexOf('PokeAPI/sprites') > -1 && previewUrl.indexOf('official-artwork') === -1) {
             let matchId = rawSrc.match(/\/(\d+)\.png/);
             if (matchId && matchId[1]) {
-                let arteOficial = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + matchId[1] + '.png';
-                previewUrl = arteOficial;
-                originalUrl = arteOficial;
+                previewUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + matchId[1] + '.png';
             }
-        } else if (rawSrc.indexOf('commons.wikimedia.org') > -1) {
-            previewUrl = rawSrc.replace(/\?width=\d+/, '?width=900');
-            originalUrl = rawSrc.replace(/\?width=\d+/, '');
-        } else if (rawSrc.indexOf('images.unsplash.com') > -1) {
-            previewUrl = rawSrc.replace(/w=\d+/, 'w=1200');
-            originalUrl = rawSrc.replace(/w=\d+/, 'w=1600');
-        } else if ($(this).data('media')) {
-            previewUrl = $(this).data('media');
         }
 
-        $('#visorImagenTitulo').text(titulo);
-        $('#visorImagenMedia').attr('src', previewUrl);
-        $('#visorEnlaceOriginal').attr({
-            href: originalUrl,
-            target: '_blank',
-            rel: 'noopener'
-        });
-        $('#modalVisorImagen').fadeIn(200);
+        let tituloEl = document.getElementById('lightboxImagenTitulo');
+        let fotoEl = document.getElementById('lightboxImagenFoto');
+        if (tituloEl && fotoEl) {
+            tituloEl.textContent = titulo;
+            fotoEl.src = previewUrl;
+            fotoEl.alt = titulo;
+            $('#lightboxImagenVisor').addClass('activo');
+        }
+    }
+
+    $(document).off('click.lightboxV8', 'img').on('click.lightboxV8', 'img', function() {
+        if ($(this).closest('#lightboxImagenVisor, #modalVisorImagen').length) return;
+        abrirLightboxSeguro(this);
+    });
+
+    $(document).off('click.cerrarLightboxV8', '#btnCerrarLightbox, #lightboxImagenVisor').on('click.cerrarLightboxV8', '#btnCerrarLightbox, #lightboxImagenVisor', function(e) {
+        if (e.target.id === 'btnCerrarLightbox' || e.target.id === 'lightboxImagenVisor' || $(e.target).closest('#btnCerrarLightbox').length) {
+            $('#lightboxImagenVisor').removeClass('activo');
+        }
+    });
+
+    $(document).off('keydown.lightboxEscV8').on('keydown.lightboxEscV8', function(e) {
+        if (e.key === 'Escape') {
+            $('#lightboxImagenVisor').removeClass('activo');
+            $('#modalVisorImagen').fadeOut(150);
+        }
     });
 
     $(document).off('click', '#btnCerrarVisorImagen').on('click', '#btnCerrarVisorImagen', function() {
         $('#modalVisorImagen').fadeOut(200);
     });
 
+    function validarReservaEnTiempoReal() {
+        let $campo = $('#clienteNombre');
+        let $sala = $('#salaSelect');
+        let $msg = $('#msgValidacionReserva');
+        let raw = ($campo.val() || '');
+        let tieneXss = /[<>]|<\/?script|javascript:|on\w+\s*=/i.test(raw);
+        let nombreLimpio = raw.replace(/[<>]/g, '').replace(/<\/?script/gi, '').trim();
+        let sala = ($sala.val() || '').trim();
+        let longitudOk = nombreLimpio.length >= 3 && nombreLimpio.length <= 45;
+        let salaOk = sala !== '';
+
+        $campo.toggleClass('campo-valido', longitudOk && !tieneXss).toggleClass('campo-invalido', !longitudOk || tieneXss);
+        $sala.toggleClass('campo-valido', salaOk).toggleClass('campo-invalido', !salaOk);
+
+        if (tieneXss) {
+            $msg.text('Caracteres HTML o script (<, >, script) bloqueados por seguridad.').addClass('visible');
+        } else if (!longitudOk) {
+            $msg.text('Ingresa un nombre valido de 3 a 45 caracteres.').addClass('visible');
+            return false;
+        } else if (!salaOk) {
+            $msg.text('Selecciona una sala o servicio valido.').addClass('visible');
+            return false;
+        } else {
+            $msg.removeClass('visible').text('');
+        }
+        return longitudOk && salaOk;
+    }
+
+    $(document).off('keyup.valRes blur.valRes change.valRes', '#clienteNombre, #salaSelect').on('keyup.valRes blur.valRes change.valRes', '#clienteNombre, #salaSelect', function() {
+        validarReservaEnTiempoReal();
+    });
+
+    // Semana 2 - Tree Shaking y Reservas Anti-XSS
+    async function cargarReservasDesktop() {
+        if (!window.SupabasePortafolio) return;
+        let reservas = await window.SupabasePortafolio.listarRegistrosProyecto('reservas');
+        if (Array.isArray(reservas) && reservas.length > 0) {
+            $('#listaReservas').empty();
+            reservas.slice(0, 15).forEach(function(r) {
+                let nom = String(r.cliente || r.nombre || 'Cliente').trim();
+                let esp = String(r.especialidad || r.sala || 'Sesion').trim();
+                let $li = $('<li>').addClass('item-reserva');
+                $li.append($('<span>').text(nom + ' - ' + esp), $('<span>').addClass('badge barra-morada').text(r.estado || 'Agendada'));
+                $('#listaReservas').append($li);
+            });
+            actualizarResumenOperativoDesktop();
+        }
+    }
+    cargarReservasDesktop();
+
     $(document).off('submit', '#formReserva').on('submit', '#formReserva', function(e) {
         e.preventDefault();
-        let nombre = $('#clienteNombre').val().trim();
+        let raw = $('#clienteNombre').val() || '';
+        let tieneXss = /[<>]|<\/?script|javascript:|on\w+\s*=/i.test(raw);
+        if (!validarReservaEnTiempoReal()) return;
+        let nombreSeguro = raw.replace(/[<>]/g, '').replace(/<\/?script/gi, '').trim();
         let sala = $('#salaSelect').val();
-        if (!nombre) return;
         let $li = $('<li>').addClass('item-reserva');
-        let $txt = $('<span>').text(nombre + ' - ' + sala);
+        let $txt = $('<span>').text(nombreSeguro + ' - ' + sala);
         let $badge = $('<span>').addClass('badge barra-morada').text('Agendada');
         $li.append($txt, $badge);
         $('#listaReservas').prepend($li);
+        if (window.SupabasePortafolio) {
+            window.SupabasePortafolio.guardarTablaConRespaldoFIFO('reservas', {
+                cliente: nombreSeguro,
+                especialidad: sala,
+                estado: 'agendada',
+                fecha: new Date().toISOString()
+            }, 'reserva');
+            window.SupabasePortafolio.registrarActividadCliente({
+                usuario: nombreSeguro,
+                accion: 'nueva_reserva',
+                detalle: sala
+            });
+        }
         this.reset();
+        $('#clienteNombre, #salaSelect').removeClass('campo-valido campo-invalido');
+        if (tieneXss) {
+            $('#msgValidacionReserva').text('Entrada validada y sesion agendada de forma segura.').addClass('visible');
+        } else {
+            $('#msgValidacionReserva').removeClass('visible').text('');
+        }
+        actualizarResumenOperativoDesktop();
         desplegarToastExito('Sesion agendada correctamente.');
     });
 
@@ -4217,18 +4773,78 @@ $(document).ready(function() {
         }
         $fila.append($tituloSpan, $btnQuitar);
         $('#listaCanciones').append($fila);
+        actualizarResumenOperativoDesktop();
     }
 
+    function validarInputCancion() {
+        let $input = $('#inputCancion');
+        let $msg = $('#msgValidacionMusica');
+        let valor = ($input.val() || '').trim();
+        let ultima = $('#listaCanciones .fila-cancion .titulo-truncado').last().text().trim().toLowerCase();
+        let largoOk = valor.length >= 2 && valor.length <= 70;
+        let duplicado = largoOk && ultima !== '' && valor.toLowerCase() === ultima;
+        let valido = largoOk && !duplicado;
+
+        $input.toggleClass('campo-valido', valido).toggleClass('campo-invalido', !valido);
+        if (!largoOk) {
+            $msg.text('Ingresa entre 2 y 70 caracteres para agregar un tema.').addClass('visible');
+            return false;
+        }
+        if (duplicado) {
+            $msg.text('No se permiten temas duplicados consecutivos en la cola.').addClass('visible');
+            return false;
+        }
+        $msg.removeClass('visible').text('');
+        return true;
+    }
+
+    $(document).off('keyup.valMus blur.valMus', '#inputCancion').on('keyup.valMus blur.valMus', '#inputCancion', function() {
+        validarInputCancion();
+    });
+
+    // Semana 3 - Sugerencias Musicales Conectadas a Supabase
+    async function cargarSugerenciasMusicalesDesktop() {
+        if (!window.SupabasePortafolio) return;
+        let registros = await window.SupabasePortafolio.cargarSugerenciasMusicales();
+        if (Array.isArray(registros) && registros.length > 0) {
+            $('#listaCanciones').empty();
+            registros.forEach(function(reg) {
+                let texto = String(reg.detalle || '').trim();
+                if (texto) {
+                    agregarAColaKaraoke(texto);
+                }
+            });
+        }
+    }
+    cargarSugerenciasMusicalesDesktop();
+
     $(document).off('click', '#btnPedir').on('click', '#btnPedir', function() {
-        let valor = $('#inputCancion').val();
-        if (!valor.trim()) return;
+        if (!validarInputCancion()) return;
+        let valor = $('#inputCancion').val().trim();
         agregarAColaKaraoke(valor);
-        $('#inputCancion').val('').focus();
-        desplegarToastExito('Tema agregado a la lista.');
+        if (window.SupabasePortafolio) {
+            let sesion = window.SupabasePortafolio.obtenerSesionActiva();
+            let clienteNombre = (sesion && (sesion.nombre || sesion.correo)) || 'Visitante';
+            window.SupabasePortafolio.guardarSugerenciaMusical(valor, clienteNombre).then(function(res) {
+                if (res && res.offline) {
+                    actualizarMonitorAdmin();
+                    desplegarToastExito('Sugerencia guardada en cola FIFO local (Offline).');
+                }
+            });
+        }
+        $('#inputCancion').val('').removeClass('campo-valido campo-invalido').focus();
+        $('#msgValidacionMusica').removeClass('visible').text('');
+        desplegarToastExito('Sugerencia musical registrada.');
     });
 
     $(document).off('click', '.btn-agregar-cola').on('click', '.btn-agregar-cola', function() {
-        let tema = $(this).data('cancion');
+        let tema = ($(this).data('cancion') || '').trim();
+        let ultima = $('#listaCanciones .fila-cancion .titulo-truncado').last().text().trim().toLowerCase();
+        if (tema.toLowerCase() === ultima) {
+            $('#msgValidacionMusica').text('Ese tema ya esta al final de tu cola actual.').addClass('visible');
+            return;
+        }
+        $('#msgValidacionMusica').removeClass('visible').text('');
         agregarAColaKaraoke(tema);
         desplegarToastExito('Tema agregado desde repertorio.');
     });
@@ -4239,10 +4855,33 @@ $(document).ready(function() {
         });
     });
 
-    $(document).off('input', '#hrs').on('input', '#hrs', function() {
-        let horas = parseFloat($(this).val()) || 0;
-        let totalBob = horas * 40;
-        $('#total').text(totalBob + ' BOB');
+    function validarCotizadorHoras(corregirExceso) {
+        let $hrs = $('#hrs');
+        let $msg = $('#msgValidacionHrs');
+        let raw = ($hrs.val() || '').trim();
+        let esEntero = /^\d+$/.test(raw);
+        let horas = esEntero ? parseInt(raw, 10) : NaN;
+        if (corregirExceso && esEntero && horas > 160) {
+            horas = 160;
+            $hrs.val('160');
+        }
+        let valido = esEntero && horas >= 1 && horas <= 160;
+        if (valido) {
+            $hrs.removeClass('campo-invalido').addClass('campo-valido');
+            $msg.removeClass('visible').text('');
+            $('#btnModal').prop('disabled', false);
+            $('#total').text((horas * 40) + ' BOB');
+        } else {
+            $hrs.removeClass('campo-valido').addClass('campo-invalido');
+            $msg.text('Ingresa un numero entero valido entre 1 y 160 horas.').addClass('visible');
+            $('#btnModal').prop('disabled', true);
+            $('#total').text('0 BOB');
+        }
+        return valido;
+    }
+
+    $(document).off('input.valHrs blur.valHrs', '#hrs').on('input.valHrs blur.valHrs', '#hrs', function(e) {
+        validarCotizadorHoras(e.type === 'blur');
     });
 
     let intervaloTimer30s = null;
@@ -4257,13 +4896,13 @@ $(document).ready(function() {
         detenerTimerFlash();
         let segundosRestantes = 30;
         $('#contadorTarifaFlash').text(segundosRestantes + 's').css('color', '#00ff9d');
-        $('#btnConfirmarTarifaFlash').prop('disabled', false).text('Confirmar Tarifa');
+        $('#btnConfirmarTarifaFlash').prop('disabled', false).text('Confirmar Sesion');
         $('#modalTimer30s').fadeIn(200);
         intervaloTimer30s = setInterval(function() {
             segundosRestantes--;
             if (segundosRestantes <= 0) {
                 detenerTimerFlash();
-                $('#contadorTarifaFlash').text('Tarifa Flash Expirada').css('color', '#ef4444');
+                $('#contadorTarifaFlash').text('Sesion Expirada').css('color', '#ef4444');
                 $('#btnConfirmarTarifaFlash').prop('disabled', true).text('Expirada');
                 setTimeout(function() {
                     $('#modalTimer30s').fadeOut(400);
@@ -4277,7 +4916,32 @@ $(document).ready(function() {
     $(document).off('click', '#btnConfirmarTarifaFlash').on('click', '#btnConfirmarTarifaFlash', function() {
         detenerTimerFlash();
         $('#modalTimer30s').fadeOut(200);
-        desplegarToastExito('Tarifa preferencial confirmada (40 BOB/h).');
+        let horasCotizadas = parseInt($('#hrs').val(), 10);
+        if (isNaN(horasCotizadas) || horasCotizadas < 1) horasCotizadas = 1;
+        let totalCotizado = $('#total').text().trim() || (horasCotizadas * 40) + ' BOB';
+        if (window.SupabasePortafolio) {
+            window.SupabasePortafolio.guardarTablaConRespaldoFIFO('pedidos', {
+                usuario: sessionStorage.getItem('sesionUsuarioNombre') || 'Cliente',
+                detalle: 'Cotizacion Interactiva (' + horasCotizadas + 'h)',
+                horas: horasCotizadas,
+                total: totalCotizado,
+                variante: 'Consultoria 40 BOB/h'
+            }, 'pedido').then(function(resPedido) {
+                if (resPedido && resPedido.offline) {
+                    desplegarToastExito('Cotizacion encolada en FIFO local (Offline).');
+                } else {
+                    desplegarToastExito('Cotizacion confirmada en Supabase (' + totalCotizado + ').');
+                }
+                if (typeof actualizarMonitorAdmin === 'function') actualizarMonitorAdmin();
+                if (typeof cargarPanelSupabaseDesktop === 'function') cargarPanelSupabaseDesktop();
+            });
+            window.SupabasePortafolio.registrarActividadCliente({
+                accion: 'cotizacion_confirmada',
+                detalle: horasCotizadas + 'h - ' + totalCotizado
+            });
+        } else {
+            desplegarToastExito('Sesion interactiva confirmada (40 BOB/h).');
+        }
     });
 
     $(document).off('click', '#btnCerrarTimer30s').on('click', '#btnCerrarTimer30s', function() {
@@ -4301,15 +4965,36 @@ $(document).ready(function() {
             let actual = parseInt($botonLike.attr('data-likes') || '0', 10) + 1;
             $botonLike.attr('data-likes', actual);
             escribirEnBitacoraDia1('Me gusta registrado (Total: ' + actual + ')');
+            if (window.SupabasePortafolio) {
+                window.SupabasePortafolio.guardarTablaConRespaldoFIFO('productos_extra', {
+                    nombre: $botonLike.data('prod') || 'Coleccion',
+                    likes: actual
+                }, 'productos_extra');
+            }
         }
     });
 
-    $(document).off('keyup', '#chatInput').on('keyup', '#chatInput', function(e) {
-        if (e.key === 'Enter' && $(this).val().trim() !== '') {
-            escribirEnBitacoraDia1('Comentario: ' + $(this).val().trim());
-            $(this).val('');
-        } else if ($(this).val().trim() !== '') {
-            escribirEnBitacoraDia1('Redaccion activa: ' + $(this).val());
+    $(document).off('keyup.valChat', '#chatInput').on('keyup.valChat', '#chatInput', function(e) {
+        let texto = ($(this).val() || '').trim();
+        let largoOk = texto.length >= 2 && texto.length <= 120;
+        if (texto === '') {
+            $(this).removeClass('campo-valido campo-invalido');
+            $('#msgValidacionChat').removeClass('visible').text('');
+            return;
+        }
+        $(this).toggleClass('campo-valido', largoOk).toggleClass('campo-invalido', !largoOk);
+        if (e.key === 'Enter') {
+            if (!largoOk) {
+                $('#msgValidacionChat').text('El comentario debe tener entre 2 y 120 caracteres.').addClass('visible');
+                return;
+            }
+            escribirEnBitacoraDia1('Comentario: ' + texto);
+            $(this).val('').removeClass('campo-valido campo-invalido');
+            $('#msgValidacionChat').removeClass('visible').text('');
+        } else if (!largoOk) {
+            $('#msgValidacionChat').text('El comentario debe tener entre 2 y 120 caracteres.').addClass('visible');
+        } else {
+            $('#msgValidacionChat').removeClass('visible').text('');
         }
     });
 
@@ -4319,15 +5004,42 @@ $(document).ready(function() {
         $('#logDia2').prepend($linea);
     });
 
+    function validarUsuarioOrder() {
+        let $user = $('#userTikTok');
+        let $msg = $('#msgValidacionOrder');
+        let raw = ($user.val() || '').trim();
+        let valido = /^(?:@[a-zA-Z0-9._-]{2,40}|[a-zA-Z0-9À-ÿ._\-\s]{3,50})$/.test(raw) && !/[<>]/.test(raw);
+        $user.toggleClass('campo-valido', valido).toggleClass('campo-invalido', !valido);
+        if (!valido) {
+            $msg.text('Debe iniciar con @ o tener minimo 3 caracteres validos.').addClass('visible');
+            return false;
+        }
+        $msg.removeClass('visible').text('');
+        return true;
+    }
+
+    $(document).off('keyup.valOrder blur.valOrder', '#userTikTok').on('keyup.valOrder blur.valOrder', '#userTikTok', function() {
+        validarUsuarioOrder();
+    });
+
     $(document).off('submit', '#orderForm').on('submit', '#orderForm', function(e) {
         e.preventDefault();
+        if (!validarUsuarioOrder()) return;
         let user = $('#userTikTok').val().trim();
         let variante = $('#variantSelect').val();
-        if (!user) return;
         let hora = new Date().toLocaleTimeString();
         let $linea = $('<div>').text('[' + hora + '] Solicitud -> Usuario: ' + user + ' | Edicion: ' + variante);
         $('#logDia2').prepend($linea);
+        if (window.SupabasePortafolio) {
+            window.SupabasePortafolio.guardarTablaConRespaldoFIFO('pedidos', {
+                usuario: user,
+                variante: variante,
+                detalle: 'Pedido Live Desktop'
+            }, 'pedido');
+        }
         this.reset();
+        $('#userTikTok').removeClass('campo-valido campo-invalido');
+        $('#msgValidacionOrder').removeClass('visible').text('');
         desplegarToastExito('Solicitud registrada en el historial.');
     });
 

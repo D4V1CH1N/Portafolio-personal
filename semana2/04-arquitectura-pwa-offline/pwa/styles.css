@@ -1,3 +1,4 @@
+/* Semana 2 - Arquitectura PWA Offline */
 :root {
     --bg-base: #f8fafc;
     --bg-card: #ffffff;
@@ -241,4 +242,137 @@ body {
     border-radius: 10px;
     background: rgba(126, 34, 206, 0.08);
     border: 1px solid var(--border-color);
+}
+/* Semana 2 - Header Movil Sin Superposicion 360px */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+.brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.badge-online-s2 {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 10px;
+    padding: 4px 7px;
+    border-radius: 999px;
+    background: rgba(0, 255, 157, 0.16);
+    color: #00ff9d;
+    border: 1px solid #00ff9d;
+    font-weight: 700;
+}
+
+.barra-roles-s2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+}
+
+@media (max-width: 480px) {
+    .app-header {
+        padding: 8px 10px;
+    }
+    .barra-roles-s2 .btn-accion,
+    .barra-roles-s2 .btn-outline,
+    .barra-roles-s2 .btn-hamburguesa {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0 8px;
+        flex-shrink: 0;
+    }
+    #badgeRolActivo {
+        display: none;
+    }
+}
+
+/* Semana 2 - Lightbox Imagen Lazy Loading */
+.img-ampliable {
+    cursor: zoom-in;
+}
+
+.lightbox-visor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(2, 6, 23, 0.9);
+    z-index: 100020;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+}
+
+.lightbox-visor.activo {
+    display: flex;
+}
+
+.lightbox-visor__caja {
+    max-width: 680px;
+    width: 100%;
+    background: #0f172a;
+    border: 2px solid #00ff9d;
+    border-radius: 14px;
+    padding: 16px;
+    color: #f8fafc;
+    text-align: center;
+}
+
+.lightbox-visor__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.lightbox-visor__titulo {
+    margin: 0;
+    font-size: 1rem;
+    color: #00ff9d;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.lightbox-visor__cerrar {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid #00ff9d;
+    background: rgba(15, 23, 42, 0.9);
+    color: #00ff9d;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.lightbox-visor__foto {
+    max-width: 100%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
 }

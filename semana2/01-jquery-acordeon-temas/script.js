@@ -1,3 +1,4 @@
+// Semana 2 - Acordeon Temas y Cascada
 $(document).ready(function() {
     function mostrarToast(msg) {
         $('#toastNotificacion').text(msg).stop(true, true).slideDown(250).delay(3000).fadeOut(400);

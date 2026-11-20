@@ -1,3 +1,4 @@
+// Semana 1 - Menu Hamburguesa
 document.addEventListener('DOMContentLoaded', function() {
     const themeBtn = document.getElementById('themeBtn');
     if (localStorage.getItem('temaOscuroS1') === 'true') {

@@ -1,3 +1,5 @@
+// Semana 2 - Arquitectura PWA Offline - Bloqueo Prompt Instalacion
+window.addEventListener('beforeinstallprompt', function(e) { e.preventDefault(); });
 $(document).ready(function() {
     function mostrarToast(msg) {
         $('#toastNotificacion').text(msg).stop(true, true).slideDown(250).delay(3000).fadeOut(400);
@@ -151,6 +153,13 @@ $(document).ready(function() {
     });
 
     async function resolverCover(cancion) {
+        if (cancion.spotifyUrl || (cancion.portadaMini && cancion.portadaMini.indexOf('emerald/') !== -1)) {
+            return {
+                mini: cancion.portada || cancion.portadaMini,
+                media: cancion.portadaMedia || cancion.portadaMini,
+                original: cancion.portadaOriginal || cancion.portadaMedia || cancion.portadaMini
+            };
+        }
         let key = 'cachePortadaTrack_' + cancion.id;
         let saved = localStorage.getItem(key);
         if (saved) {
@@ -171,6 +180,42 @@ $(document).ready(function() {
         return { mini: cancion.portadaMini, media: cancion.portadaMedia, original: cancion.portadaOriginal };
     }
 
+    const PLAYLISTS_RESPALDO_S2 = [
+        { id: 1, titulo: "SISAS", artista: "Playlist Spotify | Curada por David", genero: "Rap / Trap", pokemonId: 289, spotifyUrl: "https://open.spotify.com/playlist/2b4rtI2NJ76d5x1GrrJuY1", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/289.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/289.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/289.png" },
+        { id: 2, titulo: "Sangre y Codigo", artista: "Playlist Spotify | Curada por David", genero: "Gaming PS4", pokemonId: 257, spotifyUrl: "https://open.spotify.com/playlist/356cdaFfhSWpUFP8rfVAzo", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/257.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/257.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png" },
+        { id: 3, titulo: "GLitCH-h0P", artista: "Playlist Spotify | Curada por David", genero: "Gaming PS4", pokemonId: 380, spotifyUrl: "https://open.spotify.com/playlist/3XqlDXRNLKB4KJSbyhDjNZ", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/380.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/380.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/380.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/380.png" },
+        { id: 4, titulo: "Nin-Cor3", artista: "Playlist Spotify | Curada por David", genero: "Gaming PS4", pokemonId: 248, spotifyUrl: "https://open.spotify.com/playlist/6KIR70JxdBrabHuglEE1dy", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/248.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png" },
+        { id: 5, titulo: "R4v# mfk", artista: "Playlist Spotify | Curada por David", genero: "Gaming PS4", pokemonId: 3, spotifyUrl: "https://open.spotify.com/playlist/2x1TN7eeu1Rf37NInsajjS", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/3.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" },
+        { id: 6, titulo: "HYP3", artista: "Playlist Spotify | Curada por David", genero: "Gaming PS4", pokemonId: 319, spotifyUrl: "https://open.spotify.com/playlist/157CR5vgVYfaCo8eoWekl6", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/319.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/319.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/319.png" },
+        { id: 7, titulo: "El asesino", artista: "Playlist Spotify | Curada por David", genero: "Rap / Trap", pokemonId: 212, spotifyUrl: "https://open.spotify.com/playlist/4Rum8fiElouqBKP3PP1SIh", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png" },
+        { id: 8, titulo: "Emergencia", artista: "Playlist Spotify | Curada por David", genero: "Rock / Alt", pokemonId: 254, spotifyUrl: "https://open.spotify.com/playlist/3oDK4P5TgunBb8GRPcfd9G", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/254.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/254.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/254.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/254.png" },
+        { id: 9, titulo: "Rap del Credo", artista: "Playlist Spotify | Curada por David", genero: "Rap / Trap", pokemonId: 260, spotifyUrl: "https://open.spotify.com/playlist/4VrpjOoamcYdvaLVgekjn7", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/260.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/260.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/260.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/260.png" },
+        { id: 10, titulo: "Favorite Songs", artista: "Playlist Spotify | Curada por David", genero: "Chill / Lo-Fi", pokemonId: 306, spotifyUrl: "https://open.spotify.com/playlist/7fvjGUXWoZsmTZ68VGrkD3", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/306.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/306.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/306.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/306.png" },
+        { id: 11, titulo: "BestAlbums.", artista: "Playlist Spotify | Curada por David", genero: "Rock / Alt", pokemonId: 383, spotifyUrl: "https://open.spotify.com/playlist/3EcShvyD30njVVhPVGM8Bt", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/383.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/383.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/383.png" },
+        { id: 12, titulo: "HyP3R90P", artista: "Playlist Spotify | Curada por David", genero: "Varios / Raros", pokemonId: 230, spotifyUrl: "https://open.spotify.com/playlist/1JS4ls3C28V2Cff2CNTNBL", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/230.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/230.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/230.png" },
+        { id: 13, titulo: "Clique |-/", artista: "Playlist Spotify | Curada por David", genero: "Rock / Alt", pokemonId: 244, spotifyUrl: "https://open.spotify.com/playlist/6icMn94oor2J8oEHiAPMpz", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/244.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/244.png" },
+        { id: 14, titulo: "Programming..", artista: "Playlist Spotify | Curada por David", genero: "Chill / Lo-Fi", pokemonId: 310, spotifyUrl: "https://open.spotify.com/playlist/1c6YukmmlJYKTcmYGAvbvl", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/310.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/310.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/310.png" },
+        { id: 15, titulo: "Late Night Chill", artista: "Playlist Spotify | Curada por David", genero: "Chill / Lo-Fi", pokemonId: 336, spotifyUrl: "https://open.spotify.com/playlist/6WXL3TpPeMDK8xOVslWl0z", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/336.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/336.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/336.png" },
+        { id: 16, titulo: "Argentrap", artista: "Playlist Spotify | Curada por David", genero: "Rap / Trap", pokemonId: 356, spotifyUrl: "https://open.spotify.com/playlist/5DsmS5Y6xRRLtzfvp4mVpF", portada: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png", portadaMini: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/356.png", portadaMedia: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/356.png", portadaOriginal: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/356.png" }
+    ];
+
+    function renderizarPlaylistsFetchS2(lista, $box) {
+        $box.empty();
+        lista.forEach(function(c) {
+            let $card = $('<article>').addClass('fila-fetch tarjeta-pista').attr('data-id', c.id);
+            let $izq = $('<div>').css({ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 });
+            let $img = $('<img>').attr({ src: c.portada || c.portadaMini, alt: c.titulo, loading: 'lazy', decoding: 'async', width: 64, height: 64 }).addClass('img-lazy-zoom img-expandible img-ampliable')
+                .data({ media: c.portadaMedia, original: c.portadaOriginal, titulo: c.titulo + ' (' + c.genero + ')' });
+            let $txt = $('<div>').css('minWidth', 0).append($('<div>').css('fontWeight', '700').text(c.titulo), $('<div>').addClass('texto-verde').text(c.genero + ' | ' + c.artista));
+            $izq.append($img, $txt);
+            $card.append($izq);
+            $box.append($card);
+            resolverCover(c).then(function(pack) {
+                $img.attr('src', pack.mini).data({ media: pack.media, original: pack.original });
+            });
+        });
+    }
+
     async function cargarKaraokeFetch() {
         let $box = $('#contenedorCatalogoKaraoke');
         if (!$box.length) return;
@@ -178,22 +223,9 @@ $(document).ready(function() {
             let response = await fetch('../../data/canciones.json');
             if (!response.ok) throw new Error('Error HTTP al leer canciones.json');
             let lista = await response.json();
-            $box.empty();
-            lista.forEach(function(c) {
-                let $card = $('<article>').addClass('fila-fetch tarjeta-pista').attr('data-id', c.id);
-                let $izq = $('<div>').css({ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 });
-                let $img = $('<img>').attr({ src: c.portada || c.portadaMini, alt: c.titulo, loading: 'lazy', decoding: 'async', width: 64, height: 64 }).addClass('img-lazy-zoom img-expandible')
-                    .data({ media: c.portadaMedia, original: c.portadaOriginal, titulo: c.titulo + ' - ' + c.artista });
-                let $txt = $('<div>').css('minWidth', 0).append($('<div>').css('fontWeight', '700').text(c.titulo), $('<div>').addClass('texto-verde').text(c.artista));
-                $izq.append($img, $txt);
-                $card.append($izq);
-                $box.append($card);
-                resolverCover(c).then(function(pack) {
-                    $img.attr('src', pack.mini).data({ media: pack.media, original: pack.original });
-                });
-            });
+            renderizarPlaylistsFetchS2(lista, $box);
         } catch (err) {
-            $box.html('<div style="color:#ef4444;">' + err.message + '</div>');
+            renderizarPlaylistsFetchS2(PLAYLISTS_RESPALDO_S2, $box);
         }
     }
     cargarKaraokeFetch();
@@ -257,6 +289,41 @@ $(document).ready(function() {
             localStorage.removeItem('colaSincronizacionPWA');
             $('#alertaBox').html('<div style="color:#00ff9d;">Conexion recuperada: ' + total + ' registro(s) sincronizado(s) FIFO.</div>').slideDown();
             mostrarToast('Sincronizacion FIFO completada.');
+        }
+    });
+
+    // Semana 2 - Lightbox Seguro con Lazy Loading y Escape
+    $('img').each(function() {
+        if (!$(this).closest('#lightboxImagenVisor, #modalVisorImagen').length) {
+            $(this).addClass('img-ampliable');
+            if (!$(this).attr('loading')) $(this).attr('loading', 'lazy');
+        }
+    });
+
+    $(document).off('click.lightboxV8', 'img').on('click.lightboxV8', 'img', function() {
+        if ($(this).closest('#lightboxImagenVisor, #modalVisorImagen').length) return;
+        let titulo = $(this).data('titulo') || $(this).attr('alt') || 'Vista Previa';
+        let src = $(this).attr('data-original') || $(this).attr('data-media') || $(this).data('original') || $(this).data('media') || $(this).attr('src') || this.currentSrc || '';
+        let tituloEl = document.getElementById('lightboxImagenTitulo');
+        let fotoEl = document.getElementById('lightboxImagenFoto');
+        if (tituloEl && fotoEl) {
+            tituloEl.textContent = titulo;
+            fotoEl.src = src;
+            fotoEl.alt = titulo;
+            $('#lightboxImagenVisor').addClass('activo');
+        }
+    });
+
+    $(document).off('click.cerrarLightboxV8', '#btnCerrarLightbox, #lightboxImagenVisor').on('click.cerrarLightboxV8', '#btnCerrarLightbox, #lightboxImagenVisor', function(e) {
+        if (e.target.id === 'btnCerrarLightbox' || e.target.id === 'lightboxImagenVisor' || $(e.target).closest('#btnCerrarLightbox').length) {
+            $('#lightboxImagenVisor').removeClass('activo');
+        }
+    });
+
+    $(document).off('keydown.lightboxEscV8').on('keydown.lightboxEscV8', function(e) {
+        if (e.key === 'Escape') {
+            $('#lightboxImagenVisor').removeClass('activo');
+            $('#modalVisorImagen').fadeOut(150);
         }
     });
 });

@@ -1,3 +1,4 @@
+// Semana 2 - Calculador y Modal Timer 30s
 $(document).ready(function() {
     function mostrarToast(msg) {
         $('#toastNotificacion').text(msg).stop(true, true).slideDown(250).delay(3000).fadeOut(400);

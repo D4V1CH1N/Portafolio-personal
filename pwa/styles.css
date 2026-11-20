@@ -1,8 +1,9 @@
+/* Semana 1 - Shell Movil Launcher y 100dvh Raiz */
 body, html {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100dvh;
+    width: 100%;
+    min-height: 100dvh;
     overflow: hidden;
     background: transparent;
     user-select: none;
@@ -33,8 +34,8 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100dvh;
+    right: 0;
+    bottom: 0;
     z-index: 0;
     pointer-events: none;
     background: #0f172a;
@@ -55,7 +56,7 @@ html {
 }
 
 .bg-slide:nth-child(1) {
-    background-image: url('assassins.jpg');
+    background-image: url('https://dl.dropboxusercontent.com/scl/fi/opdzkbtttcop66r3hp14b/assassins.jpg?rlkey=j55n68e06m3gt7p8nl4v4wvxc&st=9lt8mmqc&raw=1');
     animation-delay: 0s;
 }
 
@@ -95,22 +96,50 @@ html {
 
 #appLobbyWrapper, .app-lobby-wrapper {
     position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
     z-index: 1;
 }
 
-.hud-profile {
-    position: absolute;
-    top: 4dvh;
-    left: 4vw;
-    max-width: 80vw;
+/* Semana 2 - Header Movil Sin Superposicion 360px */
+.hud-top-bar {
+    position: relative;
+    z-index: 200;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 12px 0;
+    box-sizing: border-box;
+}
+
+.hud-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.badge-online-header {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 10px;
+    padding: 4px 8px;
+}
+
+.hud-profile {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     background: rgba(15, 23, 42, 0.85);
-    padding: 8px 15px 8px 8px;
+    padding: 6px 12px 6px 6px;
     border-radius: 50px;
     border: 1px solid #7e22ce;
     backdrop-filter: blur(10px);
@@ -120,30 +149,63 @@ html {
     transition: 0.2s;
 }
 
+.hud-hamburger-btn {
+    position: relative;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    z-index: 200;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid #00ff9d;
+    color: #00ff9d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.hud-hamburger-btn:active {
+    transform: scale(0.92);
+}
+
 .hud-profile:active {
     transform: scale(0.95);
 }
 
 .hud-widget {
     position: absolute;
-    bottom: 100px;
-    padding: 12px 15px;
+    bottom: 92px;
+    padding: 12px 14px;
     border-radius: 16px;
     background: rgba(15, 23, 42, 0.9);
     border: 1px solid rgba(126, 34, 206, 0.6);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    z-index: 8000;
+    z-index: 10;
 }
 
 .hud-widget-left {
     left: 4vw;
-    width: 160px;
+    width: 158px;
 }
 
 .hud-widget-right {
     right: 4vw;
-    width: 160px;
+    width: 158px;
+}
+
+@media (max-width: 390px) {
+    .hud-widget {
+        width: 148px;
+        padding: 10px 12px;
+    }
 }
 
 .hud-widget-title {
@@ -227,14 +289,20 @@ html {
 .hud-info {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .hud-name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 800;
     color: #ffffff;
     margin: 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hud-title {
@@ -242,6 +310,9 @@ html {
     color: #94a3b8;
     font-weight: 600;
     margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hud-progress-container {
@@ -277,7 +348,7 @@ html {
 
 .hud-side-left {
     position: absolute;
-    top: 22dvh;
+    top: 96px;
     left: 4vw;
     display: flex;
     flex-direction: column;
@@ -321,11 +392,11 @@ html {
 
 .hud-side-right {
     position: absolute;
-    top: 22dvh;
+    top: 96px;
     right: 4vw;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     z-index: 10;
 }
 
@@ -358,11 +429,12 @@ html {
     height: 70px;
     background: rgba(15, 23, 42, 0.96);
     backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
+    gap: 8px;
     border-top: 2px solid #7e22ce;
-    z-index: 9000;
+    z-index: 100;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -373,17 +445,20 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, color 0.2s;
-    width: 25%;
-    padding: 6px 0;
+    width: 100%;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 6px 2px;
 }
 
 .bottom-nav-btn i {
-    font-size: 22px;
+    font-size: 20px;
     color: #00ff9d;
 }
 
@@ -392,14 +467,12 @@ html {
     color: #00ff9d;
 }
 
+/* Semana 2 - Modales Responsivos sin 100dvh */
 .app-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
+    inset: 0;
     background: rgba(0, 0, 0, 0.75);
-    z-index: 9999;
+    z-index: 1000;
     display: none;
     align-items: flex-end;
     backdrop-filter: blur(4px);
@@ -408,8 +481,8 @@ html {
 .app-modal-content {
     background: #0f172a;
     width: 100%;
-    height: 90dvh;
-    max-height: 90dvh;
+    height: 90%;
+    max-height: 90%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-top: 3px solid #00ff9d;
@@ -440,6 +513,11 @@ html {
     background: #ef4444;
     color: #ffffff;
     border: none;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 6px 14px;
     border-radius: 8px;
     font-weight: bold;
@@ -485,6 +563,7 @@ html {
     color: #e0e6ed;
     border: 1px solid #3b2854;
     border-radius: 14px;
+    padding: 14px;
     box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.55);
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.25s ease, transform 0.25s ease;
 }
@@ -833,20 +912,21 @@ select.input-tematico:focus {
     box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25);
 }
 
+#navMenu,
 #menuDesplegablePWA {
     position: fixed;
-    top: 60px;
-    right: 15px;
-    width: 220px;
+    top: 72px;
+    right: 16px;
+    width: 240px;
     background: rgba(15, 23, 42, 0.96);
     border: 1px solid #7e22ce;
     border-radius: 16px;
     padding: 10px;
     backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-    z-index: 9500;
+    z-index: 200;
     display: none;
-    max-height: calc(100dvh - 140px);
+    max-height: calc(100% - 150px);
     overflow-y: auto;
 }
 
@@ -854,6 +934,7 @@ select.input-tematico:focus {
     display: flex;
     align-items: center;
     gap: 10px;
+    min-height: 44px;
     padding: 10px 12px;
     color: #e2e8f0;
     text-decoration: none;
@@ -891,7 +972,7 @@ select.input-tematico:focus {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 100000;
+    z-index: 1100;
     display: none;
     min-width: 260px;
     max-width: 90vw;
@@ -1213,10 +1294,16 @@ select.input-tematico:focus {
     color: #0d0b14;
 }
 
+/* Semana 2 - Responsividad Critica y Lista Musical */
 .cola-karaoke {
-    min-height: 100dvh;
-    padding: 12px;
+    min-height: auto;
+    padding: 14px;
+    border-radius: 14px;
     overflow-x: hidden;
+}
+
+.app-modal .cola-karaoke {
+    min-height: auto;
 }
 
 .fila-cancion {
@@ -1323,24 +1410,443 @@ select.input-tematico:focus {
 
 .modal-visor-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100dvh;
+    inset: 0;
     background: rgba(0, 0, 0, 0.85);
-    z-index: 100005;
+    z-index: 1000;
     display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
+    overflow-y: auto;
+    padding: 20px 16px;
 }
 
 .modal-visor-caja {
     max-width: 520px;
     width: 100%;
+    margin: 24px auto;
     background: #0f172a;
     border: 2px solid #00ff9d;
     border-radius: 14px;
     padding: 20px;
     color: #ffffff;
+}
+
+.img-expandible {
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.img-expandible:active,
+.img-expandible:hover {
+    transform: scale(1.03);
+}
+
+.campo-valido {
+    border: 2px solid #00ff9d;
+    box-shadow: 0 0 0 0.15rem rgba(0, 255, 157, 0.2);
+}
+
+.campo-invalido {
+    border: 2px solid #f43f5e;
+    box-shadow: 0 0 0 0.15rem rgba(244, 63, 94, 0.2);
+}
+
+.msg-validacion {
+    display: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.msg-validacion.visible {
+    display: block;
+}
+
+.msg-validacion.error {
+    color: #fda4af;
+    background: rgba(244, 63, 94, 0.15);
+    border-left: 3px solid #f43f5e;
+}
+
+.msg-validacion.ok {
+    color: #00ff9d;
+    background: rgba(0, 255, 157, 0.12);
+    border-left: 3px solid #00ff9d;
+}
+
+.contador-caracteres {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.sin-coincidencias-box {
+    grid-column: 1 / -1;
+    padding: 16px;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(244, 63, 94, 0.12);
+    border: 1px dashed #f43f5e;
+    color: #fda4af;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.grid-galeria-visual {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.tarjeta-ods {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tarjeta-ods__imagen {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #1e293b;
+}
+
+.tarjeta-ods__titulo {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.25;
+}
+
+.tarjeta-ods__meta {
+    font-size: 0.7rem;
+    color: #cbd5e1;
+}
+
+.tarjeta-ods__boton--destacado {
+    display: inline-block;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00ff9d, #059669);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.auth-tabs-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.auth-tab-btn,
+.subtab-consola-btn {
+    border: 1px solid #334155;
+    background: rgba(15, 23, 42, 0.85);
+    color: #cbd5e1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.auth-tab-btn.activo,
+.subtab-consola-btn.activo {
+    background: linear-gradient(135deg, rgba(0, 255, 157, 0.2), rgba(126, 34, 206, 0.25));
+    border-color: #00ff9d;
+    color: #00ff9d;
+}
+
+.auth-pill-demo {
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    background: rgba(126, 34, 206, 0.16);
+    color: #e9d5ff;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-hud-top {
+    position: relative;
+    flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    z-index: 200;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid #a855f7;
+    color: #00ff9d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.btn-hud-top:active {
+    transform: scale(0.92);
+}
+
+body:not(.dark-mode) .bg-slide {
+    filter: brightness(0.92) saturate(1.1);
+}
+
+body:not(.dark-mode) .hud-profile,
+body:not(.dark-mode) .hud-widget,
+body:not(.dark-mode) .hud-side-btn,
+body:not(.dark-mode) .hud-social-btn,
+body:not(.dark-mode) .btn-hud-top,
+body:not(.dark-mode) .hud-hamburger-btn {
+    background: rgba(248, 250, 252, 0.92);
+    color: #0f172a;
+    border-color: #7e22ce;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22);
+}
+
+body:not(.dark-mode) .hud-name,
+body:not(.dark-mode) .hud-side-btn span,
+body:not(.dark-mode) .hud-title {
+    color: #0f172a;
+}
+
+body:not(.dark-mode) .hud-side-btn i,
+body:not(.dark-mode) .hud-hamburger-btn,
+body:not(.dark-mode) .btn-hud-top,
+body:not(.dark-mode) .bottom-nav-btn i {
+    color: #059669;
+}
+
+body:not(.dark-mode) .hud-widget-title {
+    color: #6b21a8;
+    border-bottom-color: rgba(126, 34, 206, 0.3);
+}
+
+body:not(.dark-mode) .bottom-nav,
+body:not(.dark-mode) #navMenu,
+body:not(.dark-mode) .app-modal-content {
+    background: rgba(248, 250, 252, 0.97);
+    color: #0f172a;
+}
+
+body:not(.dark-mode) .modal-body,
+body:not(.dark-mode) .item-menu-pwa,
+body:not(.dark-mode) .bottom-nav-btn {
+    color: #1e293b;
+}
+
+body:not(.dark-mode) .mi-card,
+body:not(.dark-mode) .item-dom-card,
+body:not(.dark-mode) .tarjeta-ods,
+body:not(.dark-mode) .modal-visor-caja {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+body:not(.dark-mode) .texto-verde {
+    color: #059669;
+}
+
+body:not(.dark-mode) .texto-subtitulo {
+    color: #475569;
+}
+
+/* Semana 3 - Aislamiento Estricto de Roles y Landscape */
+body.rol-encargado .accion-cliente,
+body.rol-admin .accion-cliente,
+body.rol-encargado .btn-agregar-cola,
+body.rol-admin .btn-agregar-cola,
+body.rol-encargado .cola-karaoke__form,
+body.rol-admin .cola-karaoke__form,
+body.rol-encargado .bottom-nav [data-target="#modal-contacto"],
+body.rol-admin .bottom-nav [data-target="#modal-contacto"],
+body.rol-encargado #navMenu [data-target="#modal-contacto"],
+body.rol-admin #navMenu [data-target="#modal-contacto"] {
+    display: none;
+}
+
+body.rol-encargado #panelBitacoraEnVivo,
+body.rol-admin #panelBitacoraEnVivo,
+body.rol-encargado #resumenOperativoStaffPWA,
+body.rol-admin #resumenOperativoStaffPWA,
+body.rol-encargado #panelGestionSupabasePWA,
+body.rol-admin #panelGestionSupabasePWA {
+    display: block;
+}
+
+body.rol-admin #panelAdminSistema {
+    display: block;
+}
+
+.tabla-gestion-caja-pwa {
+    background: rgba(15, 23, 42, 0.78);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.tabla-gestion-lista-pwa {
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .hud-profile {
+        top: 10px;
+        padding: 4px 12px 4px 6px;
+    }
+    .hud-widget {
+        display: none;
+    }
+    .bottom-nav {
+        height: 54px;
+    }
+    .bottom-nav-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+.hud-landscape-grid {
+    position: absolute;
+    top: 76px;
+    left: 84px;
+    right: 84px;
+    bottom: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: stretch;
+    z-index: 10;
+}
+
+.hud-landscape-card {
+    background: rgba(15, 23, 42, 0.86);
+    border: 1px solid rgba(0, 255, 157, 0.35);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(8px);
+}
+
+/* Semana 3 - Modal Portal de Acceso Centrado */
+#modalAuth,
+#modal-cuenta.app-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(2, 6, 23, 0.78);
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+#modalAuth.activo {
+    display: flex;
+}
+
+#modal-cuenta .app-modal-content {
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    max-height: 90%;
+    border-radius: 18px;
+    margin: 0 auto;
+}
+
+/* Semana 2 - Lightbox Imagen Lazy Loading */
+.img-ampliable {
+    cursor: zoom-in;
+}
+
+.lightbox-visor {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.9);
+    z-index: 1200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+}
+
+.lightbox-visor.activo {
+    display: flex;
+}
+
+.lightbox-visor__caja {
+    max-width: 680px;
+    width: 100%;
+    background: #0f172a;
+    border: 2px solid #00ff9d;
+    border-radius: 14px;
+    padding: 16px;
+    color: #f8fafc;
+    text-align: center;
+}
+
+.lightbox-visor__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.lightbox-visor__titulo {
+    margin: 0;
+    font-size: 1rem;
+    color: #00ff9d;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.lightbox-visor__cerrar {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid #00ff9d;
+    background: rgba(15, 23, 42, 0.9);
+    color: #00ff9d;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.lightbox-visor__foto {
+    max-width: 100%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
 }

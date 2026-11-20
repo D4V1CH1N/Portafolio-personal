@@ -1,3 +1,4 @@
+// Semana 1 - Bitacora Dia 1 Bubbling
 document.addEventListener('DOMContentLoaded', function() {
     const themeBtn = document.getElementById('themeBtn');
     if (localStorage.getItem('temaOscuroS1') === 'true') {

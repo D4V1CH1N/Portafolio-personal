@@ -5,6 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mi Página Personal - David Zalles (Chato)</title>
+    <!-- Semana 2 - Bloqueo Prompt Instalacion y Cache v8 -->
+    <script>
+        window.addEventListener('beforeinstallprompt', function (e) {
+            e.preventDefault();
+        });
+        if (!localStorage.getItem('sw_v8_limpio')) {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function (regs) {
+                    if (!regs || regs.length === 0) {
+                        localStorage.setItem('sw_v8_limpio', '1');
+                        return;
+                    }
+                    return Promise.all(regs.map(function (reg) { return reg.unregister(); })).then(function () {
+                        return 'caches' in window
+                            ? caches.keys().then(function (keys) { return Promise.all(keys.map(function (k) { return caches.delete(k); })); })
+                            : Promise.resolve();
+                    }).then(function () {
+                        localStorage.setItem('sw_v8_limpio', '1');
+                        window.location.reload();
+                    });
+                });
+            } else {
+                localStorage.setItem('sw_v8_limpio', '1');
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -12,24 +38,33 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css?v=5.0">
+    <link rel="stylesheet" href="styles.css?v=8">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#00ff9d">
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
+                let recargando = false;
+                navigator.serviceWorker.addEventListener('controllerchange', function () {
+                    if (recargando) return;
+                    recargando = true;
+                    window.location.reload();
+                });
                 navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker PWA Registrado con Éxito:', reg.scope))
-                    .catch(err => console.error('Fallo en Registro de SW:', err));
+                    .then(function (reg) {
+                        reg.update();
+                    })
+                    .catch(function () {});
             });
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-    <script src="script.js?v=5.0" defer></script>
+    <script src="JS/supabase-api.js?v=8" defer></script>
+    <script src="script.js?v=8" defer></script>
 </head>
 
-<body class="dark-mode">
+<body class="dark-mode rol-visitante">
 
     <div id="estadoRed"
         style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; z-index: 99999; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none;">
@@ -49,6 +84,7 @@
             </a>
 
             <div class="header-cluster header-derecha">
+                <span id="badgeEstadoRedHeader" class="badge barra-verde text-dark badge-online-header">ONLINE</span>
                 <span id="badgeRolActual" class="badge barra-morada text-white">Visitante</span>
                 <button id="btnAbrirLogin" class="btn-header-accion btn-tactil" type="button" aria-label="Acceso">
                     <i class="bi bi-person"></i>
@@ -64,13 +100,14 @@
         </div>
     </header>
 
+    <!-- Semana 1 - Menu Hamburguesa y Navegacion SPA -->
     <nav class="nav-menu" id="navMenu" style="display: none;">
         <ul class="nav-menu-lista">
             <li><button type="button" class="btn-nav-vista activo" data-vista="inicio"><i class="bi bi-compass"></i>Inicio &amp; Esencia</button></li>
             <li><button type="button" class="btn-nav-vista" data-vista="stack"><i class="bi bi-cpu"></i>Stack &amp; Especialidades</button></li>
             <li><button type="button" class="btn-nav-vista" data-vista="boveda"><i class="bi bi-collection-play"></i>Boveda Personal</button></li>
             <li><button type="button" class="btn-nav-vista" data-vista="agenda"><i class="bi bi-calendar3-week"></i>Horario &amp; Rutina</button></li>
-            <li><button type="button" class="btn-nav-vista" data-vista="servicios"><i class="bi bi-briefcase"></i>Cotizador &amp; Contacto</button></li>
+            <li><button type="button" class="btn-nav-vista btn-nav-cliente accion-cliente" data-vista="servicios"><i class="bi bi-briefcase"></i>Cotizador &amp; Contacto</button></li>
             <li><button type="button" class="btn-nav-vista" id="btnNavConsola" data-vista="consola" style="display: none;"><i class="bi bi-shield-lock"></i>Panel Staff / Admin</button></li>
         </ul>
     </nav>
@@ -94,7 +131,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
-                            class="d-block w-100" alt="Sistemas">
+                            class="d-block w-100 img-ampliable" loading="lazy" alt="Sistemas">
                         <div class="carousel-caption d-block texto-carrusel">
                             <h3>Ingeniería en Sistemas & Desarrollo</h3>
                             <p>Bases de datos en SQL Server, perfeccionando C#, aprendiendo Python y desarrollo de
@@ -104,7 +141,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1600&q=80"
-                            class="d-block w-100" alt="Perros">
+                            class="d-block w-100 img-ampliable" loading="lazy" alt="Perros">
                         <div class="carousel-caption d-block texto-carrusel">
                             <h3>Paseo y Adiestramiento Canino - Edu-can</h3>
                             <p>Rehabilitación conductual, paseos y adiestramiento con refuerzo positivo y sin dolor en
@@ -114,7 +151,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80"
-                            class="d-block w-100" alt="Música">
+                            class="d-block w-100 img-ampliable" loading="lazy" alt="Música">
                         <div class="carousel-caption d-block texto-carrusel">
                             <h3>Música, Poesía & Arte Urbano</h3>
                             <p>Canto, composición musical, dibujo, bocetos wildstyle y álbumes en orden cronológico.</p>
@@ -133,7 +170,7 @@
         <div class="row g-3 mb-4">
             <div class="col-md-4">
                 <article class="tarjeta-ods">
-                    <img src="assassins.jpg" alt="Arquitectura Empresarial" class="tarjeta-ods__imagen img-expandible" width="640" height="360" loading="lazy" decoding="async">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/wyb1qsoc0rd2anbrwnm38/arquitectura_empresarial.jpg?rlkey=n43mfg9oui2c1d10ab2p05jxi&st=5ttyzz6r&raw=1" data-media="https://dl.dropboxusercontent.com/scl/fi/wyb1qsoc0rd2anbrwnm38/arquitectura_empresarial.jpg?rlkey=n43mfg9oui2c1d10ab2p05jxi&st=5ttyzz6r&raw=1" data-original="https://dl.dropboxusercontent.com/scl/fi/wyb1qsoc0rd2anbrwnm38/arquitectura_empresarial.jpg?rlkey=n43mfg9oui2c1d10ab2p05jxi&st=5ttyzz6r&raw=1" alt="Arquitectura Empresarial" class="tarjeta-ods__imagen img-expandible" width="640" height="360" loading="lazy" decoding="async">
                     <div class="tarjeta-ods__cuerpo">
                         <h4 class="tarjeta-ods__titulo">Sistemas C# .NET &amp; SQL</h4>
                         <p class="small text-secondary mb-3">Facturacion multi-caja, control de stock y arquitectura limpia escalable.</p>
@@ -167,7 +204,7 @@
             <div class="row g-4 align-items-center">
                 <div class="col-lg-6">
                     <div class="d-flex flex-column flex-sm-row align-items-center gap-4 text-center text-sm-start">
-                        <img src="assassins.jpg" alt="Assassin's Creed" class="imagen-frase img-expandible" loading="lazy">
+                        <img src="https://dl.dropboxusercontent.com/scl/fi/opdzkbtttcop66r3hp14b/assassins.jpg?rlkey=j55n68e06m3gt7p8nl4v4wvxc&st=9lt8mmqc&raw=1" data-media="https://dl.dropboxusercontent.com/scl/fi/opdzkbtttcop66r3hp14b/assassins.jpg?rlkey=j55n68e06m3gt7p8nl4v4wvxc&st=9lt8mmqc&raw=1" data-original="https://dl.dropboxusercontent.com/scl/fi/opdzkbtttcop66r3hp14b/assassins.jpg?rlkey=j55n68e06m3gt7p8nl4v4wvxc&st=9lt8mmqc&raw=1" alt="Assassin's Creed" class="imagen-frase img-expandible" width="120" height="120" loading="lazy" decoding="async" style="object-fit: cover; border-radius: 12px;">
                         <div>
                             <span class="badge barra-morada text-white mb-2"><i
                                     class="bi bi-shield-shaded me-1"></i>LEMA Y FILOSOFÍA DE VIDA</span>
@@ -252,7 +289,7 @@
                             style="background-color: rgba(168, 85, 247, 0.12); border-left: 4px solid #00ff9d;">
                             <div class="d-flex align-items-center gap-3">
                                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/212.png"
-                                    alt="Scizor" class="sprite-gba img-expandible" loading="lazy">
+                                    alt="Scizor" class="sprite-gba img-expandible img-ampliable" loading="lazy">
                                 <div>
                                     <span class="badge barra-morada text-white mb-1"><i
                                             class="bi bi-shield-fill-check me-1"></i>Pokémon Favorito: Scizor
@@ -308,7 +345,7 @@
         <section id="vista-stack" class="seccion-spa">
             <div class="subnav-tabs" data-grupo="stack">
                 <button type="button" class="subnav-btn activo" data-subpanel="sub-stack-modulos">Stack Ingenieria &amp; Sistemas</button>
-                <button type="button" class="subnav-btn" data-subpanel="sub-stack-explorador">Explorador de Especialidades y Modulos</button>
+                <button type="button" class="subnav-btn" data-subpanel="sub-stack-explorador">Asistente de Servicios &amp; Ficha Tecnica</button>
             </div>
 
             <div id="sub-stack-modulos" class="subpanel-spa activo">
@@ -345,8 +382,9 @@
 
             <div id="sub-stack-explorador" class="subpanel-spa">
                 <div id="filtros" class="card pwa-subdivision p-4 mb-4 mi-card">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3 class="titulo-verde mb-0"><i class="bi bi-funnel-fill me-2"></i>Explorador de Especialidades y Modulos</h3>
+                    <div class="mb-3">
+                        <h3 class="titulo-verde mb-1"><i class="bi bi-funnel-fill me-2"></i>Configurador de Servicio y Especialidad</h3>
+                        <p class="small texto-subtitulo mb-0">Selecciona el area y el tipo de solucion que buscas para ver el alcance y cotizar directamente.</p>
                     </div>
                     <div class="row g-3">
                         <div class="col-12 col-md-4">
@@ -381,8 +419,8 @@
                     <hr class="my-4" style="border-color: #334155;">
 
                     <div class="mb-3">
-                        <h3 class="titulo-verde mb-2"><i class="bi bi-search me-2"></i>Filtro Rapido de Proyectos y Habilidades</h3>
-                        <input type="text" id="buscadorEnTiempoReal" class="form-control input-tematico"
+                        <h3 class="titulo-verde mb-2"><i class="bi bi-search me-2"></i>Buscador de Competencias y Areas de Trabajo</h3>
+                        <input type="text" id="buscadorEnTiempoReal" maxlength="50" class="form-control input-tematico"
                             placeholder="Buscar proyecto, tecnologia o especialidad...">
                     </div>
 
@@ -419,11 +457,11 @@
 
                     <hr class="my-4" style="border-color: #334155;">
 
-                    <h3 class="titulo-verde mb-3"><i class="bi bi-chevron-bar-expand me-2"></i>Arquitectura del Sistema y Especificaciones</h3>
+                    <h3 class="titulo-verde mb-3"><i class="bi bi-chevron-bar-expand me-2"></i>Ficha Tecnica del Portafolio (Ingenieria Frontend &amp; PWA)</h3>
                     <div class="acordeon-item mb-2">
                         <div class="acordeon-gatillo accordion-btn p-3 rounded d-flex justify-content-between align-items-center"
                             style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
-                            <span><i class="bi bi-cpu me-2"></i>Arquitectura Modular de Aplicacion y Rendimiento</span>
+                            <span><i class="bi bi-cpu me-2"></i>Arquitectura SPA, Rendimiento y Optimizacion Web</span>
                             <i class="bi bi-chevron-down icono-acordeon"></i>
                         </div>
                         <div class="acordeon-contenido p-3 rounded-bottom"
@@ -434,7 +472,7 @@
                     <div class="acordeon-item mb-2">
                         <div class="acordeon-gatillo accordion-btn p-3 rounded d-flex justify-content-between align-items-center"
                             style="background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; font-weight: bold; color: #00ff9d;">
-                            <span><i class="bi bi-cloud-arrow-down me-2"></i>Resiliencia Offline-First y Cola Local</span>
+                            <span><i class="bi bi-cloud-arrow-down me-2"></i>Soporte Offline-First, Almacenamiento Local y Sanitizacion Segura</span>
                             <i class="bi bi-chevron-down icono-acordeon"></i>
                         </div>
                         <div class="acordeon-contenido p-3 rounded-bottom"
@@ -476,7 +514,7 @@
                             <i class="bi bi-star-fill me-1"></i>Reseñas Musicboard (30)
                         </button>
                     </div>
-                    <input type="search" id="buscadorMusica" class="input-buscador-dom"
+                    <input type="search" id="buscadorMusica" maxlength="50" class="input-buscador-dom"
                         placeholder="Buscar playlist, canción, álbum..." oninput="buscarEnMusica(this.value)">
                 </div>
 
@@ -634,10 +672,11 @@
                 </div>
             </div>
 
+            <!-- Semana 2 - Repertorio Musical Fetch -->
             <div id="sub-boveda-repertorio" class="subpanel-spa">
                 <div id="catalogoKaraoke" class="card pwa-subdivision p-4 mb-4 mi-card">
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-                        <h3 class="titulo-verde mb-0"><i class="bi bi-music-note-list me-2"></i>Repertorio Musical Destacado</h3>
+                        <h3 class="titulo-verde mb-0"><i class="bi bi-music-note-list me-2"></i>Repertorio Musical &amp; Playlists Destacadas</h3>
                         <a href="https://open.spotify.com/user/d4v1ch1n2" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-toggle">
                             <i class="bi bi-spotify me-1"></i>Ver Perfil Spotify
                         </a>
@@ -646,11 +685,12 @@
                 </div>
 
                 <div class="cola-karaoke pwa-subdivision mb-4 mi-card">
-                    <h3 class="titulo-verde mb-3"><i class="bi bi-vinyl-fill me-2"></i>Lista de Reproduccion y Sugerencias Musicales</h3>
-                    <div class="d-flex gap-2 mb-3">
-                        <input type="text" id="inputCancion" class="form-control input-tematico" placeholder="Escribe tema o artista para agregar a la lista...">
-                        <button type="button" id="btnPedir" class="btn-tactil">Agregar</button>
+                    <h3 class="titulo-verde mb-3"><i class="bi bi-vinyl-fill me-2"></i>Sugerencias Musicales para mis Playlists</h3>
+                    <div class="d-flex gap-2 mb-2 cola-karaoke__form">
+                        <input type="text" id="inputCancion" maxlength="70" class="form-control input-tematico" placeholder="Sugiere una cancion o artista...">
+                        <button type="button" id="btnPedir" class="btn-tactil">Sugerir</button>
                     </div>
+                    <div id="msgValidacionMusica" class="msg-validacion mb-2"></div>
                     <div id="listaCanciones"></div>
                 </div>
             </div>
@@ -666,7 +706,7 @@
                             equipados, habilidades, naturalezas, movesets de 4 movimientos y mecánicas especiales.</p>
                     </div>
                     <div class="d-flex flex-wrap align-items-center gap-2">
-                        <input type="search" id="buscadorPokemon" class="input-buscador-dom"
+                        <input type="search" id="buscadorPokemon" maxlength="50" class="input-buscador-dom"
                             placeholder="Buscar Pokémon, objeto, ataque..." oninput="buscarEnPokemon(this.value)">
                         <span id="contadorPokemon" class="badge barra-verde text-dark fs-6">54 Pokémon</span>
                     </div>
@@ -748,6 +788,7 @@
                 <div class="card mi-card p-4 mb-4">
                     <h3 class="titulo-morado mb-3"><i class="bi bi-joystick me-2"></i>Videojuegos &amp; Sagas Completadas</h3>
                 <div id="panel-videojuegos" class="panel-cultura" style="display: block;">
+                    <input type="search" id="buscadorJuegos" maxlength="50" class="input-buscador-dom mb-3" placeholder="Buscar videojuego o saga..." oninput="buscarEnJuegos(this.value)">
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
                         <div class="caja-filtros-toolbar flex-grow-1" id="filtrosJuegos">
                             <button type="button" class="btn btn-filtro activo" data-filtro="sagas-legendarias"
@@ -806,7 +847,7 @@
                             <button type="button" class="btn btn-tab-cultura" data-tab="libros" onclick="cambiarTabCultura('libros')">Libros</button>
                             <button type="button" class="btn btn-tab-cultura" data-tab="heroes" onclick="cambiarTabCultura('heroes')">Panteon Superheroes</button>
                         </div>
-                        <input type="search" id="buscadorCultura" class="input-buscador-dom" placeholder="Buscar pelicula, serie, anime o libro..." oninput="buscarEnCultura(this.value)">
+                        <input type="search" id="buscadorCultura" maxlength="50" class="input-buscador-dom" placeholder="Buscar pelicula, serie, anime o libro..." oninput="buscarEnCultura(this.value)">
                     </div>
                 <div id="panel-peliculas" class="panel-cultura" style="display: block;">
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
@@ -936,7 +977,7 @@
                             onclick="filtrarHeroes('todos')"><i class="bi bi-grid-fill me-1"></i>Ver Todos (10)</button>
                     </div>
                     <div class="d-flex align-items-center gap-2">
-                        <input type="search" id="buscadorHeroes" class="input-buscador-dom"
+                        <input type="search" id="buscadorHeroes" maxlength="50" class="input-buscador-dom"
                             placeholder="Buscar héroe o editorial..." oninput="buscarEnHeroes(this.value)">
                         <span id="contadorHeroes" class="badge barra-morada text-white">10 Héroes</span>
                     </div>
@@ -1234,18 +1275,20 @@
                 </div>
             </div>
 
-            <div id="sub-servicios-cotizador" class="subpanel-spa">
+            <!-- Semana 2 - Cotizador y Agenda Servicios -->
+            <div id="sub-servicios-cotizador" class="subpanel-spa accion-cliente">
                 <div class="card mi-card p-4 mb-4">
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-                        <h3 class="titulo-verde mb-0"><i class="bi bi-calculator me-2"></i>Cotizador Rapido de Sesiones</h3>
+                        <h3 class="titulo-verde mb-0"><i class="bi bi-calculator me-2"></i>Cotizador Estimado de Desarrollo &amp; Consultoria</h3>
                         <button type="button" id="btnModal" class="btn btn-sm btn-toggle">
-                            <i class="bi bi-stopwatch me-1"></i>Activar Tarifa Preferencial (30s)
+                            <i class="bi bi-stopwatch me-1"></i>Sesion Interactiva (30s)
                         </button>
                     </div>
                     <div class="row g-3 align-items-end">
                         <div class="col-md-6">
-                            <label for="hrs" class="form-label fw-bold texto-verde">Horas de Consultoria o Entrenamiento (40 BOB/h)</label>
-                            <input type="number" id="hrs" min="0" max="100" class="form-control input-tematico" placeholder="Ej. 3">
+                            <label for="hrs" class="form-label fw-bold texto-verde">Horas de Servicio (40 BOB/h)</label>
+                            <input type="number" id="hrs" min="1" max="160" class="form-control input-tematico" placeholder="Ej. 3 (1 a 160 hrs)">
+                            <div id="msgValidacionHrs" class="msg-validacion"></div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-bold texto-morado">Inversion Total Estimada (BOB)</label>
@@ -1255,27 +1298,30 @@
                 </div>
 
                 <div class="modulo-reservas pwa-subdivision p-4 mb-4 mi-card">
-                    <h3 class="titulo-morado mb-3"><i class="bi bi-calendar-check me-2"></i>Agenda de Sesiones: Consultoria &amp; Edu-can</h3>
-                    <form id="formReserva" class="row g-3">
+                    <h3 class="titulo-morado mb-3"><i class="bi bi-calendar-check me-2"></i>Agendar Sesion o Consultoria</h3>
+                    <form id="formReserva" class="row g-3" novalidate>
                         <div class="col-md-5">
-                            <input type="text" id="clienteNombre" class="form-control input-tematico" placeholder="Nombre completo o contacto..." required>
+                            <input type="text" id="clienteNombre" maxlength="45" class="form-control input-tematico" placeholder="Nombre completo o contacto...">
                         </div>
                         <div class="col-md-4">
                             <select id="salaSelect" class="form-select input-tematico">
                                 <option value="Consultoria Desarrollo C# y SQL Server">Consultoria Desarrollo C# y SQL Server</option>
                                 <option value="Evaluacion Conductual Canina Edu-can">Evaluacion Conductual Canina Edu-can</option>
-                                <option value="Arquitectura Web y Sistemas UPDS">Arquitectura Web y Sistemas UPDS</option>
+                                <option value="Desarrollo Web y Arquitectura PWA">Desarrollo Web y Arquitectura PWA</option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-toggle w-100" style="min-height: 44px;">Agendar Sesion</button>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <div id="msgValidacionReserva" class="msg-validacion"></div>
                         </div>
                     </form>
                     <ul id="listaReservas" class="lista-segura mt-3"></ul>
                 </div>
             </div>
 
-            <div id="sub-servicios-contacto" class="subpanel-spa">
+            <div id="sub-servicios-contacto" class="subpanel-spa accion-cliente">
         <section id="contacto" class="pwa-subdivision mb-4">
             <h2 class="titulo-seccion mb-4"><i class="bi bi-briefcase-fill me-2"></i>Propuesta de Contratacion y Proyectos</h2>
             <div class="card mi-card p-4 p-lg-5">
@@ -1291,7 +1337,7 @@
                                     class="bi bi-person-badge me-1"></i>Nombre Completo o Empresa</label>
                             <span id="error-nombre" class="msg-error-inline"
                                 style="display: none; color: #ef4444; font-size: 0.8rem;">Nombre obligatorio</span>
-                            <span id="errorNombre" class="msg-error-inline"></span>
+                            <span id="errorNombre" class="msg-validacion"></span>
                         </div>
                         <input type="text" id="input-nombre" class="form-control input-tematico"
                             placeholder="Ej. Juan Pérez o Tech Solutions S.R.L.">
@@ -1301,7 +1347,7 @@
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
                             <label for="correo" class="form-label fw-bold texto-verde mb-0"><i
                                     class="bi bi-envelope-at me-1"></i>Correo Electrónico (@gmail.com)</label>
-                            <span id="errorCorreo" class="msg-error-inline"></span>
+                            <span id="errorCorreo" class="msg-validacion"></span>
                         </div>
                         <input type="email" id="correo" class="form-control input-tematico"
                             placeholder="ejemplo@gmail.com">
@@ -1343,7 +1389,7 @@
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-1">
                             <label for="servicio" class="form-label fw-bold texto-verde mb-0"><i
                                     class="bi bi-tools me-1"></i>Servicio Profesional de Interés</label>
-                            <span id="errorServicio" class="msg-error-inline"></span>
+                            <span id="errorServicio" class="msg-validacion"></span>
                         </div>
                         <select id="servicio" class="form-select input-tematico">
                             <option value="" selected disabled>-- Selecciona un servicio --</option>
@@ -1380,9 +1426,12 @@
                         <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap mb-1">
                             <label for="mensaje" class="form-label fw-bold texto-verde mb-0"><i
                                     class="bi bi-card-text me-1"></i>Detalles del Proyecto o Propuesta</label>
-                            <span id="errorMensaje" class="msg-error-inline"></span>
+                            <div class="d-flex align-items-center gap-3">
+                                <span id="contadorMensaje" class="contador-caracteres">0 / 500 caracteres</span>
+                                <span id="errorMensaje" class="msg-validacion"></span>
+                            </div>
                         </div>
-                        <textarea id="mensaje" rows="4" class="form-control input-tematico"
+                        <textarea id="mensaje" rows="4" maxlength="500" class="form-control input-tematico"
                             placeholder="Describe con palabras reales qué proyecto, sistema, adiestramiento o diseño necesitas realizar..."></textarea>
                     </div>
 
@@ -1406,8 +1455,76 @@
         </section>
 
         <section id="vista-consola" class="seccion-spa">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                <h3 id="tituloVistaConsolaDesktop" class="titulo-verde mb-0"><i class="bi bi-shield-lock me-2"></i>Gestion Operativa</h3>
+                <div id="tabsConsolaAdminDesktop" class="d-flex gap-2" style="display: none;">
+                    <button type="button" class="subtab-consola-btn activo" data-subtab="operaciones">Operaciones &amp; Bitacora</button>
+                    <button type="button" class="subtab-consola-btn" data-subtab="sistema">Sistema &amp; Offline-First</button>
+                </div>
+            </div>
+
+            <div id="bloqueConsolaOperativaDesktop">
+                <section id="resumenOperativoDesktop" class="pwa-subdivision p-4 mb-4 mi-card">
+                    <h4 class="titulo-verde mb-3"><i class="bi bi-clipboard2-pulse me-2"></i>Resumen Operativo en Vivo</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded border border-secondary">
+                                <span class="small texto-subtitulo d-block">Sesiones Agendadas</span>
+                                <strong id="contadorSesionesOperativoDesktop" class="fs-5 texto-verde">0</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded border border-secondary">
+                                <span class="small texto-subtitulo d-block">Sugerencias Musicales</span>
+                                <strong id="contadorSugerenciasOperativoDesktop" class="fs-5 texto-morado">0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Semana 3 - Backend Supabase Gestion Staff y Admin -->
+                <section id="panelGestionSupabaseDesktop" class="pwa-subdivision p-4 mb-4 mi-card" style="display: none;">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                        <h4 class="titulo-morado mb-0"><i class="bi bi-database-check me-2"></i>Gestion Operativa Supabase (portafolio_david)</h4>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" id="btnRefrescarSupabaseDesktop" class="btn btn-sm btn-outline-success btn-tactil">Actualizar Datos</button>
+                            <button type="button" id="btnSincronizarFifoDesktop" class="btn btn-sm btn-toggle btn-tactil">Sincronizar FIFO</button>
+                        </div>
+                    </div>
+                    <div class="tabla-gestion-grid">
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-verde mb-2">Reservas / Sesiones (reservas)</h6>
+                            <div id="listaSupabaseReservasDesktop" class="tabla-gestion-lista texto-subtitulo">Sin registros cargados.</div>
+                        </div>
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-verde mb-2">Pedidos / Cotizaciones (pedidos)</h6>
+                            <div id="listaSupabasePedidosDesktop" class="tabla-gestion-lista texto-subtitulo">Sin registros cargados.</div>
+                        </div>
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-morado mb-2">Consultas (consultas)</h6>
+                            <div id="listaSupabaseConsultasDesktop" class="tabla-gestion-lista texto-subtitulo">Sin registros cargados.</div>
+                        </div>
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-morado mb-2">Promociones &amp; Novedades (promociones)</h6>
+                            <form id="formPromocionDesktop" class="d-flex gap-2 mb-2">
+                                <input type="text" id="inputPromoTituloDesktop" class="form-control form-control-sm input-tematico" placeholder="Nueva novedad o promo...">
+                                <button type="submit" class="btn btn-sm btn-toggle btn-tactil">Publicar</button>
+                            </form>
+                            <div id="listaSupabasePromocionesDesktop" class="tabla-gestion-lista texto-subtitulo">Sin promociones.</div>
+                        </div>
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-verde mb-2">Actividad Reciente (actividad_clientes)</h6>
+                            <div id="listaSupabaseActividadDesktop" class="tabla-gestion-lista texto-subtitulo">Sin actividad registrada.</div>
+                        </div>
+                        <div class="tabla-gestion-caja">
+                            <h6 class="texto-morado mb-2">Coleccion &amp; Extras (productos_extra)</h6>
+                            <div id="listaSupabaseExtrasDesktop" class="tabla-gestion-lista texto-subtitulo">Sin extras cargados.</div>
+                        </div>
+                    </div>
+                </section>
+
             <section id="panelBitacoraEnVivo" class="pwa-subdivision p-4 mb-4 mi-card" style="display: none;">
-            <h3 class="titulo-morado mb-3"><i class="bi bi-broadcast me-2"></i>Centro de Interacciones y Registro de Eventos</h3>
+            <h3 class="titulo-morado mb-3"><i class="bi bi-broadcast me-2"></i>Centro de Interacciones en Vivo</h3>
             <div class="row g-4">
                 <div class="col-lg-6">
                     <h5 class="texto-verde mb-2">Interacciones en Vivo y Mensajeria</h5>
@@ -1425,14 +1542,16 @@
                             </div>
                         </div>
                     </div>
-                    <input type="text" id="chatInput" class="form-control input-tematico mb-2" placeholder="Escribe un comentario o nota rapida...">
+                    <input type="text" id="chatInput" maxlength="120" class="form-control input-tematico mb-1" placeholder="Escribe un comentario o nota rapida...">
+                    <div id="msgValidacionChat" class="msg-validacion mb-2"></div>
                     <div id="logOutput" class="log-terminal"></div>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="texto-morado mb-2">Registro de Solicitudes y Ediciones</h5>
-                    <form id="orderForm" class="row g-2 mb-2">
+                    <form id="orderForm" class="row g-2 mb-2" novalidate>
                         <div class="col-12">
                             <input type="text" id="userTikTok" class="form-control input-tematico" placeholder="Usuario (@usuario)...">
+                            <div id="msgValidacionOrder" class="msg-validacion"></div>
                         </div>
                         <div class="col-8">
                             <select id="variantSelect" class="form-select input-tematico">
@@ -1449,20 +1568,34 @@
                 </div>
             </div>
         </section>
+            </div>
 
             <section id="panelAdminSistema" class="pwa-subdivision p-4 mb-4 mi-card" style="display: none;">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
-                <h3 class="titulo-verde mb-0"><i class="bi bi-shield-lock-fill me-2"></i>Panel de Control de Sistema y Sincronizacion</h3>
+                <h3 class="titulo-verde mb-0"><i class="bi bi-shield-lock-fill me-2"></i>Sistema &amp; Offline-First</h3>
                 <button type="button" id="btnLimpiarMemoriaLocal" class="btn btn-sm btn-red">
-                    <i class="bi bi-trash me-1"></i>Limpiar Memoria Local
+                    <i class="bi bi-trash me-1"></i>Limpiar Cache Local
                 </button>
             </div>
-            <div class="mb-3 p-3 rounded" style="background: rgba(15, 23, 42, 0.8); border: 1px solid #00ff9d;">
-                <span class="fw-bold texto-verde">Estado Hidratacion SSR: </span>
-                <span id="estadoHidratacionAdmin" class="badge barra-verde text-dark">Verificando...</span>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="p-3 rounded" style="background: rgba(15, 23, 42, 0.8); border: 1px solid #00ff9d;">
+                        <span class="fw-bold texto-verde">Estado Hidratacion SSR: </span>
+                        <span id="estadoHidratacionAdmin" class="badge barra-verde text-dark">Verificando...</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 rounded" style="background: rgba(15, 23, 42, 0.8); border: 1px solid #a855f7;">
+                        <span class="fw-bold texto-morado">Service Worker: </span>
+                        <span id="estadoSwAdminDesktop" class="badge barra-morada text-white">pwa-cache-v8</span>
+                    </div>
+                </div>
             </div>
             <div>
-                <h6 class="texto-morado mb-2">Monitor colaContactosOffline / colaSincronizacionPWA:</h6>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="texto-morado mb-0">Monitor colaSincronizacion_portafolio_david:</h6>
+                    <span id="contadorColaOfflineDesktop" class="badge barra-verde text-dark">0</span>
+                </div>
                 <div id="monitorColaOffline" class="log-terminal"></div>
             </div>
         </section>
@@ -1494,6 +1627,17 @@
         </div>
     </div>
 
+    <!-- Semana 2 - Lightbox Imagen Lazy Loading -->
+    <div id="lightboxImagenVisor" class="lightbox-visor" role="dialog" aria-modal="true" aria-labelledby="lightboxImagenTitulo">
+        <div class="lightbox-visor__caja">
+            <div class="lightbox-visor__cabecera">
+                <h3 id="lightboxImagenTitulo" class="lightbox-visor__titulo">Vista Previa</h3>
+                <button type="button" id="btnCerrarLightbox" class="lightbox-visor__cerrar" aria-label="Cerrar visor">&times;</button>
+            </div>
+            <img id="lightboxImagenFoto" class="lightbox-visor__foto" src="" alt="Vista ampliada">
+        </div>
+    </div>
+
     <div id="modalVisorImagen" class="modal-visor-overlay">
         <div class="modal-visor-caja text-center">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -1512,12 +1656,12 @@
     <div id="modalTimer30s" class="modal-visor-overlay">
         <div class="modal-visor-caja text-center">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="m-0 titulo-morado">Tarifa Preferencial (30 Segundos)</h5>
+                <h5 class="m-0 titulo-morado">Sesion Interactiva (30s)</h5>
                 <button id="btnCerrarTimer30s" class="btn-close btn-close-white" type="button"></button>
             </div>
-            <p class="mb-2">Tiempo restante para confirmar tarifa:</p>
+            <p class="mb-2">Tiempo restante para confirmar tu sesion:</p>
             <div id="contadorTarifaFlash" class="display-4 fw-bold texto-verde mb-3">30s</div>
-            <button id="btnConfirmarTarifaFlash" type="button" class="btn btn-toggle">Confirmar Tarifa</button>
+            <button id="btnConfirmarTarifaFlash" type="button" class="btn btn-toggle">Confirmar Sesion</button>
         </div>
     </div>
 
@@ -1529,42 +1673,37 @@
             </div>
 
             <div id="zonaCuentaActiva" class="p-3 rounded mb-3" style="display: none; background: rgba(0, 255, 157, 0.1); border: 1px solid #00ff9d;">
-                <div class="d-flex justify-content-between align-items-center gap-2">
-                    <span id="textoCuentaActiva" class="small fw-bold texto-verde"></span>
-                    <button type="button" id="btnCerrarCuentaActual" class="btn btn-sm btn-red">Cerrar Sesion</button>
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                    <div>
+                        <div id="textoCuentaActiva" class="fw-bold texto-verde"></div>
+                        <small id="textoCuentaCorreo" class="texto-subtitulo"></small>
+                    </div>
+                    <span id="badgeRolModalAuth" class="badge barra-verde text-dark">Cliente</span>
                 </div>
+                <button type="button" id="btnCerrarCuentaActual" class="btn btn-sm btn-red">Cerrar Sesion</button>
             </div>
 
-            <div class="d-flex gap-2 mb-3">
-                <button type="button" id="tabBtnLogin" class="subnav-btn activo flex-fill">Iniciar Sesion</button>
-                <button type="button" id="tabBtnRegistro" class="subnav-btn flex-fill">Crear Cuenta</button>
-            </div>
-
-            <form id="formLoginAuth">
-                <input type="email" id="authLoginCorreo" class="form-control input-tematico mb-2" placeholder="Correo electronico" required>
-                <input type="password" id="authLoginPass" class="form-control input-tematico mb-3" placeholder="Contrasena" required>
-                <button type="submit" class="btn btn-sm btn-toggle w-100" style="min-height: 44px;">Ingresar</button>
-            </form>
-
-            <form id="formRegistroAuth" style="display: none;">
-                <input type="text" id="authRegNombre" class="form-control input-tematico mb-2" placeholder="Nombre completo" required>
-                <input type="email" id="authRegCorreo" class="form-control input-tematico mb-2" placeholder="Correo electronico" required>
-                <input type="password" id="authRegPass" class="form-control input-tematico mb-2" placeholder="Contrasena" required>
-                <select id="authRegRol" class="form-select input-tematico mb-3">
-                    <option value="cliente">Cliente</option>
-                    <option value="encargado">Encargado</option>
-                    <option value="administrador">Administrador</option>
-                </select>
-                <button type="submit" class="btn btn-sm btn-outline-success w-100" style="min-height: 44px;">Registrar Cuenta</button>
-            </form>
-
-            <div class="mt-3 pt-2 border-top border-secondary">
-                <span class="small texto-subtitulo d-block mb-1">Autocompletar Demo:</span>
-                <div class="d-flex gap-2 flex-wrap">
-                    <button type="button" class="btn-demo-auth" data-demo-rol="cliente">Cliente</button>
-                    <button type="button" class="btn-demo-auth" data-demo-rol="encargado">Encargado</button>
-                    <button type="button" class="btn-demo-auth" data-demo-rol="administrador">Admin</button>
+            <div id="zonaFormulariosAuthDesktop">
+                <div class="auth-tabs-bar mb-3">
+                    <button type="button" id="tabBtnLogin" class="auth-tab-btn activo">Iniciar Sesion</button>
+                    <button type="button" id="tabBtnRegistro" class="auth-tab-btn">Crear Cuenta</button>
                 </div>
+
+                <!-- Semana 3 - Portal de Acceso Supabase -->
+                <form id="formLoginAuth" novalidate>
+                    <input type="email" id="authLoginCorreo" class="form-control input-tematico mb-2" placeholder="Correo electronico">
+                    <input type="password" id="authLoginPass" class="form-control input-tematico mb-2" placeholder="Contrasena">
+                    <div id="msgValidacionLogin" class="msg-validacion mb-2"></div>
+                    <button type="submit" class="btn btn-sm btn-toggle w-100" style="min-height: 44px;">Ingresar</button>
+                </form>
+
+                <form id="formRegistroAuth" style="display: none;" novalidate>
+                    <input type="text" id="authRegNombre" maxlength="60" class="form-control input-tematico mb-2" placeholder="Nombre completo">
+                    <input type="email" id="authRegCorreo" class="form-control input-tematico mb-2" placeholder="Correo electronico">
+                    <input type="password" id="authRegPass" class="form-control input-tematico mb-2" placeholder="Contrasena (min. 6 caracteres)">
+                    <div id="msgValidacionRegistro" class="msg-validacion mb-2"></div>
+                    <button type="submit" class="btn btn-sm btn-outline-success w-100" style="min-height: 44px;">Registrarme</button>
+                </form>
             </div>
         </div>
     </div>

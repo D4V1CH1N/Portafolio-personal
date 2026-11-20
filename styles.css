@@ -1,3 +1,4 @@
+/* Semana 1 - Modo Oscuro y Tipografia Base */
 body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     background-color: #f1f5f9;
@@ -860,13 +861,13 @@ body:not(.dark-mode) .badge-move-slot {
 }
 
 .input-tematico.campo-invalido {
-    border-color: #ef4444;
-    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+    border-color: #f43f5e;
+    box-shadow: 0 0 0 0.16rem rgba(244, 63, 94, 0.25);
 }
 
 .input-tematico.campo-valido {
     border-color: #00ff9d;
-    box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.2);
+    box-shadow: 0 0 0 0.16rem rgba(0, 255, 157, 0.22);
 }
 
 .msg-exito {
@@ -1272,7 +1273,7 @@ body.dark-mode .badge-mecanica-estandar {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 100000;
+    z-index: 1100;
     display: none;
     min-width: 260px;
     background: rgba(15, 23, 42, 0.96);
@@ -1287,8 +1288,9 @@ body.dark-mode .badge-mecanica-estandar {
     text-align: center;
 }
 
+/* Semana 2 - Responsividad Critica y Lista Musical */
 .cola-karaoke {
-    min-height: 100dvh;
+    min-height: auto;
     padding: 12px;
     overflow-x: hidden;
 }
@@ -1395,14 +1397,12 @@ body.dark-mode .badge-mecanica-estandar {
     color: #00ff9d;
 }
 
+/* Semana 2 - Modales Responsivos sin 100dvh */
 .modal-visor-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100dvh;
+    inset: 0;
     background: rgba(0, 0, 0, 0.85);
-    z-index: 100005;
+    z-index: 1000;
     display: none;
     align-items: center;
     justify-content: center;
@@ -1419,13 +1419,35 @@ body.dark-mode .badge-mecanica-estandar {
     color: #ffffff;
 }
 
+/* Semana 3 - Modal Portal de Acceso Centrado */
+#modalAuth {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(2, 6, 23, 0.78);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+#modalAuth.activo {
+    display: flex;
+}
+
+#modalAuth .modal-visor-caja {
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .navbar-ejecutivo {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 64px;
-    z-index: 1000;
+    z-index: 200;
     background-color: rgba(15, 23, 42, 0.96);
     border-bottom: 2px solid #7e22ce;
     backdrop-filter: blur(12px);
@@ -1439,6 +1461,7 @@ body:not(.dark-mode) .navbar-ejecutivo {
     background-color: rgba(255, 255, 255, 0.96);
 }
 
+/* Semana 2 - Header Movil Sin Superposicion 360px */
 .header-inner {
     width: 100%;
     max-width: 1320px;
@@ -1446,14 +1469,31 @@ body:not(.dark-mode) .navbar-ejecutivo {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 6px;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.badge-online-header {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 10px;
+    padding: 4px 8px;
 }
 
 .header-cluster {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-header-accion,
@@ -1494,7 +1534,7 @@ body:not(.dark-mode) .navbar-ejecutivo {
     left: auto;
     width: 260px;
     max-width: calc(100vw - 32px);
-    z-index: 1050;
+    z-index: 200;
     display: none;
     background: rgba(15, 23, 42, 0.98);
     border: 1px solid #7e22ce;
@@ -1547,6 +1587,7 @@ body:not(.dark-mode) .nav-menu {
     border-color: #00ff9d;
 }
 
+/* Semana 3 - Arquitectura BEM Core Web Vitals */
 .tarjeta-ods {
     background: #1e293b;
     border: 1px solid #334155;
@@ -1631,7 +1672,7 @@ body:not(.dark-mode) .nav-menu {
 .spa-workspace {
     max-width: 1240px;
     margin: 0 auto;
-    min-height: calc(100dvh - 140px);
+    min-height: auto;
 }
 
 .seccion-spa {
@@ -1713,22 +1754,6 @@ body:not(.dark-mode) .subnav-btn {
     user-select: none;
 }
 
-.btn-demo-auth {
-    border: 1px solid #475569;
-    background: rgba(30, 41, 59, 0.85);
-    color: #e2e8f0;
-    font-size: 11px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    min-height: 36px;
-}
-
-.btn-demo-auth:hover {
-    border-color: #00ff9d;
-    color: #00ff9d;
-}
-
 .grid-galeria-visual {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1742,17 +1767,19 @@ body:not(.dark-mode) .subnav-btn {
 }
 
 @media (max-width: 768px) {
+    /* Semana 2 - Responsividad Movil */
     body {
         padding-top: 88px;
         overflow-x: hidden;
     }
 
     .navbar-ejecutivo {
-        padding: 0 10px;
+        padding: 0 8px;
         height: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        box-sizing: border-box;
     }
 
     .nav-menu {
@@ -1760,11 +1787,12 @@ body:not(.dark-mode) .subnav-btn {
     }
 
     .navbar-brand {
-        font-size: 14px;
+        font-size: 13px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 170px;
+        flex: 1 1 auto;
+        min-width: 0;
     }
 
     .texto-btn-header {
@@ -1776,8 +1804,16 @@ body:not(.dark-mode) .subnav-btn {
     #hamburgerBtn {
         min-width: 44px;
         min-height: 44px;
-        padding: 0 10px;
+        padding: 0 8px;
         justify-content: center;
+        flex-shrink: 0;
+    }
+
+    #badgeRolActual {
+        font-size: 10px;
+        padding: 3px 6px;
+        flex-shrink: 0;
+        white-space: nowrap;
     }
 
     .subnav-tabs {
@@ -1811,4 +1847,219 @@ body:not(.dark-mode) .subnav-btn {
     .grid-titulares-vgc {
         grid-template-columns: 1fr;
     }
+}
+
+.campo-valido {
+    border-color: #00ff9d;
+    box-shadow: 0 0 0 0.16rem rgba(0, 255, 157, 0.22);
+}
+
+.campo-invalido {
+    border-color: #f43f5e;
+    box-shadow: 0 0 0 0.16rem rgba(244, 63, 94, 0.25);
+}
+
+.msg-validacion {
+    display: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #f43f5e;
+    margin-top: 4px;
+}
+
+.msg-validacion.visible {
+    display: block;
+}
+
+.msg-validacion.exito {
+    display: block;
+    color: #00ff9d;
+}
+
+.contador-caracteres {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.sin-coincidencias-box {
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px dashed #64748b;
+    text-align: center;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-top: 12px;
+    grid-column: 1 / -1;
+}
+
+.auth-tabs-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.auth-tab-btn,
+.subtab-consola-btn {
+    border: 1px solid #334155;
+    background: rgba(15, 23, 42, 0.85);
+    color: #cbd5e1;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.auth-tab-btn.activo,
+.subtab-consola-btn.activo {
+    background: linear-gradient(135deg, rgba(0, 255, 157, 0.2), rgba(126, 34, 206, 0.25));
+    border-color: #00ff9d;
+    color: #00ff9d;
+}
+
+.auth-pill-demo {
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    background: rgba(126, 34, 206, 0.16);
+    color: #e9d5ff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Semana 3 - Aislamiento Estricto de Roles */
+body.rol-encargado .accion-cliente,
+body.rol-admin .accion-cliente,
+body.rol-encargado .btn-agregar-cola,
+body.rol-admin .btn-agregar-cola,
+body.rol-encargado .cola-karaoke__form,
+body.rol-admin .cola-karaoke__form,
+body.rol-encargado #navMenu [data-vista="servicios"],
+body.rol-admin #navMenu [data-vista="servicios"],
+body.rol-encargado #sub-servicios-cotizador,
+body.rol-admin #sub-servicios-cotizador,
+body.rol-encargado #sub-servicios-contacto,
+body.rol-admin #sub-servicios-contacto {
+    display: none;
+}
+
+body.rol-encargado #panelBitacoraEnVivo,
+body.rol-admin #panelBitacoraEnVivo,
+body.rol-encargado #resumenOperativoDesktop,
+body.rol-admin #resumenOperativoDesktop,
+body.rol-encargado #panelGestionSupabaseDesktop,
+body.rol-admin #panelGestionSupabaseDesktop {
+    display: block;
+}
+
+body.rol-admin #panelAdminSistema {
+    display: block;
+}
+
+.tabla-gestion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.tabla-gestion-caja {
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.tabla-gestion-lista {
+    max-height: 190px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .navbar-ejecutivo {
+        height: 56px;
+    }
+    body {
+        padding-top: 68px;
+    }
+    .cola-karaoke {
+        padding: 8px 14px;
+    }
+}
+
+/* Semana 2 - Lightbox Imagen Lazy Loading */
+.img-ampliable {
+    cursor: zoom-in;
+}
+
+.lightbox-visor {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.9);
+    z-index: 1200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+}
+
+.lightbox-visor.activo {
+    display: flex;
+}
+
+.lightbox-visor__caja {
+    max-width: 720px;
+    width: 100%;
+    background: #0f172a;
+    border: 2px solid #00ff9d;
+    border-radius: 14px;
+    padding: 16px;
+    color: #f8fafc;
+    text-align: center;
+}
+
+.lightbox-visor__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.lightbox-visor__titulo {
+    margin: 0;
+    font-size: 1rem;
+    color: #00ff9d;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.lightbox-visor__cerrar {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid #00ff9d;
+    background: rgba(15, 23, 42, 0.9);
+    color: #00ff9d;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.lightbox-visor__foto {
+    max-width: 100%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
 }

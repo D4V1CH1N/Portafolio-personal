@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Semana 2 - Fetch Lazy Loading -->
     <header class="app-header">
         <a href="#inicio" class="brand">David Zalles | Portafolio UPDS</a>
+        <span class="badge-online-s2">ONLINE</span>
         <button id="hamburgerBtn" class="btn-hamburguesa" type="button" aria-label="Menu">
             <i class="bi bi-list"></i>
         </button>
@@ -131,7 +133,7 @@
     <div id="modalVisorImagen" class="modal-overlay-s2">
         <div class="modal-caja-s2" style="text-align:center;">
             <h3 id="visorImagenTitulo" class="texto-verde">Portada HD</h3>
-            <img id="visorImagenMedia" src="" alt="Portada Media" style="max-width:100%; max-height:280px; border-radius:10px; margin:12px 0;">
+            <img loading="lazy"  id="visorImagenMedia" src="" alt="Portada Media" style="max-width:100%; max-height:280px; border-radius:10px; margin:12px 0;">
             <div>
                 <a id="visorEnlaceOriginal" href="#" target="_blank" rel="noopener noreferrer" class="btn-accion" style="text-decoration:none; display:inline-block;">Abrir Original (1000x1000)</a>
                 <button type="button" id="btnCerrarVisorImagen" class="btn-outline" style="margin-left:8px;">Cerrar</button>
@@ -140,5 +142,15 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js"></script>
+    <!-- Semana 2 - Lightbox Imagen Lazy Loading -->
+    <div id="lightboxImagenVisor" class="lightbox-visor" role="dialog" aria-modal="true" aria-labelledby="lightboxImagenTitulo">
+        <div class="lightbox-visor__caja">
+            <div class="lightbox-visor__cabecera">
+                <h3 id="lightboxImagenTitulo" class="lightbox-visor__titulo">Vista Previa</h3>
+                <button type="button" id="btnCerrarLightbox" class="lightbox-visor__cerrar" aria-label="Cerrar visor">&times;</button>
+            </div>
+            <img id="lightboxImagenFoto" class="lightbox-visor__foto" src="" alt="Vista ampliada">
+        </div>
+    </div>
 </body>
 </html>
